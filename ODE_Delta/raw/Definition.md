@@ -40,7 +40,7 @@ y_{n-1}=y^{(n-1)}(0)
 \end{matrix}
 \tag2
 $$
-named IVP. Equations (1) and (2) has a unique solution y(t) satisfied (1) and (2)
+named IVP which has an unique solution y(t) satisfied (1) and (2)
 $$
 $$
 Let's write it in a short form:
