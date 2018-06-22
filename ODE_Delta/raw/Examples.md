@@ -1,33 +1,14 @@
 #Examples
-#####Example1 [Deprecated]
-$$
-{\begin{cases}
-my''+ky=\delta(t),\\
-y_0=y(0)=y(0_{\_})
-\end{cases}}
-\Rightarrow
-{\begin{cases}
-my''+ky=0,\\
-y_0=y(0)=y(0_{+}), \text{where }y(0_{+})-y(0_{\_})=\frac{1}{m}
-\end{cases}}
-$$
-#####Example2
-?source
-$$
-\begin{cases}
-y''+2y'-15y=6\delta(t-9),\\
-y_0=y(0)=-5\\
-y_1=y'(0)=7
-\end{cases}
-$$
+#####Example1 [Ogata, p.190]
+$$\begin{cases}
+Ty'+y=\delta(t),\\
+y(0)=0
+\end{cases}$$
 Solution:
+$$y(t)=\frac{1}{T}e^{-t/T}
 $$
-f(t)=\frac{1}{8}e^{3t}-\frac{1}{8}e^{-5t},\text{ }g(t)=\frac{9}{4}e^{3t}+\frac{11}{4}e^{-5t}\\
-y(t)=6H(t,9)f(t-9)-g(t)
-$$
-#####Example3 [Finan, p.57]
-$$
-\begin{cases}
+#####Example2 [Finan, p.57]
+$$\begin{cases}
 2y''+4y'+10y=\delta(t),\\
 y_0=y(0)=0\\
 y_1=y'(0)=0
@@ -37,20 +18,27 @@ Solution:
 $$
 x(t)=\frac{1}{4}e^{-2t}sin(2t)
 $$
-#####Example4
-?source
-$$
-\begin{cases}
-y''+3y'+2y=2\delta(t-3),\\
-y_0=y(0)=0\\
-y_1=y'(0)=1
+#####Example3 [Nagy, p.189]
+$$\begin{cases}
+y''+2y'+2y=\delta(t),\\
+y(0)=y'(0)=0
 \end{cases}
 $$
 Solution:
 $$
-y(t)=\frac{1}{2}e^{t}sin(2t)+H(t,3)e^{t-3}sin(2t-6)
+y(t)=e^{-t}sin(t)
 $$
-#####Example5.1 [Zill, p.293]
+#####Example4 [Nagy, p.189]
+$$\begin{cases}
+y''+2y'+2y=\delta(t-a),\\
+y(0)=y'(0)=0
+\end{cases}
+$$
+Solution:
+$$
+y(t)=H(t-a)e^{-(t-a)}sin(t-a)
+$$
+#####Example5 [Zill, p.293]
 $$
 \begin{cases}
 y''+y=4\delta(t-2\pi),\\
@@ -65,10 +53,8 @@ y(t)=\begin{cases}
 4sin(t), & t\ge2\pi
 \end{cases}
 $$
-
-#####Example5.2 [Zill, p.293]
-$$
-\begin{cases}
+#####Example6 [Zill, p.293]
+$$\begin{cases}
 y''+y=4\delta(t-2\pi),\\
 y_0=y(0)=1\\
 y_1=y'(0)=0
@@ -78,118 +64,24 @@ Solution:
 $$
 y(t)=cos(t)+4H(t,2\pi)sin(t)
 $$
-#####Example6
-?source
-$$
-\begin{cases}
-x''+9x=3\delta(t-\pi),\\
-x_0=x(0)=1\\
-x_1=x'(0)=0
-\end{cases}
-$$
-Solution:
-$$
-x(t)=cos(3t)+H(t,\pi)(-sin(3t))
-$$
-#####Example7
-?source
-$$
-{\begin{cases}
-y''+3y'+2y=\delta(t-1),\\
-y_0=y'(0)=0
-\end{cases}}
-\Rightarrow
-{\begin{cases}
-y''+3y'+2y=0,\\
-y_0=y(1)=0\\
-y_1=y'(1_{+})=1
-\end{cases}}
-$$
-#####Example8
-?source
-$$
-\begin{cases}
-y''+4y+5y=\delta(t-1),\\
-y_0=y(0)=0\\
-y_1=y'(0)=3
-\end{cases}
-$$
-Solution:
-$$
-y(t)=e^{2-2t}H(t,1)sin(t-1)+e^{-2t}sin(t)
-$$
-#####Example9
-?source
-$$
-\begin{cases}
-y''+2y+26y=\delta(t-4),\\
-y_0=y(0)=1\\
-y_1=y'(0)=0
-\end{cases}
-$$
-Solution:
-$$
-y(t)=e^{-t}cos(5t)+\frac{1}{5}e^{-t}sin(5t)+\frac{1}{5}H(t,4)e^{-(t-4)}sin(5(t-4))
-$$
-#####Example10
-?source
-$$
-\begin{cases}
-y''+6y'+5y=\delta(t)+\delta(t-2),\\
-y_0=y(0)=1\\
-y_1=y'(0)=0
-\end{cases}
-$$
-Solution:
-$$
-y(t)=\frac{3}{2}e^{-t}-\frac{1}{2}e^{-5t}+\frac{1}{4}H(t,2)\left[e^{-t+2}-e^{-5t+10}\right]
-$$
-#####Example11 [Nagy p.189]
-$$
-\begin{cases}
-y''+2y'+2y=\delta(t),\\
-y(0)=y'(0)=0
-\end{cases}
-$$
-Solution:
-$$
-y(t)=e^{-t}sin(t)
-$$
-#####Example12 [Nagy p.189]
-$$
-\begin{cases}
-y''+2y'+2y=\delta(t-a),\\
-y(0)=y'(0)=0
-\end{cases}
-$$
-Solution:
-$$
-y(t)=H(t-a)e^{-(t-a)}sin(t-a)
-$$
-#####Example13 [Nagy p.190]
+#####Example7 [Nagy p.190]
 $$\begin{cases}
 y''+4y=\delta(t-\pi)-\delta(t-2\pi),\\
 y(0)=y'(0)=0
 \end{cases}$$
 Solution:
-$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]$$
-
-#####Example14 [Nagy p.189]
+$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]
 $$
-\begin{cases}
-y''+2y'+2y=\delta(t-a),\\
-y(0)=y'(0)=0
+#####Example8 [Dawkins, p.234]
+$$\begin{cases}
+y''+2y'-15y=6\delta(t-9),\\
+y_0=y(0)=-5\\
+y_1=y'(0)=7
 \end{cases}
 $$
 Solution:
 $$
-y(t)=H(t-a)e^{-(t-a)}sin(t-a)
+f(t)=\frac{1}{8}e^{3t}-\frac{1}{8}e^{-5t},\text{ }g(t)=\frac{9}{4}e^{3t}+\frac{11}{4}e^{-5t}\\
+y(t)=6H(t,9)f(t-9)-g(t)
 $$
 
-#####Example15 [Nagy p.190]
-$$\begin{cases}
-Ty'+y=\delta(t),\\
-y(0)=0
-\end{cases}$$
-Solution:
-$$y(t)=\frac{1}{T}e^{-t/T}$$

@@ -25,18 +25,18 @@ $$
 H(t)=\int_{-\infty}^t \delta(x)dx
 $$
 Initial Value Problem (IVP), Caushy problem
-Differential equation
+Differential equation (linear differential equation with constant coefficients)
 $$
 \sum_{i=0}^{n} a_iy^{(n-i)}=f(t)\text{ , }a_i=const\in \mathbb{R}\text{ , }i\in 0\ldots n\tag{1}
 $$
 and initial conditions (IC)
 $$
 \begin{matrix}
-y_0=y(0)\\
-y_1=y'(0)\\
-y_2=y''(0)\\
+y_0=y(t_0)\\
+y_1=y'(t_0)\\
+y_2=y''(t_0)\\
 \ldots\\
-y_{n-1}=y^{(n-1)}(0)
+y_{n-1}=y^{(n-1)}(t_0)
 \end{matrix}
 \tag2
 $$
@@ -45,7 +45,7 @@ $$
 $$
 Let's write it in a short form:
 $$
-y(t)=IVP(\{a\}, f(t), \{y\}_0),\tag3
+y(t)=IVP(\{a\}, f(t), t_0,\{y\}_0),\tag3
 $$
 where
 $$
