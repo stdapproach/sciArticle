@@ -22,10 +22,10 @@ $$
 $$
 Heaviside step function
 $$
-H(t)=\int_{-\infty}^t \delta(x)dx
+H(t)
 $$
 Initial Value Problem (IVP), Caushy problem
-Differential equation (linear differential equation with constant coefficients)
+Differential equation (linear differential equation with constant coefficients, ODE_LC)
 $$
 \sum_{i=0}^{n} a_iy^{(n-i)}=f(t)\text{ , }a_i=const\in \mathbb{R}\text{ , }i\in 0\ldots n\tag{1}
 $$

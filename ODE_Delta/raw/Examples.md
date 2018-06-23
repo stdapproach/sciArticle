@@ -7,16 +7,16 @@ y(0)=0
 Solution:
 $$y(t)=\frac{1}{T}e^{-t/T}
 $$
-#####Example2 [Finan, p.57]
+#####Example2 [Finan, pp.57-58]
 $$\begin{cases}
 2y''+4y'+10y=\delta(t),\\
 y_0=y(0)=0\\
 y_1=y'(0)=0
 \end{cases}
 $$
-Solution:
+Solution (! there was a typo at original book, here's the proper answer which I\ve checked by MathCad14 and WolframAlfa!):
 $$
-x(t)=\frac{1}{4}e^{-2t}sin(2t)
+y(t)=\frac{1}{4}e^{-t}sin(2t)
 $$
 #####Example3 [Nagy, p.189]
 $$\begin{cases}
