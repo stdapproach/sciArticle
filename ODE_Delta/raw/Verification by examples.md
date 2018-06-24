@@ -176,6 +176,66 @@ Numerical solution:
 ![GitHub Logo](ex4_An.png)
 Phase plate:
 ![GitHub Logo](ex4_Phase.png)
+#####3.5 Example5 [Zill, p.293]
+Considering the following second order ODE
+$$
+\begin{cases}
+y''+y=4\delta(t-2\pi),\\
+y_0=y(0)=0\\
+y_1=y'(0)=0
+\end{cases}
+$$
+This system could be separated on two systems, moreover the IC for a second system based on results first one:
+$$
+\begin{cases}
+y1''+y1=0,\\
+y1_0=y1(0)=0\\
+y1_1=y1'(0)=0\\
+0\le t \le 2\pi
+\end{cases}
+$$
+$$
+\begin{cases}
+y2''+y2=4\delta(t-2\pi),\\
+y2(2\pi)=y1(2\pi)\\
+y2'(2\pi)=y1'(2\pi)\\
+t \ge 2\pi
+\end{cases}
+$$
+Numerical solution:
+![GitHub Logo](ex5_An.png)
+Phase plate:
+![GitHub Logo](ex5_Phase.png)
+#####3.6 Example6 [Zill, p.293]
+Considering the following second order ODE
+$$
+\begin{cases}
+y''+y=4\delta(t-2\pi),\\
+y_0=y(0)=1\\
+y_1=y'(0)=0
+\end{cases}
+$$
+This system could be separated on two systems, moreover the IC for a second system based on results first one:
+$$
+\begin{cases}
+y1''+y1=0,\\
+y1_0=y1(0)=1\\
+y1_1=y1'(0)=0\\
+0\le t \le 2\pi
+\end{cases}
+$$
+$$
+\begin{cases}
+y2''+y2=4\delta(t-2\pi),\\
+y2(2\pi)=y1(2\pi)\\
+y2'(2\pi)=y1'(2\pi)\\
+t \ge 2\pi
+\end{cases}
+$$
+Numerical solution:
+![GitHub Logo](ex6_An.png)
+Phase plate:
+![GitHub Logo](ex6_Phase.png)
 qwe
 qwe
 qwe

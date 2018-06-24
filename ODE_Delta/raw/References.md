@@ -11,32 +11,30 @@ Engineering Vibrations
 [4] De Silva, Clarence W.
 Vibration : fundamentals and practice
 © 2000 by CRC Press LLC ISBN 0-8493-1808-4
-[5] Dawkins P.
-DIFFERENTIAL EQUATIONS
-[6] Finan Marcel B.
+[5] Finan Marcel B.
 Laplace Transforms: Theory, Problems, and Solutions
 Arkansas Tech University
-[7] Genta Giancarlo
+[6] Genta Giancarlo
 Vibration Dynamics and Control
 © Springer Science+Business Media, LLC 2009 ISBN: 978-0-387-79579-9
-[8] KELLY S. GRAHAM
+[7] KELLY S. GRAHAM
 Mechanical Vibrations
 THEORY AND APPLICATIONS
 © 2012Cengage Learning ISBN-13: 978-1-4390-6212-8 ISBN-10: 1-4390-6212-9
-[9] NAGY GABRIEL
+[8] NAGY GABRIEL
 ORDINARY DIFFERENTIAL EQUATIONS
 Mathematics Department, Michigan State University, East Lansing, MI, 48824.
-[10] Ogata Katsuhiko
+[9] Ogata Katsuhiko
 Modern Control Engineering (5th edition)
 Copyright © 2010, 2002, 1997, 1990, 1970 Pearson Education, Inc.
 ISBN 10: 0-13-615673-8 ISBN 13: 978-0-13-615673-4
-[11] Rao Singiresu S.
+[10] Rao Singiresu S.
 Mechanical Vibrations (5th Edition) 
 ISBN-13: 978-0132128193 ISBN-10: 0132128195
-[12] Weber, Arfken
+[11] Weber, Arfken
 Essential Mathematical Methods for Physicists
 Academic Press, 2003, ISBN: 0-12-059877-9
-[13] ZILL DENNIS G.
+[12] ZILL DENNIS G.
 A FIRST COURSE IN DIFFERENTIAL EQUATIONS with Modeling Applications (9th edition)
 Loyola Marymount University
 © 2009, 2005 Brooks/Cole, Cengage Learning

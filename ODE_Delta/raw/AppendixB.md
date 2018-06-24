@@ -73,16 +73,5 @@ y(0)=y'(0)=0
 Solution:
 $$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]
 $$
-#####Example8 [Dawkins, p.234]
-$$\begin{cases}
-y''+2y'-15y=6\delta(t-9),\\
-y_0=y(0)=-5\\
-y_1=y'(0)=7
-\end{cases}
-$$
-Solution:
-$$
-f(t)=\frac{1}{8}e^{3t}-\frac{1}{8}e^{-5t},\text{ }g(t)=\frac{9}{4}e^{3t}+\frac{11}{4}e^{-5t}\\
-y(t)=6H(t,9)f(t-9)-g(t)
-$$
+
 

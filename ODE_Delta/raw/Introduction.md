@@ -62,7 +62,7 @@ $$
 IVP\left(\{1,A\},B\delta(t),t_0=0,x_0\right)=IVP\left(\{1,A\},\mathbf0,t_0=0,x_0\mathbf{+B}\right)\tag{2.6}
 $$
 ##### About change IC
-Some books provided an analitical solution for ODE_LC with delta function as load. For example: Dawkins (p.234), Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).
+Some books provided an analitical solution for ODE_LC with delta function as load. For example: Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).
 Some other books noticed that the solution of IVP for ODE_LC with delta function as load is the same as solution the similar homogenous ODE_LC with defferernt initial condition (IC).
 Rao (p.407) noticed that follow systems are equal.
 $${\begin{cases}
