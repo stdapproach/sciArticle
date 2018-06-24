@@ -34,7 +34,7 @@ x(t)=IVP\left(\{1,A\},Bu(t),t_0=0,x_0\right)
 $$
 The solution of homogenous system (free response) is:
 $$
-x_{free}(t)=IVP\left(\{1,A\},0,t_0=0,x_0\right)=e^{At}x_0
+x_{free}(t)=IVP\left(\{1,A\},0,t_0=0,x_0\right)=e^{-At}x_0
 $$
 And substitute the Dirac delta function as load, so the system (1) becomes as
 $$
@@ -59,7 +59,7 @@ x(0)=x_0+B
 $$
 So we can write a next statement:
 $$
-IVP\left(\{1,A\},B\delta(t),t_0=0,x_0\right)=IVP\left(\{1,A\},\mathbf0,t_0=0,x_0\mathbf{+B}\right)
+IVP\left(\{1,A\},B\delta(t),t_0=0,x_0\right)=IVP\left(\{1,A\},\mathbf0,t_0=0,x_0\mathbf{+B}\right)\tag{2.6}
 $$
 ##### About change IC
 Some books provided an analitical solution for ODE_LC with delta function as load. For example: Dawkins (p.234), Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).

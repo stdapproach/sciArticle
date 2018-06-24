@@ -1,4 +1,5 @@
 #Apendix A
+## General formulas
 ####Unit impulse function (Dirac's function)
 $$
 \int_{-\infty}^\infty \delta(x-a)f(x) dx=f(a)

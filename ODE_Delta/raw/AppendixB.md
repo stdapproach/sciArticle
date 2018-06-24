@@ -1,4 +1,5 @@
-#Examples
+#Apendix B
+## Examples
 #####Example1 [Ogata, p.190]
 $$\begin{cases}
 Ty'+y=\delta(t),\\
@@ -30,13 +31,13 @@ y(t)=e^{-t}sin(t)
 $$
 #####Example4 [Nagy, p.189]
 $$\begin{cases}
-y''+2y'+2y=\delta(t-a),\\
+y''+2y'+2y=\delta(t-c),\\
 y(0)=y'(0)=0
 \end{cases}
 $$
 Solution:
 $$
-y(t)=H(t-a)e^{-(t-a)}sin(t-a)
+y(t)=H(t-a)e^{-(t-c)}sin(t-c)
 $$
 #####Example5 [Zill, p.293]
 $$
