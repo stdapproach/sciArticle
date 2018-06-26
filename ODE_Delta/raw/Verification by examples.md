@@ -29,13 +29,11 @@ $$
 y(0)=0
 \end{cases}
 $$
-Numerical solution:
-![GitHub Logo](ex1_Num.png)
 Analitycal solution:
 $$y(t)=\frac{1}{T}e^{-t/T}=\frac{1}{2}e^{-t/2}$$
-![GitHub Logo](ex1_An.png)
-Error (Numerical solution minus Analitycal solution):
-![GitHub Logo](ex1_Error.png)
+
+Numerical solution, Analytical solutions and error:
+![GitHub Logo](ex1.png)
 
 #####3.2 Example2 [Finan, pp.57-58]
 Considering the following second order ODE

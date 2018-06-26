@@ -46,3 +46,8 @@ $$
 \{a\} = \{a_0,a_1,\ldots a_n\}\\
 \{y\}_0=\{y_0,y'_0,\ldots y^{(n-1)}_0\}\\
 $$
+Sometimes we would use following notation for IVP:
+$$\begin{cases}
+L_n(y)=f(t),\\
+y_0
+\end{cases}$$

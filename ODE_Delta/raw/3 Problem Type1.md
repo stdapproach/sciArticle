@@ -1,10 +1,35 @@
-###3. A problem Type1
-Let's  name the following system as Problem Type 1a:
-Find
+###3. A problem Type 1
+This part ragerding the follow problem.
+Type 1a
+$$\begin{cases}
+L_n(y)=b\delta(t),\\
+y_0, n \ge 1
+\end{cases}$$
+Type 2b
+$$\begin{cases}
+L_n(y)=b\delta(t-c),\\
+y_0, n \ge 1
+\end{cases}$$
+Type 2c
+$$\begin{cases}
+L_n(y)=\sum_{i=0}^n b_i\delta(t-c_i),\\
+y_0, n \ge 1
+\end{cases}$$
+
+####3. A problem Type 1a
+Find an IC for homogenous system which deliver the equivalence for non-homogenous one.
+At this case 'equivalence' means:
 $$
-\{z\}_0=\{z_0,z'_0,\ldots ,z^{(n-1)}_0\}\\
+z(t)=y(t), \forall t\ge  t_0=0 
 $$
-which delivers for the system
+for the next systems: a given non homogenous system
+$${\begin{cases}
+    y(t)=IVP(\{a\}, b\delta(t), t_0=0,\{y\}_0),\\
+    \{a\} = \{a_0,a_1,\ldots a_n\}\\
+    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}\\
+\end{cases}}
+$$
+the homogenous system whose IC supposed to be found
 $$
 \begin{cases}
     z(t)=IVP(\{a\}, 0, t_0=0,\{z\}_0),\\
@@ -12,18 +37,7 @@ $$
     \{z\}_0=\{z_0,z'_0,\ldots ,z^{(n-1)}\}\\
 \end{cases}
 $$
-the equivalence of next one:
-$${\begin{cases}
-    y(t)=IVP(\{a\}, b\delta(t), t_0=0,\{y\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}\\
-\end{cases}}
-$$
-At this case 'equivalence' means:
-$$
-z(t)=y(t), \forall t\ge  t_0=0
-$$
-Let's perform Laplas Transform (LT) for y(t) with respect to non-null initial condition.
+To solve the problem Type 1a let's perform Laplas Transform (LT) for y(t) with respect to non-null initial condition.
 $$
 L\{y(t)\}=Y(s)
 $$
@@ -35,7 +49,7 @@ L\{a_0y^{(n-0)}\}&=a_0\left[s^nY-s^{n-1}y(0)-s^{n-2}y'(0)-s^{n-3}y''(0)- ...-s^1
 L\{a_0y^{(n-0)}\}&=a_0\left[s^nY-s^{n-1}y(0)-s^{n-2}y'(0)-s^{n-3}y''(0)- ...-s^1y^{(n-2)}(0)-y^{(n-1)}(0)\right]\\
 L\{a_1y^{(n-1)}\}&=a_1\left[s^{(n-1)}Y-s^{n-2}y(0)-s^{n-3}y'(0)-s^{n-2}y''(0)- ...-s^1y^{(n-3)}-y^{(n-2)}(0)\right]\\
 L\{a_2y^{(n-2)}\}&=a_2\left[s^{(n-2)}Y-s^{n-3}y(0)-s^{n-4}y'(0)-s^{n-5}y''(0)- ...-s^1y^{(n-4)}(0)-y^{(n-3)}(0)\right]\\
-...\\
+&...\\
 L\{a_{n-1}y'\}&=a_{n-1}\left[s'Y-y(0) \right]\\
 L\{a_{n}y\}&=a_{n}\left[Y\right]\\
 -bL\{\delta(t)\}&=-be^{(-s)0}=-b
