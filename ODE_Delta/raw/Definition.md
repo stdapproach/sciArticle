@@ -5,15 +5,9 @@ y,y(t)\text{ - function takes an argument}\in\mathbb{R}\text{ and returns a resu
 $$
 Derivative:
 $$
-y'=\frac{dy}{dt}
-$$
-$$
-y''=\frac{d^2y}{dt^2}
-$$
-$$
-y^{(n)}=\frac{d^{n}y}{dt^{n}}
-$$
-$$
+y'=\frac{dy}{dt}\text{ , }
+y''=\frac{d^2y}{dt^2}\text{ , }
+y^{(n)}=\frac{d^{n}y}{dt^{n}}\text{ , }
 y^{(0)}=y
 $$
 Dirac delta function

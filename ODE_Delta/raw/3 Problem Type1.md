@@ -1,5 +1,5 @@
 ###3. A problem Type1
-Let's  name the following system as Problem Type 1.1:
+Let's  name the following system as Problem Type 1a:
 Find
 $$
 \{z\}_0=\{z_0,z'_0,\ldots ,z^{(n-1)}_0\}\\
