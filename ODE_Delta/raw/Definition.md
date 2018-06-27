@@ -19,6 +19,13 @@ $$
 H(t)
 $$
 Initial Value Problem (IVP), Caushy problem
+===
+The initial value problem (IVP) for a first order linear ODE is the following: Given constant a_i and constants $t_0$, y_0, find a function y solution of
+$$
+y'= a(t) y + b(t); y (t0) = y
+$$
+The second equation in (1.2.6) is called the initial condition of the problem
+===
 Differential equation (linear differential equation with constant coefficients, ODE_LC)
 $$
 \sum_{i=0}^{n} a_iy^{(n-i)}=f(t)\text{ , }a_i=const\in \mathbb{R}\text{ , }i\in 0\ldots n\tag{1}
