@@ -85,14 +85,12 @@ $$
 IVP(\{2\text{, }4\text{, }10\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})\equiv 
 IVP(\{2\text{, }4\text{, }10\}, 0, t_0=0,y_0=\{0\text{, }1/2\})
 $$
-Numerical solution:
-![GitHub Logo](ex2_An.png)
-Phase plate:
-![GitHub Logo](ex2_Phase.png)
 Analitycal solution:
 $$y(t)=\frac{1}{4}e^{-t}sin(2t)$$
-Error (Numerical solution minus Analitycal solution):
-![GitHub Logo](ex2_Error.png)
+Numerical solution, Analytical solutions and error:
+![GitHub Logo](ex2.png)
+Phase diagram:
+![GitHub Logo](ex2_Phase.png)
 #####3.3 Example3 [Nagy, p.189]
 Considering the following second order ODE
 $${\begin{cases}
@@ -146,11 +144,9 @@ IVP(\{1\text{, }2\text{, }2\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})\equiv
 IVP(\{1\text{, }2\text{, }2\}, 0, t_0=0,y_0=\{0\text{, }1\})
 $$
 Numerical solution:
-![GitHub Logo](ex3_An.png)
-Phase plate:
+![GitHub Logo](ex3.png)
+Phase diagram:
 ![GitHub Logo](ex3_Phase.png)
-Error (Numerical solution minus Analitycal solution):
-![GitHub Logo](ex3_Error.png)
 #####3.4 Example4 [Nagy, p.189]
 Considering the following second order time invariant ODE
 $$
@@ -186,7 +182,7 @@ y2(t), & \text{if $t \ge c$}
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex4_An.png)
+![GitHub Logo](ex4.png)
 Phase plate:
 ![GitHub Logo](ex4_Phase.png)
 #####3.5 Example5 [Zill, p.293]
@@ -216,9 +212,10 @@ t \ge 2\pi
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex5_An.png)
+![GitHub Logo](ex5.png)
 Phase plate:
 ![GitHub Logo](ex5_Phase.png)
+
 #####3.6 Example6 [Zill, p.293]
 Considering the following second order ODE
 $$
@@ -246,10 +243,11 @@ t \ge 2\pi
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex6_An.png)
+![GitHub Logo](ex6.png)
 Phase plate:
 ![GitHub Logo](ex6_Phase.png)
 qwe
+#####3.7 Example7 [Nagy, p.190]
 qwe
 qwe
 qwe
