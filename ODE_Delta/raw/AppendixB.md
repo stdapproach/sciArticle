@@ -15,7 +15,7 @@ y_0=y(0)=0\\
 y_1=y'(0)=0
 \end{cases}
 $$
-Solution (! there was a typo at original book, here's the proper answer which I\ve checked by MathCad14 and WolframAlfa!):
+Solution (! there was a typo at original book, here's the proper answer which I've checked by MathCad14 and WolframAlfa!):
 $$
 y(t)=\frac{1}{4}e^{-t}sin(2t)
 $$

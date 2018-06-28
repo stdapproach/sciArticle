@@ -33,7 +33,7 @@ Analitycal solution:
 $$y(t)=\frac{1}{T}e^{-t/T}=\frac{1}{2}e^{-t/2}$$
 
 Numerical solution, Analytical solutions and error:
-![GitHub Logo](ex1.png)
+<img src="ex1.png" width="600">
 
 #####3.2 Example2 [Finan, pp.57-58]
 Considering the following second order ODE
@@ -88,9 +88,10 @@ $$
 Analitycal solution:
 $$y(t)=\frac{1}{4}e^{-t}sin(2t)$$
 Numerical solution, Analytical solutions and error:
-![GitHub Logo](ex2.png)
+<img src="ex2.png" width="600">
 Phase diagram:
-![GitHub Logo](ex2_Phase.png)
+<img src="ex2_Phase.png" width="600">
+
 #####3.3 Example3 [Nagy, p.189]
 Considering the following second order ODE
 $${\begin{cases}
@@ -144,9 +145,10 @@ IVP(\{1\text{, }2\text{, }2\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})\equiv
 IVP(\{1\text{, }2\text{, }2\}, 0, t_0=0,y_0=\{0\text{, }1\})
 $$
 Numerical solution:
-![GitHub Logo](ex3.png)
+<img src="ex3.png" width="600">
 Phase diagram:
-![GitHub Logo](ex3_Phase.png)
+<img src="ex3_Phase.png" width="600">
+
 #####3.4 Example4 [Nagy, p.189]
 Considering the following second order time invariant ODE
 $$
@@ -182,9 +184,10 @@ y2(t), & \text{if $t \ge c$}
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex4.png)
+<img src="ex4.png" width="600">
 Phase plate:
-![GitHub Logo](ex4_Phase.png)
+<img src="ex4_Phase.png" width="600">
+
 #####3.5 Example5 [Zill, p.293]
 Considering the following second order ODE
 $$
@@ -212,9 +215,9 @@ t \ge 2\pi
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex5.png)
+<img src="ex5.png" width="600">
 Phase plate:
-![GitHub Logo](ex5_Phase.png)
+<img src="ex5_Phase.png" width="600">
 
 #####3.6 Example6 [Zill, p.293]
 Considering the following second order ODE
@@ -243,9 +246,9 @@ t \ge 2\pi
 \end{cases}
 $$
 Numerical solution:
-![GitHub Logo](ex6.png)
+<img src="ex6.png" width="600">
 Phase plate:
-![GitHub Logo](ex6_Phase.png)
+<img src="ex6_Phase.png" width="600">
 qwe
 #####3.7 Example7 [Nagy, p.190]
 qwe
