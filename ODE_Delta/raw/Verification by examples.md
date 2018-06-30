@@ -144,6 +144,8 @@ $$
 IVP(\{1\text{, }2\text{, }2\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})\equiv 
 IVP(\{1\text{, }2\text{, }2\}, 0, t_0=0,y_0=\{0\text{, }1\})
 $$
+Analitycal solution:
+$$y(t)=e^{-t}sin(t)$$
 Numerical solution:
 <img src="ex3.png" width="600">
 Phase diagram:
@@ -183,6 +185,9 @@ y1(t),  & \text{if $0\le t \le c$} \\
 y2(t), & \text{if $t \ge c$}
 \end{cases}
 $$
+Analitycal solution:
+$$y(t)=H(t-c)e^{-(t-c)}sin(t-c)$$
+
 Numerical solution:
 <img src="ex4.png" width="600">
 Phase plate:
@@ -213,6 +218,10 @@ y2(2\pi)=y1(2\pi)\\
 y2'(2\pi)=y1'(2\pi)\\
 t \ge 2\pi
 \end{cases}
+$$
+Analitycal solution:
+$$
+y(t)=H(t-2\pi)4sin(t)
 $$
 Numerical solution:
 <img src="ex5.png" width="600">
@@ -245,12 +254,19 @@ y2'(2\pi)=y1'(2\pi)\\
 t \ge 2\pi
 \end{cases}
 $$
+Analitycal solution:
+$$
+y(t)=cos(t)+4H(t,2\pi)sin(t)
+$$
 Numerical solution:
 <img src="ex6.png" width="600">
 Phase plate:
 <img src="ex6_Phase.png" width="600">
 qwe
 #####3.7 Example7 [Nagy, p.190]
+Analitycal solution:
+$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
+$$
 qwe
 qwe
 qwe

@@ -37,7 +37,7 @@ y(0)=y'(0)=0
 $$
 Solution:
 $$
-y(t)=H(t-a)e^{-(t-c)}sin(t-c)
+y(t)=H(t-c)e^{-(t-c)}sin(t-c)
 $$
 #####Example5 [Zill, p.293]
 $$
@@ -71,7 +71,11 @@ y''+4y=\delta(t-\pi)-\delta(t-2\pi),\\
 y(0)=y'(0)=0
 \end{cases}$$
 Solution:
-$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]
+$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
 $$
+qwe
+qwe
+qwe
+qwe
 
 

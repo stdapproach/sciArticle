@@ -10,15 +10,14 @@ ylabel2 = "Numerical-Analytical"
 a0 = 1
 a1 = 2
 a2 = 2
-#T = 1.0
 c=2
 N = 100
 def D_ex(P, t):
 	r = - (a2*P[0]/a0 + a1*P[1]/a0)
 	return [P[1], r]
 
-#def y_ex(t):
-#	return 0.25*np.exp(-t)*np.sin(2*t)
+def y_ex(t):
+	return np.heaviside(t-c,1)*np.exp(-(t-c))*np.sin(t-c)
 
 ts1 = np.linspace(0, c, N)
 ts2 = np.linspace(c, 10, N)
@@ -35,7 +34,7 @@ plt.xkcd()
 #plt.subplot(211)
 plt.title(title1)
 plt.plot(ts, prey, 'bo', markevery=5, color='r', label="Numerical")
-plt.plot(ts, prey, 'k', markevery=5, color='b')
+plt.plot(ts, y_ex(ts), 'k', markevery=5, color='b', label="Analytical")
 plt.xlabel("Time")
 plt.ylabel(ylabel1)
 plt.legend();
