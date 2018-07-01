@@ -268,6 +268,73 @@ Analitycal solution:
 $$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
 $$
 qwe
+#####3.8 Example8
+Considering the following third order ODE
+$${\begin{cases}
+y'''+2y''+2y'=\delta(t)\\
+y_0=y(0)=0\\
+y_1=y'(0)=0\\
+y_2=y''(0)=0
+\end{cases}}\Rightarrow
+IVP(\{1\text{, }2\text{, }2\text{, }0\}, \delta(t), t_0=0,y_0=\{0\text{, }0\text{, }0\})\Rightarrow\\
+A=\left[
+    \begin{matrix}
+    1 & 0 & 0 \\
+    2 & 1 & 0\\
+    2 & 2 & 1
+    \end{matrix}\right]\text{, }
+\{d\}=\left\{
+    \begin{matrix}
+    0 \\
+    0 \\
+    1 \\
+    \end{matrix}\right\}\Rightarrow\\
+A^{-1}=\left[
+    \begin{matrix}
+    1 & 0 & 0 \\
+    -2 & 1 & 0 \\
+    2 & -2 & 1 
+    \end{matrix}\right]\text{, }
+A^{-1}\{d\}=\left\{
+    \begin{matrix}
+    0 \\
+    0 \\
+    1 
+    \end{matrix}\right\}
+\Rightarrow\\
+\{z\}_0=\{y\}_0+[A]^{-1}\{d\}=\left\{
+    \begin{matrix}
+    0 \\
+    0 \\
+    1 \\
+    \end{matrix}\right\}$$
+These 2 folloing system are equal by solution
+$${\begin{cases}
+y'''+2y''+2y'=\delta(t)\\
+y_0=y(0)=0\\
+y_1=y'(0)=0\\
+y_2=y''(0)=0
+\end{cases}}\equiv
+{\begin{cases}
+y'''+2y''+2y'=0\\
+y_0=y(0)=0\\
+y_1=y'(0)=0\\
+y_2=y''(0)=1
+\end{cases}}
+$$
+In short form:
+$$
+IVP(\{1\text{, }2\text{, }2\text{, }0\}, \delta(t), t_0=0,y_0=\{0\text{, }0\text{, }0\})\equiv 
+IVP(\{1\text{, }2\text{, }2\text{, }0\}, 0, t_0=0,y_0=\{0\text{, }0\text{, }1\})
+$$
+Analitycal solution:
+$$y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)$$
+Numerical solution, Analytical solutions and y'(t), y''(t):
+<img src="ex8.png" width="600">
+Phase diagram:
+<img src="ex8_Phase.png" width="600">
+
+
 qwe
 qwe
 qwe

@@ -2,8 +2,13 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 import numpy as np
 
+import helper as hlp
+
+plt.xkcd()
+plt.grid(True)
+
 #Example2
-title1 = 'Example7'
+title1 = 'Example7'#hlp.foo()
 ylabel1 = "y"
 title2 = 'Error ' + title1
 ylabel2 = "Numerical-Analytical"
@@ -15,21 +20,36 @@ N = 100
 IC1 = [0, 0]
 b = 1
 #====================
+#va = [2,1]
+va = [2, 4, 10]
+#stub = hlp.mkMatrA([2,4,2])
+#stub = hlp.mkVecD_Type1(1, [2,4,2])
+#stub = hlp.mkDeltaIC_Type1([2,4,2], 1)
+stub = hlp.mkDiff_Type1
+vt = np.linspace(0, 10, N)
+Z1 = odeint(stub, [0, 0.5], vt, args=(va,))
+
+#print(Z1)
+#plt.title(title1)
+#plt.plot(vt, Z1[:,0], 'bo', markevery=5, color='r', label="Numerical")
+#plt.show()
+
+#====================
 A = np.array([[a0, 0],[a1, a0]])
 d = np.array([0, b])
 d = np.transpose(d)
-print("d=" + np.array2string(d, formatter={'float_kind':lambda x: "%.2f" % x}))
+#print("d=" + np.array2string(d, formatter={'float_kind':lambda x: "%.2f" % x}))
 Am1 = np.linalg.inv(A)
-print("Am1=" + np.array2string(Am1, formatter={'float_kind':lambda x: "%.2f" % x}))
+#print("Am1=" + np.array2string(Am1, formatter={'float_kind':lambda x: "%.2f" % x}))
 deltaIC1 = np.matmul(Am1, d)
-print("deltaIC1=" + np.array2string(deltaIC1, formatter={'float_kind':lambda x: "%.2f" % x}))
+#print("deltaIC1=" + np.array2string(deltaIC1, formatter={'float_kind':lambda x: "%.2f" % x}))
 
 def D_ex(P, t):
 	r = - (a2*P[0]/a0 + a1*P[1]/a0)
 	return [P[1], r]
 
-#def y_ex(t):
-#	return 0.25*np.exp(-t)*np.sin(2*t)
+def y_ex(t):
+	return 0.5*(np.heaviside(t-np.pi,1)-np.heaviside(t-2*np.pi,1))*np.sin(2*t)
 
 ts1 = np.linspace(0, c, N)
 ts2 = np.linspace(c, 15, N)
@@ -44,11 +64,11 @@ Z2 = odeint(D_ex, IC2, ts2)
 Z = np.concatenate((Z1, Z2), axis=0)
 prey = Z[:,0]
 
-plt.xkcd()
+
 #plt.subplot(211)
 plt.title(title1)
 plt.plot(ts, prey, 'bo', markevery=5, color='r', label="Numerical")
-plt.plot(ts, prey, 'k', markevery=5, color='b')
+plt.plot(ts, y_ex(ts), 'k', markevery=5, color='b', label="Analytical")
 plt.xlabel("Time")
 plt.ylabel(ylabel1)
 plt.legend();
@@ -59,12 +79,12 @@ plt.legend();
 #plt.xlabel("Time")
 #plt.ylabel(ylabel2)
 
-plt.grid(True)
 plt.show()
 
+plt.xkcd()
+plt.grid(True)
 plt.title("Phase diagram:"+title1)
 plt.plot(Z[:,0], Z[:,1], 'k', color='b', label="Analytical")
-#plt.plot(P[:,0], , 'bo', markevery=5, color='r', label="Numerical")
 plt.xlabel("y")
 plt.ylabel("y'")
 
@@ -86,4 +106,4 @@ addAnnotate(Z, indYtmax, plt)
 indYtmin = np.argmin(Z[:,1])
 addAnnotate(Z, indYtmin, plt)
 
-plt.show()
+#plt.show()
