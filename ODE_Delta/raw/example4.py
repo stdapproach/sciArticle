@@ -1,17 +1,27 @@
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 import numpy as np
+import helper as hlp
+#==============================
+from numpy import c_
+#==============================
 
-#Example2
-title1 = 'Example4'
-ylabel1 = "y"
-title2 = 'Error ' + title1
-ylabel2 = "Numerical-Analytical"
+title1 = 'Example8'
+va = [1, 2, 2, 0]
+c=2
+b = 1
+IC0 = np.array([1, 0, 0])
+t0 = 0
+tb = 10
+N = 100
+#
+a = hlp.mkSlnT1_b(va, b, c, IC0, t0, t0, N)
+print(a)
+
 a0 = 1
 a1 = 2
 a2 = 2
-c=2
-N = 100
+
 def D_ex(P, t):
 	r = - (a2*P[0]/a0 + a1*P[1]/a0)
 	return [P[1], r]
@@ -30,46 +40,7 @@ Z2 = odeint(D_ex, IC2, ts2)
 Z = np.concatenate((Z1, Z2), axis=0)
 prey = Z[:,0]
 
-plt.xkcd()
-#plt.subplot(211)
-plt.title(title1)
-plt.plot(ts, prey, 'bo', markevery=5, color='r', label="Numerical")
-plt.plot(ts, y_ex(ts), 'k', markevery=5, color='b', label="Analytical")
-plt.xlabel("Time")
-plt.ylabel(ylabel1)
-plt.legend();
+R = c_[ts, Z]
 
-#plt.subplot(212)
-#plt.title(title2)
-#plt.plot(ts, prey-y_ex1(ts), 'k', color='b', label="An")
-#plt.xlabel("Time")
-#plt.ylabel(ylabel2)
-
-plt.grid(True)
-plt.show()
-
-plt.title("Phase diagram:"+title1)
-plt.plot(Z[:,0], Z[:,1], 'k', color='b', label="Analytical")
-#plt.plot(P[:,0], , 'bo', markevery=5, color='r', label="Numerical")
-plt.xlabel("y")
-plt.ylabel("y'")
-
-def addAnnotate(Z,index, plot):
-	cap = "%.2f" % ts[index]
-	plt.annotate(
-    	't='+cap,
-    	xy=(Z[index,0], Z[index,1]))#, arrowprops=dict(arrowstyle='->'), xytext=(15, -10))
-
-addAnnotate(Z, 0, plt)
-
-indYmax = np.argmax(Z[:,0])
-addAnnotate(Z, indYmax, plt)
-indYmin = np.argmin(Z[:,0])
-addAnnotate(Z, indYmin, plt)
-
-indYtmax = np.argmax(Z[:,1])
-addAnnotate(Z, indYtmax, plt)
-indYtmin = np.argmin(Z[:,1])
-addAnnotate(Z, indYtmin, plt)
-
-plt.show()
+#hlp.showNumSolution(plt, R, y_ex, title1)	
+#hlp.showPhase(plt, R, title1)
