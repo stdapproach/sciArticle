@@ -3,7 +3,7 @@ import numpy as np
 from scipy.integrate import odeint
 from numpy import c_
 from numpy import r_
-import sympy
+#import sympy
 
 def foo():
 	return "HW"
@@ -58,10 +58,14 @@ def augment(v1,v2):
 	return r
 
 def stack(v1,v2):
-	r = r_[v1, v2]
+	#r = r_[v1, v2]
+	r = np.vstack((v1, v2))
 	return r		
 
 def mkSlnT0(va, IC0, t0, tb, N):
+	if t0 == tb:
+		return mkZrowByIC(t0, IC0)
+
 	diff = mkDiff_Type1
 	vt = np.linspace(t0, tb, N)
 	Z = odeint(diff, IC0, vt, args=(va,))
@@ -131,12 +135,11 @@ def mkReducedVcVb(vc, vb):
 	r = np.array(vcb[0])
 	#
 	n = rows(vcb)
-	print("vcb=", vcb)
-	print("r=", r)
-	#return r
+	#print("vcb=", vcb)
+	#print("r=", r)
 	#
 	if n == 1:
-		print("QQQ_1")
+		#print("QQQ_1")
 		return r
 	j = 0
 	#
@@ -154,15 +157,14 @@ def mkReducedVcVb(vc, vb):
 				j += 1
 				#print("QQQ_1_3, r=", r, " rows(r)=", rows(r))
 		else:
-			print("QQQ_2, r=", r)
+			#print("QQQ_2, r=", r)
 			if r[j,0] == vcb[i,0]:
 				r[j][1] += vcb[i][1]
-				
 			else:
 				#print("QQQ_3, r=", r)
 				j += 1
 				nr = np.array([vcb[i,0], vcb[i,1]])
-				print("i=", i, " nr=", nr)
+				#print("i=", i, " nr=", nr)
 				r = np.vstack((r, nr))
 	return r
 
