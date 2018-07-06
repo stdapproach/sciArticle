@@ -1,49 +1,28 @@
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 import numpy as np
+import helper as hlp
 
-T = 2
+T = 2.0
 
-def D_ex1(P, t):
-	r = -P[0]/T
-	return [(r)]
+title1 = 'Example1'
 
 def y_ex1(t):
 	return (1.0/T)*np.exp(-t/T)
 
-ts = np.linspace(0, 10, 100)
-IC = [0.5]
-P = odeint(D_ex1, IC, ts)
-prey = P[:,0]
+va = [T, 1]
+b = 1
+IC0 = [0]
+t0 = 0
+tb = 10
+N = 100
+
+Z = hlp.mkSlnT1_a(va, b, IC0, t0, tb, N)
+vt = Z[:,0]
+vy = Z[:,1]
 
 plt.xkcd()
-plt.subplot(211)
-plt.title('Example1')
-plt.plot(ts, prey, 'bo', markevery=5, color='r', label="Numerical")
-plt.plot(ts, y_ex1(ts), 'k', markevery=5, color='b', label="Analytical")
-plt.xlabel("Time")
-plt.ylabel("y_ex1")
-plt.legend();
 
-plt.subplot(212)
-plt.title('Error Example1')
-#plt.plot(ts, prey-y_ex1(ts), 'bo', markevery=5, color='r', label="Num")
-plt.plot(ts, prey-y_ex1(ts), 'k', color='b', label="An")
-plt.xlabel("Time")
-plt.ylabel("Num_ex1-An_ex1")
-
-
-plt.grid(True)
-plt.show()
-#-------------------------------------
-
-#t1 = np.arange(0.0, 5.0, 0.1)
-#t2 = np.arange(0.0, 5.0, 0.02)
-
-#plt.figure(1)
-#plt.subplot(211)
-#plt.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
-
-#plt.subplot(212)
-#plt.plot(t2, np.cos(2*np.pi*t2), 'r--')
-#plt.show()
+#hlp.showNumSolution(plt, Z, y_ex, title1)
+hlp.showNumSolutionWithError(plt, Z, y_ex1, title1)
+#hlp.showPhase(plt, Z, "Phase diagram:"+title1)

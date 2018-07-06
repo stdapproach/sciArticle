@@ -33,7 +33,7 @@ Analitycal solution:
 $$y(t)=\frac{1}{T}e^{-t/T}=\frac{1}{2}e^{-t/2}$$
 
 Numerical solution, Analytical solutions and error:
-<img src="ex1.png" width="600">
+<img src="ex1.png" width="400">
 
 #####3.2 Example2 [Finan, pp.57-58]
 Considering the following second order ODE
@@ -88,9 +88,9 @@ $$
 Analitycal solution:
 $$y(t)=\frac{1}{4}e^{-t}sin(2t)$$
 Numerical solution, Analytical solutions and error:
-<img src="ex2.png" width="600">
+<img src="ex2.png" width="500">
 Phase diagram:
-<img src="ex2_Phase.png" width="600">
+<img src="ex2_Phase.png" width="500">
 
 #####3.3 Example3 [Nagy, p.189]
 Considering the following second order ODE
@@ -147,9 +147,9 @@ $$
 Analitycal solution:
 $$y(t)=e^{-t}sin(t)$$
 Numerical solution:
-<img src="ex3.png" width="600">
+<img src="ex3.png" width="500">
 Phase diagram:
-<img src="ex3_Phase.png" width="600">
+<img src="ex3_Phase.png" width="500">
 
 #####3.4 Example4 [Nagy, p.189]
 Considering the following second order time invariant ODE
@@ -189,9 +189,9 @@ Analitycal solution:
 $$y(t)=H(t-c)e^{-(t-c)}sin(t-c)$$
 
 Numerical solution:
-<img src="ex4.png" width="600">
+<img src="ex4.png" width="500">
 Phase plate:
-<img src="ex4_Phase.png" width="600">
+<img src="ex4_Phase.png" width="500">
 
 #####3.5 Example5 [Zill, p.293]
 Considering the following second order ODE
@@ -224,9 +224,9 @@ $$
 y(t)=H(t-2\pi)4sin(t)
 $$
 Numerical solution:
-<img src="ex5.png" width="600">
+<img src="ex5.png" width="500">
 Phase plate:
-<img src="ex5_Phase.png" width="600">
+<img src="ex5_Phase.png" width="500">
 
 #####3.6 Example6 [Zill, p.293]
 Considering the following second order ODE
@@ -259,11 +259,17 @@ $$
 y(t)=cos(t)+4H(t,2\pi)sin(t)
 $$
 Numerical solution:
-<img src="ex6.png" width="600">
+<img src="ex6.png" width="500">
 Phase plate:
-<img src="ex6_Phase.png" width="600">
+<img src="ex6_Phase.png" width="500">
 qwe
 #####3.7 Example7 [Nagy, p.190]
+Considering the following second order ODE
+$$\begin{cases}
+y''+4y=\delta(t-\pi)-\delta(t-2\pi),\\
+y(0)=y'(0)=0
+\end{cases}$$
+
 Analitycal solution:
 $$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
 $$
@@ -330,9 +336,9 @@ $$
 Analitycal solution:
 $$y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)$$
 Numerical solution, Analytical solutions and y'(t), y''(t):
-<img src="ex8.png" width="600">
+<img src="ex8.png" width="500">
 Phase diagram:
-<img src="ex8_Phase.png" width="600">
+<img src="ex8_Phase.png" width="500">
 
 
 qwe

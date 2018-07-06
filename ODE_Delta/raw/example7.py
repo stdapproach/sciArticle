@@ -21,12 +21,19 @@ t0 = 0
 tb = 10
 N = 100
 #====================
-Z = hlp.mkSlnT1_a(va, b, IC0, t0, tb, N)
-hlp.showSimpleChart(plt, Z, 0, 1, "QQQ")
+#Z = hlp.mkSlnT1_a(va, b, IC0, t0, tb, N)
+#hlp.showSimpleChart(plt, Z, 0, 1, "QQQ")
 
 
 def y_ex(t):
 	return 0.5*(np.heaviside(t-np.pi,1)-np.heaviside(t-2*np.pi,1))*np.sin(2*t)
+
+vb = [1, 1, 2, 0]
+vc = [np.pi, 2.0*np.pi, np.pi, 10]
+
+
+a = hlp.mkReducedVcVb(vc, vb)
+print("A=", a)
 
 #ts1 = np.linspace(0, c, N)
 #ts2 = np.linspace(c, 15, N)

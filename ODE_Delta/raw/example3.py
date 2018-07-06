@@ -20,5 +20,6 @@ vy = Z[:,1]
 
 plt.xkcd()
 
-hlp.showNumSolution(plt, Z, y_ex, title1)
-hlp.showPhase(plt, Z, "Phase diagram:"+title1)
+#hlp.showNumSolution(plt, Z, y_ex, title1)
+hlp.showNumSolutionWithError(plt, Z, y_ex, title1)
+hlp.showPhase(plt, Z, title1)
