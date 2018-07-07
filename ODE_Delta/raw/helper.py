@@ -3,10 +3,6 @@ import numpy as np
 from scipy.integrate import odeint
 from numpy import c_
 from numpy import r_
-#import sympy
-
-def foo():
-	return "HW"
 
 def mkMatrA(va):
 	n = np.size(va,0)
@@ -22,7 +18,6 @@ def mkVecD_Type1(b, va):
 	r = np.zeros((n))
 	r[n-1] = b
 	return r
-
 
 def mkDeltaIC_Type1(va, b):
 	A = mkMatrA(va)
@@ -72,7 +67,6 @@ def mkSlnT0(va, IC0, t0, tb, N):
 	R = augment(vt, Z)
 	return R
 
-
 def mkSlnT1_a(va, b, IC0, t0, tb, N):
 	IC = mkIC_Type1(va, b, IC0)
 	diff = mkDiff_Type1
@@ -82,7 +76,11 @@ def mkSlnT1_a(va, b, IC0, t0, tb, N):
 	return R
 
 def lastRow(Z):
-	return Z[-1]
+	n = rows(Z)
+	if n==1:
+		return Z
+	else:
+		return Z[-1]
 
 def extractIC(Z):
 	lr = lastRow(Z)
@@ -112,22 +110,85 @@ def mkSlnT1_b(va, b, c, IC0, t0, tb, N):
 	Z = stack(Z1, Z2)
 	return Z
 
+
+def mkSlnT1_c(va, vb, vc, IC0, t0, tb, N):
+	a = mkReducedVcVb(vc, vb)
+	na = rows(a)
+	if na == 1:
+		vcb = a[ (tb>a[:]) & (a[:]>=t0) ]
+	else:
+		vcb = a[ (tb>a[:,0]) & (a[:,0]>=t0) ]
+
+	n = rows(vcb)
+
+	if n == 0:
+		Z = mkSlnT1_a(va, b, IC0, t0, tb, N)
+		return Z
+	else:
+		#
+		if n==1:
+			tc0 = vcb[0]
+		else:
+			tc0 = vcb[0,0]
+
+		isICbeenAdded = False
+		#
+		if t0 == tc0:
+			Z = mkSlnT0(va, IC0, t0, tc0, N)
+		else:
+			Z = mkSlnT0(va, IC0, t0, tc0, N)
+			isICbeenAdded = True
+
+		for i in range(0, n-1):
+			d = np.ndim(Z)
+			if d == 1:
+				IC_i = Z[1:]
+			else:
+				IC_i = extractIC(Z)
+
+			z = mkSlnT1_b(va, vcb[i,1], vcb[i,0], IC_i, vcb[i,0], vcb[i+1,0], N)
+			if isICbeenAdded:
+				Z = stack(Z, z)
+			else:
+				Z = z
+				isICbeenAdded = True
+		#
+		IC_i = extractIC(Z)
+
+		if n == 1:
+			z = mkSlnT1_b(va, vcb[1], vcb[0], IC_i, vcb[0], tb, N)
+		else:
+			z = mkSlnT1_b(va, vcb[n-1,1], vcb[n-1,0], IC_i, vcb[n-1,0], tb, N)
+		#
+		if isICbeenAdded:
+				Z = stack(Z, z)
+		else:
+			Z = z
+			isICbeenAdded = True
+
+	return Z
+
+
 def sortByColumn(A, cIndex):
 	ind = np.argsort( A[:,cIndex] ); 
 	r = A[ind]
-	#r = sorted(A, key=lambda a_entry: a_entry[cIndex]) 
 	return r
 
 def rows(A):
 	d = np.ndim(A)
 	if d == 1:
 		return 1;
-	#print("QQQ_1, ", np.shape(A)[0])
+	#
 	r = np.shape(A)[0]
 	return r
 
 def cols(A):
-	return np.shape(A)[1]	
+	d = np.ndim(A)
+	#
+	if d == 1:
+		return np.shape(A)[0];
+	else:
+		return np.shape(A)[1]	
 
 def mkReducedVcVb(vc, vb):
 	vcvb = augment(vc, vb)
@@ -135,11 +196,8 @@ def mkReducedVcVb(vc, vb):
 	r = np.array(vcb[0])
 	#
 	n = rows(vcb)
-	#print("vcb=", vcb)
-	#print("r=", r)
 	#
 	if n == 1:
-		#print("QQQ_1")
 		return r
 	j = 0
 	#
@@ -151,24 +209,19 @@ def mkReducedVcVb(vc, vb):
 				r[1] += vcb[i][1]
 			else:
 				nr = np.array([vcb[i,0], vcb[i,1]])
-				#r = stack(r, nr)
-				#print("QQQ_1_2, r=", r, ", nr=", nr)
 				r = np.vstack((r, nr))
 				j += 1
-				#print("QQQ_1_3, r=", r, " rows(r)=", rows(r))
 		else:
-			#print("QQQ_2, r=", r)
+			#
 			if r[j,0] == vcb[i,0]:
 				r[j][1] += vcb[i][1]
 			else:
-				#print("QQQ_3, r=", r)
+				#
 				j += 1
 				nr = np.array([vcb[i,0], vcb[i,1]])
-				#print("i=", i, " nr=", nr)
 				r = np.vstack((r, nr))
+	#
 	return r
-
-
 
 #=========================
 def showSimpleChart(plt, Z, indX, indY, title=""):

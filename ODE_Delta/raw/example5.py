@@ -16,7 +16,8 @@ plt.xkcd()
 def y_ex(t):
 	return hlp.heaviside(t-c)*4*np.sin(t)
 
-Z = hlp.mkSlnT1_b(va, b, c, IC0, t0, tb, N)
+#Z = hlp.mkSlnT1_b(va, b, c, IC0, t0, tb, N)
+Z = hlp.mkSlnT1_c(va, b, c, IC0, t0, tb, N)
 
 hlp.showNumSolution(plt, Z, y_ex, title1)	
 hlp.showPhase(plt, Z, title1)
