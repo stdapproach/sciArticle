@@ -1,48 +1,47 @@
-###3. A problem Type 1
+###3. A problem Type 0
 This part ragerding the follow problem.
-Type 1a
+Type 0a
 $$\begin{cases}
 L_n(y)=b\delta(t),\\
-y_0, n \ge 1
+IC_0, n \ge 1
 \end{cases}$$
-Type 2b
+Type 0b
 $$\begin{cases}
 L_n(y)=b\delta(t-c),\\
-y_0, n \ge 1
+IC_0, n \ge 1
 \end{cases}$$
-Type 2c
+Type 0c
 $$\begin{cases}
-L_n(y)=\sum_{i=0}^n b_i\delta(t-c_i),\\
-y_0, n \ge 1
+L_n(y)=\sum_{i=0}^k b_i\delta(t-c_i),\\
+IC_0, n \ge 1
 \end{cases}$$
 
-####3. A problem Type 1a
-Find an IC for homogenous system which deliver the equivalence for non-homogenous one.
+####3.1 Problem Type 0a
+Find an IC for homogenous system which delivers the equivalence for non-homogenous one.
 At this case 'equivalence' means:
 $$
-z(t)=y(t), \forall t\ge  t_0=0 
+z(t)=y(t), \forall t\ge  t_0 
 $$
 for the next systems: a given non homogenous system
-$${\begin{cases}
-    y(t)=IVP(\{a\}, b\delta(t), t_0=0,\{y\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}\\
-\end{cases}}
-$$
-the homogenous system whose IC supposed to be found
 $$
 \begin{cases}
-    z(t)=IVP(\{a\}, 0, t_0=0,\{z\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{z\}_0=\{z_0,z'_0,\ldots ,z^{(n-1)}\}\\
+L_n(\{a\},y)=b\delta(t)\\
+IC|_{t_0=0}=IC_y
 \end{cases}
 $$
-To solve the problem Type 1a let's perform Laplas Transform (LT) for y(t) with respect to non-null initial condition.
+the homogenous system which IC supposed to be found
+$$
+\begin{cases}
+L_n(\{a\},z)=0\\
+IC_z
+\end{cases}
+$$
+To solve the problem Type 1a let's perform Laplas Transform (LT) for $y(t)$ with respect to non-null initial condition.
 $$
 L\{y(t)\}=Y(s)
 $$
 $$
-Y(s)=L\left\{\sum_{i=0}^n \left( a_iy^{(n-i)}-b\delta(t)\right)\right\}=\sum_{i=0}^n \left( a_iL\{y^{(n-i)}\}\right)-bL\{\delta(t)\}
+Y(s)=L\left\{\sum_{i=0}^n \left( a_iy^{(n-i)}(t)-b\delta(t)\right)\right\}=\sum_{i=0}^n \left( a_iL\{y^{(n-i)}(t)\}\right)-bL\{\delta(t)\}
 $$
 $$\begin{equation}\begin{aligned}
 L\{a_0y^{(n-0)}\}&=a_0\left[s^nY-s^{n-1}y(0)-s^{n-2}y'(0)-s^{n-3}y''(0)- ...-s^1y^{(n-2)}(0)-y^{(n-1)}(0)\right]\\
@@ -59,7 +58,7 @@ $$
 $$
 Let's treat IC as a vector and use following notation:
 $$
-y^{(i)}(0)=y_i
+{IC}_i=y^{(i)}(0)=y_i
 $$
 And rewrite in this way:
 $$\begin{equation}\begin{aligned}
@@ -72,7 +71,7 @@ L\{y(t)\} = &s^n\left(a_0Y\right)+\\
   & s^0\left(a_{n}Y-\sum_{i=0}^{n-1} a_{n-1-i}y_i+b\right)=\\
   & =\sum_{i=0}^{n} s^{n-i}a_iY-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}y_j\right)-b
 \end{aligned}\end{equation}$$
-Let's perform LT for z(t) with respect to non-null initial condition.
+Let's perform LT for $z(t)$ with respect to non-null initial condition.
 $$
 L\{z(t)\}=Z(s)
 $$
@@ -108,13 +107,14 @@ A=\left[
     a_2 & a_1 & a_0 &\cdots & 0 \\
     \vdots & \vdots & \vdots &\ddots & 0 \\
     a_{n-1} & a_{n-2} & a_{n-3} &\cdots & a_0 \\
-    \end{matrix}\right]
+    \end{matrix}\right],
+    \{d\}=\left\{
+    \begin{matrix} 0 \\ 0 \\ 0 \\ \vdots \\ b\\ \end{matrix}\right\}
 $$
 $$
 [A]\left\{
     \begin{matrix} y_0 \\y_1 \\y_2 \\ \vdots \\ y_{n-1} \end{matrix}\right\}+
-    \left\{
-    \begin{matrix} 0 \\ 0 \\ 0 \\ \vdots \\ b\\ \end{matrix}\right\}=
+    \{d\}=
     [A]\left\{
     \begin{matrix} z_0 \\z_1 \\z_2 \\ \vdots \\ z_{n-1} \end{matrix}\right\}
 $$
@@ -122,20 +122,23 @@ $$
 [A]\{y\}+\{d\}=[A]\{z\}, det([A])\ne 0\Rightarrow \\
 \{z\}=\{y\}+[A]^{-1}\{d\}
 $$
-The main result is follow
+Due to $[A]$ is lower-triangle matrix and $\{d\}=\{0,0,...,b\}$ the main result is follow
 $$\bbox[5px,border:2px solid red]
 {
-{\begin{cases}
-    y(t)=IVP(\{a\}, b\delta(t), t_0=0,\{y\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}\\
-\end{cases}}
+\begin{cases}
+L_n(\{a\},y)=b\delta(t)\\
+IC_0
+\end{cases}
 \equiv
 {\begin{cases}
-    y(t)=IVP(\{a\}, \mathbf{0}, t_0=0,\{y\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}+\mathbf{[A]^{-1}\{d\}}\\
+L_n(\{a\},y)=\mathbf{0}\\
+IC_0+\mathbf{[A]^{-1}\{d\}}
 \end{cases}}
+\equiv
+\begin{cases}
+L_n(\{a\},y)=0\\
+IC|_{t_0}=IC_0+\{0,0,...,b/a_0\}^\intercal
+\end{cases}
 }
 $$
-
+So, the system Type 0a could be rewritten as simple impulse differential equation (IDE)[ref to the books about IDE]

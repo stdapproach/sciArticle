@@ -7,7 +7,7 @@ Ty'+y=\delta(t),\\
 y(0)=0
 \end{cases}\Rightarrow IVP(\{T\text{ }1\}, \mathbf{0}, t_0=0,y_0=0)\Rightarrow [A]=T,\{y\}_0=y(0),\{d\}=\{1\} \Rightarrow\\
 \{z\}_0=\{y\}_0+[A]^{-1}\{d\}=\{y\}_0+1/T \Rightarrow$$
-These 2 folloing system are equal by solution
+These 2 following system are equal by solution
 $$\begin{cases}
 Ty'+y=\delta(t),\\
 y(0)=0
@@ -29,10 +29,10 @@ $$
 y(0)=0
 \end{cases}
 $$
-Analitycal solution:
+Analitycal solution taken from Appendix B:
 $$y(t)=\frac{1}{T}e^{-t/T}=\frac{1}{2}e^{-t/2}$$
 
-Numerical solution, Analytical solutions and error:
+Numerical solution and error provided by Python's script:
 <img src="ex1.png" width="400">
 
 #####3.2 Example2 [Finan, pp.57-58]
@@ -262,7 +262,7 @@ Numerical solution:
 <img src="ex6.png" width="500">
 Phase plate:
 <img src="ex6_Phase.png" width="500">
-qwe
+
 #####3.7 Example7 [Nagy, p.190]
 Considering the following second order ODE
 $$\begin{cases}
@@ -271,9 +271,12 @@ y(0)=y'(0)=0
 \end{cases}$$
 
 Analitycal solution:
-$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
-$$
-qwe
+$$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)$$
+Numerical solution:
+<img src="ex7.png" width="500">
+Phase plate:
+<img src="ex7_Phase.png" width="500">
+
 #####3.8 Example8
 Considering the following third order ODE
 $${\begin{cases}

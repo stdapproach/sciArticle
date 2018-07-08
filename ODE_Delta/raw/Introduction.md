@@ -9,18 +9,22 @@ as:
 • impact by hammer to a beam,
 • explosions or shock,
 • a bat striking a ball or a bolt of lightning striking a tower,
-• a large applied voltage to an electrical network over a very short time frame,
-• harvesting, and natural disasters.
-Often these short-term perturbations are treated as having acted instantaneously or in the form of “impulses”. In this case, the output corresponding to this sudden force is referred to as the "impulse response". Mathematically, an impulse can be modeled by an initial value problem (IVP) with a special type of function known as the Dirac delta function as the external force, i.e., the nonhomogeneous term. Theimpulse response of a system is its response to the input ∂(t) when the system is initially at rest. The impulse response is usually denoted h(t). Sometimes it's called Green's function.
+• a large applied voltage to an electrical network over a very short time frame.
+Often these short-term perturbations are treated as having acted instantaneously or in the form of “impulses”. In this case, the output corresponding to this sudden force is referred to as the "impulse response". Mathematically, an impulse can be modeled by an initial value problem (IVP) with a special type of function known as the Dirac delta function as the external force, i.e., the nonhomogeneous term. The impulse response of a system is its response to the input $\delta(t)$ when the system is initially at rest. The impulse response is usually denoted $h(t)$. Sometimes it's called Green's function.
 
 Let's take a look at first order system
 (order of a differential equation is the largest derivative present in the differential equation):
 $$
 {\begin{cases}
-x'+Ax=Bu(t),\\
+x'+Ax=Bu(t)\\
 x(0)=x_0
 \end{cases}
-}\tag{2.1}
+}\equiv
+\begin{cases}
+L_n(\{1,A\},x)=Bu(t)\\
+IC|_{t_0}=x_0
+\end{cases}
+\tag{2.1}
 $$
 Solution of (2.1) is a function
 $$
@@ -30,11 +34,17 @@ x(t)=e^{-At}x_0+\int_{0}^t e^{-A(t-\tau)}Bu(\tau)d\tau
 $$
 The expression (2.2) delivers solution for the equation (2.1), which could be rewritten in a short form
 $$
-x(t)=IVP\left(\{1,A\},Bu(t),t_0=0,x_0\right)
+x(t)=\begin{cases}
+L_n(\{1,A\},x)=Bu(t)\\
+IC|_{t_0}=x_0
+\end{cases}
 $$
 The solution of homogenous system (free response) is:
 $$
-x_{free}(t)=IVP\left(\{1,A\},0,t_0=0,x_0\right)=e^{-At}x_0
+x_{free}(t)=\begin{cases}
+L_n(\{1,A\},x)=0\\
+IC|_{t_0}=x_0
+\end{cases}=e^{-At}x_0
 $$
 And substitute the Dirac delta function as load, so the system (1) becomes as
 $$
@@ -59,7 +69,16 @@ x(0)=x_0+B
 $$
 So we can write a next statement:
 $$
-IVP\left(\{1,A\},B\delta(t),t_0=0,x_0\right)=IVP\left(\{1,A\},\mathbf0,t_0=0,x_0\mathbf{+B}\right)\tag{2.6}
+\begin{cases}
+L_n(\{1,A\},y)=B\delta(t)\\
+IC|_{t_0}=x_0
+\end{cases}
+\equiv
+\begin{cases}
+L_n(\{1,A\},y)=\mathbf0\\
+IC|_{t_0}=x_0\mathbf{+B}
+\end{cases}
+\tag{2.6}
 $$
 ##### About change IC
 Some books provided an analitical solution for ODE_LC with delta function as load. For example: Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).
@@ -107,18 +126,17 @@ y'(0)=f_0/m
 \end{cases}}
 $$
 It looks like (but not proven yet) these two following systems are equal:
-$${\begin{cases}
-    y(t)=IVP(\{a\}, b\delta(t), t_0,\{y\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{y\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , y^{(n-1)}_0\}\\
-\end{cases}}
-\equiv
-{\begin{cases}
-    y(t)=IVP(\{a\}, \mathbf0, t_0,\{z\}_0),\\
-    \{a\} = \{a_0,a_1,\ldots a_n\}\\
-    \{z\}_0=\{y_0,y'_0,\ldots ,y^{(n-2)} , \mathbf{y^{(n-1)}_0+b/a_0}\}\\
-\end{cases}}
 $$
+\begin{cases}
+L_n(\{a\},y)=b\delta(t)\\
+IC|_{t_0}=IC_0
+\end{cases}\equiv
+\begin{cases}
+L_n(\{a\},y)=0\\
+IC|_{t_0}=IC_0+\{0,0,...,b/a_0\}^\intercal
+\end{cases}
+$$
+
 
 
 

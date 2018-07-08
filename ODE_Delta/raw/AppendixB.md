@@ -73,7 +73,6 @@ y(0)=y'(0)=0
 Solution:
 $$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
 $$
-qwe
 #####Example8
 $$\begin{cases}
 y'''+2y''+2y=\delta(t),\\
@@ -84,8 +83,3 @@ Solution, getting from WolframAlfa
 [https://m.wolframalpha.com/input/?i=inverse+laplace+transform+1%2F%281s%5E3%2B2s%5E2%2B2s%29](https://m.wolframalpha.com/input/?i=inverse+laplace+transform+1%2F%281s%5E3%2B2s%5E2%2B2s%29)
 $$y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)
 $$
-qwe
-qwe
-qwe
-
-
