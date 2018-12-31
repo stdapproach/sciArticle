@@ -1,6 +1,6 @@
 #Apendix B
 ## Examples
-#####Example1 [Ogata, p.190]
+#####Example1 [??????]
 $$\begin{cases}
 Ty'+y=\delta(t),\\
 y(0)=0
@@ -15,7 +15,7 @@ y_0=y(0)=0\\
 y_1=y'(0)=0
 \end{cases}
 $$
-Solution (! there was a typo at original book, here's the proper answer which I've checked by MathCad14 and WolframAlfa!):
+Solution (! there was a typo at original book, here's the proper formula which we've checked by MathCad14 and WolframAlfa!):
 $$
 y(t)=\frac{1}{4}e^{-t}sin(2t)
 $$
@@ -80,6 +80,6 @@ y(0)=y'(0)=y''(0)=0
 \end{cases}$$
 
 Solution, getting from WolframAlfa
-[https://m.wolframalpha.com/input/?i=inverse+laplace+transform+1%2F%281s%5E3%2B2s%5E2%2B2s%29](https://m.wolframalpha.com/input/?i=inverse+laplace+transform+1%2F%281s%5E3%2B2s%5E2%2B2s%29)
-$$y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)
+$$
+y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)
 $$

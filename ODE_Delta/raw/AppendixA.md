@@ -24,21 +24,21 @@ x\delta(x)=0
 $$
 ####Laplas transform
 $$
-L\{f(t) \}=\int_0^\infty e^{-st}f(t)dt
+LT\{f(t) \}=\int_0^\infty e^{-st}f(t)dt=F(s)
 $$
 $$
-L\{\delta(t-t_0) \}=e^{-st_0}
+LT\{\delta(t-t_0) \}=e^{-st_0}
 $$
 $$
-L\{\delta(t) \}=1
+LT\{\delta(t) \}=1
 $$
 $$
-L\{f'\}=sL\{f\}-f(0)
+LT\{f'\}=sL\{f\}-f(0)
 $$
 $$
-L\{f''\}=s^2L\{f\}-sf(0)-f'(0)
+LT\{f''\}=s^2L\{f\}-sf(0)-f'(0)
 $$
 $$
-L\{f^{(n)}\}=s^nL\{f\}-s^{(n-1)}f(0)-s^{(n-2)}f'(0)-...-y^{(n-1)}(0)=s^nL\{f\}-\sum_{i=0}^{n-1} s^{(i)}f^{(n-1-i)}(0)
+LT\{f^{(n)}\}=s^nLT\{f\}-s^{n-1}f(0)-s^{n-2}f'(0)-...-s^0y^{(n-1)}(0)=s^nLT\{f\}-\sum_{i=0}^{n-1} s^{i}f^{(n-1-i)}(0)
 $$
 
