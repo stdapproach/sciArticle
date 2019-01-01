@@ -1,4 +1,4 @@
-Mauricio de Oliveira and Jorge Cortes#Apendix B
+#Apendix B
 ## Examples
 #####Example1 [Oliveira and Cortes, p.3]
 $$

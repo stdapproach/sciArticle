@@ -73,7 +73,7 @@ IC|_{t_0=0}=x_0\mathbf{+B}
 \tag{2.6}
 $$
 For the system (2.3) the solution is the same as free response of the same system but changed IC.
-##### About change IC
+##### About changing IC
 Some books provided an analitical solution for LTI ODE with delta function as load. For example: Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).
 Some other books noticed that the solution of IVP with delta function as load is the same as solution the similar homogenous ODE with defferernt IC.
 Genta (p.180) provided the formulae for changing IC for second-order ODE in case od delta function loaded. 
