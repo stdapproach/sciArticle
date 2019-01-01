@@ -1,36 +1,59 @@
 ###3. Verification by examples
 Let's check the main result from previous chapter on examples Appendix B from.
-#####3.1 Example1 [Ogata, p.190]
+#####3.1 Example1 [Oliveira and Cortes, p.3]
 Considering the following first order ODE
-$$\begin{cases}
-Ty'+y=\delta(t),\\
-y(0)=0
-\end{cases}\Rightarrow IVP(\{T\text{ }1\}, \mathbf{0}, t_0=0,y_0=0)\Rightarrow [A]=T,\{y\}_0=y(0),\{d\}=\{1\} \Rightarrow\\
-\{z\}_0=\{y\}_0+[A]^{-1}\{d\}=\{y\}_0+1/T \Rightarrow$$
+$$
+\begin{cases}
+y''+ay'=\delta(t),\\
+y(0)=y'(0)=0
+\end{cases}
+\Rightarrow IVP(\{1\text{ }a\text{ }0\}, \mathbf{0}, t_0=0,y_0=\{0\text{, }0\})\Rightarrow\\
+A=\left[
+    \begin{matrix}
+    1 & 0 \\
+    a & 1 \\
+    \end{matrix}\right]\text{, }
+\{d\}=\left\{
+    \begin{matrix}
+    0 \\
+    1 \\
+    \end{matrix}\right\}\Rightarrow\\
+A^{-1}=\left[
+    \begin{matrix}
+    1 & 0 \\
+    -a & 1 \\
+    \end{matrix}\right]\text{, }
+A^{-1}\{d\}=\left\{
+    \begin{matrix}
+    0 \\
+    1 \\
+    \end{matrix}\right\}
+$$
+
 These 2 following system are equal by solution
-$$\begin{cases}
-Ty'+y=\delta(t),\\
-y(0)=0
-\end{cases}\equiv\begin{cases}
-Tz'+z=0,\\
-z(0)=1/T
+$$
+\begin{cases}
+y''+ay'=\delta(t),\\
+y(0)=y'(0)=0
+\end{cases}
+\equiv
+\begin{cases}
+y''+ay'=0,\\
+y(0)=0\\y'(0)=1
 \end{cases}
 $$
 In short form:
 $$
-IVP(\{T\text{ }1\}, \delta(t), t_0=0,y_0=0)\equiv 
-IVP(\{T\text{ }1\}, 0, t_0=0,y_0=1/T)
+IVP(\{1\text{ }a\text{ }0\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})\equiv 
+IVP(y_0=\{0\text{, }0\}, 0, t_0=0,y_0=\{0\text{, }1\})
 $$
 Which exactely the same as we mentioned before at Introduction (2.6)
 Let's check how to correspond the numerical solution for T=2 for homogenous sytem with non-null IC with analitical solution for the system
-$$
-\begin{cases}
-2y'+y=\delta(t),\\
-y(0)=0
-\end{cases}
-$$
+
 Analitycal solution taken from Appendix B:
-$$y(t)=\frac{1}{T}e^{-t/T}=\frac{1}{2}e^{-t/2}$$
+$$
+y(t)=\frac{1}{a}(1-e^{-at})
+$$
 
 Numerical solution and error provided by Python's script:
 <img src="ex1.png" width="400">

@@ -1,12 +1,15 @@
-#Apendix B
+Mauricio de Oliveira and Jorge Cortes#Apendix B
 ## Examples
-#####Example1 [??????]
-$$\begin{cases}
-Ty'+y=\delta(t),\\
-y(0)=0
-\end{cases}$$
+#####Example1 [Oliveira and Cortes, p.3]
+$$
+\begin{cases}
+y''+ay'=\delta(t),\\
+y(0)=y'(0)=0
+\end{cases}
+$$
 Solution:
-$$y(t)=\frac{1}{T}e^{-t/T}
+$$
+y(t)=\frac{1}{a}(1-e^{-at})
 $$
 #####Example2 [Finan, pp.57-58]
 $$\begin{cases}

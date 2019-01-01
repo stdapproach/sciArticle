@@ -28,13 +28,16 @@ Mathematics Department, Michigan State University, East Lansing, MI, 48824.
 Modern Control Engineering (5th edition)
 Copyright © 2010, 2002, 1997, 1990, 1970 Pearson Education, Inc.
 ISBN 10: 0-13-615673-8 ISBN 13: 978-0-13-615673-4
-[10] Rao Singiresu S.
+[10] Mauricio de Oliveira and Jorge Cortes
+Computing the Impulse Response, January 24, 2011
+http://control.ucsd.edu/mauricio/courses/mae143a/lectures/computingImpulseResponse.pdf
+[11] Rao Singiresu S.
 Mechanical Vibrations (5th Edition) 
 ISBN-13: 978-0132128193 ISBN-10: 0132128195
-[11] Weber, Arfken
+[12] Weber, Arfken
 Essential Mathematical Methods for Physicists
 Academic Press, 2003, ISBN: 0-12-059877-9
-[12] ZILL DENNIS G.
+[13] ZILL DENNIS G.
 A FIRST COURSE IN DIFFERENTIAL EQUATIONS with Modeling Applications (9th edition)
 Loyola Marymount University
 © 2009, 2005 Brooks/Cole, Cengage Learning
