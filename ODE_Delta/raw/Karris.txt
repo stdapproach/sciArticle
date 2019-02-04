@@ -1,0 +1,110 @@
++rename book-file
+rename py-examples
+	edit title for charts
+
+a) Delta props.
+	Balakumar p.287
+	Bottega p.233
+	Chasnov p.62
+	Karris chapter 1-4
+	Finan p.53
+	Nagy p.185
+	Rao p.381
+	Weber p.86
+	Zill p.292
+
+b) LT
+	Cohen p.12 LT of Delta
+	Karris chapter 2, Chapter 4 Circuit Analysis with Laplace Transforms
+	Karris ch.2.1
+	Karris 2.22: Laplace Transform Pairs for Common Functions
+	Nagy p.196
+	Schiff p.1, p.8 LT for sin and cos
+	Schiff it all about LT
+	Schiff p.210 table of LT
+	Weber p.693
+
+c) Solving ODE using LT
+	Karris 3.1: Inverse LT
+	Kohen p.7, p.8 ILT
+	Schiff p.23 ILT
+	Schiff p.59
+	Xue p.380 table of ILT
+
+d) Impulse response + Control Theory
+The transfer function of a continuous time system is the Laplace transform of
+its response to an impulse (Dirac’s delta) with zero initial conditions.
+
+Chasnov p.65 IR for 2nd order system (Type 0b)
+Genta p.180
+	The impulse response h(t) completely characterizes the system. Its Laplace transform can be immediately computed by multiplying the Laplace transform of the Dirac’s δ by the transfer function of the system:
+
+Karris Chapter 6
+	The Impulse Response and Convolution
+	The impulse response is the output (voltage or current) of a network when the input is the delta
+function
+	part 6-1 impulse response in term state-space (p.183)
+
+Kelly p.315
+	The unit impulse function (t) is the mathematical
+representation of a force required to provide a unit impulse to a system. It possesses the
+properties of an impulsive force. It is zero except at t  0, where it is infinite; yet its integral
+over time is equal to 1. Use of the unit impulse function as the forcing function in the
+differential equation gives
+	The solution of the differential equation is h(t), which is called the impulsive response.
+Kelly p.337 (h for 2nd order ODE )
+	p.370
+		The response of a system due to a unit impulse can be determined as the free response
+with zero initial displacement and an initial velocity equal to velocity imparted by the
+impulse
+
+Meirovich
+	pp.170-180 relation btwn W(s) and impulse f.
+
+Nagy p.188
+	The impulse response function at the point c > 0 of the linear
+operator L(y) = y00 + a1 y0 + a0 y, with a1, a0 constants, is the solution yδ, in the sense of
+Laplace Transforms, of the initial value problem
+++Nagy p.189 [Examples solving impulse response for 2nd oreder ODE]
+--Nagy p.191
+	Comments on Generalized Sources. We have used the Laplace Transform to
+solve differential equations with the Dirac Delta as a source function. It may be convenient
+to understand a bit more clearly what we have done, since the Dirac Delta is not an ordinary
+function but a generalized function defined by a limit. Consider the following example
+--Nagy p.193 [IVP with delta load with non zero IC]
+
+Ogata p.16
+	The transfer function of a system is a mathematical model in that it is an operational method of expressing the differential equation that relates the output variable to the input variable.
+
+	Impulse-Response Function.
+	Since the Laplace transform of the unit-impulse function is unity, the Laplace transform of the
+output of the system is
+	The inverse Laplace transform of the output given by Equation (2–2) gives the impulse
+response of the system. The inverse Laplace transform of G(s), or
+	is called the impulse-response function. This function g(t) is also called the weighting
+function of the system.
+Ogata p.17
+	+The impulse-response function g(t) is thus the response of a linear time-invariant
+system to a unit-impulse input when the initial conditions are zero.The Laplace transform of this function gives the transfer function. 
+	Therefore, the transfer function and
+impulse-response function of a linear, time-invariant system contain the same information about the system dynamics. It is hence possible to obtain complete information about the dynamic characteristics of the system by exciting it with an impulse
+input and measuring the response. (In practice, a pulse input with a very short duration compared with the significant time constants of the system can be considered an
+impulse.)
+
+Ogata p.163 1st order system with delta
+--Ogata p.178 2nd order delta
+
+Oliveira p.1 about LTI with delta load with zero IC
++Oliveira p.3 IR for 2nd order
+Oliveira p.4 IR for 2nd order with deriv. delta
+
+Schiff p.23 ILT
+Schiff p.79 solving 1st order ODE with delta
++Schiff p.82 IR for 2nd order LTI ODE with delta load (the same as Oliveira p.3)
+
+
+Xue p.380 ILT for some systems
+
+Weber p.746 ILT
+
+++Zill p.293 solve 2nd order with diff. IC using ILT

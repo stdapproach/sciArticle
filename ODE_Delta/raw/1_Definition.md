@@ -49,11 +49,6 @@ IC|_{t_0}=IC_0
 \equiv
 IVP(\{a\}, f(t),t_0,IC_0)
 $$
-#####Solution of IVP
-$$
-y(t)=\begin{cases}
-L_n(\{a\},y)=f(t)\\
-IC|_{t_0}=IC_0
-\end{cases}
-$$
-which satisfied of (1.1) and (1.2).
+
+##### Impulse Response (IR)
+The impulse-response function g(t) is thus the response of a linear time-invariant system to a unit-impulse input when the initial conditions are zero. The Laplace transform of this function gives the transfer function (Ogata p.17).

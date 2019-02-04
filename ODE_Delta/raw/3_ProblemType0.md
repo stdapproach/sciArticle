@@ -147,7 +147,7 @@ IC_0+\{0,0,...,b/a_0\}^\intercal
 \end{cases}
 }\tag{3.3}
 $$
-The formula (3.3) is the mathematical notation of algorythm how to solve LTI ODE with Dirac function load. There is only need to change IC and solve the similar homogenous system using any method you like (analytical or numerical).
+The formula (3.3) is the mathematical notation of algorythm how to solve LTI ODE with Dirac function load. There is only need to change IC and solve the similar homogenous system using any method you like (analytical or numerical). A numerical one called Runge-Kutta fourth order method could be found at Butcher (p.98).
 There has been proven (2.7). Indeed, (3.3) and (2.7) are the same.
 The system Type 0a could be rewritten as simple impulse differential equation (look Benchohra, Henderson and Ntouyas "Impulsive Differential Equations and Inclusions")
 

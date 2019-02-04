@@ -9,7 +9,7 @@ x(0)=x_0
 \end{cases}
 }
 $$
-We can write it using our notation:
+We can rewrite it using our notation:
 $$
 
 \begin{cases}
@@ -74,9 +74,9 @@ IC|_{t_0=0}=x_0\mathbf{+B}
 $$
 For the system (2.3) the solution is the same as free response of the same system but changed IC.
 ##### About changing IC
-Some books provided an analitical solution for LTI ODE with delta function as load. For example: Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Zill (p.293).
+Some books provided an analitical solution for LTI ODE with delta function as load. For example: Finan (p.57), Nagy (pp.189-190), Ogata (p.190), Oliveira and Cortes (p.3), Rao (p.381), Zill (p.293).
 Some other books noticed that the solution of IVP with delta function as load is the same as solution the similar homogenous ODE with defferernt IC.
-Genta (p.180) provided the formulae for changing IC for second-order ODE in case od delta function loaded. 
+Genta (p.180) provided the formulae for changing zero IC for second-order ODE in case of delta function loaded. 
 Rao (p.407) noticed that following systems are equal.
 $${\begin{cases}
 y'+ay=F\delta(t),\\
@@ -108,7 +108,7 @@ y(0)=0\\
 y'(0)=1/m
 \end{cases}}
 $$
-And Balachandran (p.286) and Genta (p.179) noticed that following systems are equal.
+And Balachandran (pp.287-288), Beards (p.66), Bottega (pp.235-236), Genta (p.179), Meirovich (pp.160-161), Schiff (p.83) and Schmitz (p.118) noticed that the solution of following systems are equal.
 $${\begin{cases}
 mx''+cx'+kx=f_0\delta(t),\\
 y(0)=0\\
@@ -119,6 +119,7 @@ y(0)=0\\
 y'(0)=f_0/m
 \end{cases}}
 $$
+Chasnov (p.63) provided formula to change IC for second-order LTI ODE and Oliveira and Cortes (p.2) provided similar solution for particular systems with zero initial condition.
 It looks like (but not proven yet) these two following systems are equal:
 $$
 \begin{cases}

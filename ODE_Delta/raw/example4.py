@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import helper as hlp
 
-title1 = 'Example4'
+title1 = 'Example4. Nagy p.189'
 va = [1, 2, 2]
 c=2.0
 b = 1

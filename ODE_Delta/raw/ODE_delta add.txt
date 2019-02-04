@@ -1,0 +1,120 @@
+ODE_delta add.data
+
++++balachandran p.288
+	about change IC
+
+++a) Beards_Structural Vibration - Analysis and Damping.pdf
+	p.66 about change IC
+		Structural Vibration: Analysis and Damping
+		C. F. Beards BSc, PhD, C Eng, MRAeS, MIOA
+		(c) 1996C. F. Beards
+		ISBN 0 34064580 6
+
++++a') bottega pp.235-236
+		about change IC
+
+++b) Butcher - Numerical Methods for Ordinary Differential Equations.pdf
+	algos and examples how to solve ODE numerically	
+		Numerical Methods for Ordinary Differential Equations, Second Edition. J. C. Butcher
+		© 2008 John Wiley & Sons, Ltd. ISBN: 978-0-470-72335-7
+
+++c) Chasnov_Introduction to Differential Equations.pdf
+		Introduction to Differential Equations
+		Lecture notes for MATH 2351/2352
+		Copyright ○c 2009–2016 by Jeffrey Robert Chasnov
+		https://www.math.ust.hk/~machas/differential-equations.pdf
+
+		p.65 about change IC + some examples with Delta load
+
++d) Cohen_Numerical Methods for Laplace Transform Inversion.pdf
+	Cohen Alan M.
+	NUMERICAL METHODS FOR LAPLACE TRANSFORM INVERSION
+	ISBN-13: 978-0-387-28261-9, e-ISBN-13: 978-0-387-68855-8
+	(c) 2007 Springer Science+Business Media, LLC
+
+	how to use LT to solve ODE with zero IC p.7
+	introduction to Inverse LT p.8
+	LT for some func, property of LT
+	p. 13 "The impulse function is useful when we are trying to model physical situations,
+			such as the case of two billiard balls impinging, where we have a large force
+			acting for a short time which produces a flnite change of momentum."
+
++d') Karris_Signals and Systems with MATLAB Applications.pdf
+	Signals and Systems with MATLAB® Applications
+	Second Edition
+	Steven T. Karris
+	ISBN 0-9709511-8-3
+		+clause 1.4 prop. of Delta
+		+2.1: LT
+		+2.22: Laplace Transform Pairs for Common Functions
+		+3.1: Inverse LT
+		+Chapter 6 The Impulse Response and Convolution
+		+part 6-1 impulse response in term state-space (p.183)
+
++e) Oliveira_Cortes_computingImpulseResponse.pdf
+	Computing the Impulse Response
+	Mauricio de Oliveira and Jorge Cortes
+	January 24, 2011
+	+http://control.ucsd.edu/mauricio/courses/mae143a/lectures/computingImpulseResponse.pdf
+	+p.1 about LTI with delta load with zero IC
+	+p.2 similar result for change IC
+	+p.3 impulse response for second order system
+	+p.4 impulse response for 2nd order system with delta and derivative of delta
+
++f) Meirovitch_Fundamentals of Vibrations.djvu
+	Fundamentals of Vibrations
+	L. Meirovitch
+	International Edition 2001
+	ISBN 0-07-118174-1
+	+pp.160-161 about change IC for 2nd order LTI
+	+pp.170-180 relation btwn W(s) and impulse f.
+
++g) Schiff - The Laplace Transform - Theory and Applications.pdf
+	The Laplace Transform
+	Theory and Applications
+	Joel L. Schiff
+	ISBN 0-387-98698-7
+	© 1999 Springer-Verlag New York, Inc
+		+p.8 LT for sin and cos
+		?p.29 inverse LT for LTI with derive Delta
+		+p.59 how to solve ODE using LT 
+		+p.79 solving 1st order ODE with delta
+		+p.82 solution of 2nd order LTI ODE with delta load
+		+p.83 about changing IC
+
+		+p.210 table of LT
+
++h) schmitz_t_l_smith_k_s_mechanical_vibrations_modeling_and_mea.pdf
+	Tony L. Schmitz, K. Scott Smith 
+	Mechanical Vibrations. Modeling and Measurement
+	ISBN 978-1-4614-0459-0 e-ISBN 978-1-4614-0460-6
+	DOI 10.1007/978-1-4614-0460-6
+	Springer New York Dordrecht Heidelberg London
+	(c) Springer Science+Business Media, LLC 2012
+	+[p.118] about change IC
+
++i) Xue_Linear Feedback Control - Analysis and Design with MATLAB.pdf
+	Dingy¨ u Xue, YangQuan Chen, Derek P. Atherton
+	Linear Feedback Control
+	Analysis and Design with MATLAB
+	July 3, 2002, Springer-Verlag, 
+	+p.380. ILT for some systems
+
+
+https://www.mathworks.com/help/control/examples/plotting-system-responses.html
+https://www.ethz.ch/content/dam/ethz/special-interest/mavt/dynamic-systems-n-control/idsc-dam/Lectures/Control-Systems-2/Matlab_Compendium.pdf
+
+http://www-lar.deis.unibo.it/people/lmarconi/files/control_tb.pdf
+
+
+CONTROL SYSTEM
+DESIGN
+Graham C. Goodwin1
+Stefan F. Graebe2
+Mario E. Salgado3
+Valpara´ıso, January 2000
+p.74
+The transfer function of a continuous time system is the Laplace transform of
+its response to an impulse (Dirac’s delta) with zero initial conditions.
+
+

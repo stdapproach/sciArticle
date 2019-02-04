@@ -19,9 +19,26 @@ def mkVecD_Type1(b, va):
 	r[n-1] = b
 	return r
 
+def mkVecD_Type2(va, vb):
+	n = np.size(va,0)-1
+	r = np.zeros((n))
+	m = np.size(vb, 0)
+	for i in range( 0,  m):
+		#print("i=", i)
+		#print("n-1-i=", n-1-i)
+		r[n-1-i] = vb[m-1-i]
+	#r[n-1] = b
+	return r
+
 def mkDeltaIC_Type1(va, b):
 	A = mkMatrA(va)
 	d = mkVecD_Type1(b, va)
+	r = np.linalg.solve(A,d)
+	return r
+
+def mkDeltaIC_Type2(va, vb):
+	A = mkMatrA(va)
+	d = mkVecD_Type2(va, vb)
 	r = np.linalg.solve(A,d)
 	return r
 
@@ -45,6 +62,11 @@ def mkDiff_Type1(P, t, va):
 
 def mkIC_Type1(va, b, IC0):
 	deltaIC = mkDeltaIC_Type1(va, b)
+	IC = IC0 + deltaIC
+	return IC
+
+def mkIC_Type2(va, vb, IC0):
+	deltaIC = mkDeltaIC_Type2(va, vb)
 	IC = IC0 + deltaIC
 	return IC
 
@@ -73,6 +95,16 @@ def mkSlnT1_a(va, b, IC0, t0, tb, N):
 	vt = np.linspace(t0, tb, N)
 	Z = odeint(diff, IC, vt, args=(va,))
 	R = augment(vt, Z)
+	return R
+
+def mkSlnT2_a(va, vb, IC0, t0, tb, N):
+	IC = mkIC_Type2(va, vb, IC0)
+	diff = mkDiff_Type1
+	vt = np.linspace(t0, tb, N)
+	Z = odeint(diff, IC, vt, args=(va,))
+	R = augment(vt, Z)
+	#Z0 = mkZrowByIC(t0, IC0)
+	#RR = stack(Z0, R)
 	return R
 
 def lastRow(Z):
@@ -259,7 +291,7 @@ def addAnnotationToPhase(Z, plt):
 	addAnnotate(Z, indYtmin, plt)
 
 def showPhase(plt, Z, title):
-	plt.title("Phase diagram:"+title)
+	plt.title("Phase diagram: "+title)
 	plt.plot(Z[:,1], Z[:,2], 'k', color='b', label="Numerical")
 	plt.xlabel("y")
 	plt.ylabel("y'")

@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import helper as hlp
 
-title1 = 'Example2'
+title1 = 'Example2. Finan p.57'
 
 def y_ex(t):
 	return 0.25*np.exp(-t)*np.sin(2*t)
@@ -21,4 +21,6 @@ Z = hlp.mkSlnT1_c(va, b, c, IC0, t0, tb, N)
 plt.xkcd()
 
 hlp.showNumSolutionWithError(plt, Z, y_ex, title1)
-hlp.showPhase(plt, Z, title1)
+Z0 = hlp.mkZrowByIC(t0, IC0)
+Z2 = hlp.stack(Z0, Z)
+hlp.showPhase(plt, Z2, title1)

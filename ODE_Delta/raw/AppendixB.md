@@ -42,7 +42,17 @@ Solution:
 $$
 y(t)=H(t-c)e^{-(t-c)}sin(t-c)
 $$
-#####Example5 [Zill, p.293]
+#####Example5 [Chasnov, p.65]
+$$\begin{cases}
+2y''+y'+2y=\delta(t-5),\\
+y(0)=y'(0)=0
+\end{cases}
+$$
+Solution:
+$$
+y(t)=\frac{2}{\sqrt{15}}H(t-5)e^{-(t-5)/4}sin(\sqrt{15}(t-5)/4)
+$$
+#####Example6 [Zill, p.293]
 $$
 \begin{cases}
 y''+y=4\delta(t-2\pi),\\
@@ -57,7 +67,7 @@ y(t)=\begin{cases}
 4sin(t), & t\ge2\pi
 \end{cases}
 $$
-#####Example6 [Zill, p.293]
+#####Example7 [Zill, p.293]
 $$\begin{cases}
 y''+y=4\delta(t-2\pi),\\
 y_0=y(0)=1\\
@@ -68,7 +78,7 @@ Solution:
 $$
 y(t)=cos(t)+4H(t,2\pi)sin(t)
 $$
-#####Example7 [Nagy p.190]
+#####Example8 [Nagy p.190]
 $$\begin{cases}
 y''+4y=\delta(t-\pi)-\delta(t-2\pi),\\
 y(0)=y'(0)=0
@@ -76,7 +86,7 @@ y(0)=y'(0)=0
 Solution:
 $$y(t)=\frac{1}{2}\left[H(t-\pi)-H(t-2\pi)\right]sin(2t)
 $$
-#####Example8
+#####Example9
 $$\begin{cases}
 y'''+2y''+2y=\delta(t),\\
 y(0)=y'(0)=y''(0)=0
@@ -85,4 +95,26 @@ y(0)=y'(0)=y''(0)=0
 Solution, getting from WolframAlfa
 $$
 y(t)=\frac{1}{2}-\frac{1}{2}e^{-t}\left(sin(t)+cos(t)\right)
+$$
+
+#####Example10 [Ogata p.163]
+$$ C(s)=\frac{1}{Ts+1} $$
+Impulse Response:
+$$g(t)=\frac{1}{T}e^{-t/T}$$
+
+#####Example11 [Xue p.380]
+$$
+L^{-1}\left\{\frac{s}{(s+a)(s+b)}\right\}=\frac{1}{a-b}\left[ae^{-at}-be^{-bt}\right]
+$$
+#####Example12 [Xue p.380]
+$$
+L^{-1}\left\{\frac{s+d}{(s+a)(s+b)}\right\}=\frac{1}{b-a}\left[(d-a)e^{-at}-(d-b)e^{-bt}\right]
+$$
+#####Example13 [Xue p.380]
+$$
+L^{-1}\left\{\frac{s+d}{s(s+a)(s+b)}\right\}=\frac{1}{ab}\left[d-\frac{b(d-a)}{b-a}e^{-at}+\frac{a(d-b)}{b-a}e^{-bt}\right]
+$$
+#####Example14 [Xue p.380]
+$$
+L^{-1}\left\{\frac{s+a}{s^2+\omega^2}\right\}=\frac{\sqrt{a^2+\omega^2}}{\omega}sin(\omega t+tan^{-1}(\frac{\omega}{a}))
 $$
