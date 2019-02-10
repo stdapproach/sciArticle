@@ -1,5 +1,5 @@
 ###5. A problem Type 1
-This part ragarding the following problem, we called Type 1:
+This part ragarding the following problem, we called as Type 1:
 
 $$
 \sum_{i=0}^{n} a_iy^{(n-i)}(t)=\sum_{j=0}^{m} b_j\delta^{(m-j)}(t),\\

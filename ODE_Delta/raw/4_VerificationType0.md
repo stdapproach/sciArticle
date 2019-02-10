@@ -1,5 +1,5 @@
 ###4. Verification by examples for Type 0
-Let's check the main result from previous chapter on examples Appendix B from (system Type0). To prove the method we've created number Python scripts performing the calculation and generating the charts with results.
+Let's check the main result from previous chapter on examples Appendix B from (system Type0). To prove the method we've created number Python scripts performing the calculation and generating the charts with results. All scripts could be found at https://github.com/stdapproach/sciArticle/tree/develop/ODE_Delta/raw .
 #####4.1 Example1 [Oliveira and Cortes, p.3], [Schiff, p.82]
 Consider the following first order ODE (Type 0a)
 $$

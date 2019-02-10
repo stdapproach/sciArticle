@@ -1,5 +1,5 @@
 ###3. A problem Type 0
-This part ragarding the following problems.
+This part regarding the following problems.
 
 Type 0a
 $$\begin{cases}L_n(y)=b\delta(t),\\
@@ -78,7 +78,7 @@ LT\{a_2y^{(n-2)}\}&=a_2\left[s^{n-2}Y-s^{n-3}y(0)-s^{n-4}y'(0)-s^{n-5}y''(0)- ..
 
 LT\{a_{n-1}y'\}&=a_{n-1}\left[s'Y-s^0y(0) \right]\\
 
-LT\{a_{n}y\}&=a_{n}\left(Y\right)\\
+LT\{a_{n}y\}&=a_{n}Y\\
 
 -bLT\{\delta(t)\}&=-be^{(-s)0}=-b
 
