@@ -37,6 +37,30 @@ L_n(\{a\},z)=0\\
 IC_z
 \end{cases}
 $$
+#####3.1.1 Laplace Transform
+In mathematics, the Laplace transform (LT) is an integral transform. It takes a function of a real variable t (often time) to a function of a complex variable s (complex frequency).
+LT are usually restricted to functions of t with t ≥ 0.
+LT is invertible on a large class of functions. The inverse Laplace transform takes a function of a complex variable s (often frequency) and yields a function of a real variable t (time).
+LT could be usefull solving differenfial equation, integral equation and so on.
+So, for example, Laplace transformation from the time domain to the frequency domain transforms differential equations into algebraic equations and convolution into multiplication.
+
+You could found a lot of information regarding LT over here:
+$\circ$     https://en.wikipedia.org/wiki/Laplace_transform
+$\circ$Cohen (p.12)
+$\circ$Nagy (p.196)
+$\circ$Weber (p.693)
+$\circ$table of LT for some function [Schiff p.210]
+
+#####3.1.2 LT for ODE
+The Laplace transform method for solving ODE could be summarized by the following steps:
+$\circ$Take the Laplace transform of both sides of the equation.
+$\circ$Obtain an equation $L(y)=F(s)$, where $F(s)$ is an algebraic expression in the variable s.
+$\circ$Apply the inverse transform to yield the solution $y(t)=L^{-1}(F(s))$.
+More information about solving ODE by LT you could found over here:
+$\circ$ Kohen (p.7)
+$\circ$ Schiff Schiff (p.59)
+$\circ$	Xue p.380 provided a table for inverse LT for some functions
+#####3.1.3 Find a solution for Type 0b
 To solve the problem Type 0a let's perform Laplace Transform (LT) for $y(t)$ with respect to non-null initial condition.
 $$
 LT\{y(t)\}=Y(s)

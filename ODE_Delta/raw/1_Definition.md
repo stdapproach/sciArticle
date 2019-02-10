@@ -18,6 +18,8 @@ $$
 $$
 \delta(t)=\frac{dH(t)}{dt}
 $$
+Delta function is a well known mathematical object. The property of it could be found at: Balakumar (p.287), Bottega (p.233), Chasnov (p.62), Finan (p.53), Nagy (p.185), Rao (p.381), Weber (p.86), Zill (p.292), Appendix A this article.
+
 #####Initial Value Problem (IVP), Caushy problem
 LTI ODE
 $$
@@ -52,3 +54,4 @@ $$
 
 ##### Impulse Response (IR)
 The impulse-response function g(t) is thus the response of a linear time-invariant system to a unit-impulse input when the initial conditions are zero. The Laplace transform of this function gives the transfer function (Ogata p.17).
+

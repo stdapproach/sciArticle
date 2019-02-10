@@ -54,7 +54,7 @@ IVP(\{1\text{ }a\text{ }0\}, \delta(t), t_0=0,y_0=\{0\text{, }0\})
 IVP(\{1\text{ }a\text{ }0\}, 0, t_0=0,y_0=\{0\text{, }1\})
 $$
 
-Let's check how to correspond the numerical solution for T=2 for homogenous sytem with non-null IC with analitical solution for the system
+Let's check how to correspond the numerical solution for a=2 for homogenous sytem with non-null IC with analitical solution for the system
 
 Analitycal solution taken from Appendix B:
 $$

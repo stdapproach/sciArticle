@@ -118,3 +118,4 @@ $$
 $$
 L^{-1}\left\{\frac{s+a}{s^2+\omega^2}\right\}=\frac{\sqrt{a^2+\omega^2}}{\omega}sin(\omega t+tan^{-1}(\frac{\omega}{a}))
 $$
+

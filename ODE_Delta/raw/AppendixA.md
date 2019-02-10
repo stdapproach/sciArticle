@@ -22,7 +22,7 @@ $$
 $$
 x\delta(x)=0
 $$
-####Laplas transform
+####Laplace transform
 $$
 LT\{f(t) \}=\int_0^\infty e^{-st}f(t)dt=F(s)
 $$

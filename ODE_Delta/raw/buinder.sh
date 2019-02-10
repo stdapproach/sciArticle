@@ -8,6 +8,8 @@ cat Abstract.md \
 	2_FirstGlimpse.md \
 	3_ProblemType0.md \
 	4_VerificationType0.md \
+	5_ProblemType1.md \
+	6_VerificationType1.md \
 	AppendixA.md \
 	AppendixB.md \
 	References.md >| solveLinearOdeDeltaFunction.md
