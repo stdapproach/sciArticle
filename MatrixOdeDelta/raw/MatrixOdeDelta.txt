@@ -1,0 +1,15 @@
+MatrixOdeDelta
+?what's we're looking for?
+
+?impulse response
+?reduce order
+?matrix exponential (the exponential of matrix)
+?eigenvalues and eigenvectors
+?proof of smthng at matrix ODE
+?1st order 
+?2nd order
+?nth order
+
+
+preliminary list for quotes
+
