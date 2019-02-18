@@ -2,14 +2,340 @@ MatrixOdeDelta
 ?what's we're looking for?
 
 ?impulse response
+?transfer function
 ?reduce order
 ?matrix exponential (the exponential of matrix)
+?ode solution
+?state-state
 ?eigenvalues and eigenvectors
 ?proof of smthng at matrix ODE
 ?1st order 
 ?2nd order
 ?nth order
+?SDOF
+?2DOF
+?NDOF
 
 
 preliminary list for quotes
+1_Agarwal_An_Introduction_to_ODE.pdf
+	Fundamental Matrix Solution (p.124)
+	solution of matrix ODE (p.128)
+	impulse response function for the given control system (p.131)
+	exponenial matrix (p. 100, p. 137, 138)
+	p,140 ex. for system matrix ODE (solution p.142)
 
+2_Albertos_Multivariable_Control_Systems_An_Engineering_Approach.pdf
+	impulse response: p.55
+	reduction: 87
+	exponential matrix: p.293,
+	eigenvalues and eigenvectors: p.288
+	eigenvalues: p.287
+
+3_Antsaklis_Linear_Systems.pdf
+	impulse response: p.79
+	reduce order: p.13
+	matrix exponential (the exponential of matrix): p.57, 125, 148, 153, 157, 158
+	ode solution: p.269, 155
+	state-state: p.58, 59, 170
+	eigenvalues and eigenvectors: p.121
+	?proof of smthng at matrix ODE
+	?1st order 
+	2nd order: 14
+	?nth order
+
+4_Astrem_Feedback_Systems_An_Introduction_for_Scientists_and_Engineers.pdf
+	impulse response: 147
+	?reduce order
+	matrix exponential (the exponential of matrix): 136
+	ode solution: 123, 137, 143, 144, 145, 146
+	state-state: 145, 146, 261
+	eigenvalues and eigenvectors: 142, 143
+	proof of smthng at matrix ODE: 106
+	?1st order 
+	?2nd order
+	?nth order
+
+5_Balachandran_VIBRATIONS_SECOND_EDITION.pdf
+	impulse response 288, 290, 292, 293, 296, 320
+		Impulse response of a cantilever beam 638
+	transfer function: 471, 480
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	?ode solution
+	state-state: 458, 462
+	?eigenvalues and eigenvectors
+	?proof of smthng at matrix ODE
+	?1st order:
+	2nd order:  94, 96
+	?nth order
+	SDOF: 129, 182, 286
+	2DOF: 443, 464, 488, 517, 530
+	NDOF: 339, 438, 440, 442, 448
+	beam vibration: 542, 562, 638, 641
+
+6_Blanchard_Differential_Equations.djvu
+	impulse response: 598, 606
+	transfer function: 559
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	ode solution: 327, 333
+	?state-state
+	eigenvalues and eigenvectors: 263, 269, 290, 296, 294, 309, 318, 357
+	?proof of smthng at matrix ODE
+	1st order: 151
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+7_Bronson_Differential_Equation_3rd.pdf
+	?impulse response
+	?transfer function
+	?reduce order: 149
+	matrix exponential (the exponential of matrix): 140, 254
+	ode solution: 74, 151
+	?state-state
+	eigenvalues and eigenvectors: 141
+	?proof of smthng at matrix ODE
+	?1st order 
+	2nd order: 83
+	nth order: 89
+	?SDOF
+	?2DOF
+	?NDOF
+
+8_Cook_Flight_Dynamics_Principles_2e.pdf
+	impulse response: 123
+	transfer function: 114, 119, 129, 163
+	reduce order: 242
+	matrix exponential (the exponential of matrix): 120
+	ode solution: 120, 124, 125, 155
+	state-state: 85, 128
+	eigenvalues and eigenvectors: 120
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+9_Dullerud_A_Course_In_Robust_Control_Theory.pdf
+	?impulse response
+	transfer function: 87
+	reduce order: 147
+	matrix exponential (the exponential of matrix): 63
+	?ode solution
+	state-state: 57
+	eigenvalues and eigenvectors: 39
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+10_Finan_A_Second_Course_in_Elementary_DE_Problems_and_Solutions.pdf
+	impulse response: 176
+	transfer function: 161, 162, 163 ,149-150
+	?reduce order
+	matrix exponential (the exponential of matrix): 122-125
+	ode solution: 72, 75, 80, 81, 84, 96, 181
+	?state-state
+	?eigenvalues and eigenvectors
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+11_Ginsberg_Engineering_Dynamics.pdf
+	impulse response: 339
+	?transfer function
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	?ode solution
+	?state-state
+	eigenvalues and eigenvectors: 108, 110
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+12_Hangos_Process_Modelling_and_Model_Analysis.pdf
+	?impulse response
+	?transfer function
+	reduce order: 125, 358
+	?matrix exponential (the exponential of matrix)
+	ode solution: 114
+	state-state: 258
+	?eigenvalues and eigenvectors
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+13_HAZEWINKEL_ODE_with_Applications_to_Mechanics.pdf
+	?impulse response
+	?transfer function
+	?reduce order
+	matrix exponential (the exponential of matrix): 217, 382
+	?ode solution
+	?state-state
+	?eigenvalues and eigenvectors
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	nth order: 24, 137
+	?SDOF
+	?2DOF
+	?NDOF
+
+14_Hirsch_Differential_Equations_Dynamical_Systems.pdf
+	?impulse response
+	?transfer function
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	?ode solution
+	?state-state
+	?eigenvalues and eigenvectors: 30, 47, 82, 95, 107, 119
+	Complex Eigenvalues: 44, 86
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+15_Jack_Dynamic_system_modeling_and_control.pdf
+	impulse response: 618, 579
+	transfer function: 125, 238, 310, 560, 562, 572
+	?reduce order
+	matrix exponential (the exponential of matrix): 630
+	ode solution: 631, 158, 175, 257, 334, 388
+	state-state: 627
+	eigenvalues and eigenvectors: 632, 633
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	1st order: 71
+	?2nd order
+	?nth order
+	SDOF: 119
+	?2DOF
+	?NDOF
+
+16_Josephs_Dynamics_of_Mechanical_Systems.pdf
+	?impulse response
+	?transfer function
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	ode solution: 449
+	?state-state
+	?eigenvalues and eigenvectors
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	?1st order 
+	2nd order: 442, 446
+	?nth order
+	?SDOF
+	?2DOF
+	NDOF: 451
+	Krylov and Bogoliuboff: 463
+	Impact: 279, 303, 339, 341
+
+17_Karris_Signals_and_Systems_with_MATLAB_Applications.pdf
+	impulse response: 183
+	transfer function: 115, 143, 162, 165, 172
+	?reduce order
+	matrix exponential (the exponential of matrix): 143, 145, 148, 150, 154, 160
+	ode solution: 183
+	state-state: 135
+	?eigenvalues and eigenvectors
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	1st order: 184
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+18_Kelly_Mechanical_Vibrations_Theory_Applications_1st.pdf
+	impulse response: 315, 326, 336
+	transfer function: 332, 337, 404, 408, 599, 624
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	ode solution: 318, 320, 543, 545, 259, 399, 603, 606
+	?state-space
+	eigenvalues and eigenvectors: 388, 536, 539, 558
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	?1st order 
+	2nd order: 333, 338
+	?nth order
+	?SDOF
+	2DOF: 383, 397, 401, 406, 411, 425, 432, 434, 613, 698
+	NDOF: 461, 482, 492, 501, 555, 615, 717
+	cont. system: 636, 667
+
+19_Larminat_Analysis_and_Control_of_Linear_Systems.pdf
+	?impulse response
+	transfer function: 13, 526
+	?reduce order
+	matrix exponential (the exponential of matrix): 51, 54
+	ode solution: 50
+	state-space: 47, 228
+	eigenvalues and eigenvectors: 447
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+Lewis_A_Mathematical_Approach_to_Classical_Control.pdf
+	impulse response: 64
+	?transfer function
+	?reduce order
+	?matrix exponential (the exponential of matrix)
+	?ode solution
+	?state-space
+	?eigenvalues and eigenvectors
+	?Complex Eigenvalues
+	?proof of smthng at matrix ODE
+	?1st order 
+	?2nd order
+	?nth order
+	?SDOF
+	?2DOF
+	?NDOF
+
+?impulse response
+?transfer function
+?reduce order
+?matrix exponential (the exponential of matrix)
+?ode solution
+?state-space
+?eigenvalues and eigenvectors
+?Complex Eigenvalues
+?proof of smthng at matrix ODE
+?1st order 
+?2nd order
+?nth order
+?SDOF
+?2DOF
+?NDOF
