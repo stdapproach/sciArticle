@@ -1,5 +1,18 @@
 draftContents
 
+Abstract
+Introduction
+1. Definition & Terminology
+2. Linear Algebra (intro)
+3. ODE (intro)
+4. ODE with discontinious load
+5. Vibration SDOF
+6. Vibration MDOF
+
+Appendix A. Series and parallel springs
+
+References
+
 1. Introoduction to Math
 	1.1 Linear Algebra
 		1.1.1 Linear Equation + Matrix Algebra
