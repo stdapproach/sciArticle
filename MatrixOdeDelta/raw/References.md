@@ -1,10 +1,29 @@
 ###REFERENCES
 
+[9] A First Course in Linear Algebra
+Robert A. Beezer
+(c) 2004 by Robert A. Beezer.
+http://linear.ups.edu/download/fcla-electric-2.00.pdf
+
 [20] Garrett, S.L.
 Understanding Acoustics. An Experimentalist's View of Acoustics and Vibration.
 2017, Springer, ISBN: 978-3-319-49976-5
+
+[36] Lay, David	C.
+Linear	algebra	and	its	applications – 4th	ed. update.
+ISBN-13: 978-0-321-38517-8
+
+[41] Differential Equations and Linear Algebra. Lecture Notes
+Malham Simon, J.A.
+Department of Mathematics, Heriot-Watt University
+http://www.macs.hw.ac.uk/~simonm/linalg.pdf
+
+[50] The Matrix Cookbook
+Petersen Kaare Brandt
+http://matrixcookbook.com
+
 aa============================================
-[1] Balachandran B., Magrab Edward B. 
+[1] Balachandran B., Magrab Edward B.
 VIBRATIONS, SECOND EDITION
 © 2009 Cengage Learning
 ISBN-13: 978-0-534-55206-0 ISBN-10: 0-534-55206-4

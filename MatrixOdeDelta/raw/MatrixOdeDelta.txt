@@ -178,21 +178,8 @@ z8_Balachandran_VIBRATIONS_SECOND_EDITION.pdf
 	beam vibration: 542, 562, 638, 641
 
 z9_Beezer_A First Course in Linear Algebra.pdf
-	?impulse response
-	?transfer function
-	?reduce order
 	matrix exponential (the exponential of matrix): 841
-	?ode solution
-	?state-space
 	eigenvalues and eigenvectors: 415, 422
-	?proof of smthng at matrix ODE
-	?1st order 
-	?2nd order
-	?nth order
-	?SDOF
-	?2DOF
-	?NDOF
-	?modal analisys
 
 z10_Blanchard_Differential_Equations.djvu
 	impulse response: 598, 606

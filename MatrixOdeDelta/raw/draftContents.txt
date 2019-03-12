@@ -3,7 +3,28 @@ draftContents
 Abstract
 Introduction
 1. Definition & Terminology
+	linear equation, system of LE
+	Matrix operation (+/-, *, inverse)
+	determinant
 2. Linear Algebra (intro)
+	2.1 Linear Equations (https://en.wikipedia.org/wiki/System_of_linear_equations)
+		36Lay, p.3
+			ex. p.5
+			Matrix Algebra p.91
+		41Malham
+			p.53 - intro LE
+			p.54 - system of LE
+			ex - p.58, 63
+		9Beezer
+			p.2 - LE
+			p.191 - MAtrix Algebra
+		50Petersen
+			p.28
+		#how to solve: 36Lay p.4, 41Malham p.57, 
+		#Examples for LE: 36Lay p.5; 41Malhom p.58, 63;
+	2.2 Determinant
+		https://en.wikipedia.org/wiki/Determinant
+	2.3 Matrix Algebra
 3. ODE (intro)
 4. ODE with discontinious load
 5. Vibration SDOF
