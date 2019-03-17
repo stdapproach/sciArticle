@@ -10,6 +10,7 @@ b = np.array([3, 0, 6])
 x = la.lsolve(a, b)
 #testVal = np.array([1, 2, 3])
 #this system has no solution
-print("x=", x)#, " testVal=", testVal)
+print("x=", x)
 #delta = x-testVal
-#print("delta=", delta)
+#flag = la.checkLEsolution(a, testVal, b)
+#print("isOKsolution=", flag, ", delta=", delta)

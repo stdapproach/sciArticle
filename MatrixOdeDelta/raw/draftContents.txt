@@ -25,6 +25,7 @@ Introduction
 	2.2 Determinant
 		https://en.wikipedia.org/wiki/Determinant
 	2.3 Matrix Algebra
+	2.4 Eigenvalue and Eigenvectors
 3. ODE (intro)
 4. ODE with discontinious load
 5. Vibration SDOF

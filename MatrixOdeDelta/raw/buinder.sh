@@ -5,6 +5,9 @@ whoami
 cat Abstract.md \
 	2_LinearAlgebra_intro.md \
 	2_1_LinearEquations.md \
+	2_2_Matrix_Algebra.md \
+	2_3_Determinants.md \
+	2_4_Eigen.md \
 	Appendix_A_Series_and_parallel_springs.md \
 	References.md >| matrixOdeDelta.md
 

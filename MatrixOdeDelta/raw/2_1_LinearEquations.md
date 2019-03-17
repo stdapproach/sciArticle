@@ -32,13 +32,21 @@ A=\left[
 $$
 
 There are a lot of tutorial explaining how to solve such systems:
+* Antsaklis, p.646
+* Beezer, p.11
+* Golub, p.105
 * Lay, p.4
-* Malham, p.57
+* Logan, p.722
+* Malham, p.54
+* Meirovich, p.781
 * Petersen, p.29 provides Cramer's rule (brilliant but useless thing)
+* Riley, p.292
+* Sen, p.333
+* Underdown, p.45
+* Wilkinson, p.93
+* Zill, Appendix II
 * https://en.wikipedia.org/wiki/Linear_equation
 
-#####Examples of linear equations
-Examples for LE: 36Lay p.5; 41Malham p.58, 63;
 #####Example 1 [Lay, p.5]
 $$
 \begin{cases}
@@ -76,10 +84,9 @@ x_3=3
 $$
 
 Script la_ex1.py delivers following output:
-$$
-\mathtt { \text{
-x= [29. 16.  3.]  testVal= [29 16  3]
-delta= [0. 0. 0.]
+$$\mathtt { \text{
+x= [29. 16.  3.] , testVal= [29 16  3]}\\
+{isOKsolution= True , delta= [0. 0. 0.]
 }}
 $$
 
@@ -100,6 +107,7 @@ y=2\\
 z=3
 \end{cases}
 $$
+There is a script for it: la_ex2.py
 
 #####Example 3 [Malham, p.62]
 $$
@@ -109,5 +117,34 @@ $$
 6x+2y+4z=6
 \end{cases}
 $$
+There is a script for it: la_ex3.py
 
+####Additional Examples
+1. [Dawkins, p.244]
+$$
+\begin{cases}
+2x+y+z=4\\
+x+2y+3z=13 \\
+1x+0y+1z=-1
+\end{cases}
+$$
 
+2. [Dawkins, p.247]????, Over-constrained systems, Under-constrained systems
+$$
+\begin{cases}
+x-2y+3z=-2\\
+-x+y-2z=3 \\
+2x-y+3z=-7
+\end{cases}
+$$
+Hint: check the rank of the system
+$$
+\begin{cases}
+x=-t-4\\
+y=t-1\\
+z=t \space(\text{t = any real number})
+\end{cases}
+$$
+qq
+qq
+qq

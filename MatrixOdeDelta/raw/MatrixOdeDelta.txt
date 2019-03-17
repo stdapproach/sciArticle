@@ -74,7 +74,6 @@ z3_Albertos_Multivariable_Control_Systems_An_Engineering_Approach.pdf
 	matrix exponential (the exponential of matrix): 56
 	?ode solution
 	state-space: 24, 36
-	eigenvalues and eigenvectors: 52, 287
 	?proof of smthng at matrix ODE
 	?1st order 
 	?2nd order
@@ -125,14 +124,14 @@ z5_Antsaklis_Linear_Systems.pdf
 	?NDOF
 	?modal analisys
 
-z6_Arfken - Essential Mathematical Methods for Physicists.pdf
+z62_2_Weber - Essential Mathematical Methods for Physicists.pdf
 	impulse response: 733
 	?transfer function
 	?reduce order
 	?matrix exponential (the exponential of matrix)
 	?ode solution
 	?state-space
-	eigenvalues and eigenvectors: 212, 485, 496, 510
+	eigenvalues and eigenvectors: 212, -485, -496, -510
 	?proof of smthng at matrix ODE
 	?1st order 
 	?2nd order
@@ -374,7 +373,7 @@ z22_Genta_Vibration_Dynamics_and_Control.pdf
 	?matrix exponential (the exponential of matrix): 98, 99, 812
 	ode solution: 99
 	?state-space
-	eigenvalues and eigenvectors: 99, 812
+	eigenvalues and eigenvectors: 99, -812
 	?proof of smthng at matrix ODE
 	?1st order 
 	?2nd order
@@ -439,7 +438,7 @@ z24_Hangos_Process_Modelling_and_Model_Analysis.pdf
 	?matrix exponential (the exponential of matrix)
 	?ode solution
 	?state-state
-	?eigenvalues and eigenvectors: 30, 47, 82, 95, 107, 119
+	?eigenvalues and eigenvectors: 30, 47, 82, 95, -107, 119
 	Complex Eigenvalues: 44, 86
 	?proof of smthng at matrix ODE
 	?1st order 
@@ -772,7 +771,7 @@ z48_Oliveira_Cortes_computingImpulseResponse.pdf
 	?impulse response, impuls, Dirac: 3, 4
 
 
-z49_Paraskevopolus_Modern_control_engineering.pdf
+z49_Paraskevopoulus_Modern_control_engineering.pdf
 	impulse response: 77, 240, 241
 	transfer function: 82, 83, 74
 	?reduce order
@@ -860,7 +859,7 @@ z53_Rao_mechanical_vibrations_5th.pdf
 	2DOF: 481
 	NDOF: 586, 625
 
-z54_Rao_vibrations_Lecture_Notes.pdf
+zz_Rao_vibrations_Lecture_Notes.pdf
 	impulse response, impuls, Dirac: 11
 	transfer function: 16
 	?reduce order
@@ -922,7 +921,7 @@ z57_schmitz_mechanical_vibrations_modeling_and_mearurement.pdf
 	?exponential matrix
 	?ode solution
 	?state-space
-	eigenvalues and eigenvectors: 129, 137, 146, 153, 160, 177, 620
+	eigenvalues and eigenvectors: 129, 137, 146, 153, 160, 177
 	?Complex Eigenvalues
 	?proof of smthng at matrix ODE
 	?1st order 
@@ -995,7 +994,7 @@ z61_Skogestad_Multivariable_feedback_control_analysis_and_design.pdf
 	exponential matrix: 124
 	?ode solution
 	state-space: 14, 123, 125
-	?eigenvalues and eigenvectors: 77, 79, 124, 534, 620
+	?eigenvalues and eigenvectors: 77, 79, 124, 534
 	?Complex Eigenvalues
 	?proof of smthng at matrix ODE
 	?1st order 
@@ -1013,7 +1012,7 @@ z62_Teschl_ODE_and_Dynamical_Systems.pdf
 	?exponential matrix: 47
 	ode solution: 27, 75
 	?state-space
-	?eigenvalues and eigenvectors: 49, 620
+	?eigenvalues and eigenvectors: 49
 	?Complex Eigenvalues
 	?proof of smthng at matrix ODE
 	?1st order 
@@ -1049,7 +1048,7 @@ z64_Zill_First_Course_in_Differential_Equations.pdf
 	exponential matrix: 334
 	ode solution: 327
 	?state-space
-	?eigenvalues and eigenvectors: 201, 312, 620, App.2
+	?eigenvalues and eigenvectors: 201, 312, App.2
 	Complex Eigenvalues: 320
 	?proof of smthng at matrix ODE
 	1st order: 86, 107, 305 

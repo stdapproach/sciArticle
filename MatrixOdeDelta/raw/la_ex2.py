@@ -11,4 +11,5 @@ x = la.lsolve(a, b)
 testVal = np.array([1, 2, 3])
 print("x=", x, " testVal=", testVal)
 delta = x-testVal
-print("delta=", delta)
+flag = la.checkLEsolution(a, testVal, b)
+print("isOKsolution=", flag, ", delta=", delta)
