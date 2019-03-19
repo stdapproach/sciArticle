@@ -26,6 +26,22 @@ Introduction
 		https://en.wikipedia.org/wiki/Determinant
 	2.3 Matrix Algebra
 	2.4 Eigenvalue and Eigenvectors
+	2.5 Decomposition
+		SVD, LU, Cholesky
+			Golub p.76, 111, 246, 385, 486
+			Albertos p.289
+			Kelly p.566
+			Laub, p.35
+			Lay p.414
+			Antsaklis, p.423, 647
+			Petersen p.28
+			Riley, p.307, 416
+			Saad, p.12
+			Sen, p.362
+			Silva
+			Skogestat, p.79, 537
+			Beezer, p.875
+
 3. ODE (intro)
 4. ODE with discontinious load
 5. Vibration SDOF
