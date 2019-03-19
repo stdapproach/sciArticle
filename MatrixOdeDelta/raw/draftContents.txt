@@ -41,13 +41,34 @@ Introduction
 			Silva
 			Skogestat, p.79, 537
 			Beezer, p.875
+			Wilkinson: Algo I.1, I.10, II.3, II.4, II.8
 
-3. ODE (intro)
+	2.6 Matrix exponent
+
+3. ODE (intro) - LTI + constant coeff
+	3.1 Single variable (only links) + common solution + 
+		examples Vibration/Control Theory for SDOF
+	3.2 Matrix ODE
+		fundamental solution
+		exp via Eig decomposition
+		examples for MDOF
 4. ODE with discontinious load
-5. Vibration SDOF
-6. Vibration MDOF
+	4.1 SDOF
+		my result + 2-3 examples
+	4.2 MDOF
+		governing formulae
+		examples
+
 
 Appendix A. Series and parallel springs
+Appendix B. Notes about Eigenvalue/Eigenvectors stuff
+Appendix C. SDOF Oscillator. Classic results
+	free response
+	forced response
+		step, saw
+		periodic force
+		common force
+Appendix D Impulse ODE, examples
 
 References
 
