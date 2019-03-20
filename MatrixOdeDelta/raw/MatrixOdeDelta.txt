@@ -627,7 +627,7 @@ z36_Lay_Linear-Algebra-and-Its-Applications-4e.pdf
 	?impact
 
 z37_Lewis_A_Mathematical_Approach_to_Classical_Control.pdf
-	impulse response: 64, 49, 94, 95, 101, 104, 107, 108, 110, 112, 116
+	impulse response: 53, 64, 49, 94, 95, 101, 104, 107, 108, 110, 112, 116
 	transfer function: 75, 78, 79, 81, 90, 124, 129
 	?reduce order
 	matrix exponential (the exponential of matrix): 49, 50, 52, 600, 604

@@ -44,6 +44,18 @@ Introduction
 			Wilkinson: Algo I.1, I.10, II.3, II.4, II.8
 
 	2.6 Matrix exponent
+		Agarval p.100
+		Beezer p.841
+		Bronson p.140, 254
+		Cook p.119
+		Dullerud p.63
+		Finan p.122
+		Golub p.530
+		Kwon p.6
+		Laub p.109
+		Moler p.1, 7, 8, 20, 21
+		Petersen p.59
+		Sen p.391
 
 3. ODE (intro) - LTI + constant coeff
 	3.1 Single variable (only links) + common solution + 
