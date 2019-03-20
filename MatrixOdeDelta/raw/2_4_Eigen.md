@@ -82,9 +82,207 @@ $$
 * -Rao p.515, p.594
 * +Riley, p.280, 282
 * -Robinson, p.-262, 265, 266
-* Sen, p.-285, 287, 288, 289, 291
-* Underdown, p.106
-* Zill p.313
+* +Sen, p.-285, +287, 288, 289, 291
+* +Underdown, p.106
+* +Zill p.313
+
+Examples' description:
+* Examples 10-14 [2x2, no repeated eigenvalues]
+* Examples 15- [3x3, no repeated eigenvalues]
+
+#####Example 10 [Hirsch, p.31]
+$$
+A=\left[    \begin{matrix}
+    1 & 3 \\
+    1 & -1
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+2 \\ -2
+\end{matrix}\right],
+V=\left[\begin{matrix}
+3 & 1 \\
+1 & -1
+\end{matrix}\right]
+$$
+
+Script la_ex10.py delivers following output:
+$$
+\mathtt { \text{
+Eigenvalues= [ 2. -2.]}\\
+\text{tstVals == eigenvalues -> True}\\
+\text{Eigenvectors= [[ 0.9486833  -0.70710678]}\\
+\text{ [ 0.31622777  0.70710678]]}\\
+{tstVecs == Eigenvectors -> True
+}}
+$$
+
+Check whether Eigenvectors $\left[\begin{matrix}3 \\ 1\end{matrix}\right]$ and $\left[\begin{matrix}0.9486833 \\ 0.31622777\end{matrix}\right]$ are equal.
+The same for $\left[\begin{matrix}1 \\ -1\end{matrix}\right]$ and $\left[\begin{matrix}-0.70710678 \\ 0.70710678\end{matrix}\right]$
+
+#####Example 11 [Malham, p.77]
+$$
+A=\left[
+    \begin{matrix}
+    3 & -2 \\
+    4 & -3
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+1 \\ -1
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & 1 \\
+1 & 2
+\end{matrix}\right]
+$$
+Hint! See script la_ex11.py
+
+#####Example 12 [Nagy, p.220]
+$$
+A=\left[\begin{matrix}
+1 & 2\\
+2 & 1
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+3 \\ -1
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & -1 \\
+1 & 1
+\end{matrix}\right]
+$$
+
+#####Example 13 [Paraskevopoulos, p.52]
+$$
+A=\left[\begin{matrix}
+-1 & 1\\
+0 & -2
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+-1 \\ -2
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & -1 \\
+0 & 1
+\end{matrix}\right]
+$$
+
+#####Example 14 [Underdown, p.106]
+$$
+A=\left[\begin{matrix}
+3 & -1 \\
+-1 & 3
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+2 \\ 4
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & -1\\
+1 & 1
+\end{matrix}\right]
+$$
+
+
+#####Part2 [3x3, no repeated eigenvalues]
+
+#####Example 15 [Genta, p.104]
+$$
+A=\left[
+    \begin{matrix}
+    20 & -10 & 0 \\
+    -2.5 & 3.5 & -1 \\
+    0 & -8 & 8 \\
+    \end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\lambda_{1,2,3}=\left[\begin{matrix}
+1.0166 \\
+3.0042 \\
+4.6305
+\end{matrix}\right],
+V=\left[\begin{matrix}
+0.45913 & 0.11677 & 1 \\
+0.87081 & 0.12815 & -0.14412 \\
+1 & -1 & 0.08578
+\end{matrix}\right]
+$$
+
+#####Example [Hirsch, p.85]
+$$
+A=\left[
+    \begin{matrix}
+    1 & 2 & -1 \\
+    0 & 3 & -2 \\
+    0 & 2 & -2
+    \end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+2 \\ 1 \\ -1
+\end{matrix}\right],
+V=\left[\begin{matrix}
+3 & 1 & 0 \\
+2 & 0 & 1 \\
+1 & 0 & 2
+\end{matrix}\right]
+$$
+
+#####Example [Kwon, p.7]
+$$
+A=\left[
+    \begin{matrix}
+    5 & 3 & 2 \\
+    1 & 4 & 6 \\
+    9 & 7 & 2
+    \end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+12.5361 \\ 1.7486 \\ -3.2847
+\end{matrix}\right],
+V=\left[\begin{matrix}
+0.4127 & 0.5992 & 0.0459 \\
+0.5557 & -0.7773 & -0.6388 \\
+0.7217 & 0.1918 & 0.7680
+\end{matrix}\right]
+$$
+
+#####Example [Riley, p.280]
+$$
+A=\left[\begin{matrix}
+1 & 1 & 3 \\
+1 & 1 & -3 \\
+3 & -3 & -3
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+2 \\ 3 \\ -6
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1/\sqrt{2} & 1/\sqrt{3} & 1/\sqrt{6} \\
+1/\sqrt{2} & -1/\sqrt{3} & -1/\sqrt{6} \\
+0 & 1/\sqrt{3} & -2/\sqrt{6}
+\end{matrix}\right]
+$$
+
+#####Example [Zill, p.314]
+$$
+A=\left[\begin{matrix}
+-4 & 1 & 1 \\
+1 & 5 & -1 \\
+0 & 1 & -3
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+-3 \\ -4 \\ 5
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & 10 & 1\\
+0 & -1 & 8 \\
+1 & 1 & 1
+\end{matrix}\right]
+$$
 
 #####Example [Beezer, p.416]
 $$
@@ -98,32 +296,55 @@ A=\left[
 $$
 Check these vectors are eigenvector:
 $$
-x=\left[
-    \begin{matrix}
-    1 \\
-    -1 \\
-    2 \\
-    5
-    \end{matrix}\right],\space
+x=\left[    \begin{matrix}
+1 \\ -1 \\ 2 \\ 5
+\end{matrix}\right],\space
 y=\left[\begin{matrix}
--3 \\
-4 \\
--10 \\
-4
+-3 \\ 4 \\ -10 \\ 4
 \end{matrix}\right],\space
 z=\left[\begin{matrix}
--3 \\
-7 \\
-0 \\
-8
+-3 \\ 7 \\ 0 \\ 8
 \end{matrix}\right],\space
 w=\left[\begin{matrix}
-1 \\
--1 \\
-4 \\
-0
+1 \\ -1 \\ 4 \\ 0
 \end{matrix}\right],\space
 $$
+
+#####Part3 [2x2, repeated and complex eigenvalues]
+
+#####Example [Sen, p.288]
+$$
+A=\left[\begin{matrix}
+1 & -1 \\
+0 & 1
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+1 \\ 1
+\end{matrix}\right],
+V=\left[\begin{matrix}
+1 & 0\\
+0 & -1
+\end{matrix}\right]
+$$
+
+#####Example [Sen, p.287]
+$$
+A=\left[\begin{matrix}
+0 & -2 \\
+2 & 0
+\end{matrix}\right]\\
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+2i \\ -2i
+\end{matrix}\right],
+V=\left[\begin{matrix}
+i & -i\\
+1 & 1
+\end{matrix}\right]
+$$
+
+#####Part5 [others]
 
 #####Example [Beezer, p.423, 425]
 $$
@@ -133,21 +354,14 @@ A=\left[
     12 & 7 & 4 \\
     24 & 16 & 7 \\
     \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\lambda_1=3, v_1=\left[\begin{matrix}
-1 \\
--1 \\
-2
+\text{Find Eigenvalues and Eigenvectors}\\
+\Lambda=\left[\begin{matrix}
+3 \\ -1 \\ -1
 \end{matrix}\right],
-\lambda_{2,3}=-1, v_{2,3}=\left[\begin{matrix}
--2 \\
-3 \\
-0
-\end{matrix}\right],
-\left[\begin{matrix}
--1 \\
-0 \\
-3
+V=\left[\begin{matrix}
+1 & -2 & -1\\
+-1 & 3 & 0\\
+2 & 0 & 3
 \end{matrix}\right]
 $$
 
@@ -159,129 +373,14 @@ A=\left[
     -546 & -236 & 84 \\
     -364 & -154 & 51 \\
     \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
+\text{Find Eigenvalues and Eigenvectors}\\
 \lambda_{1,2,3}=\left[\begin{matrix}
-2 \\
--5 \\
--5
+2 \\ -5 \\ -5
 \end{matrix}\right],
 V=\left[\begin{matrix}
 1 & 1 & 0 \\
 -3 & 0 & 1 \\
 -2 & 13/2 & 11/4
-\end{matrix}\right]
-$$
-
-#####Example [Genta, p.104]
-$$
-A=\left[
-    \begin{matrix}
-    20 & -10 & 0 \\
-    -2.5 & 3.5 & -1 \\
-    0 & -8 & 8 \\
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\lambda_{1,2,3}=\left[\begin{matrix}
-1.0166 \\
-3.0042 \\
-4.6305
-\end{matrix}\right],
-V=\left[\begin{matrix}
-0.45913 & 0.11677 & 1 \\
-0.87081 & 0.12815 & -0.14412 \\
-1 & -1 & 0.08578
-\end{matrix}\right]
-$$
-
-#####Example [Hirsch, p.31]
-$$
-A=\left[
-    \begin{matrix}
-    1 & 3 \\
-    1 & -1
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-2 \\
--2
-\end{matrix}\right],
-V=\left[\begin{matrix}
-3 & 1 \\
-1 & -1
-\end{matrix}\right]
-$$
-
-#####Example [Hirsch, p.85]
-$$
-A=\left[
-    \begin{matrix}
-    1 & 2 & -1 \\
-    0 & 3 & -2 \\
-    0 & 2 & -2
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-2 \\ 1 \\ -1
-\end{matrix}\right],
-V=\left[\begin{matrix}
-3 & 1 & 0 \\
-2 & 0 & 1 \\
-1 & 0 & 2
-\end{matrix}\right]
-$$
-
-#####Example [Hirsch, p.97]
-$$
-A=\left[
-    \begin{matrix}
-    2 & 0 & -1 \\
-    0 & 2 & 1 \\
-    -1 & -1 & 2
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-2 \\ 2 \\ 2
-\end{matrix}\right],
-V=\left[\begin{matrix}
-1 & 0 & 1 \\
--1 & 0 & 0 \\
-0 & -1 & 0
-\end{matrix}\right]
-$$
-
-#####Example [Kwon, p.7]
-$$
-A=\left[
-    \begin{matrix}
-    5 & 3 & 2 \\
-    1 & 4 & 6 \\
-    9 & 7 & 2
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-12.5361 \\ 1.7486 \\ -3.2847
-\end{matrix}\right],
-V=\left[\begin{matrix}
-0.4127 & 0.5992 & 0.0459 \\
-0.5557 & -0.7773 & -0.6388 \\
-0.7217 & 0.1918 & 0.7680
-\end{matrix}\right]
-$$
-
-#####Example [Malham, p.77]
-$$
-A=\left[
-    \begin{matrix}
-    3 & -2 \\
-    4 & -3
-    \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-1 \\ -1
-\end{matrix}\right],
-V=\left[\begin{matrix}
-1 & 1 \\
-1 & 2
 \end{matrix}\right]
 $$
 
@@ -292,7 +391,7 @@ A=\left[\begin{matrix}
 1 & 1 & 1 \\
 1 & 3 & -1
 \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
+\text{Find Eigenvalues and Eigenvectors}\\
 \Lambda=\left[\begin{matrix}
 -2 \\ 2 \\ 2
 \end{matrix}\right],
@@ -310,7 +409,7 @@ A=\left[\begin{matrix}
 2 & 1 & -6 \\
 -1 & -2 & 0
 \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
+\text{Find Eigenvalues and Eigenvectors}\\
 \Lambda=\left[\begin{matrix}
 5 \\ -3 \\ -3
 \end{matrix}\right],
@@ -321,87 +420,39 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Nagy, p.220]
+#####Example [Sen, p.291]
 $$
 A=\left[\begin{matrix}
-1 & 2\\
-2 & 1
+2 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 1 & 1
 \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
+\text{Find Eigenvalues and Eigenvectors}\\
 \Lambda=\left[\begin{matrix}
-3 \\ -1
+0 \\ 2 \\ 2
 \end{matrix}\right],
 V=\left[\begin{matrix}
-1 & -1 \\
-1 & 1
+0 & 0 & 1\\
+1 & 1 & 0\\
+-1 & 1 & 0
 \end{matrix}\right]
 $$
 
-#####Example [Paraskkevopoulos, p.52]
+#####Example [Hirsch, p.97]
 $$
 A=\left[\begin{matrix}
--1 & 1\\
-0 & -2
+    2 & 0 & -1 \\
+    0 & 2 & 1 \\
+    -1 & -1 & 2
 \end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
+\text{Find Eigenvalues and Eigenvectors}\\
 \Lambda=\left[\begin{matrix}
--1 \\ -2
+2 \\ 2 \\ 2
 \end{matrix}\right],
 V=\left[\begin{matrix}
-1 & -1 \\
-0 & 1
-\end{matrix}\right]
-$$
-
-#####Example [Riley, p.280]
-$$
-A=\left[\begin{matrix}
-1 & 1 & 3 \\
-1 & 1 & -3 \\
-3 & -3 & -3
-\end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-2 \\ 3 \\ -6
-\end{matrix}\right],
-V=\left[\begin{matrix}
-1/\sqrt{2} & 1/\sqrt{3} & 1/\sqrt{6} \\
-1/\sqrt{2} & -1/\sqrt{3} & -1/\sqrt{6} \\
-0 & 1/\sqrt{3} & -2/\sqrt{6}
-\end{matrix}\right]
-$$
-
-#####Example [Riley, p.282]
-$$
-A=\left[\begin{matrix}
-1 & 0 & 3 \\
-0 & -2 & 0 \\
-3 & 0 & 1
-\end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-4 \\ -2 \\ -2
-\end{matrix}\right],
-V=\left[\begin{matrix}
-1/\sqrt{2} & 0 & -1/\sqrt{2} \\
-0 & 1 & 0 \\
-1/\sqrt{2} & 0 & 1/\sqrt{2}
-\end{matrix}\right]
-$$
-
-#####Example [Sen, p.287]
-$$
-A=\left[\begin{matrix}
-0 & -2 \\
-2 & 0
-\end{matrix}\right]\\
-Find Eigenvalues and Eigenvectors\\
-\Lambda=\left[\begin{matrix}
-2i \\ -2i
-\end{matrix}\right],
-V=\left[\begin{matrix}
-i & -i\\
-1 & 1
+1 & 0 & 1 \\
+-1 & 0 & 0 \\
+0 & -1 & 0
 \end{matrix}\right]
 $$
 
