@@ -86,9 +86,12 @@ $$
 * +Underdown, p.106
 * +Zill p.313
 
+??How to handle case with repeated eigenvalue
+
 Examples' description:
-* Examples 10-14 [2x2, no repeated eigenvalues]
-* Examples 15- [3x3, no repeated eigenvalues]
+* examples 10-14 [2x2, no repeated eigenvalues]
+* examples 15-20 [3x3, no repeated eigenvalues]
+* ??examples 21-27 [repeated and complex eigenvalues]
 
 #####Example 10 [Hirsch, p.31]
 $$
@@ -199,9 +202,9 @@ A=\left[
     \end{matrix}\right]\\
 \text{Find Eigenvalues and Eigenvectors}\\
 \lambda_{1,2,3}=\left[\begin{matrix}
-1.0166 \\
-3.0042 \\
-4.6305
+1.0166^2 \\
+3.0042^2 \\
+4.6305^2
 \end{matrix}\right],
 V=\left[\begin{matrix}
 0.45913 & 0.11677 & 1 \\
@@ -210,7 +213,17 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Hirsch, p.85]
+Script la_ex15.py delivers following output:
+$$
+\mathtt { {
+tstVals_= [ 1.03347556  9.02521764 21.44153025]\\
+Eigenvalues= [ 1.03352726  9.02522377 21.44124897]\\
+\text{tstVals == eigenvalues -> True  with atol= 0.0001}\\
+\text{tstVecs == Eigenvectors -> True  with atol= 0.0001}
+}}
+$$
+
+#####Example 16 [Hirsch, p.85]
 $$
 A=\left[
     \begin{matrix}
@@ -229,7 +242,17 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Kwon, p.7]
+Script la_ex16.py delivers following output:
+$$
+\mathtt { {
+tstVals_= [ 2  1 -1]\\
+Eigenvalues= [-1.  1.  2.]\\
+\text{tstVals == eigenvalues -> True  with atol= 1e-07}\\
+\text{tstVecs == Eigenvectors -> True  with atol= 1e-07}
+}}
+$$
+
+#####Example 17 [Kwon, p.7]
 $$
 A=\left[
     \begin{matrix}
@@ -247,8 +270,9 @@ V=\left[\begin{matrix}
 0.7217 & 0.1918 & 0.7680
 \end{matrix}\right]
 $$
+Hint! See script la_ex17.py
 
-#####Example [Riley, p.280]
+#####Example 18 [Riley, p.280]
 $$
 A=\left[\begin{matrix}
 1 & 1 & 3 \\
@@ -266,7 +290,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Zill, p.314]
+#####Example 19 [Zill, p.314]
 $$
 A=\left[\begin{matrix}
 -4 & 1 & 1 \\
@@ -284,7 +308,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Beezer, p.416]
+#####Example 20 [Beezer, p.416]
 $$
 A=\left[
     \begin{matrix}
@@ -307,12 +331,14 @@ z=\left[\begin{matrix}
 \end{matrix}\right],\space
 w=\left[\begin{matrix}
 1 \\ -1 \\ 4 \\ 0
-\end{matrix}\right],\space
+\end{matrix}\right]\space
 $$
 
-#####Part3 [2x2, repeated and complex eigenvalues]
+Hint! See script la_ex20.py
 
-#####Example [Sen, p.288]
+#####Part3 [repeated and complex eigenvalues]
+
+#####Example 21[Sen, p.288]???
 $$
 A=\left[\begin{matrix}
 1 & -1 \\
@@ -328,7 +354,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Sen, p.287]
+#####Example 22 [Sen, p.287]
 $$
 A=\left[\begin{matrix}
 0 & -2 \\
@@ -344,9 +370,18 @@ i & -i\\
 \end{matrix}\right]
 $$
 
-#####Part5 [others]
+Script la_ex22.py delivers following output:
+$$
+\mathtt { {
+Eigenvalues= [0.-2.j 0.+2.j]\\
+tstVals == eigenvalues -> True  with atol= 0.0001\\
+Eigenvectors= [[ 0.        +0.70710678j  0.        -0.70710678j]\\
+ [-0.70710678-0.j         -0.70710678+0.j        ]]\\
+\text{tstVecs == Eigenvectors -> True  with atol= 0.0001}
+}}
+$$
 
-#####Example [Beezer, p.423, 425]
+#####Example 23 [Beezer, p.423]??
 $$
 A=\left[
     \begin{matrix}
@@ -359,13 +394,14 @@ A=\left[
 3 \\ -1 \\ -1
 \end{matrix}\right],
 V=\left[\begin{matrix}
-1 & -2 & -1\\
--1 & 3 & 0\\
+-1 & -2 & -1\\
+1 & 3 & 0\\
 2 & 0 & 3
 \end{matrix}\right]
 $$
+??
 
-#####Example [Garvan, p.207]
+#####Example 24 [Garvan, p.207]
 $$
 A=\left[
     \begin{matrix}
@@ -384,25 +420,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Malham, p.77]
-$$
-A=\left[\begin{matrix}
-2 & -2 & 2 \\
-1 & 1 & 1 \\
-1 & 3 & -1
-\end{matrix}\right]\\
-\text{Find Eigenvalues and Eigenvectors}\\
-\Lambda=\left[\begin{matrix}
--2 \\ 2 \\ 2
-\end{matrix}\right],
-V=\left[\begin{matrix}
--4/7 & 0 & ? \\
--1/7 & 1 & ? \\
-1 & 1 & ?
-\end{matrix}\right]
-$$
-
-#####Example [Malham, p.80]
+#####Example 25 [Malham, p.80]
 $$
 A=\left[\begin{matrix}
 -2 & 2 & -3 \\
@@ -420,7 +438,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Sen, p.291]
+#####Example 26 [Sen, p.291]
 $$
 A=\left[\begin{matrix}
 2 & 0 & 0 \\
@@ -438,7 +456,7 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-#####Example [Hirsch, p.97]
+#####Example 27 [Hirsch, p.97]??
 $$
 A=\left[\begin{matrix}
     2 & 0 & -1 \\

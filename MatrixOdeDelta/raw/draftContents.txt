@@ -42,7 +42,6 @@ Introduction
 			Skogestat, p.79, 537
 			Beezer, p.875
 			Wilkinson: Algo I.1, I.10, II.3, II.4, II.8
-
 	2.6 Matrix exponent
 		Agarval p.100
 		Beezer p.841
