@@ -17,7 +17,7 @@ Introduction
 			ex - p.58, 63
 		9Beezer
 			p.2 - LE
-			p.191 - MAtrix Algebra
+			p.191 - Matrix Algebra
 		50Petersen
 			p.28
 		#how to solve: 36Lay p.4, 41Malham p.57, 
@@ -29,18 +29,18 @@ Introduction
 	2.5 Decomposition
 		SVD, LU, Cholesky
 			Golub p.76, 111, 246, 385, 486
-			Albertos p.289
+			-Albertos p.289
 			Kelly p.566
 			Laub, p.35
 			Lay p.414
-			Antsaklis, p.423, 647
+			-Antsaklis, p.423, 647
 			Petersen p.28
 			Riley, p.307, 416
 			Saad, p.12
 			Sen, p.362
 			Silva
 			Skogestat, p.79, 537
-			Beezer, p.875
+			+Beezer, p.875
 			Wilkinson: Algo I.1, I.10, II.3, II.4, II.8
 	2.6 Matrix exponent
 		Agarval p.100

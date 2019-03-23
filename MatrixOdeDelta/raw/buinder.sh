@@ -8,6 +8,8 @@ cat Abstract.md \
 	2_2_Matrix_Algebra.md \
 	2_3_Determinants.md \
 	2_4_Eigen.md \
+	2_5_Decomposition.md \
+	2_6_Exponent.md \
 	Appendix_A_Series_and_parallel_springs.md \
 	References.md >| matrixOdeDelta.md
 

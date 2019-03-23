@@ -31,21 +31,7 @@ A=\left[
     \right\}\tag{2.1.2}
 $$
 
-There are a lot of tutorial explaining how to solve such systems:
-* Antsaklis, p.646
-* Beezer, p.11
-* Golub, p.105
-* Lay, p.4
-* Logan, p.722
-* Malham, p.54
-* Meirovich, p.781
-* Petersen, p.29 provides Cramer's rule (brilliant but useless thing)
-* Riley, p.292
-* Sen, p.333
-* Underdown, p.45
-* Wilkinson, p.93
-* Zill, Appendix II
-* https://en.wikipedia.org/wiki/Linear_equation
+There are a lot of tutorial explaining how to solve such systems: Antsaklis (p.646), Beezer (p.11), Golub (p.105), Lay (p.4), Logan (p.722), Malham (p.54), Meirovich (p.781), Petersen provides Cramer's rule (brilliant but useless thing) p.29, Riley (p.292), Sen (p.333), Underdown (p.45), Wilkinson (p.93), Zill (Appendix II), https://en.wikipedia.org/wiki/Linear_equation .
 
 #####Example 1 [Lay, p.5]
 $$

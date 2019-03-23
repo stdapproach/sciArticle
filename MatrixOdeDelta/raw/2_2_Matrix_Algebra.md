@@ -14,28 +14,7 @@ aB =Ba
 $$
 where $A, B$ are matrises ($n\times n$), $a$ - scalar.
 
-There are a lot of tutorial regarding Matrix Algebra:
-* Balachandran, p.676
-* Beezer, p.125
-* Dukkipati, p.37
-* Golub, p.2
-* Karris, Appendix C
-* Kelly, p.835
-* Kwon, p.4
-* Laub, p.3
-* Lay, p.92
-* Logan, p.709
-* Luenberger, p.56
-* Nagy, p.308
-* Meirovich, p.770
-* Rao, p.1046
-* Riley, p.250
-* Sen, p.325
-* Shmaliy, p.594
-* Weber, p.175
-* Williams, p.409
-* Zill, Appendix II
-* https://en.wikipedia.org/wiki/Matrix_(mathematics)
+There are a lot of tutorial regarding Matrix Algebra: Balachandran (p.676), Beezer (p.125), Dukkipati (p.37), Golub (p.2), Karris (Appendix C), Kelly (p.835), Kwon (p.4), Laub (p.3), Lay (p.92), Logan (p.709), Luenberger (p.56), Nagy (p.308), Meirovich (p.770), Rao (p.1046), Riley (p.250), Sen (p.325), Shmaliy (p.594), Weber (p.175), Williams (p.409), Zill (Appendix II), https://en.wikipedia.org/wiki/Matrix_(mathematics) .
 
 #####Example 4 [Lay, p.95]
 $$
@@ -95,30 +74,7 @@ $$
 $$
 
 #####Matrix Inversion
-There are a lot of tutorial regarding Inverse Matrix:
-* Balachandran, p.677
-* Beezer, p.223
-* Dukkipati, p.38
-* Josephs, p.40
-* Kelly, p.837
-* Lay, p.102
-* Logan, p.718
-* Luenberger, p.66
-* Malham, p.71
-* Meirovich, p.774
-* Nagy, p.312
-* Paraskevopoulos, p.51
-* Petersen, p.17
-* Rao, p.682
-* Riley, p.263
-* Sen, p.332
-* Silva, 3-49
-* Skogestad, p.532
-* Underdown, p.57
-* Weber, p.184
-* Williams, p.414
-* Derivatives of inverse: Petersen p.10
-* https://en.wikipedia.org/wiki/Invertible_matrix
+There are a lot of tutorial regarding Inverse Matrix: Balachandran (p.677), Beezer (p.223), Dukkipati (p.38), Josephs (p.40), Kelly (p.837), Lay (p.102), Logan (p.718), Luenberger (p.66), Malham (p.71), Meirovich (p.774), Nagy (p.312), Paraskevopoulos (p.51), Petersen (p.17), Rao (p.682), Riley (p.263), Sen (p.332), Silva (3-49), Skogestad (p.532), Underdown (p.57), Weber (p.184), Williams (p.414), https://en.wikipedia.org/wiki/Invertible_matrix .
 
 There are 2 special classes of square matrix:
 Null matrix:

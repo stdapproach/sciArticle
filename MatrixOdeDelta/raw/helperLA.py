@@ -1,5 +1,5 @@
 import numpy as np
-#import scipy as np
+import scipy as sp
 
 #https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html
 
@@ -11,6 +11,9 @@ def inv(A):
 
 def det(A):
 	return np.linalg.det(A)
+
+def expm(A):
+	return sp.linalg.expm(A)
 
 def checkLEsolution(A, x, b):
 	return np.allclose(np.dot(A, x), b)

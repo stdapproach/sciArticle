@@ -13,48 +13,11 @@ $$
 Eigenvalues of symmetric real matrix all are real, Eigenvalues of symmetric positive definite matrix are positive number (at Vibration theory this case corresponds to the fact that all eigen frequency are square root of eigenvalues).
 Eigenvalues of skew-symmetric matrices (which arised at Vibration of rotor) could be complex value.
 
-There are a lot of tutorial regarding Eigenvalues and Eigenvectors:
-* Antsaklis, p.121
-* Balachandran, p.369
-* Beezer, p.415
-* Blanchard, p.262
-* Bottega, p.341
-* Cook, p.120
-* Garvan, p.207
-* Genta, p.99
-* Golub, p.347, p.439
-* Hirsh, p.32, p.83, p.95, p.119
-* Jack, 20.8
-* Kelly, p.388
-* Kwon, p.7
-* Lay, p.265
-* Luenberger, p.77
-* Malham pp.75
-* Meirovich, p.220, p.301, p.323
-* Nagy, p.318
-* Ogata, p.652
-* Paraskevopoulus, p.51
-* Petersen, p.30
-* Preumont, p.18
-* Rao, p.481, p.515, p.594, p.1006
-* Riley, p.272
-* Robinson, p.259, p.382
-* Saad, p.237
-* Sen, p.283
-* Schmitz, p.136, p.153
-* Skogestad, p.534
-* Underdown, p.105
-* Zill, p.201, p.312
-* Derivatives of Eigenvalues: Petersen p.10
+There are a lot of tutorial regarding Eigenvalues and Eigenvectors: Antsaklis (p.121), Balachandran (p.369), Beezer (p.415), Blanchard (p.262), Bottega ( p.341), Cook (p.120), Garvan (p.207), Genta (p.99), Golub (p.347, p.439), Hirsh (p.32, p.83, p.95, p.119), Jack (20.8), Kelly (p.388), Kwon (p.7), Lay (p.265), Luenberger (p.77), Malham (p.75), Meirovich (p.220, p.301, p.323), Nagy (p.318), Ogata (p.652), Paraskevopoulus (p.51), Petersen (p.30), Preumont (p.18), Rao (p.481, p.515, p.594, p.1006), Riley (p.272), Robinson (p.259, p.382), Saad (p.237), Sen (p.283), Schmitz (p.136, p.153), Skogestad (p.534), Underdown (p.105), Zill (p.201, p.312).
 
-Algorithm solving Eigenvalues and Eigenvectors could be found at  [Wilkinson, p.303]
-
-
-Proof following statement:
-==
+Algorithm solving Eigenvalues and Eigenvectors could be found at Wilkinson ( p.303)
 
 Petersen (p.10) provides interesting formulae regarding eigenvalue:
-==
 $$
 \frac{\partial }{\partial X}\sum{eig(X)}=\frac{\partial }{\partial X}Tr(X)=I\\
 \frac{\partial }{\partial X}\prod{eig(X)}=\frac{\partial }{\partial X}det(X)=det(X)X^{-T}\\
@@ -65,26 +28,19 @@ $$
 \partial v_i=(\lambda_iI-A)^{+}\partial(A)v_i
 $$
 
-----Examples of:
-* +Beezer p.416, pp.420-422, 423, 425, 428, 429 (complex Egenvalue), 431
-* -Bottega p.341
-* +Garvan, p.207
-* +Genta, p.104, -108
-* +Hirsh, p.31, p.85, p.97, p.98
-* --Jack, 20.8
-* +Kwon, p.7
-* --Lay p.266, p.267, p.270
-* +Malham p.77-81
-* -Meirovich, p.221, p.301
-* +Nagy, p.220, -222, -224
-* Ogata, p.652--
-* +Paraskevopoulus, p.52
-* -Rao p.515, p.594
-* +Riley, p.280, 282
-* -Robinson, p.-262, 265, 266
-* +Sen, p.-285, +287, 288, 289, 291
-* +Underdown, p.106
-* +Zill p.313
+Examples of Eigenvalues/Eigenvectors:
+* Beezer p.416, pp.420-422, 423, 425, 428, 429 (complex Egenvalue), 431
+* Garvan, p.207
+* Genta, p.104, -108
+* Hirsh, p.31, p.85, p.97, p.98
+* Kwon, p.7
+* Malham p.77-81
+* Nagy, p.220, -222, -224
+* Paraskevopoulus, p.52
+* Riley, p.280, 282
+* Sen, p.-285, +287, 288, 289, 291
+* Underdown, p.106
+* Zill p.313
 
 ??How to handle case with repeated eigenvalue
 
@@ -216,8 +172,8 @@ $$
 Script la_ex15.py delivers following output:
 $$
 \mathtt { {
-tstVals_= [ 1.03347556  9.02521764 21.44153025]\\
-Eigenvalues= [ 1.03352726  9.02522377 21.44124897]\\
+\text{tstVals_= [ 1.03347556  9.02521764 21.44153025]}\\
+\text{Eigenvalues= [ 1.03352726  9.02522377 21.44124897]}\\
 \text{tstVals == eigenvalues -> True  with atol= 0.0001}\\
 \text{tstVecs == Eigenvectors -> True  with atol= 0.0001}
 }}
@@ -245,8 +201,8 @@ $$
 Script la_ex16.py delivers following output:
 $$
 \mathtt { {
-tstVals_= [ 2  1 -1]\\
-Eigenvalues= [-1.  1.  2.]\\
+\text{tstVals_= [ 2  1 -1]}\\
+\text{Eigenvalues= [-1.  1.  2.]}\\
 \text{tstVals == eigenvalues -> True  with atol= 1e-07}\\
 \text{tstVecs == Eigenvectors -> True  with atol= 1e-07}
 }}
@@ -373,10 +329,10 @@ $$
 Script la_ex22.py delivers following output:
 $$
 \mathtt { {
-Eigenvalues= [0.-2.j 0.+2.j]\\
+\text{Eigenvalues= [0.-2.j 0.+2.j]}\\
 tstVals == eigenvalues -> True  with atol= 0.0001\\
-Eigenvectors= [[ 0.        +0.70710678j  0.        -0.70710678j]\\
- [-0.70710678-0.j         -0.70710678+0.j        ]]\\
+Eigenvectors= [[ 0.        +0.70710678j\space  0.        -0.70710678j]\\
+ [-0.70710678-0.j\space         -0.70710678+0.j        ]]\\
 \text{tstVecs == Eigenvectors -> True  with atol= 0.0001}
 }}
 $$
@@ -474,7 +430,3 @@ V=\left[\begin{matrix}
 \end{matrix}\right]
 $$
 
-qq
-qq
-qq
-qq

@@ -18,5 +18,6 @@ This brief introduction is belonged to following topics:
 * Matrix Algebra
 * Determinants
 * Eigenvalues and Eigenvectors
-* ?Matrix Decomposition
+* Matrix Decomposition
+* Matrix Exponent
 
