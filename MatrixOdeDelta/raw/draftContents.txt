@@ -44,58 +44,196 @@ Introduction
 			Wilkinson: Algo I.1, I.10, II.3, II.4, II.8
 	2.6 Matrix exponent
 		Agarval p.100
-		Beezer p.841
-		Bronson p.140, 254
-		Cook p.119
-		Dullerud p.63
-		Finan p.122
-		Golub p.530
-		Kwon p.6
-		Laub p.109
-		Moler p.1, 7, 8, 20, 21
-		Petersen p.59
-		Sen p.391
+		-Beezer p.841
+		-Bronson p.140, 254
+		-Cook p.119
+		-Dullerud p.63
+		-Finan p.122
+		+Golub p.530
+		+Kwon p.6
+		+Laub p.109
+		+Moler p.1, 7, 8, 20, 21
+		+Petersen p.59
+		+Sen p.391
+3. ODE (intro) LTI -> to Appendix C.??
+	numerical methods - ignore it
 
-3. ODE (intro) - LTI + constant coeff
+	fundamental solution
+		Bronson p.83, 254, 255, 258, 259
+		Chasnov p.75, 78, 80
+	SDOF:
+		Chasnov p.33, 35, 36, 40, 42, 48
+		Clough p.20, 25
+
+	Harmonic loading
+		Clough p.33, 36
+	Resonance (undamped/damped)
+		Chasnov p.43, 50
+		Clough p.42
+
+	moving base
+		Clough p.45
+
+	Periodic Loading
+		Clough p.65
+		
+	Normal Modes:
+		Chasnov p.86
+
+	Vibration isolation:
+		Clough p.48
+
+	Steady state:
+		Clough p.59
+	exp via Eig decomposition
+	order reduction/matrix decomp.
+		Bronson p.152
+	examples:
+		SDOF
+		MDOF
+3. SDOF
 	3.1 Single variable (only links) + common solution + 
 		examples Vibration/Control Theory for SDOF
-	3.2 Matrix ODE
-		fundamental solution
-		exp via Eig decomposition
-		examples for MDOF
-4. ODE with discontinious load
-	4.1 SDOF
-		my result + 2-3 examples
-	4.2 MDOF
-		governing formulae
-		examples
+		SDOF:
+			Adams p.1
+			Angeles, p.91
+			Antsaklis p.52, 155, 166
+			Astrem p.96, 100, 138, 141, 144, 148, 151, 154, 156, 183, 239
+			Balashandran p.127, 129, 133, 136, 139, 154, 159, 182, 194, 286,
+			Blanchard p.309, 314, 318, 326, 346, 355
+			Bottega p.76, 82, 86, 89, 95, 110, 113, 120
 
+	3.2 Matrix formalizm for SDOF
+	3.3 Matrix ODE
+		--fundamental solution
+		--exp via Eig decomposition
+		examples for SDOF
+			Blanchard p.270, 274, 277, 280, 286, 290, 296, 300, 333
+	3.4 free vibration
+		Clough p.15, 20, 27, 32
+	3.5 forced vibration (cont.)
+			step
+				Balashandran p.301, 306
+				Bottega p.232, 241
+			ramp input
+				Balashandran p.310
+			pulse
+				Balashandran p.317
+			half-sine
+				Balashandran p.322
+				Bottega p.252
+				Clough p.74
+			saw
+			ramp
+				Bottega p.247
+			rectangular pulse
+				Bottega p.249
+				Clough p.77
+			periodic force
+				Bottega p. 143, 151, 211
+			moving base:
+				Bottega p.193, 197, 199
+				Clough p.18
+			common force (smooth) (under/critical/upper damping)
+				Bottega p.231
+				Clough p.87, 94
+	3.6 forced vibr (discont.) + impulse response
+			impulse ODE
+				Balashandran p.140, 142, 264, 287, 293
+				Blanchard p.595, 601
+				Bottega p.230, 234, 236
+				chasnov p.65
+				Clough p.82
+
+4. MDOF
+	4.0 governing eq.
+		Balashandran p.340, 344, 350, 358
+		Bottega p.281, 291, 311, 319
+		Clough p.169, 2235
+	Normal Mode (natural mode)
+		Balashandran p.438, 464
+		Bottega p.342, 349, 353, 355, 375, 379, 422, 468, 634
+		Clough p.201, 204, 212, 219, 259, 285
+	4.1 free vibration
+		Astrem p.187
+		Balashandran p.369, 372, 379, 388, 392, 396
+		Bottega p.341, 355, 366, 371, 375, 379, 389
+		Clough p.201, 204
+		Cook p.122
+	4.2 state space appr.
+		Bottega 395
+		Cook p.114, 120, 132, 311
+	4.3 forced vibration (cont.)
+			governing:
+				Balashandran p.448, 453, 454, 471, 473, 526
+				Bottega p.415, 418, 433, 439
+				Clough p.221, 226, 232, 236, 245, 325, 354, 356
+				Cook p.125, 427
+			IC:
+				Balashandran p.474
+			moving base:
+				Balashandran p.530
+				Bottega p.462
+			step input:
+				Balashandran p.474
+				Bottega p.460			
+			saw
+				Bottega p.454
+			ramp:
+			periodic force (undamped and damped cases)
+				Bottega p.417, 446, 448, 476, 480, 493, 495
+			common force (smooth)
+				Bottega p.441, 442
+				Clough p.111
+
+			Eigenvector Expansion
+				Bottega p.483
+				Clough p.286, 290
+
+
+			mode isolation:
+				Bottega p.468, 470, 472
+				
+	4.3 forced vibr (discont.) + impulse response
+			impulse ODE
+				Balashandran p.145
+				Bottega p.452, 470, 487
+				Cook p.123, 125
+				
 
 Appendix A. Series and parallel springs
 Appendix B. Notes about Eigenvalue/Eigenvectors stuff
-Appendix C. SDOF Oscillator. Classic results
+Appendix C. LTI ODE. SDOF Oscillator. Classic results
 	free response
 	forced response
 		step, saw
 		periodic force
-		common force
-Appendix D Impulse ODE, examples
+		common force (smooth)
+	freq. response
+		Astrem p.152
+Appendix D?. Impulse ODE, examples
+Appendix F. Linearisation
+	Cook p.73
+Appendix G. Operational method
+	Bottega p.273
+	Chasnov p.53 
 
 References
 
-1. Introoduction to Math
-	1.1 Linear Algebra
-		1.1.1 Linear Equation + Matrix Algebra
-		1.1.2 Determinant
-		1.1.3 Solution SLAE
-		1.1.4 Decomposition
-			1.1.4.1 EigenValue, EigenVectors
-			1.1.4.2 SVD, LU, Cholesky
-	1.2 Ordinal Differential Equation (LTI, constant coeff.)
-	1.3 LTI ODE with discontinious load
-	1.3 Vibration SDOF
-		1.3.1 Classic theory
-		1.3.2 Delta load
-	1.4 Vibration 2DOF, MDOF
-		1.4.1 Classic theory
-		1.4.2 Delta load
+Condensation
+	Clough p.293, 313, 322
+
+Gyroscopic forces
+	??Complex-stiffness damping
+		Clough p.58
+	Balashandran p.406, 460, 467, 507, 510
+	Bottega p.200
+
+Cont. system:
+	Balashandran p.541, 562, 632
+	Bottega p.511, 579, 583, 587, 592, 601, 607, 610, 612, 624, 631, 634, 683, 690, 693, 703, 706
+	Clough p.365, 377, 397, 399, 401
+	Impulse response:
+		Balashandran p.638, 644
+		Bottega p.700, 701
+

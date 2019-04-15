@@ -31,7 +31,7 @@ $$
 e^{At}=S\cdot e^{\Lambda t}\cdot S^{-1}
 $$
 
-There are a lot of tutorial regarding matrix exponent: Golub (p.530), Kwon (p.6), Laub (p.109), Sen (p.391). Especially we recommend Moler's and Van Loan's article "Nineteen Dubious Ways to Compute the Exponential of a Matrix, Twenty-Five Years Later" (SIAM REVIEW, Vol. 45, No. 1, pp. 3–000)
+There are a lot of tutorial regarding matrix exponent: Astrem (p.136), Golub (p.530), Laub (pp.109-112), Sen (p.391). Especially we recommend Moler's and Van Loan's article "Nineteen Dubious Ways to Compute the Exponential of a Matrix, Twenty-Five Years Later" (SIAM REVIEW, Vol. 45, No. 1, pp. 3–000)
 
 #####Example 40 [Moler, p.8]
 $$
@@ -54,4 +54,18 @@ delta= \text{[[2.41855256e-07 9.96580909e-08]}\\
 \text{ [4.00911758e-07 2.40715559e-07]]}
 }}
 $$
+
+#####Example 41 [Kwon, p.6]
+$$
+A=\left[\begin{matrix}
+0.2190 & 0.6793 & 0.5194 \\
+0.0470 & 0.9347 & 0.8310 \\
+0.6789 & 0.3835 & 0.0346
+\end{matrix}\right]
+$$
+Calculate matrix exponent and compare with book's result, Wolfram Alfa's result (https://www.wolframalpha.com/examples/mathematics/algebra/matrices/) and output of script la_ex41.py
+
+qq
+qq
+qq
 

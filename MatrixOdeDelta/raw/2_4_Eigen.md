@@ -17,6 +17,14 @@ There are a lot of tutorial regarding Eigenvalues and Eigenvectors: Antsaklis (p
 
 Algorithm solving Eigenvalues and Eigenvectors could be found at Wilkinson ( p.303)
 
+Let $λ_1$, . . . , $λ_n$ be the (not necessarily distinct) eigenvalues of an n × n matrix A. Show the following (Agarwal, p.101):
+* the eigenvalues of $A^\intercal$ are $λ_1$, . . . , $λ_n$
+* for any constant α the eigenvalues of αA are $αλ_1$, . . . , $αλ_n$
+* $\sum_{i=1}^{n}=Tr(A)$
+* $\prod_{i=1}^{n}=det(A)$
+* if $A^{−1}$ exists, then the eigenvalues of $A^{−1}$ are $1/λ_1$, . . . , $1/λ_n$
+* if A is upper (lower) triangular, i.e., $a_{ij} = 0$, i > j (i < j), then the eigenvalues of A are the diagonal elements of A.
+
 Petersen (p.10) provides interesting formulae regarding eigenvalue:
 $$
 \frac{\partial }{\partial X}\sum{eig(X)}=\frac{\partial }{\partial X}Tr(X)=I\\
