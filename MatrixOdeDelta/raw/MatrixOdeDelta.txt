@@ -370,7 +370,7 @@ z22_Genta_Vibration_Dynamics_and_Control.pdf
 	impulse response: 179
 	transfer function: 187
 	reduce order: 213
-	?matrix exponential (the exponential of matrix): 98, 99, 812
+	?matrix exponential (the exponential of matrix): 98, 99, --812
 	ode solution: 99
 	?state-space
 	eigenvalues and eigenvectors: 99, -812
@@ -449,7 +449,7 @@ z24_Hangos_Process_Modelling_and_Model_Analysis.pdf
 	?NDOF
 
 27_Jack_Dynamic_system_modeling_and_control.pdf
-	impulse response: 618, 579
+	impulse response: -618, -579
 	transfer function: 125, 238, 310, 560, 562, 572
 	?reduce order
 	matrix exponential (the exponential of matrix): 630
