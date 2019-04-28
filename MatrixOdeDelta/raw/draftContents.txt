@@ -8,7 +8,7 @@ Introduction
 	determinant
 2. Linear Algebra (intro)
 ===================================
-	2.0 Complex number (intro)
+	2.0 Complex number (intro) -> Appendix
 ===================================	
 	2.1 Linear Equations (https://en.wikipedia.org/wiki/System_of_linear_equations)
 		36Lay, p.3
@@ -67,6 +67,20 @@ Introduction
 			ISBN: 978-0-470-72335-7
 
 		Blanchard p.53, 198, 627
+		Bronson p.157, 176, 195
+		Chasnov p.15, 31
+		Clough p.116
+		Dawkins p.94
+		Faulkner p.80
+		Finan p.188
+		Garvan p.157
+		Kelly p.340, 614
+		Krantz p.198
+		Mikles p.125
+		Rao p.428, 939
+		Riley p.1020
+		Robinson p.199
+		Underdown p.41
 
 	QUALITATIVE ANALYSIS + Phase Plane + Eq.Point
 		Albertos p.25
@@ -74,29 +88,74 @@ Introduction
 		Albertos p.56
 		Agarval p.168, 175, 177
 		Blanchard p.36, 77, 86, 112, 155, 171, 178, 240, 341, 612
+		Dawkins p.275
+		Finan p.102
+		Lewis p.12
+		Robinson p.247
+		Shmaliy p.119
+		Teschl p.145
 
 	Governing
 		Astrem p.41
 		Bottega p.76
+		Lewis p.7, 597
+		Luenberger p.133
+		Malham p.75
+		Weber p.410
 
 	First-Order Linear Equations
 		Agarval p.28
 		Albertos p.54
 		Blanchard p.151
+		Bronson p.42, 50
+		Chasnov p.19, 22
+		Dawkins p.19
+		Faulkner p.30
+		Hazewinkel p.11
+		MIT p.1
+		Nagy p.1, 11
+		Paraskevopoulos p.154
+		Riley p.468
+		Robinson p. 3
+		Shmaliy p.175
+		Underdown p.1
 
 	Second-Order Linear Equations
 		Agarval p.39, 40
 		Astrem p.170
 		Blanchard p.193, 269, 274, 277, 290, 297, 299, 309, 314, 318, 324, 328, 330, 333
-		Bottega p.82
+		Bottega p.82, 191
+		Bronson p.83, 114
 		Chasnov p.33, 35, 36, 40, 42, 48
-		Clough p.20, 25
-		Dawkins p.352
+		Clough p.15, 20, 25
+		Dawkins p.102, 109, 113, 118, 275, 284, 288, 294, 307, 352
+		Faulkner p.39
+		Finan p.86
+		Hazewinkel p.16
+		Malham p.5
+		Meirovitch p.80, 87
+		Nagy p.66, 116
+		Paraskevopoulos p.155, 158
+		Preumont p.1
+		Pytel p.548, 565
+		Robinson p.99
+		Shmaliy p.178
+
+	nth-order LTI
+		Bronson p.89
+		Hazewinkel p.131
+		Mikles p.84
+		Rao p.313, 315
+		Riley p.490
+		Underdown p.69
+
+	Reduction to first order (+matriciant)
+		Bronson p.140, 148
 
 	fundamental solution (The Total Time Response)
 		Angeles p.126, 141, 144
 		Astrem p.136, 153, 183
-		Bronson p.83, 254, 255, 258, 259
+		Bronson p.73, 83, 254, 255, 258, 259
 		Chasnov p.75, 78, 80
 		Finan p.122, 124
 		Genta p.187
@@ -107,97 +166,235 @@ Introduction
 		Ansaklis p.55, 125, 139, 145, 148
 		Astrem p.147
 		Blanchard p.250
+		Bronson p.148, 242, 250, 254, 257
+		Cook p.119, 139, 176
+		Dawkins p.243, 269, 271, 365
+		Finan p.110, 122
+		Hazewinkel p.209
+		Josephs p. 439
+		Larminat p.49
+		Laub p.109
+		Lay p.269
+		Luenberger p.113, 118
+		Malham p.85
+		Meirovitch p.186
+		Mikles p.69, 100
+		MIT p.23
+		Paraskevopoulos p.193, 198
+		Rowel p.3, 14, 15
+		Shmaliy p.223
+		Underdown p.109
+		Teschl p.47
 
 	Free Response
 		Angeles p.91, 97, 100
 		Albertos p.54
 		Astrem p.96
 		Bottega p.109, 111, 119, 121
+		Clough p.20, 28, 32, 201
+		Faulkner p.37
+		Larminat p.48
+		Malham p.15
+		Meirovitch p.219, 224, 232, 301, 309, 315, 320
+		Rao p.124, 146, 158, 162, 164, 203
 
-	Forced Response (smooth)
+	Forced Response (smooth) + Convolution integral
 		Albertos p.55
 		Angeles p.146, 156, 159, 203
 		Blanchard p.382
-		Freq. response
+		Clough p.87, 98, 111, 114, 219, 245
+		Kelly p.406, 410
+		Larminat p.49
+		Malham p.23
+		Meirovitch p.168, 345
+		Rao p.363, 367, 370, 372, 377, 380, 518, 620, 623, 625
+		Rowel p.4, 5, 6, 8
+		Shmaliy p.181
+		Silva 1-32, 1-33, 1-35, 2-18
+		Freq. response (the frequency domain)
 			Albertos p.63
-			Astrem p.41, 232
-			Clough p.33, 36, 65
+			Astrem p.41, 232			
 			Blanchard p.397, 401, 409
-			Bottega p.143, 147
+			Bottega p.143, 147, 211
+			Clough p.33, 36, 65, 67, 251, 256
+			Kelly p.246, 313, 411
+			Lewis p.37
+			Meirovitch p.109, 141, 186, 238, 336, 342
+			Mikles p.145, 153, 156
+			Paraskevopoulos p.74, 305
+			Preumont p.8
+			Pytel p.567, 569
+			Rao p.259, 270, 275, 278, 320, 326, 520
+			Shmaliy p.46, 239
 		Resonance
 			Angeles p.156
-			Chasnov p.43, 50
-			Clough p.42
+			Chasnov p.43, 50			
 			Blanchard p.413
 			Bottega p.154
+			Clough p.42
+			Malham p.33
+			Meirovitch p.118
+			Rao p.266
 		Beating
 			Bottega p.160
+			Meirovitch p.233
+			Preumont p.9
+			Rao p.63
+		Moving base (Kinematic load)
+			Angeles p.107
+			Bottega p.193, 197, 199, 243, 252
+			Clough p.18, 45, 49
+			Kelly p.330
+			Meirovitch p.128
+			Rao p.281, 285, 328, 398
+		Vibration isolation:		
+			Bottega p.179
+			Clough p.48
+			Cook p.168, 202
+			Kelly p.234, 411, 420, 424
+			Meirovitch p.131, 240
+			Preumont p.32
+		Steady state (gain):
+			Albertos p.60	
+			Agarval p.159
+			Clough p.59
+			Blanchard p. 421
+			Bottega p.149, 213
+			Hangos p.83, 103
+			Mikles p.120
+			Ogata p.159
+			Paraskevopoulos p.149
+			Rao p.319, 406, 514, 615
 
-	Response to Abrupt and Impulsive Inputs
+	Response to Abrupt and Impulsive Inputs (non periodic), System Responses to Test Signals
+		Meirovitch p.243, 248
 		First Order/Second Order:
 		Step Response
 			Angeles p.131, 135
 			Astrem p.47, 150
-		Ramp Response
+			Bottega p.232, 241
+			Faulkner p.58
+			Kelly p.326
+			Larminat p.27
+			Meirovitch p.162, 354
+			Mikles p.119
+			MIT p.7, 17, 29, 31
+			Rao p.387, 388, 414, 416, 418
+			Rowel p.28, 29
+			Shmaliy p.46, 157, 178, 183, 228
+		Rectangular Pulse
+			Bottega p.249
+			Meirovitch p.165, 246
+			Rao p.389
+		Ramp Response (ramp loading)
 			Angeles p.132, 135
+			Clough p.77
+			Dukkipati p.142
+			Kelly p.327
+			Meirovitch p.166
+			MIT p.8, 10, 34
+			Rao p.408
+			Rowel p.31
+		SINE›WAVE IMPULSE
+			Clough p.74
 		Impulse Response
 			Albertos p.55
 			Blanchard p. 595, 598
+			bottega p.230, 234, 236
+			Clough p.73, 82
+			Cook p.108, 111, 123, 125
+			Dukkipati p.125, 142
+			Faulkner p.57
+			Finan p.173
+			Jack 19.1, 19.9
+			Josephs p.180
+			Karris 1-12, 1-15, 6-1
+			Kelly p.317, 326, 366, 370, 372, 404, 435
+			Lewis p.48, 95, 102
+			Malham p.48
+			Meirovitch p.158
+			Mikles p.117
+			MIT p.8, 10, 33, 37
+			Nagy p.188, 191, 193, 198
+			Ogata p.15, 163, 178, 195
+			Paraskevopoulos p.77, 82, 83, 240
+			Preumont p.3
+			Rao p.141, 382, 384, 407, 409, 411, 412, 437, 511
+			Rowel p.25, 26, 27
+			Shmaliy p.44, 154, 163, 176, 182, 228, 305, 356, 373
+			Silva 13-47, 
+			Skogestad p.32, 125
+			Williams p.51, 63
 		Doublet Response
-			Angeles p.132, 135
-
-	Gain
-		Albertos p.60	
-		Agarval p.159
+			Angeles p.132, 135, 181
+			Rao p.385
 
 	Existence and Uniqueness of Solutions (+IVP)
 		Agarval p.45, 61, 68, 103, 109
 		Ansaklis p.21
 		Astrem p.95
 		Blanchard p.65, 246
+		Bronson p.110
+		Luenberger p.17
 
 	Continuous Dependence on Initial Conditions
 		Agarval p.84
 		Ansaklis p.26, 33, 45
 		Blanchard p.205
 
-	General Properties of Linear Systems
+	General Properties of Linear Systems (eig. decomposition)
 		Agarval p.116
 		Astrem p.28, 131
 		Blanchard p.114, 233, 243, 384
 		Bottega p.144
+		Finan p.64, 84, 96
+		Meirovitch p.53
+		Saad p.235
+		Shmaliy p.153
 
 	State-space
 		Ansaklis p.58, 65, 95, 165, 170, 227, 231, 248, 252, 265
 		Astrem p.34, 36, 37, 145, 211
+		Cook p.86, 88, 90, 114, 116, 119, 125, 311
+		Dukkipati p.126, 143
+		Dullerud p.57
+		Larminat p.47, 60
+		Lewis p.24
+		Mikles p.43, 66
+		Ogata p.29
+		Paraskevopoulos p.80, 82, 92, 193, 201, 213, 226
+		Rowel p.1, 20, 23
+		Shmaliy p.54, 195, 222
+		Williams p.48
 
 	Systems with Constant Coefficients
 		Agarval p.133
+		Meirovitch p.61
 
 	Two-Dimensional Autonomous Systems
 		Agarval p.181, 184, 187
 
-	moving base
-		Angeles p.107
-		Clough p.45
-
-	Normal Modes:
+	Normal Modes + Modal Analysis
 		Astrem p.142, 148
 		Chasnov p.86
+		Clough p.204, 211, 223, 226, 260, 267, 307
+		Faulkner p.66
+		Larminat p.49
+		Meirovitch p.229, 296
+		Rao p.654, 664, 668, 673, 678
+		Williams p.72
 
-	Vibration isolation:
-		Clough p.48
-		Bottega p.179
-
-	Steady state:
-		Clough p.59
-		Blanchard p. 421
-		Bottega p.149
+	Change basis 
+		Williams p.422
 
 	exp via Eig decomposition
 		Astrem p.180
-z30, z11
-3. SDOF
+4. Matrix ODE -> to Appendix
+	Chasnov p.75
+	Dukkipati p.125
+	Krantz p.216
+
+5. SDOF
 	3.1 Single variable (only links) + common solution + 
 		examples Vibration/Control Theory for SDOF
 		SDOF:
@@ -231,6 +428,7 @@ z30, z11
 			Hirsh p.44, 47, 51, 54, 56, 124, 130
 	3.4 free vibration
 		Clough p.15, 20, 27, 32
+		Kelly p.137
 	3.5 forced vibration (cont.)
 			step
 				Balashandran p.301, 306
@@ -252,10 +450,10 @@ z30, z11
 			rectangular pulse
 				Bottega p.249
 				Clough p.77
-			periodic force
+			periodic force (harmonic excitation)
 				Angeles p.156, 158
 				Bottega p. 143, 151, 211
-				Kelly p.327
+				Kelly p.205, 327
 			moving base:
 				Bottega p.193, 197, 199
 				Clough p.18
@@ -276,15 +474,39 @@ z30, z11
 				Finan p.176
 				Garvan p.168
 				Genta p.179
-				Kelly p.315, 326
+				Kelly p.174, 315, 320, 326, 361, 365
 
-4. MDOF
+
+2Degree-of-freedom
+	Kelly p.383, 410, 411, 416, 420, 423, 432, 434, 435, 438
+	Meirovitch p.208
+	Rao p.467
+
+	Impulse response
+		Kelly p.404, 405, 407, 435
+
+6. MDOF
 	4.0 governing eq.
 		Antasklis p.14, 16
 		Balashandran p.340, 344, 350, 358
-		Bottega p.281, 291, 311, 319
-		Clough p.169, 2235
+		Bottega p.281, 291, 296, 311, 319
+		Clough p.169, 223
 		Genta p.59, 93, 97, 115, 206
+		Finan p.122
+		Genta p.363, 401
+		Hangos p.163, 191
+		Kelly p.459, 495, 535, 544, 546, 558, 572, 594
+		Meirovitch p.280, 465, 549
+		Nagy p.201
+		Preumont p.17
+		Rao p.512, 553, 557, 560, 563, 566, 571, 572, 576, 578, 583, 586, 591, 598
+
+	FEA
+		Jack 27.1
+		Kelly p.689
+		Logan p.28, 151, 367, 647
+		Preumont p.167
+		Rao p.987
 
 	Normal Mode (natural mode)
 		Balashandran p.438, 464
@@ -300,10 +522,15 @@ z30, z11
 	4.1 free vibration
 		Astrem p.187
 		Balashandran p.369, 372, 379, 388, 392, 396
-		Bottega p.341, 355, 366, 371, 375, 379, 389
-		Clough p.201, 204
+		Bottega p.341, 355, 366, 371, 375, 379, 387
+		Clough p.201, 204, 356
 		Cook p.122
 		Genta p.109, 115, 118, 125
+		Faulkner p.66
+		Kelly p.533
+		Meirovitch p.215
+		Preumont p.18
+		Rao p.474, 477, 480, 481, 483, 491, 493, 504, 507, 511, 601, 603, 606
 
 	4.2 state space appr.
 		Bottega 395
@@ -311,48 +538,88 @@ z30, z11
 		Dullerud p.57, 74, 81, 84
 		Genta p.126
 
+	Modal coord (Modal analisys)
+		Bottega p.422, 427, 432, 439, 442
+		Kelly p.611
+
+		mode isolation:
+				Bottega p.468, 470, 472
+
+	eigenvector Expansion
+		Bottega p.483, 487
+		Rao p.596
+		Underdown p.105
+
 	4.3 forced vibration (cont.)
 			governing:
 				Balashandran p.448, 453, 454, 471, 473, 526
-				Bottega p.415, 418, 433, 439
-				Clough p.221, 226, 232, 236, 245, 325, 354, 356
+				Bottega p. 415, 418, 433, 439, 480
+				Clough p.221, 226, 232, 236, 245, 305, 325, 336, 354, 377
 				Cook p.125, 427
+				Faulkner p.74
+				Kelly p.593, 604, 613, 620
+				Rao p.472, 492, 499, 502, 608, 610
 			IC:
 				Balashandran p.474
-			moving base:
+			moving base (kinematic load):
 				Balashandran p.530
 				Bottega p.462
 			step input:
 				Balashandran p.474
-				Bottega p.460			
+				Bottega p.460	
+				Kelly p.604		
 			saw
 				Bottega p.454
 			ramp:
-			periodic force (undamped and damped cases)
+			periodic force (undamped and damped cases), Harmonic Excitation
 				Bottega p.417, 446, 448, 476, 480, 493, 495
 				Faulkner p.70
+				Kelly p.410, 594, 598, 607, 614, 620
 				Josephs p.450
+
+				Steady State
+					Bottega p.416
+					Rao p.495
 			common force (smooth)
 				Bottega p.441, 442
 				Clough p.111
 				Genta p.184
+				Kelly p.609
+
+			kinematic excitation
+				Kelly p.606
 
 			Eigenvector Expansion
 				Bottega p.483
-				Clough p.286, 290
-
-
-			mode isolation:
-				Bottega p.468, 470, 472
+				Clough p.286, 290			
 				
 	4.4 forced vibr (discont.) + impulse response
-			impulse ODE
-				Balashandran p.145
+			impulse Loading
+				Balashandran p.145, 471
 				Bottega p.452, 470, 487
 				Cook p.123, 125
 				Karris, 6.1
-				
-
+				Kelly p.404, 498, 572, 599, 600, 605, 609, 613, 615, 616, 624
+				Faulkner p.66
+			Arbitrary Loading
+				Step Loading
+					Bottega p.492
+	
+Background material			
+Appendix 0. Complex numbers (intro)
+	Chasnov p.8
+	Clough p.21, 25
+	Garvan p.271
+	Karris app.B
+	Kottkere p.34
+	Riley p.83
+	Lewis p.617
+	Rao p.57
+	Riley p.83
+	Robinson p.379
+	+ Arnold V. Introduction to ... (in Russian)
+Appendix
+	Normal modes
 Appendix A. Series and parallel springs
 Appendix B. Notes about Eigenvalue/Eigenvectors stuff
 Appendix C. LTI ODE. SDOF Oscillator. Classic results
@@ -365,13 +632,39 @@ Appendix C. LTI ODE. SDOF Oscillator. Classic results
 		Astrem p.152
 Appendix D?. Impulse ODE, examples
 Appendix G. Operational method
-	Ansaklis p.154
-	Bottega p.273
-	Chasnov p.53 
-	Dawkins p.181
-	Finan p.127, 156, 161, 163, 181
-	Garvan p.164
-	Blanchard p.560
+	ODE
+		Ansaklis p.154
+		Bottega p.273
+		Chasnov p.53 
+		Dawkins p.161, 181
+		Finan p.127, 156, 161, 163, 181
+		Garvan p.164
+		Blanchard p.560
+		Bottega p.273
+		Bronson p.211, 330
+		Dukkipati p.75
+		Finan p.127, 179
+		Garvan p.164
+		Genta p.187, 831
+		Karris 2-1, 4-1
+		Kelly p.599, 827
+		Kottkere p.17, 40
+		Krantz p.168
+		Larminat p.34
+		Malham p.41
+		Meirovitch p.759
+		Mikles p.51
+		Nagy p.155
+		Paraskevopoulos p.31
+		Rao p.1048
+		Shmaliy p.276
+		Underdown p.87
+		Williams p.63
+	System ODE
+		Bronson p.249
+		Dawkins p.363
+		Finan p.179
+		Kelly p.599
 //==============================================
 References
 
@@ -382,6 +675,12 @@ Model reduction
 	Dullerud p.147
 	Genta p.213
 	Hangos p.358
+	Cook p.147, 188, 193, 242, 244
+	Dullerud p.152
+	Genta p.213
+	Hangos p.350
+	Krantz p.30
+	Logan p.369
 
 Linearisation
 	Albertos p.24, 25
@@ -390,6 +689,16 @@ Linearisation
 	Cook p.73
 	Faulkner p.76
 	Josephs p.463
+	Meirovitch p.57
+	Shmaliy p.65, 77
+	Williams p.17
+
+Sensitivity
+	Paraskevopoulos p.166
+
+Stability
+	Paraskevopoulos p.263
+	Shmaliy p.109
 
 Time scale decomposition
 	Albertos p.87
@@ -402,13 +711,54 @@ Gyroscopic forces
 	Dullerud p.99, 103, 110, 115
 	Genta p.421, 577
 	Ginsberg p.637
+	Faulkner p.103
+	Ginsberg p.637
+
+Unbalanced masses:
+	Bottega p.201
+	Faulkner p.53, 97
+	Meirovitch p.120
+	Rao p.288, 290
+
+Rotating system
+	Balashandran p.409
+	Faulkner p.34, 97, 100
+	Genta p.577
+	Josephs p.661
+	Preumont p.185
 
 Cont. system:
-	Balashandran p.541, 562, 632
+	Balashandran p.541, 562, 632, 638
 	Bottega p.511, 579, 583, 587, 592, 601, 607, 610, 612, 624, 631, 634, 683, 690, 693, 703, 706
 	Clough p.365, 377, 397, 399, 401
 	Genta p.263, 321
+	Kelly p.633
+	Meirovitch p.374
+	Preumont p.77
+	Rao p.699
+
+	Free vibration
+		Bottega p.579, 601, 637, 664, 668, 672
+		Rao p.714, 718, 723
+
+	Forced vibration
+		Modal Expansion
+			Bottega p.684, 68s
+			Bronson p.318
+			Clough p.377, 397
+			Rao p.730
+
+		Periodic load
+			Bottega p.690, 697, 703
+
+		Moving load
+			Bottega p.701
+
+		Moving base
+			Bottega p.706
+
 	Impulse response:
 		Balashandran p.638, 644
 		Bottega p.700, 701
+		Kelly p.842
 
