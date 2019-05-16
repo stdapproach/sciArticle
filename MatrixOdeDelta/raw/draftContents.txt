@@ -81,6 +81,7 @@ Introduction
 		Riley p.1020
 		Robinson p.199
 		Underdown p.41
+		Zill p.75, 339
 
 	QUALITATIVE ANALYSIS + Phase Plane + Eq.Point
 		Albertos p.25
@@ -119,6 +120,7 @@ Introduction
 		Robinson p. 3
 		Shmaliy p.175
 		Underdown p.1
+		Zill p.34, 53, 83
 
 	Second-Order Linear Equations
 		Agarval p.39, 40
@@ -148,9 +150,11 @@ Introduction
 		Rao p.313, 315
 		Riley p.490
 		Underdown p.69
+		Zill p.117, 181
 
 	Reduction to first order (+matriciant)
 		Bronson p.140, 148
+		Zill p.130
 
 	fundamental solution (The Total Time Response)
 		Angeles p.126, 141, 144
@@ -185,6 +189,7 @@ Introduction
 		Shmaliy p.223
 		Underdown p.109
 		Teschl p.47
+		Zill p.303, 334
 
 	Free Response
 		Angeles p.91, 97, 100
@@ -197,6 +202,7 @@ Introduction
 		Malham p.15
 		Meirovitch p.219, 224, 232, 301, 309, 315, 320
 		Rao p.124, 146, 158, 162, 164, 203
+		Zill p.182, 186, 311
 
 	Forced Response (smooth) + Convolution integral
 		Albertos p.55
@@ -211,6 +217,7 @@ Introduction
 		Rowel p.4, 5, 6, 8
 		Shmaliy p.181
 		Silva 1-32, 1-33, 1-35, 2-18
+		Zill p.189, 326
 		Freq. response (the frequency domain)
 			Albertos p.63
 			Astrem p.41, 232			
@@ -306,14 +313,14 @@ Introduction
 			Dukkipati p.125, 142
 			Faulkner p.57
 			Finan p.173
-			Jack 19.1, 19.9
+			Jack 19.1, 19.3, 19.9
 			Josephs p.180
 			Karris 1-12, 1-15, 6-1
 			Kelly p.317, 326, 366, 370, 372, 404, 435
 			Lewis p.48, 95, 102
 			Malham p.48
 			Meirovitch p.158
-			Mikles p.117
+			Mikles p.100, 117
 			MIT p.8, 10, 33, 37
 			Nagy p.188, 191, 193, 198
 			Ogata p.15, 163, 178, 195
@@ -660,6 +667,7 @@ Appendix G. Operational method
 		Shmaliy p.276
 		Underdown p.87
 		Williams p.63
+		Zill p.255
 	System ODE
 		Bronson p.249
 		Dawkins p.363

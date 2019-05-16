@@ -1,0 +1,97 @@
+draftImpulseResponse
+
+1. Theory implication
+	firstOrder ODE
+		Angeles p.116
+		Mikles p.118
+		MIT p.8, 10
+		Ogata p.15, 161, 163
+		Rao p.407
+		Shmaliy p.44, 176, 305
+		Williams p.51
+	1DOF (2ndOrder)
+		Angeles p.119, 120
+		Balachandran p.140, 287, 293
+		Bottega p.235
+		Faulkner p.57
+		Genta p.180
+		Kelly p.315, 326
+		Lewis p.105
+		Meirovitch p.158
+		MIT p.33, 36
+		Nagy p.188
+		Ogata p.178
+		Preumont p.3
+		Rao p.382, 409, 411, 437
+		Shmaliy p.182
+		-Silva 1-32, 1-33, 1-34, 2-18, 3-29
+	2DOF (2ndOrder)
+		--Clough p. --82, --109
+		Balachandran p.142, 474
+		Rao p.511
+	NDOF (2ndOrder)
+		Albertos p.55
+		--Bottega p.487
+		Cook p. 114, 119, 123
+		Karris 6-1
+		Lewis p.48
+		--Mikles p.118
+		Ogata p.699
+		Paraskevopoulos p.77, 82, 83, 240
+		Rowel p.25
+		Shmaliy p.228, 318
+		Skogestad p.125
+		Williams p.63
+	Cont.
+		Balachandran p.637, 644
+		Bottega p.697
+		Clough p.397
+		Genta p.263, 271, 298
+		Meirovitch p.374
+
+2. Examples
+	firstOrder ODE
+		Angeles p.116
+		Jack 19.5
+		Finan p.176
+		Karris 6-1
+		Mikles p.118
+		Nagy p.191
+		Ogata p.163
+		Shmaliy p.44, 176, 305
+	1DOF (2ndOrder)
+		Angeles p.119, 122
+		Balachandran p.264, 293, 294
+		Blanchard p. 598, 600
+		Bottega p.235-236, 238
+		Chasnov p.65
+		Dawkins p.234
+		Finan p.177, 178
+		Garvan p.168
+		Genta p.180
+		Karris 6-2, 6-3
+		Kelly p.316, 326
+		Lewis p.49, 105, 109
+		Malham p.48
+		MIT p.37, 38
+		Nagy p.189, 190
+		Ogata p.195
+		Rao p.384, 385
+		
+	2DOF (2ndOrder)
+		Balachandran p.--474
+		Bottega p.452, 470, 472, 488
+		--Dukkipati p.157
+		Kelly p.396 (IC), 404, 405, 572 (IC)
+	NDOF (2ndOrder)
+		Dukkipati p.211
+		Paraskevopoulos p.241
+		Rowel p.26
+		Shmaliy p.228, 318
+	Cont.
+		Balachandran p.638, 644, 646
+		Bottega p.700, 701
+		Clough p.399
+		Graff p.91, 167
+
+
