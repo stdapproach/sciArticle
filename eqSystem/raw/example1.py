@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import sys
-sys.path.append('../ODE_Delta/raw')
+sys.path.append('../../ODE_Delta/raw')
 
 import helper as hlp
 
 T1 = .1
 x10 = T1*2
 
-title1 = 'Example1. ???'
+title1 = 'Example1'
 
 def y_ex1(t):
 	return T1*(np.exp(-t*T1))
@@ -56,7 +56,6 @@ def showNumSol(plt, Z1, Z2, fy_an, title):
 	plt.subplot(212)
 	vt = Z1[:,0]
 	vy = Z1[:,1]
-	#plt.plot(vt, vy, 'bo', markevery=5, color='r', label="Numerical")
 	plt.plot(vt, vy-vy2, 'k', markevery=5, color='b', label="Error")
 	plt.ylabel("Error")
 	plt.legend();
