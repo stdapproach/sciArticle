@@ -21,8 +21,8 @@ Z = hlp.mkSlnT1_c(va, b, c, IC0, t0, tb, N)
 
 plt.xkcd()
 
-#hlp.showNumSolution(plt, Z, y_ex, title1)
-hlp.showNumSolutionWithError(plt, Z, y_ex1, title1)
+#hlp.showNumSolution(plt, Z, y_ex1, title1)
+hlp.showNumSolutionWithErrorTogether(plt, Z, y_ex1, title1)
 Z0 = hlp.mkZrowByIC(t0, IC0)
 Z2 = hlp.stack(Z0, Z)
 hlp.showPhase(plt, Z2, title1)

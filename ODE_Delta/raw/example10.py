@@ -19,8 +19,4 @@ N = 100
 
 Z = hlp.mkSlnT1_c(va, b, c, IC0, t0, tb, N)
 
-plt.xkcd()
-
-#hlp.showNumSolution(plt, Z, y_ex, title1)
-#print(Z)
-hlp.showNumSolutionWithError(plt, Z, y_ex1, title1)
+hlp.showNumSolutionWithErrorTogether(plt, Z, y_ex1, title1)

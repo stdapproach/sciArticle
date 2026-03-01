@@ -16,13 +16,10 @@ N = 100
 
 def y_ex(t):
 	return (1/(a*b))*(d-(b*(d-a)/(b-a))*np.exp(-a*t)+(a*(d-b)/(b-a))*np.exp(-b*t))
-#====================
-plt.xkcd()
-#Z1 = hlp.mkSlnT1_a(va, b, IC0, t0, tb, N)
+
 Z1 = hlp.mkSlnT2_a(va, vb, IC0, t0, tb, N)
 
-hlp.showNumSolutionWithError(plt, Z1, y_ex, title1)
-#hlp.showNumSolution(plt, Z1, y_ex, title1)
+hlp.showNumSolutionWithErrorTogether(plt, Z1, y_ex, title1)
 Z0 = hlp.mkZrowByIC(t0, IC0)
 Z2 = hlp.stack(Z0, Z1)
 hlp.showPhase(plt, Z2, title1)

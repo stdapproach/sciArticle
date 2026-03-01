@@ -23,7 +23,7 @@ def mkVecD_Type2(va, vb):
 	n = np.size(va,0)-1
 	r = np.zeros((n))
 	m = np.size(vb, 0)
-	for i in range( 0,  m):
+	for i in range(0,  m):
 		#print("i=", i)
 		#print("n-1-i=", n-1-i)
 		r[n-1-i] = vb[m-1-i]
@@ -154,7 +154,7 @@ def mkSlnT1_c(va, vb, vc, IC0, t0, tb, N):
 	n = rows(vcb)
 
 	if n == 0:
-		Z = mkSlnT1_a(va, b, IC0, t0, tb, N)
+		Z = mkSlnT1_a(va, vb, IC0, t0, tb, N)
 		return Z
 	else:
 		#
@@ -202,14 +202,14 @@ def mkSlnT1_c(va, vb, vc, IC0, t0, tb, N):
 
 
 def sortByColumn(A, cIndex):
-	ind = np.argsort( A[:,cIndex] ); 
+	ind = np.argsort( A[:,cIndex] )
 	r = A[ind]
 	return r
 
 def rows(A):
 	d = np.ndim(A)
 	if d == 1:
-		return 1;
+		return 1
 	#
 	r = np.shape(A)[0]
 	return r
@@ -218,7 +218,7 @@ def cols(A):
 	d = np.ndim(A)
 	#
 	if d == 1:
-		return np.shape(A)[0];
+		return np.shape(A)[0]
 	else:
 		return np.shape(A)[1]	
 
@@ -262,15 +262,20 @@ def showSimpleChart(plt, Z, indX, indY, title=""):
 	plt.show()
 
 def showNumSolution(plt, Z, fy_an, title):
+	plt.xkcd()
+	plt.grid(True)
 	plt.title(title)
+
 	vt = Z[:,0]
 	vy = Z[:,1]
-	plt.plot(vt, vy, 'bo', markevery=5, color='r', label="Numerical")
-	plt.plot(vt, fy_an(vt), 'k', markevery=5, color='b', label="Analytical")
+	plt.plot(vt, vy, 'k', markevery=5, color='b', label="Numerical")
+
+	if fy_an is not None:
+		plt.plot(vt, fy_an(vt), 'bo', markevery=5, color='r', label="Analytical")
 	plt.xlabel("Time")
 	plt.ylabel("y(t)")
-	plt.legend();
-	plt.grid(True)
+	plt.legend()
+
 	plt.show()
 
 def addAnnotate(Z,index, plot):
@@ -297,7 +302,7 @@ def showPhase(plt, Z, title):
 	plt.ylabel("y'")
 
 	addAnnotationToPhase(Z, plt)
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.show()
@@ -312,21 +317,21 @@ def showNumSolution3(plt, Z, fy_an, title):
 	plt.title(title)
 	plt.plot(vt, fy_an(vt), 'k', markevery=5, color='b', label="Analytical")
 	plt.xlabel("Time")
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.subplot(312)
 	plt.plot(vt, vy_t, 'k', color='b', label="y'(t)")
 	plt.xlabel("Time")
 	plt.ylabel("y'")
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.subplot(313)
 	plt.plot(vt, vy_t2, 'k', color='r', label="y''(t)")
 	plt.xlabel("Time")
 	plt.ylabel("y''")
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.show()
@@ -339,7 +344,7 @@ def showPhase3(plt, Z, title):
 	plt.ylabel("y'")
 
 	addAnnotationToPhase(Z, plt)
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.show()
@@ -352,7 +357,7 @@ def showNumSolutionWithError(plt, Z, fy_an, title):
 	plt.plot(vt, vy, 'bo', markevery=5, color='r', label="Numerical")
 	plt.plot(vt, fy_an(vt), 'k', markevery=5, color='b', label="Analytical")
 	plt.ylabel("y(t)")
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
 
 	plt.subplot(212)
@@ -361,8 +366,37 @@ def showNumSolutionWithError(plt, Z, fy_an, title):
 	plt.plot(vt, vy-fy_an(vt), 'k', markevery=5, color='r', label="Error")
 	plt.xlabel("Time")
 	plt.ylabel("error(t)")
-	plt.legend();
+	plt.legend()
 	plt.grid(True)
+	plt.show()
+
+def showNumSolutionWithErrorTogether(plt, Z, fy_an, title):
+	vt = Z[:,0]
+	vy = Z[:,1]
+	# Create figure and first axis
+	plt.xkcd()
+	fig, ax1 = plt.subplots()
+	plt.title(title)
+
+	# Plot first line on left y-axis
+	ax1.set_ylabel("y(t)")
+	if fy_an is not None:
+		ax1.plot(vt, fy_an(vt), 'k', linestyle='solid', markevery=5, color='tab:blue', label="Analytical")
+	ax1.plot(vt, vy, 'bo', markevery=5, color='r', label="Numerical")
+	ax1.legend()
+
+	# Create a second y-axis that shares the same x-axis
+	ax2 = ax1.twinx()
+	if fy_an is not None:
+		ax2.plot(vt, vy - fy_an(vt), 'k', markevery=5, color='tab:green', label="Error")
+		ax2.set_ylabel("Error(t)")
+	plt.xlabel("Time")
+
+	#h1, l1 = ax1.get_legend_handles_labels()
+	#h2, l2 = ax2.get_legend_handles_labels()
+	#plt.legend(h1 + h2, l1 + l2, loc='upper right')
+
+	plt.legend()
 	plt.show()
 
 #Make heaviside "theta" function

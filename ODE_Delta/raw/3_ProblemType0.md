@@ -1,183 +1,149 @@
-###3. A problem Type 0
-This part regarding the following problems.
+### 3. Problem Type 0
 
-Type 0a
-$$\begin{cases}L_n(y)=b\delta(t),\\
-IC_0, n \ge 1
-\end{cases}$$
+This section addresses problems of the following forms:
 
-Type 0b
-$$\begin{cases}
-L_n(y)=b\delta(t-c),\\
-IC_0, n \ge 1
-\end{cases}$$
+| **Type 0a** | **Type 0b** | **Type 0c** |
+|--------------|----------------|---------------|
+| $\begin{cases} L_n(y) = b \,\delta(t), \\[2pt] \mathbf {IC}_0, \quad n \ge 1 \end{cases}$ | $\begin{cases}L_n(y) = b \,\delta(t - c), \\[2pt]\mathbf{IC}_0, \quad n \ge 1\end{cases}$ | $\begin{cases}L_n(y) = \displaystyle\sum_{i=0}^k b_i \,\delta(t - c_i), \\[4pt]\mathbf{IC}_0, \quad n \ge 1\end{cases}$ |
 
-Type 0c
-$$\begin{cases}
-L_n(y)=\sum_{i=0}^k b_i\delta(t-c_i),\\
-IC_0, n \ge 1
-\end{cases}$$
+Without loss of generality we set $t_0 = 0$; for time‑invariant systems with a different initial time, one may simply shift the time variable via $t^* = t - t_0$.
 
-We suppose that $t_0=0$, otherwise for such time-invariant systems we could just change time variable as $t^*=t-t_0$.
-####3.1 Problem Type 0a
-Find an IC for homogenous system which delivers the equivalence for non-homogenous one.
-At this case 'equivalence' means:
-$$z(t)=y(t), \forall t\ge  t_0 $$
-for the next systems: a given non homogenous system
-$$
+### 3.1 Problem Type 0a
+
+We seek initial conditions for the homogeneous system that yield a solution identical to that of the nonhomogeneous one. Specifically, we require
+$z(t) = y(t) \quad \forall\, t \ge 0$
+for the two systems:
+$
 \begin{cases}
-L_n(\{a\},y)=b\delta(t)\\
-IC|_{t_0=0}=IC_y
+L_n(\{a\}, y) = b \,\delta(t) \\[2pt]
+IC|_{t_0=0} = \mathbf{IC}_y
 \end{cases}
-$$
-the homogenous system which IC supposed to be found
-$$
+\qquad\text{and}\qquad
 \begin{cases}
-L_n(\{a\},z)=0\\
-IC_z
+L_n(\{a\}, z) = 0 \\[2pt]
+IC_z \quad \text{(to be determined)}
 \end{cases}
-$$
-#####3.1.1 Laplace Transform
-In mathematics, the Laplace transform (LT) is an integral transform. It takes a function of a real variable t (often time) to a function of a complex variable s (complex frequency).
-LT are usually restricted to functions of t with t ≥ 0.
-LT is invertible on a large class of functions. The inverse Laplace transform takes a function of a complex variable s (often frequency) and yields a function of a real variable t (time).
-LT could be usefull solving differenfial equation, integral equation and so on.
-So, for example, Laplace transformation from the time domain to the frequency domain transforms differential equations into algebraic equations and convolution into multiplication.
+$
 
-You could found a lot of information regarding LT over here:
-$\circ$     https://en.wikipedia.org/wiki/Laplace_transform
-$\circ$Cohen (p.12)
-$\circ$Nagy (p.196)
-$\circ$Weber (p.693)
-$\circ$table of LT for some function [Schiff p.210]
+#### 3.1.1 The Laplace Transform
 
-#####3.1.2 LT for ODE
-The Laplace transform method for solving ODE could be summarized by the following steps:
-$\circ$Take the Laplace transform of both sides of the equation.
-$\circ$Obtain an equation $L(y)=F(s)$, where $F(s)$ is an algebraic expression in the variable s.
-$\circ$Apply the inverse transform to yield the solution $y(t)=L^{-1}(F(s))$.
-More information about solving ODE by LT you could found over here:
-$\circ$ Kohen (p.7)
-$\circ$ Schiff Schiff (p.59)
-$\circ$	Xue p.380 provided a table for inverse LT for some functions
-#####3.1.3 Find a solution for Type 0b
-To solve the problem Type 0a let's perform Laplace Transform (LT) for $y(t)$ with respect to non-null initial condition.
-$$
-LT\{y(t)\}=Y(s)
-$$
-$$
-Y(s)=LT\left\{\sum_{i=0}^n \left( a_iy^{(n-i)}(t)-b\delta(t)\right)\right\}=\sum_{i=0}^n \left( a_iL\{y^{(n-i)}(t)\}\right)-bL\{\delta(t)\}
-$$
-$$\begin{equation}\begin{aligned}
-LT\{a_0y^{(n-0)}\}&=a_0\left[s^nY-s^{n-1}y(0)-s^{n-2}y'(0)-s^{n-3}y''(0)- ...-s^1y^{(n-2)}(0)-s^0y^{(n-1)}(0)\right]\\
+The Laplace transform (LT) is an integral transform that maps a function of a real variable $t$ (typically time) into a function of a complex variable $s$ (complex frequency). It is defined for functions on $[0,\infty)$ and is invertible on a large class of functions. The LT is particularly useful for solving differential and integral equations, as it converts differentiation into multiplication by $s$ and convolution into ordinary multiplication.
 
-LT\{a_1y^{(n-1)}\}&=a_1\left[s^{n-1}Y-s^{n-2}y(0)-s^{n-3}y'(0)-s^{n-2}y''(0)- ...-s^1y^{(n-3)}-s^0y^{(n-2)}(0)\right]\\
+A comprehensive treatment of the Laplace transform can be found in: Cohen (p. 12), Nagy (p. 196), Weber (p. 693), Schiff (p. 210, table of transforms), the Wikipedia article on the Laplace transform
 
-LT\{a_2y^{(n-2)}\}&=a_2\left[s^{n-2}Y-s^{n-3}y(0)-s^{n-4}y'(0)-s^{n-5}y''(0)- ...-s^1y^{(n-4)}(0)-s^0y^{(n-3)}(0)\right]\\
-&...\\
+#### 3.1.2 Laplace Transform Method for ODEs
 
-LT\{a_{n-1}y'\}&=a_{n-1}\left[s'Y-s^0y(0) \right]\\
+The procedure for solving an ODE via the Laplace transform consists of three steps:
+1. Apply the Laplace transform to both sides of the equation.
+2. Solve the resulting algebraic equation for $Y(s) = \mathcal{L}\{y(t)\}$.
+3. Compute the inverse Laplace transform to obtain $y(t) = \mathcal{L}^{-1}\{Y(s)\}$.
 
-LT\{a_{n}y\}&=a_{n}Y\\
+Additional details on this technique can be found in:
+Cohen (p. 7), Schiff (p. 59), Xue (p. 380, table of inverse transforms)
 
--bLT\{\delta(t)\}&=-be^{(-s)0}=-b
+#### 3.1.3 Solution of Type 0a
 
-\end{aligned}\end{equation}$$
+Let $Y(s) = \mathcal{L}\{y(t)\}$. Applying the Laplace transform to the ODE
+$
+\sum_{i=0}^n a_i y^{(n-i)}(t) = b\,\delta(t)
+$
 
-Let's using (1.2) and rewrite at this way:
+and using the differentiation rule
+$
+\mathcal{L}\{y^{(k)}(t)\} = s^k Y(s) - s^{k-1}y(0) - s^{k-2}y'(0) - \cdots - y^{(k-1)}(0),
+$
 
-$$\begin{equation}\begin{aligned}
-LT\{y(t)\} = &s^n\left(a_0Y\right)+\\
-  & s^{n-1}\left(a_1Y-a_0y_0\right)+\\
-  & s^{n-2}\left(a_2Y-a_1y_0-a_0y_1\right)+\\
-  & s^{n-3}\left(a_3Y-a_2y_0-a_1y_1-a_0y_2\right)+\\
-  & ...\\
-  & s^1\left(a_{n-1}Y-\sum_{i=0}^{n-2} a_{n-2-i}y_i\right)+\\
-  & s^0\left(a_{n}Y-\sum_{i=0}^{n-1} a_{n-1-i}y_i+b\right)=\\
-  & =\sum_{i=0}^{n} s^{n-i}a_iY-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}y_j\right)-b
-\end{aligned}\end{equation}$$
-
-Let's perform LT for $z(t)$ with respect to non-null initial condition.
-$$
-LT\{z(t)\}=Z(s)
-$$
-$$\begin{equation}\begin{aligned}
-LT\{z(t)\} = \sum_{i=0}^{n} s^{n-i}a_iZ-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}z_j\right)
-\end{aligned}\end{equation}$$
-$$
-y(t)=z(t)\implies Y(s)=Z(s)\implies\\
-\sum_{i=0}^{n} s^{n-i}a_iY-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}y_j\right)-b=\sum_{i=0}^{n} s^{n-i}a_iZ-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}z_j\right)
-$$
-Due to
-$$
-s^{n-i}a_iY=s^{n-i}a_iZ, i=0...n\implies
-$$
+we obtain an algebraic equation. Collecting terms by powers of $s$ yields
 
 $$
-\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}y_j\right)-b=\sum_{i=1}^{n}\left(s^{n-i}\sum_{j=0}^{i-1}a_{(i-1)-j}z_j\right)\implies
+\begin{aligned}
+0 = &\ s^n (a_0 Y) \\
+    &+ s^{n-1} \bigl(a_1 Y - a_0 y_0\bigr) \\
+    &+ s^{n-2} \bigl(a_2 Y - a_1 y_0 - a_0 y_1\bigr) \\
+    &+ s^{n-3} \bigl(a_3 Y - a_2 y_0 - a_1 y_1 - a_0 y_2\bigr) \\
+    &+ \cdots \\
+    &+ s^1 \Bigl(a_{n-1} Y - \sum_{i=0}^{n-2} a_{n-2-i} y_i \Bigr) \\
+    &+ s^0 \Bigl(a_n Y - \sum_{i=0}^{n-1} a_{n-1-i} y_i - b \Bigr),
+\end{aligned}
+\tag{*}
 $$
-following equations:
-$$\begin{equation}\begin{aligned}
-&i=1\to(s^{n-1}):a_0y_0=a_0z_0\\
-&i=2\to(s^{n-2}):\sum_{j=0}^{1}a_{1-j}y_j=\sum_{j=0}^{1}a_{1-j}z_j\\
-&...\\
-&i=n\to(s^{n-n}):\sum_{j=0}^{n-1}a_{n-1-j}y_j+b=\sum_{j=0}^{n-1}a_{n-1-j}z_j
-\end{aligned}\end{equation}$$
 
-Rewrite it at this way:
-$$
-A=\left[
-    \begin{matrix}
-    a_0 & 0 & 0 &\cdots & 0 \\
-    a_1 & a_0 & 0 &\cdots & 0 \\
-    a_2 & a_1 & a_0 &\cdots & 0 \\
-    \vdots & \vdots & \vdots &\ddots & 0 \\
-    a_{n-1} & a_{n-2} & a_{n-3} &\cdots & a_0 \\
-    \end{matrix}\right],
-    \{d\}=\left\{
-    \begin{matrix} 0 \\ 0 \\ 0 \\ \vdots \\ 0\\b\\ \end{matrix}\right\}\tag{3.1}
-$$
-$$
-[A]\left\{
-    \begin{matrix} y_0 \\y_1 \\y_2 \\ \vdots \\ y_{n-1} \end{matrix}\right\}+
-    \{d\}=
-    [A]\left\{
-    \begin{matrix} z_0 \\z_1 \\z_2 \\ \vdots \\ z_{n-1} \end{matrix}\right\}
-$$
-$$
-[A]\{y\}+\{d\}=[A]\{z\}, det([A])\ne 0\Rightarrow
-$$
-$$
-\{z\}=\{y\}+[A]^{-1}\{d\}\tag{3.2}
-$$
-Due to $[A]$ is lower-triangle matrix and $\{d\}=\{0,0,...,b\}$ the main result is following:
+where $y_k = y^{(k)}(0)$ denote the initial conditions.
+For the homogeneous system $\sum a_i z^{(n-i)} = 0$ with (unknown) initial conditions $z_0, z_1, \dots, z_{n-1}$, we similarly have
 
 $$
-\bbox[5px,border:2px solid red]
-{
+\begin{aligned}
+0 = &\ s^n (a_0 Z) \\
+    &+ s^{n-1} \bigl(a_1 Z - a_0 z_0\bigr) \\
+    &+ s^{n-2} \bigl(a_2 Z - a_1 z_0 - a_0 z_1\bigr) \\
+    &+ \cdots \\
+    &+ s^0 \Bigl(a_n Z - \sum_{i=0}^{n-1} a_{n-1-i} z_i \Bigr).
+\end{aligned}
+\tag{**}
+$$
+
+If $y(t) = z(t)$ for all $t$, then $Y(s) = Z(s)$. Equating the coefficients of like powers of $s$ in (*) and (**) and canceling the common terms involving $Y$ and $Z$ gives a system of equations for the unknown initial conditions $z_k$:
+
+$
+\begin{aligned}
+& (s^{n-1}): & a_0 y_0 &= a_0 z_0 \\
+& (s^{n-2}): & a_1 y_0 + a_0 y_1 &= a_1 z_0 + a_0 z_1 \\
+& \qquad\vdots \\
+& (s^{0}): & \sum_{j=0}^{n-1} a_{n-1-j} y_j + b &= \sum_{j=0}^{n-1} a_{n-1-j} z_j .
+\end{aligned}
+$
+
+These equations can be expressed in matrix form. Define the lower‑triangular matrix
+
+$$
+A = \begin{bmatrix}
+a_0 & 0 & 0 & \cdots & 0 \\
+a_1 & a_0 & 0 & \cdots & 0 \\
+a_2 & a_1 & a_0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & 0 \\
+a_{n-1} & a_{n-2} & a_{n-3} & \cdots & a_0
+\end{bmatrix},
+\qquad
+\mathbf{d} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 0 \\ b \end{bmatrix}.
+\tag{3.1}
+$$
+
+Then the system becomes
+$
+A \mathbf{y} + \mathbf{d} = A \mathbf{z},
+$
+
+where $\mathbf{y} = [y_0, y_1, \dots, y_{n-1}]^T$ and $\mathbf{z} = [z_0, z_1, \dots, z_{n-1}]^T$. Since $A$ is lower triangular with $a_0 \neq 0$ (the ODE is of order $n$), $\det(A) \neq 0$, and we obtain
+$$
+\mathbf{z} = \mathbf{y} + A^{-1}\mathbf{d}.
+\tag{3.2}
+$$
+
+Because $\mathbf{d}$ has only its last entry nonzero and $A$ is lower triangular, the correction term $A^{-1}\mathbf{d}$ simplifies dramatically. A direct calculation shows that $A^{-1}\mathbf{d} = [0, 0, \dots, 0, b/a_0]^T$. Consequently,
+
+$$
+\boxed{
 \begin{cases}
-L_n(\{a\},y)=b\delta(t)\\
-IC_0
+L_n(\{a\}, y) = b\,\delta(t) \\[2pt]
+\mathbf{IC}_0
 \end{cases}
-\equiv
-{\begin{cases}
-L_n(\{a\},y)=\mathbf{0}\\
-IC_0+\mathbf{[A]^{-1}\{d\}}
-\end{cases}}
-\equiv
+\;\equiv\;
 \begin{cases}
-L_n(\{a\},y)=0\\
-IC_0+\{0,0,...,b/a_0\}^\intercal
+L_n(\{a\}, y) = 0 \\[2pt]
+\mathbf{IC}_0 + \bigl(0, 0, \ldots, 0, b/a_0\bigr)^T
 \end{cases}
-}\tag{3.3}
+}
+\tag{3.3}
 $$
-The formula (3.3) is the mathematical notation of algorythm how to solve LTI ODE with Dirac function load. There is only need to change IC and solve the similar homogenous system using any method you like (analytical or numerical). A numerical one called Runge-Kutta fourth order method could be found at Butcher (p.98).
-There has been proven (2.7). Indeed, (3.3) and (2.7) are the same.
-The system Type 0a could be rewritten as simple impulse differential equation (look Benchohra, Henderson and Ntouyas "Impulsive Differential Equations and Inclusions")
 
-####3.2 Problem Type 0b
-The idea how to solve the Type 0b's problem is very simple and well explained at the part 4.4-4.6.
+Formula (3.3) provides a simple algorithm for solving an LTI ODE with a Dirac delta forcing term: modify the initial conditions as indicated and solve the resulting homogeneous system using any analytical or numerical method (e.g., the fourth‑order Runge–Kutta method; see Butcher, p. 98).
 
-####3.3 Problem Type 0c
-The idea how to solve the Type 0c's problem is very simple and well explained at the part 4.7.
+Observe that (3.3) confirms the conjecture (2.7) and establishes their equivalence. The Type 0a problem can also be viewed as a special case of an impulsive differential equation (see Benchohra, Henderson, and Ntouyas, *Impulsive Differential Equations and Inclusions*).
 
+### 3.2 Problem Type 0b
+
+The solution strategy for Type 0b is straightforward and will be developed in Sections 4.4–4.6.
+
+### 3.3 Problem Type 0c
+
+The solution strategy for Type 0c is similarly straightforward and will be presented in Section 4.7.
