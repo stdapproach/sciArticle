@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import helper as hlp
 
-title1 = 'Example2. Finan p.57'
+title1 = 'Example2. Finan p. 57'
 
 def y_ex(t):
-	return 0.25*np.exp(-t)*np.sin(2*t)
+    return 0.25 * np.exp(-t) * np.sin(2 * t)
 
 va = [2, 4, 10]
 b = 1

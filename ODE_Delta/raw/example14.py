@@ -5,7 +5,7 @@ import helper as hlp
 title1 = 'Example14. W(s)=(s+a)/(s^2+w^2)'
 a = 1.5
 w = 0.7
-va = [1, 0, w*w]
+va = [1, 0, w * w]
 
 vb = [1, a]
 IC0 = [0, 0]
@@ -14,7 +14,7 @@ tb = 10
 N = 100
 
 def y_ex(t):
-	return (np.sqrt(a*a+w*w)/w)*np.sin(w*t+np.arctan(w/a))
+    return (np.sqrt(a * a + w * w) / w) * np.sin(w * t + np.arctan(w / a))
 
 Z1 = hlp.mkSlnT2_a(va, vb, IC0, t0, tb, N)
 

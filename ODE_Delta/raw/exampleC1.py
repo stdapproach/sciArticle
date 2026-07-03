@@ -2,9 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import helper as hlp
 
-title1 = 'ExampleC1 [Asadi, p.62] 2ndOrder'
+title1 = 'ExampleC1 [Asadi, p. 62] 2ndOrder'
 va = [1, 6, 100]
-vc=0
 vb = [100]
 IC0 = [0, 0]
 t0 = 0

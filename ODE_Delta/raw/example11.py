@@ -5,8 +5,7 @@ import helper as hlp
 title1 = 'Example11. W(s)=s/[(s+a)(s+b)]'
 a = 1
 b = 2
-va = [1, a+b, a*b]
-vc=0
+va = [1, a + b, a * b]
 vb = [1, 0]
 IC0 = [0, 0]
 t0 = 0
@@ -14,7 +13,7 @@ tb = 10
 N = 100
 
 def y_ex(t):
-	return (1/(a-b))*(a*np.exp(-a*t)-b*np.exp(-b*t))
+    return (1 / (a - b)) * (a * np.exp(-a * t) - b * np.exp(-b * t))
 
 Z1 = hlp.mkSlnT2_a(va, vb, IC0, t0, tb, N)
 

@@ -4,10 +4,10 @@ import helper as hlp
 
 T = 2.0
 
-title1 = 'Example10. Ogata p.163'
+title1 = 'Example10. Ogata p. 163'
 
 def y_ex1(t):
-	return (1.0/T)*np.exp(-t/T)
+    return (1.0 / T) * np.exp(-t / T)
 
 va = [T, 1]
 b = 1

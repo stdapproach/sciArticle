@@ -6,8 +6,7 @@ title1 = 'Example12. W(s)=(s+d)/[(s+a)(s+b)]'
 a = 1
 b = 2
 d = 1.5
-va = [1, a+b, a*b]
-vc=0
+va = [1, a + b, a * b]
 vb = [1, d]
 IC0 = [0, 0]
 t0 = 0
@@ -15,7 +14,7 @@ tb = 10
 N = 100
 
 def y_ex(t):
-	return (1/(b-a))*((d-a)*np.exp(-a*t)-(d-b)*np.exp(-b*t))
+    return (1 / (b - a)) * ((d - a) * np.exp(-a * t) - (d - b) * np.exp(-b * t))
 
 Z1 = hlp.mkSlnT2_a(va, vb, IC0, t0, tb, N)
 
