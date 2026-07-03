@@ -51,7 +51,7 @@ x'(0) = 1/m
 \end{cases}
 $
 
-Balachandran (pp. 287–288), Beards (p. 66), Bottega (pp. 235–236), Genta (p. 179), Meirovich (pp. 160–161), Schiff (p. 83) and Schmitz (p. 118) all remark that
+Balachandran (pp. 287–288), Beards (p. 66), Bottega (pp. 235–236), Genta (p. 179), Meirovitch (pp. 160–161), Schiff (p. 83) and Schmitz (p. 118) all remark that
 
 $
 \begin{cases}
