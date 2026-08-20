@@ -19,6 +19,60 @@ We're searching the literature providing the solution for LTI ODE with discontin
 
 While seeking a general method to solve such systems, we found that existing literature primarily offers solutions for specific first- and second-order ODEs and almost no books presented the common (closed form) solution.
 
+### 0 Preliminary info about IFR
+Many books related to Control Theory has tought us about Impulse Response Function (IRF) which is the solution of LTI ODE with zero IC and impulse delta function as load:
+
+- Benchohra, M., Henderson, J., & Ntouyas, S. (2006). **Impulsive differential equations and inclusions**. Contemporary Mathematics and Its Applications Series.
+
+- Camporesi, R., & Cevenini, G. (2015). **An introduction to linear ordinary differential equations using the impulsive response method and factorization**. 
+
+- Chalishajar, D. (2011). **On applications of generalized functions in the discontinuous beam bending differential equations**. Journal of Applied Functional Analysis.
+
+- Chellaboina, V., Haddad, W.M., & Hui, Q. (2010). **Nonnegative and compartmental dynamical systems**. Princeton University Press.
+
+- Chen, C.T. (1999). **Linear system theory and design** (3rd ed.). Oxford University Press.
+
+- Chopra, A.K. (2012). **Dynamics of structures: Theory and applications to earthquake engineering** (5th ed.). Prentice Hall.
+
+- Cooper, J.M. (2010). **Distribution theory**. American Mathematical Society.
+
+- d'Andréa-Novel, B., & Bastin, G. (1992). **Control theory for engineers**. Springer-Verlag.
+
+- Danca, M.F. (2010). **On a class of discontinuous dynamical systems**. Journal of Dynamical Systems and Applications.
+
+- Datta, B.N. (2004). **Numerical methods for linear control systems design and analysis**. Elsevier.
+
+- Dishliev, A.B., & Stamova, I.M. (2006). **Specific asymptotic properties in impulsive differential equations**. Nonlinear Analysis.
+
+- Duffy, D.G. (2015). **Green's functions with applications** (2nd ed.). Chapman and Hall/CRC.
+
+- Fairman, F.W. (1998). **Linear control systems**. Wiley.
+
+- Falsone, G. (2007). **The use of generalised functions in the discontinuous beam bending differential equations**. International Journal of Solids and Structures.
+
+- Golnaraghi, F., & Kuo, B.C. (2010). **Automatic control systems** (10th ed.). Wiley.
+
+- Haddad, W.M., & Nersesov, S.G. (2011). **Stability and control of large-scale dynamical systems: A vector dissipative systems approach**. Princeton University Press.
+
+- Haidekker, M.F. (2013). **Linear feedback controls: The essentials** (2nd ed.). Butterworth-Heinemann.
+
+- Hallauer, R.C. (2013). **Linear time-invariant dynamic systems**. Princeton University Press.
+
+- Hassan, N., & Rzymowski, W. (1990). **On the Cauchy problem for ordinary differential equations with discontinuous right-hand sides**. Journal of Mathematical Analysis and Applications, 152(1), 1-5.
+
+- Hespanha, J.P. (2009). **Linear systems theory**. Princeton University Press.
+
+- Inman, D.J. (2014). **Engineering vibration** (4th ed.). Pearson Education.
+
+- Kamachkin, A.M., Potapov, D.K., & Yevstafyeva, V.V. (2014). **Solution to second-order differential equations with discontinuous right-hand side**. Electronic Journal of Differential Equations, 2014(221), 1-6.
+
+- Kamaraju, V., & Narasimham, R.L. (2020). **Linear systems analysis and applications** (2nd ed.). I.K. International Publishing House.
+
+- Kiseleva, O.M. (2013). **Theory of differential inclusions and its application in mechanics**. Journal of Mathematical Sciences.
+
+- Sinha, N.K., & Ananthkrishnan, N. (2022). **Elementary flight dynamics with an introduction to bifurcation and continuation methods** (2nd ed.). CRC Press. DOI: 10.1201/9781003096801
+
+
 ### 1 Preliminary review: equivalence through initial condition modification
 
 Several textbooks provide analytical solutions for first/second order LTI ODEs with a Dirac delta forcing function. Examples include Finan (p. 57), Nagy (pp. 189–190), Ogata (p. 190), Oliveira and Cortes (p. 3), Rao (p. 381), and Zill (p. 293).
@@ -26,7 +80,7 @@ Several textbooks provide analytical solutions for first/second order LTI ODEs w
 Other authors explicitly note that the solution of an IVP with a delta load coincides with the solution of the corresponding homogeneous ODE subject to modified initial conditions. A brief survey of such observations follows.
 
 Genta (p. 180) gives a formula for adjusting zero initial conditions in a second‑order ODE under delta loading.
-Rao (p. 407) states the equivalence
+Rao (p. 407) states the equivalence for 1st order system
 
 $
 \begin{cases}
@@ -96,6 +150,108 @@ For the purposes of this article we have surveyed a wide range of sources dealin
 
 5. **Provide a closed‑form solution for an LTI ODE with a sum of derivatives of the Dirac delta as the forcing function**
    To the best of our knowledge, the present work appears to be the only one offering such a general treatment.
+
+## Aux.Detail from REFERENCES2
+1. Akhmet, Marat. *Principles of Discontinuous Dynamical Systems*. LAter, as Akhmet.
+Akhmet's book is highly relevant to impulsive systems and discontinuous ODEs:
+Extensive treatment of: impulsive differential equations with fixed and variable moments of impulses
+Initial condition modifications: Chapter 2 & 5 discuss continuous dependence on initial conditions
+Discontinuous right-hand sides: Chapters 8-9 address this topic specifically
+What's missing: There is no result of equality with free vibration with changed IC as solution of discontinuous system.
+2. Antsaklis, Panos J.; Michel, Anthony N. *A Linear Systems Primer*. Birkhäuser, 2007. ISBN: 9780817644604. Later as Antsaklis. On page 67 "the impulse response of a linear, time-invariant, continuoustime system with integral representation is equal to the kernel of the integral
+representation of the system". On page 73 there is a direct formaulae how to calculate impulse response. There is no any hint how it related with free vibration.
+
+Benaroya: p.19 due to "principle of conservation of linear momentum" governs the change the velocity via impulse 'During collisions large forces act resulting in
+almost instantaneous changes in velocity and therefore
+in linear momentum'. No mentioned about changes IC due to right side discontinuity.
+
+4. Benchohra *Impulsive Differential Equations and Inclusions*, later Benchora. Benchohra is THE reference for impulsive differential equations theory. While other books provide context (Antsaklis: linear systems, Babitsky: vibro-impact applications), Benchohra provides the rigorous mathematical foundation for your core research topic on jump discontinuities and impulse effects in ODEs. There is no solution how to address delta function in right side.
+
+5. d'Andréa-Novel, Brigitte; De Lara, Michel. *Control Theory for Engineers, later as  d'Andréa-Novel. p. 116 gave a formulae for "The impulse response of the time-continuous state-space system (5.1) with zero initial condition is given by". No connection with change initial conditions.
+
+7. Brogliato, Bernard. *Nonsmooth Mechanics: Models, Dynamics and Control* (3rd ed.), later as Brogliato. on p.2 "One of the main consequences of such an approach is that the impulsive forces
+imply a discontinuity in the velocity while positions remain continuous". on p.7 "This brief analysis shows that in mechanical systems, continuous positions and discontinuous velocities are produced by impulsive forces, and vice versa". This is the most relevant book reviewed so far—it provides rigorous mathematical treatment of impulsive forces, state discontinuities (position continuous, velocity discontinuous), Dirac measures, and measure differential equations. The core concept matches your research exactly: impulses create velocity jumps equivalent to modified initial conditions.
+
+8. Camporesi, Carlo. *An Introduction to Linear Ordinary Differential Equations Using the Impulsive Response Method and Factorization*. 2019., later as Camporesi.  Elementary treatment of the impulsive response method for general n-th order ODEs. It explicitly shows how the IR solves the homogeneous equation with special initial conditions, then decomposes general solutions into forcing (via convolution) and IC (via homogeneous part). This directly demonstrates your core equivalence theme at any order. In this article the Author hiddenly uses impulse response function for creating a solution of ODE. And uses changed IC to find freee vbration, which are actually is IRF (page 3). There is no solution in case of derivative of delta-function. p.25 has a very interested LE with upper-sym matrix of coefficient of LTI ODE and coeffitient of right side. No connection between IRF and free vibrstion with changed IC.
+
+[20] Chopra. Premier structural dynamics textbook proving your impulse-IC equivalence rigorously and practically. Section 4.1 defines impulse response h(t) from Dirac delta; Section 4.2 derives Duhamel's integral explicitly stating zero-IC assumption; Sections 4.7-4.9 analyze pulse responses via two-phase method (forced vibration during pulse + free vibration after, driven by initial conditions at pulse-end). Demonstrates that discontinuous forcing via impulse is mathematically equivalent to modified initial conditions. Essential reference combining theory and practical structural engineering applications. p.121 exact formulae for changeIC for linear oscillator (from zeroIC). p.616 example of impulse response for MDOF
+
+15. Cooper, David. *Distribution Theory*, later Cooper. Rigorous mathematical foundations of distribution theory. Defines Dirac delta as distributional derivative of Heaviside function. Key theorem: jump discontinuities in functions produce delta terms in distributional derivatives. Provides explicit formula for piecewise smooth derivatives showing jump ↔ delta connection. Based on Schwartz theory. Foundational reference proving mathematically that impulses (delta forces) arise naturally from discontinuities, justifying your impulse-IC equivalence principle. p.5 change IC for pendulum was in rest
+
+[*21]. Duffy, Dean G. *Green's Functions with Applications* (2nd ed.), later as Duffy. p.93 "This avoids the problem of the Green’s function not satisfying all of the initial
+conditions." + (3.1.7) provide the initial condition delivers the IRF as free motion.
+
+22. Fairman, Frederick W. *Linear Control Theory: The State Space Approach*, later as Fairman. page 31, In addition we see from (1.81) that the zero-input response equals the impulse response when the initial
+state is x(0) = B (IRF is equal to some non-zero IC)
+
+28. Haddad, Wassim M.; Chellaboina, Vijaysekhar; Hui, Qing. *Nonnegative and Compartmental Dynamical Systems*, later as Haddad, p.50 "we can always reproduce the impulsive response with the free response by setting x(0) = Bv".
+
+30. Haidekker, Mark A. *Linear Feedback Controls: The Essentials* (2nd ed.), later as Haidekker in p.36 clearly states "the initial condition is valid only for
+an infinitesimally short moment at the start of the experiment and can therefore be interpreted as a δ-pulse, scaled with the magnitude ... "
+
+31. Hallauer, William L. *Linear Time-Invariant Dynamic Systems*, later as Hallauer. p. 158 (8-5) changeIC for 1st order system
+
+52. Schiff, Joel L. *The Laplace Transform: Theory and Applications*, later as Schiff at p.82-83 mentioned that 2nd order system with impulse is equal to free vibration of the same system but changed IC.
+
+54. Silva, Clarence W. *Vibration Fundamentals and Practice*, later as Silve_Vibration. p.87 for 2nd orser system for IRF mentioned change IC
+
+60. Sinha, N.K., & Ananthkrishnan, N. (2022). Elementary flight dynamics with an introduction to bifurcation and continuation methods, later as Sinha. Sinha p.69 mentioned changinIC for solution of 1st order ODE with unit impulse as load.
+
+
+## REFERENCES2
+
+1. Akhmet, Marat. *Principles of Discontinuous Dynamical Systems*. Springer, 2010. ISBN: 978-1-4419-6580-6. DOI: 10.1007/978-1-4419-6581-3
+
+2. Antsaklis, Panos J.; Michel, Anthony N. *A Linear Systems Primer*. Birkhäuser, 2007. ISBN: 9780817644604
+
+4. Benchohra, Mouffak; Henderson, Johnny; Ntouyas, Sotiris K. *Impulsive Differential Equations and Inclusions*. Hindawi Publishing, 2006.
+
+5. d'Andréa-Novel, Brigitte; De Lara, Michel. *Control Theory for Engineers: 
+A Primer*. Springer, 2013. ISBN: 978-3-642-34323-0. 
+DOI: 10.1007/978-3-642-34324-7
+
+6. Westervelt, Eric R.; Grizzle, Jessy W.; Chevallereau, Christine; Choi, Jun Ho; Morris, Benjamin. *Feedback Control of Dynamic Bipedal Robot Locomotion*. CRC Press, 2007. ISBN: 978-1-4200-5372-2
+
+7. Brogliato, Bernard. *Nonsmooth Mechanics: Models, Dynamics and Control* (3rd ed.). Springer, 2015.
+
+8. Camporesi, Carlo. *An Introduction to Linear Ordinary Differential Equations Using the Impulsive Response Method and Factorization*. 2019.
+
+15. Cooper, David. *Distribution Theory*. 2000.
+
+22. Fairman, Frederick W. *Linear Control Theory: The State Space Approach*. John Wiley & Sons, 1998. ISBN: 0-471-97489-7
+
+24. @Filippov, A. F. *Differential Equations with Discontinuous Right-Hand Sides*. Kluwer Academic Publishers, 1988. ISBN: 978-90-481-8449-1
+
+28. Haddad, Wassim M.; Chellaboina, Vijaysekhar; Hui, Qing. *Nonnegative and Compartmental Dynamical Systems*. Oxford University Press, 2009. ISBN: 978-0-691-14411-5
+
+30. Haidekker, Mark A. *Linear Feedback Controls: The Essentials* (2nd ed.). Elsevier, 2020. ISBN: 978-0-12-818778-4
+
+31. Hallauer, William L. *Linear Time-Invariant Dynamic Systems*. John Wiley & Sons, 2016.
+
+
+35. Inman, Daniel J. *Engineering Vibration* (4th ed.). Pearson, 2014.
+
+
+39. Kausel, Eduardo. *Advanced Structural Dynamics*. MIT Press, 2001. ISBN: 9781107171510
+
+42. @Lakshmikantham, V.; Bainov, D. D.; Simeonov, P. S. *Theory of Impulsive Differential Equations*. World Scientific, 1989.
+
+43. @Macaulay, G. J. *Introduction to Impact Engineering*. Chapman and Hall, 1987.
+
+45. @Orlov, Yury V. *Discontinuous Systems: Lyapunov Analysis and Robust Synthesis Under Uncertainty Conditions*. Springer, 2009.
+
+46. @Perestyuk, N. A.; Samoilenko, A. M. *Differential Equations with Impulse Effects: Multivalued Right-Hand Sides with Discontinuities*. De Gruyter, 2010. ISBN: 978-3-11-021816-9
+
+50. @Samoilenko, Anatoliy M.; Perestyuk, N. A. *Impulsive Differential Equations*. World Scientific, 1995. ISBN: 9789810224165
+
+51. @Samoilenko, Anatoliy M.; Perestyuk, N. A. *Impulsive Differential Equations* (Russian edition). Nauka, 1987.
+
+52. Schiff, Joel L. *The Laplace Transform: Theory and Applications*. Springer, 2019.
+
+59. Filippov, A. F. *Differential Equations with Discontinuous Right-Hand Sides* (Russian edition). Nauka, 1985.
+
+60. Sinha, N.K., & Ananthkrishnan, N. (2022). Elementary flight dynamics with an introduction to bifurcation and continuation methods (2nd ed.). CRC Press. https://doi.org/10.1201/9781003096801
+
 
 ### REFERENCES
 
@@ -231,8 +387,6 @@ For the purposes of this article we have surveyed a wide range of sources dealin
 
 [84] Zill, D. G. (2009). *A first course in differential equations with modeling applications* (9th ed.). Brooks/Cole, Cengage Learning. (ISBN-13: 978-0-495-10824-5) https://doi.org/10.1017/9781316841051
 
-
-
 ## REFERENCES_NOT_USED
 
 [12] Benchohra, M., Henderson, J., & Ntouyas, S. (2006). *Impulsive differential equations and inclusions*. Hindawi Publishing Corporation. (ISBN: 977-5945-50-X)
@@ -262,8 +416,6 @@ For the purposes of this article we have surveyed a wide range of sources dealin
 [74] Silva, C. W. de. (2000). *Vibration: Fundamentals and practice*. CRC Press LLC. (ISBN: 0-8493-1808-4) https://doi.org/10.1201/9781420052510
 
 [75] Strang, G. (2016). *Introduction to linear algebra: Manual for instructors* (5th ed.). Wellesley-Cambridge Press. (ISBN: 978-0-9802327-7-6)
-
-[80] Williams, R. L., II, & Lawrence, D. A. (2007). *Linear state-space control systems*. John Wiley & Sons, Inc. (ISBN: 978-0-471-73555-7) https://doi.org/10.1002/9780470117873
 
 [81] Xue, D., Chen, Y., & Atherton, D. P. (2002, July 3). *Linear feedback control: Analysis and design with MATLAB*. Springer-Verlag.
 
