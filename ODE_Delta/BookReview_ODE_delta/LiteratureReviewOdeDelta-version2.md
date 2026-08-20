@@ -1,76 +1,97 @@
-## Literature Review: Solution of Linear Time-Invariant ODEs with Dirac Delta Function and Its Derivatives
+## Literature Review: Solution of Linear ODEs with Delta Function as Load
 
 **Denis Pleshkov**
 <std.approach@gmail.com>
 August 2026
 
 ### Abstract
-This literature review examines how linear time-invariant (LTI) ordinary differential equations (ODEs) with impulsive forcing—represented by the Dirac delta function and its derivatives—are treated across differential equations, vibration theory, and control theory. Motivated by the practical need to find proper solution approaches and closed-form formulas for such systems, we surveyed 100+ sources and identified a unifying principle: delta-forced nonhomogeneous ODEs are equivalent to homogeneous systems with modified initial conditions. 3 critical gaps in the literature are identified—the absence of general $n$-th order proofs, limited treatment of derivatives of delta, and lack of unified computational frameworks.
+This literature review examines how linear time-invariant (LTI) ordinary differential equations (ODEs) with impulsive forcing (represented by the Dirac delta function and its derivatives) are treated across differential equations, vibration theory, and control theory. Motivated by the practical need to find proper solution approaches and closed-form formulas for such systems, we surveyed 100+ sources. 3 critical gaps in the literature are identified—the absence of general $n$-th order proofs, limited treatment of derivatives of delta, and lack of unified computational frameworks.
 
 ### Keywords
-Literature review, delta function, linear ODE, impulsive differential equations
+Literature review, delta function, linear ODE, impulse response
 
 ### Introduction
 The dynamics of evolving processes are often subject to abrupt changes, such as: impact of a hammer on a beam, a bat striking a ball, a bolt of lightning striking a tower.
 
 Such short-term perturbations are frequently treated as instantaneous events, often modeled as "impulses." According to Rao (p. 381), an impulsive force is characterized by a large magnitude acting over a very short duration. The system's response to such a force is termed the impulse response function (IRF). Mathematically, an impulse can be represented within an initial value problem (IVP) by incorporating the Dirac delta function as the external forcing term. IVP means following: You have an ODE describing a system, plus the values of the system's state at some initial time. The goal is to find the unique solution satisfying both.  The impulse response of a system is defined as its output in response to an input $\delta(t)$, assuming the system is initially at rest. As Cohen (p. 13) notes, "The impulse function is useful when we are trying to model physical situations, such as the case of two billiard balls impinging, whemake re we have a large force acting for a short time which produces a finite change of momentum."
 
-We're searching the literature providing the solution for LTI ODE with discontinious right hand, including delta-function and it's derivatives. The Dirac delta function is a well-known generalized function (distribution) used to model impulsive phenomena. Its properties are discussed extensively in the literature, including Balachandran (p. 287), Bottega (p. 233), Chasnov (p. 62), Finan (p. 53), Nagy (p. 185), Rao (p. 381), Weber (p. 86), Zill (p. 292).
+We're searching the literature providing the solution for LTI ODE with discontinious right hand, including delta-function and it's derivatives. The Dirac delta function is a well-known generalized function (distribution) used to model impulsive phenomena. Its properties are discussed extensively in the literature, including Bottega (p. 233), Chasnov (p. 62), Finan (p. 53), Nagy (p. 185), Rao (p. 381), Weber (p. 86), Zill (p. 292).
 
 While seeking a general method to solve such systems, we found that existing literature primarily offers solutions for specific first- and second-order ODEs and almost no books presented the common (closed form) solution.
 
-### 0 Preliminary info about IFR
-Many books related to Control Theory has tought us about Impulse Response Function (IRF) which is the solution of LTI ODE with zero IC and impulse delta function as load:
+### Preliminary info about IFR
+Many books related to Control Theory has tought us about Impulse Response Function (IRF) which is the solution of LTI ODE with zero IC and impulse delta function as load, we've parsed by eye more than 100 control Theory book, such as (This list could be used as starting point for studying Control Theory):
 
-- Benchohra, M., Henderson, J., & Ntouyas, S. (2006). **Impulsive differential equations and inclusions**. Contemporary Mathematics and Its Applications Series.
+1. Abdallah - Feedback Control Systems MATLAB Simulink Approach
+2. Alam, Jahangir - Control Engineering Theory and Applications
+3. Anderson - Control Theory: A Brief Introduction
+4. Antsaklis - Linear Systems Primer
+5. Asadi - Feedback Control Systems MATLAB Simulink Approach
+6. BURGHES - Control and Optimal Control Theories with Applications
+7. Babu - Control Systems
+8. Baillieul - Encyclopedia of Systems and Control (2ed)
+9. Bavafa-Toosi - Introduction to Linear Control Systems
+10. Bishop - Teaching Modern Control System Analysis and Design
+11. Bubnicki - Modern Control Theory
+12. D'Azzo - Linear Control System Analysis and Design (5ed)
+13. Diana - Control of Mechanical Systems
+14. Douglas - Fundamentals of Control Theory
+15. Doyle - Feedback Control Theory
+16. Frank - Control Theory Tutorial Basic Concepts
+17. Franklin, Gene F. - Digital Control (3ed)
+18. Franklin, Gene F. - Feedback Control of Dynamic Systems (7ed)
+19. Gazi - Principles of Signals and Systems
+20. Ghosh - Control Systems Theory and Applications
+21. Gupta - Automatic Control Engineering
+22. Guzman - Automatic Control with Interactive Tools
+23. HARRIS - Stability of Input-Output Dynamical Systems
+24. HESPANHA, João P. - Linear Systems Theory
+25. Haidekker, Mark A. - Linear Feedback Controls: The Essentials (2ed)
+26. Hallauer, Arthur C. - Linear Time-Invariant Dynamic Systems
+27. Heaston, Richard - Modern Control Theory
+28. Häaglund, Tore - Automatic Control: Lecture Notes
+29. Jagan, S. - Control Systems
+30. KAMARAJU, K. - Linear Systems (2ed): Analysis and Applications
+31. Kani, S. - Control System Engineering (second edition)
+32. Keviczky, László - Control Engineering
+33. Khalil, Hassan K. - Control Systems: An Introduction
+34. Koppel, David B. - Introduction to Control Theory
+35. Krishnaveni, V. - Signals and Systems
+36. Larminat, Philippe de - Analysis and Control of Linear Systems
+37. Lathi, B. P. - Linear Systems and Signals (3ed)
+38. Luna, Maria P. - Advances in Dynamical Systems Theory, Models, Algorithms and Applications
+39. Narasimham, S. - Analysis of Linear Control System
+40. Ogata, Katsuhiko - Modern Control Engineering (5ed)
+41. Oppenheim, Alan V. - Signals and Systems (2ed)
+42. Padmanabhan, A. - Control Systems
+43. Paraskevopoulos, P. N. - Modern Control Engineering
+44. Qiu, Li - Introduction to Feedback Control
+45. Rawlings, James B. - Model Predictive Control (2ed)
+46. Sivanandam, S. N. - Control Systems Engineering using MATLAB (2)
+47. Skogestad, Sigurd - Multivariable Feedback Control: Analysis and Design
+48. TRIPATHI, A. - Control System Analysis and Design (2ed)
+49. Truxal, John G. - Automatic Feedback Control System Synthesis
+50. Tymerski, Robert - Classical and Modern Control Design with examples from power electronics
+51. Vinagre, Blas M. - Time in Control Theory: On Concepts, Measures and Uses
+52. Williams, Robert L. - Linear State Space Control Systems
+53. Zabczyk, Jerzy - Mathematical Control Theory: An Introduction (2ed)
+54. Zerz, Eva - Introduction to Systems and Control Theory
+55. Zhang, Qingsheng - Quantitative Process Control Theory
 
-- Camporesi, R., & Cevenini, G. (2015). **An introduction to linear ordinary differential equations using the impulsive response method and factorization**. 
+### 0 Preliminary data from Impulsive DE.
+Most books we've found, discussed the property of impulse differential equations (IDE), as DE + rule to jump IC disregards of impulse function (like Dirac delta and it's derivative). This list could be used as starting point for studying IDE.
 
-- Chalishajar, D. (2011). **On applications of generalized functions in the discontinuous beam bending differential equations**. Journal of Applied Functional Analysis.
+Benchohra, Mouffak; Henderson, Johnny; Ntouyas, Sotiris K. *Impulsive Differential Equations and Inclusions*. Hindawi Publishing, 2006.
 
-- Chellaboina, V., Haddad, W.M., & Hui, Q. (2010). **Nonnegative and compartmental dynamical systems**. Princeton University Press.
+Filippov A. Differential Equations with Discontinuous Righthand Sides ISBN 978-90-481-8449-1 DOI 10.1007/978-94-015-7793-9
 
-- Chen, C.T. (1999). **Linear system theory and design** (3rd ed.). Oxford University Press.
+Lakshmikantham, V., et al. Theory of Impulsive Differential Equations. World Scientific, 1989. Series in Modern Applied Mathematics, vol. 6. ISBN 978-9971-50-970-5, DOI: 10.1142/0906.
 
-- Chopra, A.K. (2012). **Dynamics of structures: Theory and applications to earthquake engineering** (5th ed.). Prentice Hall.
+Perestyuk, Nikolai A., Viktor A. Plotnikov, Anatolii M. Samoilenko, and Natalia V. Skripnik. 2011. Differential Equations with Impulse Effects: Multivalued Right-hand Sides with Discontinuities. De Gruyter Studies in Mathematics, Vol. 40. Berlin: De Gruyter. https://doi.org/10.1515/9783110218176.
 
-- Cooper, J.M. (2010). **Distribution theory**. American Mathematical Society.
+Samoilenko, A. M., & Perestyuk, N. A. (1995). Impulsive differential equations (World Scientific Series on Nonlinear Science. Series A, Monographs and Treatises, Vol. 14). World Scientific. https://doi.org/10.1142/2892
 
-- d'Andréa-Novel, B., & Bastin, G. (1992). **Control theory for engineers**. Springer-Verlag.
-
-- Danca, M.F. (2010). **On a class of discontinuous dynamical systems**. Journal of Dynamical Systems and Applications.
-
-- Datta, B.N. (2004). **Numerical methods for linear control systems design and analysis**. Elsevier.
-
-- Dishliev, A.B., & Stamova, I.M. (2006). **Specific asymptotic properties in impulsive differential equations**. Nonlinear Analysis.
-
-- Duffy, D.G. (2015). **Green's functions with applications** (2nd ed.). Chapman and Hall/CRC.
-
-- Fairman, F.W. (1998). **Linear control systems**. Wiley.
-
-- Falsone, G. (2007). **The use of generalised functions in the discontinuous beam bending differential equations**. International Journal of Solids and Structures.
-
-- Golnaraghi, F., & Kuo, B.C. (2010). **Automatic control systems** (10th ed.). Wiley.
-
-- Haddad, W.M., & Nersesov, S.G. (2011). **Stability and control of large-scale dynamical systems: A vector dissipative systems approach**. Princeton University Press.
-
-- Haidekker, M.F. (2013). **Linear feedback controls: The essentials** (2nd ed.). Butterworth-Heinemann.
-
-- Hallauer, R.C. (2013). **Linear time-invariant dynamic systems**. Princeton University Press.
-
-- Hassan, N., & Rzymowski, W. (1990). **On the Cauchy problem for ordinary differential equations with discontinuous right-hand sides**. Journal of Mathematical Analysis and Applications, 152(1), 1-5.
-
-- Hespanha, J.P. (2009). **Linear systems theory**. Princeton University Press.
-
-- Inman, D.J. (2014). **Engineering vibration** (4th ed.). Pearson Education.
-
-- Kamachkin, A.M., Potapov, D.K., & Yevstafyeva, V.V. (2014). **Solution to second-order differential equations with discontinuous right-hand side**. Electronic Journal of Differential Equations, 2014(221), 1-6.
-
-- Kamaraju, V., & Narasimham, R.L. (2020). **Linear systems analysis and applications** (2nd ed.). I.K. International Publishing House.
-
-- Kiseleva, O.M. (2013). **Theory of differential inclusions and its application in mechanics**. Journal of Mathematical Sciences.
-
-- Sinha, N.K., & Ananthkrishnan, N. (2022). **Elementary flight dynamics with an introduction to bifurcation and continuation methods** (2nd ed.). CRC Press. DOI: 10.1201/9781003096801
+Orlov, Yury V. *Discontinuous Systems: Lyapunov Analysis and Robust Synthesis Under Uncertainty Conditions*. Springer, 2009.
 
 
 ### 1 Preliminary review: equivalence through initial condition modification
@@ -110,7 +131,7 @@ x'(0) = P/m
 \end{cases}
 $
 
-Balachandran (pp. 287–288), Beards (p. 66), Bottega (pp. 235–236), Genta (p. 179), Kelly (p. 315), Meirovitch (pp. 160–161), Schiff (p. 83) and Schmitz (p. 118), all remarked that
+Balachandran (p. 301), Beards (p. 66), Bottega (pp. 235–236), Genta (p. 179), Kelly (p. 315), Meirovitch (pp. 160–161), Schiff (p. 83) and Schmitz (p. 118), all remarked that
 
 $
 \begin{cases}
@@ -220,7 +241,7 @@ DOI: 10.1007/978-3-642-34324-7
 
 22. Fairman, Frederick W. *Linear Control Theory: The State Space Approach*. John Wiley & Sons, 1998. ISBN: 0-471-97489-7
 
-24. @Filippov, A. F. *Differential Equations with Discontinuous Right-Hand Sides*. Kluwer Academic Publishers, 1988. ISBN: 978-90-481-8449-1
+24. Filippov, A. F. *Differential Equations with Discontinuous Right-Hand Sides*. Kluwer Academic Publishers, 1988. ISBN: 978-90-481-8449-1
 
 28. Haddad, Wassim M.; Chellaboina, Vijaysekhar; Hui, Qing. *Nonnegative and Compartmental Dynamical Systems*. Oxford University Press, 2009. ISBN: 978-0-691-14411-5
 
@@ -228,27 +249,11 @@ DOI: 10.1007/978-3-642-34324-7
 
 31. Hallauer, William L. *Linear Time-Invariant Dynamic Systems*. John Wiley & Sons, 2016.
 
-
 35. Inman, Daniel J. *Engineering Vibration* (4th ed.). Pearson, 2014.
-
 
 39. Kausel, Eduardo. *Advanced Structural Dynamics*. MIT Press, 2001. ISBN: 9781107171510
 
-42. @Lakshmikantham, V.; Bainov, D. D.; Simeonov, P. S. *Theory of Impulsive Differential Equations*. World Scientific, 1989.
-
-43. @Macaulay, G. J. *Introduction to Impact Engineering*. Chapman and Hall, 1987.
-
-45. @Orlov, Yury V. *Discontinuous Systems: Lyapunov Analysis and Robust Synthesis Under Uncertainty Conditions*. Springer, 2009.
-
-46. @Perestyuk, N. A.; Samoilenko, A. M. *Differential Equations with Impulse Effects: Multivalued Right-Hand Sides with Discontinuities*. De Gruyter, 2010. ISBN: 978-3-11-021816-9
-
-50. @Samoilenko, Anatoliy M.; Perestyuk, N. A. *Impulsive Differential Equations*. World Scientific, 1995. ISBN: 9789810224165
-
-51. @Samoilenko, Anatoliy M.; Perestyuk, N. A. *Impulsive Differential Equations* (Russian edition). Nauka, 1987.
-
 52. Schiff, Joel L. *The Laplace Transform: Theory and Applications*. Springer, 2019.
-
-59. Filippov, A. F. *Differential Equations with Discontinuous Right-Hand Sides* (Russian edition). Nauka, 1985.
 
 60. Sinha, N.K., & Ananthkrishnan, N. (2022). Elementary flight dynamics with an introduction to bifurcation and continuation methods (2nd ed.). CRC Press. https://doi.org/10.1201/9781003096801
 
@@ -266,8 +271,6 @@ DOI: 10.1007/978-3-642-34324-7
 [5] Angeles, J. (2011). *Dynamic response of linear mechanical systems: Modeling, analysis and simulation*. Springer Science+Business Media. https://doi.org/10.1007/978-1-4419-1027-1
 
 [6] Asadi, F., Bolanos, R. E., & Rodríguez, J. (2019). *Feedback control systems: The MATLAB®/Simulink® approach* (Synthesis Lectures on Control and Mechatronics, Lecture #5). Morgan & Claypool Publishers. https://doi.org/10.2200/S00909ED1V01Y201903CRM005
-
-[7] Balachandran, B., & Magrab, E. B. (2009). *Vibrations* (2nd ed., International SI ed.). Cengage Learning. (ISBN: 9780534552060, 0495411256)
 
 [8] Balachandran, B., & Magrab, E. B. (2019). *Vibrations* (3rd ed.). Cambridge University Press. https://doi.org/10.1017/9781108615839
 
@@ -303,7 +306,7 @@ DOI: 10.1007/978-3-642-34324-7
 
 [28] Etkin, B. (2005). *Dynamics of atmospheric flight*. Dover Publications, Inc. (ISBN: 0-486-44522-4) (Original work published 1972)
 
-[29] Filippov, A. F. (1988). *Differential equations with discontinuous righthand sides* (F. M. Arscott, Ed.). Springer-Science+Business Media, B.V. (ISBN: 978-90-481-8449-1) https://doi.org/10.1007/978-94-015-7793-9 (Original work published 1988)
+[29] ?Filippov, A. F. (1988). *Differential equations with discontinuous righthand sides* (F. M. Arscott, Ed.). Springer-Science+Business Media, B.V. (ISBN: 978-90-481-8449-1) https://doi.org/10.1007/978-94-015-7793-9 (Original work published 1988)
 
 [30] Finan, M. B. (n.d.). *Laplace transforms: Theory, problems, and solutions*. Arkansas Tech University.
 
@@ -333,7 +336,7 @@ DOI: 10.1007/978-3-642-34324-7
 
 [46] Kelly, S. G. (2012). *Mechanical vibrations: Theory and applications, SI*. Cengage Learning. (ISBN: 9781439062142)
 
-[47] Kelly, S. G. (2012). *Mechanical vibrations: Theory and applications*. Cengage Learning. (ISBN-13: 978-1-4390-6212-8)
+[47] ?Kelly, S. G. (2012). *Mechanical vibrations: Theory and applications*. Cengage Learning. (ISBN-13: 978-1-4390-6212-8)
 
 [48] Klee, H., & Allen, R. (2011). *Simulation of dynamic systems with MATLAB® and Simulink®* (2nd ed.). CRC Press, Taylor & Francis Group. (ISBN: 978-1-4398-3674-3) https://doi.org/10.1201/b10495
 
@@ -349,9 +352,9 @@ DOI: 10.1007/978-3-642-34324-7
 
 [54] Luintel, M. C. (2024). *Textbook of mechanical vibrations*. Springer Nature Singapore Pte Ltd. (ISBN: 978-981-99-3613-7) https://doi.org/10.1007/978-981-99-3614-4
 
-[57] Meirovitch, L. (1986). *Elements of vibration analysis* (Subsequent ed.). McGraw-Hill College. (ISBN: 978-0-07-041342-9)
+[57] ?Meirovitch, L. (1986). *Elements of vibration analysis* (Subsequent ed.). McGraw-Hill College. (ISBN: 978-0-07-041342-9)
 
-[58] Meirovitch, L. (2001). *Fundamentals of vibrations* (International ed.). McGraw-Hill. (ISBN: 0-07-118174-1)
+[58] ?Meirovitch, L. (2001). *Fundamentals of vibrations* (International ed.). McGraw-Hill. (ISBN: 0-07-118174-1)
 
 [59] Nagle, R. K., Saff, E. B., & Snider, A. D. (2018). *Fundamentals of differential equations* (9th ed.). Pearson Education, Inc. (ISBN: 978-0-321-97706-9)
 
@@ -386,39 +389,3 @@ DOI: 10.1007/978-3-642-34324-7
 [79] Weber, H. J., & Arfken, G. B. (2003). *Essential mathematical methods for physicists*. Academic Press. (ISBN: 978-0-12-059877-9) https://doi.org/10.1016/B978-0-12-059877-9.X5000-7
 
 [84] Zill, D. G. (2009). *A first course in differential equations with modeling applications* (9th ed.). Brooks/Cole, Cengage Learning. (ISBN-13: 978-0-495-10824-5) https://doi.org/10.1017/9781316841051
-
-## REFERENCES_NOT_USED
-
-[12] Benchohra, M., Henderson, J., & Ntouyas, S. (2006). *Impulsive differential equations and inclusions*. Hindawi Publishing Corporation. (ISBN: 977-5945-50-X)
-
-[16] Brandt, A. (2023). *Noise and vibration analysis: Signal analysis and experimental procedures* (2nd ed.). John Wiley & Sons Ltd. (ISBN: 978-1-118-96120-1) https://doi.org/10.1002/9781118961232
-
-[17] Butcher, J. C. (2008). *Numerical methods for ordinary differential equations* (2nd ed.). John Wiley & Sons, Ltd. (ISBN: 978-0-470-72335-7) https://doi.org/10.1002/9780470753767
-
-[18] Campbell, S. L., & Haberman, R. (2008). *Introduction to differential equations with dynamical systems*. Princeton University Press. (ISBN: 978-0-691-12474-6)
-
-[35] Holmes, M. H. (2023). *Introduction to differential equations* (3rd ed.). Mark H. Holmes. (ISBN: 978-1-71147-191-4)
-
-[40] Jain, S. (2011). *Modeling & simulation using MATLAB®-Simulink®*. Wiley India Pvt. Ltd. (ISBN: 978-81-265-3005-2)
-
-[44] Karris, S. T. (2003). *Signals and systems with MATLAB® applications* (2nd ed.). Orchard Publications. (ISBN: 9780970951168, 0970951167)
-
-[55] MacCluer, B. D., Bourdon, P. S., & Kriete, T. L. (2019). *Differential equations: Techniques, theory, and applications*. American Mathematical Society. (ISBN: 978-1-4704-4797-7)
-
-[56] McOwen, R. (2012). *Worldwide differential equations with linear algebra*. Worldwide Center of Mathematics, LLC. (ISBN: 978-0-9842071-2-1)
-
-[60] Nagoor Kani, A. (2019). *Control systems engineering* (2nd ed.). CBS Publishers & Distributors Pvt. Ltd. (eISBN: 978-93-892-6199-8)
-
-[64] Oliveira, M. de, & Cortes, J. (2011, January 24). *Computing the impulse response*. http://control.ucsd.edu/mauricio/courses/mae143a/lectures/computingImpulseResponse.pdf
-
-[70] Ricardo, H. J. (2021). *A modern introduction to differential equations* (3rd ed.). Academic Press, an imprint of Elsevier. (ISBN: 978-0-12-823417-4) https://doi.org/10.1016/C2020-0-00717-2
-
-[74] Silva, C. W. de. (2000). *Vibration: Fundamentals and practice*. CRC Press LLC. (ISBN: 0-8493-1808-4) https://doi.org/10.1201/9781420052510
-
-[75] Strang, G. (2016). *Introduction to linear algebra: Manual for instructors* (5th ed.). Wellesley-Cambridge Press. (ISBN: 978-0-9802327-7-6)
-
-[81] Xue, D., Chen, Y., & Atherton, D. P. (2002, July 3). *Linear feedback control: Analysis and design with MATLAB*. Springer-Verlag.
-
-[82] Xue, D., Chen, Y., & Atherton, D. P. (2007). *Linear feedback control: Analysis and design with MATLAB*. Society for Industrial and Applied Mathematics. (ISBN: 978-0-89871-638-2) https://doi.org/10.1137/1.9780898718621
-
-[83] Yang, B., & Abramova, I. (2022). *Dynamic systems: Modelling, simulation, and analysis*. Cambridge University Press. (ISBN: 978-1-107-17979-0) https://doi.org/10.1017/9781316841051
