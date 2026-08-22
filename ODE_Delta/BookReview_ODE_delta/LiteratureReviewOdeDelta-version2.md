@@ -10,110 +10,28 @@ This literature review examines how linear time-invariant (LTI) ordinary differe
 
 ### Keywords
 
-Literature review, delta function, linear ODE, impulse response
+Literature review, delta function, differential equation, ODE, impulse response
 
 ### Introduction
 
 The dynamics of evolving processes are often subject to abrupt changes, such as: impact of a hammer on a beam, a bat striking a ball, a bolt of lightning striking a tower.
 
-Such short-term perturbations are frequently treated as instantaneous events, often modeled as "impulses." According to Rao (p. 381) "The simplest form is the impulsive force a force that has
-a large magnitude F and acts for a very short time". The system's response to such a force is termed the impulse response function (IRF). Mathematically, an impulse can be represented within an initial value problem (IVP) by incorporating the Dirac delta function as the external forcing term. IVP means following: You have an ODE describing a system, plus the values of the system's state at some initial time. The goal is to find the unique solution satisfying both.  The impulse response of a system is defined as its output in response to an input $\delta(t)$, assuming the system is initially at rest. As Cohen (p. 13) notes, "The impulse function is useful when we are trying to model physical situations, such as the case of two billiard balls impinging, whemake re we have a large force acting for a short time which produces a finite change of momentum". Logan (p.166) "Many physical and biological processes have source terms that act at a single instant of time. For example, we can idealize an injection of medicine (a “shot”) into the blood stream as occurring at a single instant; a mechanical system, for example, a damped spring–mass system in a shock absorber on a car can be given an impulsive force by hitting a bump in the road; the switch in an
-electrical circuit can be closed only for an instant, which leads to an impulsive, applied voltage".
+Such short-term perturbations are frequently treated as instantaneous events, often modeled as "impulses". As Cohen (p. 13) notes, "The impulse function is useful when we are trying to model physical situations, such as the case of two billiard balls impinging, where we have a large force acting for a short time which produces a finite change of momentum". Logan (p.166) "Many physical and biological processes have source terms that act at a single instant of time. For example, we can idealize an injection of medicine (a "shot") into the blood stream as occurring at a single instant; a mechanical system, for example, a damped spring–mass system in a shock absorber on a car can be given an impulsive force by hitting a bump in the road; the switch in an electrical circuit can be closed only for an instant, which leads to an impulsive, applied voltage". According to Rao (p. 381) "The simplest form is the impulsive force a force that has a large magnitude F and acts for a very short time". The system's response to such a force is termed the impulse response function (IRF). Mathematically, an impulse can be represented within an initial value problem (IVP) by incorporating the Dirac delta function as the external forcing term. An IVP consists of an ODE together with the system's state at some initial time; its solution is the unique function satisfying both. The impulse response of a system is defined as its output in response to an input $\delta(t)$, assuming the system is initially at rest.  
 
-We're searching the literature providing the solution for LTI ODE with discontinious right hand, including delta-function and it's derivatives. The Dirac delta function is a well-known generalized function (distribution) used to model impulsive phenomena. Its properties are discussed extensively in the literature, including Arfken (pp.76-79), Bottega (p. 233), Chasnov (p. 58), Nagy (p. 196-201), Weber (p. 86-90), Zill (p. 328-330).
+We are searching the literature for solutions to LTI ODEs with a discontinuous right-hand side, including the delta function and its derivatives. The Dirac delta function is a well-known generalized function (distribution) used to model impulsive phenomena. Its properties are discussed extensively in the literature, including Arfken (pp.76-79), Bottega (p. 233), Chasnov (p. 58), Nagy (p. 196-201), Weber (p. 86-90), Zill (p. 328-330).
 
-While seeking a general method to solve such systems, we found that existing literature primarily offers solutions for specific first- and second-order ODEs and almost no books presented the common (closed form) solution.
+While seeking a general method to solve such systems, we found that existing literature primarily offers solutions for specific first- and second-order ODEs and almost no books present the common (closed form) solution.
 
-### Preliminary info about IFR
+Beyond the sources analyzed in detail below, a broader survey of the Control Theory literature identified more than fifty additional textbooks that discuss the Impulse Response Function (IRF) — the solution of an LTI ODE with zero Initial Condition (IC) and an impulse delta function as load — without engaging the equivalence question directly. This broader bibliography is provided in the Supplementary Bibliography following the References, for readers seeking a starting point for further study of Control Theory.
 
-Many books related to Control Theory has taught us about Impulse Response Function (IRF) which is the solution of LTI ODE with zero Initial Condition (IC) and impulse delta function as load. Here's the short list of book discussing IRF. This list could be used as starting point for studying Control Theory:
-
-<div style="font-size: 0.9em; line-height: 1.4; column-count: 2; column-gap: 2em;">
-
-1. Abdallah - Feedback Control Systems MATLAB Simulink Approach
-2. Alam, Jahangir - Control Engineering Theory and Applications
-3. Anderson - Control Theory: A Brief Introduction
-4. Antsaklis - Linear Systems Primer
-5. Asadi - Feedback Control Systems MATLAB Simulink Approach
-6. BURGHES - Control and Optimal Control Theories with Applications
-7. Babu - Control Systems
-8. Baillieul - Encyclopedia of Systems and Control (2ed)
-9. Bavafa-Toosi - Introduction to Linear Control Systems
-10. Bishop - Teaching Modern Control System Analysis and Design
-11. Bubnicki - Modern Control Theory
-12. D'Azzo - Linear Control System Analysis and Design (5ed)
-13. Diana - Control of Mechanical Systems
-14. Douglas - Fundamentals of Control Theory
-15. Doyle - Feedback Control Theory
-16. Frank - Control Theory Tutorial Basic Concepts
-17. Franklin, Gene F. - Feedback Control of Dynamic Systems (7ed)
-18. Gazi - Principles of Signals and Systems
-19. Ghosh - Control Systems Theory and Applications
-20. Gupta - Automatic Control Engineering
-21. Guzman - Automatic Control with Interactive Tools
-22. HARRIS - Stability of Input-Output Dynamical Systems
-23. HESPANHA, João P. - Linear Systems Theory
-24. Haidekker, Mark A. - Linear Feedback Controls: The Essentials (2ed)
-25. Hallauer, Arthur C. - Linear Time-Invariant Dynamic Systems
-26. Heaston, Richard - Modern Control Theory
-27. Häaglund, Tore - Automatic Control: Lecture Notes
-28. Jagan, S. - Control Systems
-29. KAMARAJU, K. - Linear Systems (2ed): Analysis and Applications
-30. Kani, S. - Control System Engineering (second edition)
-31. Keviczky, László - Control Engineering
-32. Khalil, Hassan K. - Control Systems: An Introduction
-33. Koppel, David B. - Introduction to Control Theory
-34. Krishnaveni, V. - Signals and Systems
-35. Larminat, Philippe de - Analysis and Control of Linear Systems
-36. Lathi, B. P. - Linear Systems and Signals (3ed)
-37. Luna, Maria P. - Advances in Dynamical Systems Theory, Models, Algorithms and Applications
-38. Narasimham, S. - Analysis of Linear Control System
-39. Ogata, Katsuhiko - Modern Control Engineering (5ed)
-40. Oppenheim, Alan V. - Signals and Systems (2ed)
-41. Padmanabhan, A. - Control Systems
-42. Paraskevopoulos, P. N. - Modern Control Engineering
-43. Qiu, Li - Introduction to Feedback Control
-44. Rawlings, James B. - Model Predictive Control (2ed)
-45. Sivanandam, S. N. - Control Systems Engineering using MATLAB (2)
-46. Skogestad, Sigurd - Multivariable Feedback Control: Analysis and Design
-47. TRIPATHI, A. - Control System Analysis and Design (2ed)
-48. Truxal, John G. - Automatic Feedback Control System Synthesis
-49. Tymerski, Robert - Classical and Modern Control Design with examples from power electronics
-50. Vinagre, Blas M. - Time in Control Theory: On Concepts, Measures and Uses
-51. Williams, Robert L. - Linear State Space Control Systems
-52. Zabczyk, Jerzy - Mathematical Control Theory: An Introduction (2ed)
-53. Zerz, Eva - Introduction to Systems and Control Theory
-54. Zhang, Qingsheng - Quantitative Process Control Theory
-
-</div>
-
-### 0 Preliminary data from Impulsive DE
-
-Most books we've found, discussed the property of impulse differential equations (IDE), as ODE + rule to jump IC disregards of impulse function (like Dirac delta and it's derivative). This list could be used as starting point for studying IDE.
-
-<div style="font-size: 0.9em; line-height: 1.4; column-count: 2; column-gap: 2em;">
-
-1. Benchohra, Mouffak; Henderson, Johnny; Ntouyas, Sotiris K. *Impulsive Differential Equations and Inclusions*. Hindawi Publishing, 2006.
-
-2. Filippov, A. *Differential Equations with Discontinuous Righthand Sides*. ISBN 978-90-481-8449-1 DOI 10.1007/978-94-015-7793-9
-
-3. Lakshmikantham, V., et al. *Theory of Impulsive Differential Equations*. World Scientific, 1989. Series in Modern Applied Mathematics, vol. 6. ISBN 978-9971-50-970-5, DOI: 10.1142/0906.
-
-4. Perestyuk, Nikolai A., Viktor A. Plotnikov, Anatolii M. Samoilenko, and Natalia V. Skripnik. 2011. *Differential Equations with Impulse Effects: Multivalued Right-hand Sides with Discontinuities*. De Gruyter Studies in Mathematics, Vol. 40. Berlin: De Gruyter. https://doi.org/10.1515/9783110218176.
-
-5. Samoilenko, A. M., & Perestyuk, N. A. (1995). *Impulsive differential equations* (World Scientific Series on Nonlinear Science. Series A, Monographs and Treatises, Vol. 14). World Scientific. https://doi.org/10.1142/2892
-
-</div>
-
-### 1 Preliminary review: equivalence through initial condition modification
+### 1 Equivalence through initial condition's modification
 
 Several textbooks provide analytical solutions for first/second order LTI ODEs with a Dirac delta forcing function. Examples include Nagy (pp. 203-209: "The Impulse Response Function"), Ogata (p. 163: "Unit-Impulse Response of First-Order Systems"; p.178: "Impulse Response of Second-Order Systems"), Rao (p. 382: "4.5.1 Response to an Impulse"), and Zill (p. 330: "Two Initial-Value Problems").
 
 Baruh (p.9): "Impulsive forces cause sudden changes in velocity with very little (or negligible) change in position"
 
-Other authors explicitly note that the solution of an IVP with a delta load coincides with the solution of the corresponding homogeneous ODE subject to modified initial conditions. A brief survey of such observations follows.
+Other authors explicitly note that the solution of an IVP with a delta load coincides with the solution of the corresponding homogeneous ODE subject to modified initial conditions (IC). A brief survey of such observations follows.
 
-Genta (p. 180: "The response to an impulse excitation is easily computed") gives a formula for adjusting zero initial conditions in a second‑order ODE under delta loading.
 Rao (p. 407: "Unit Impulse Response of a First-Order System") states the equivalence for 1st order system
 
 $
@@ -161,22 +79,14 @@ x'(0) = f_0/m
 \end{cases}
 $
 
-Chasnov (p. 61) provides a formula for changing the initial conditions of a second‑order LTI ODE.
+Chasnov (p. 61) provides a formula for changing the IC of a second-order LTI ODE.
+The LTI IVP with discontinuous right side can also be viewed as a special case of an impulsive differential equation (see Benchohra, Henderson, and Ntouyas).
 
-The above examples suggest a general pattern (though a formal proof appears to be missing in the literature): an IVP forced by a delta function may be equivalent to a homogeneous IVP with a shifted initial condition.
-
-The LTI IVP with discontinious right side can also be viewed as a special case of an impulsive differential equation (see Benchohra, Henderson, and Ntouyas).
+The above examples suggest a general pattern (though a formal proof appears to be missing in the literature): an IVP forced by a delta function may be equivalent to a homogeneous IVP with a shifted IC.
 
 ### 2 Detailed literature classification
 
-For the purposes of this article we have surveyed a wide range of sources dealing with LTI ODEs subject to impulsive loads. The books and articles examined fall into five categories:
-- Solution without mentioning the equivalence if changing IC: almost each book in Control Theory and Vibration Theory gave formulae for IRF
-- Mentioning the change of initial condition without giving an explicit formula: many books in Control Theory and Vibration Theory gave a hint regarding equality for impulse load and free vibration with chaged IC
-- Provide an explicit formula for changing initial conditions for specific equations: many books provided the formulae for changing IC to solve system with impulse load
-- Supply a formulae for the case where the load contains only the delta function: changing IC for LTI ODE with only one impulse load (containing n-th derivative of delta)
-- Closed‑form solution for an LTI ODE with a sum of derivatives of the Dirac delta: change IC in case of sum of delta and it's derivatives acting at one time, we called it as 'whole solution'
-
-Here the list of books we splitted onto those 5 groups:
+Here is the list of books we split into those 5 groups:
 
 1. **Solution without mentioning the equivalence (i.e. unit impulse is equal to change IC)**
    Alam (p. 218 1st order, pp. 270-274 2nd order), Asadi (pp. 62-73), Benaroya (p. 147 IRF 2nd order), Boyce (p.272), Campbell (p.263), Dorf (p.327), Etkin (pp. 73-76), Goode (pp. 708–710), Gupta (pp. 72, 86), Holmes (p.179), Jack (p. 575), Jeffrey (p.412), Korman (p. 160), Kreyszig (pp. 227–230), Neil (pp.102-104), Ricardo (pp.215-216).
@@ -185,20 +95,26 @@ Here the list of books we splitted onto those 5 groups:
    Anderson (p. 8: momentum argument for 2nd order), Antsaklis (p. 67: "the impulse response of a linear, time-invariant, continuous time system with integral representation is equal to the kernel of the integral representation of the system"), Benaroya (p.19 due to "principle of conservation of linear momentum" governs the change the velocity via impulse 'During collisions large forces act resulting in almost instantaneous changes in velocity and therefore in linear momentum'), Brogliato (p.2: "impulsive forces imply a discontinuity in the velocity while positions remain continuous"; p.7: in mechanical systems, continuous positions and discontinuous velocities are produced by impulsive forces, and vice versa"), Howell (p. 560: "Observe that using a delta function force leads to the velocity changing instantly from one constant to another"), James (p.345, p.365), Kausel (p. 82: " the impulse imparted on a mass m abruptly changes its velocity from zero to V = 1/m"), Logan (pp.169-170, p.172), MacCluer (p.374: "Notice that the solution in equation ... doesn't actually satisfy the initial condition"), McOwen (pp. 98-99), Peterson (p. 363: "discontinuous forcing function causes a jump in the velocity of the mass"), Ram (p. 22-5), Shabana (p. 40: "This result indicates that the effect of the impulsive force, which acts over a very short time duration on a system which is initially at rest, can be accounted for by considering the motion of the system with initial velocity 11m and zero initial displacement.")
 
 3. **Provide an explicit formula for changing initial conditions for specific equations**
-   Angeles (p,115: "consequence, the ball undergoes a finite change in its velocity", p.116: change IC for IRF for 1st order system, p.119: change IC for IRF for 2nd order system, pp.132/136: derivative of delta as load), Balachandran (p. 301: IRF for 2nd order system), Baruh (p.259:change IC for 2nd order system due to impulse load), Beards (p.66: "the impulse F, acting on a body will result in a sudden change in its velocity without an appreciable change in its displacement. Thus the motion of a single degree of freedom system excited by an impulse F, corresponds to free vibration with initial conditions x = 0 and v0, = F/m at t = 0"), Chopra (Demonstrates that discontinuous forcing via impulse is mathematically equivalent to modified initial conditions; p.121 exact formulae for changeIC for linear oscillator (from zeroIC); p.616 example of impulse response for MDOF), Cooper (Provides explicit formula for piecewise smooth derivatives showing jump ↔ delta connection. Foundational reference proving mathematically that impulses (delta forces) arise naturally from discontinuities; p.5 change IC for pendulum was in rest), Duffy (p.93 "This avoids the problem of the Green's function not satisfying all of the initial conditions." + (3.1.7) provide the initial condition delivers the IRF as free motion., p.166, p.284), Edwards (p. 500, 2nd order with time shift), Esfandiari (p. 57: change IC for IRF for 2nd order system/"when impulsive forces are present in the system, initial values and initial conditions are indeed different", p.343: "Impulse Response of First-Order Systems",  p.351/359: "Impulse Response of Second-Order Systems"), Fairman (page 31, In addition we see from (1.81) that the zero-input response equals the impulse response when the initial state is x(0) = B (IRF is equal to some non-zero IC)), Franklin (p.110: change IC on 1st order system), Haddad (p.50 "we can always reproduce the impulsive response with the free response by setting x(0) = Bv"), Hallauer (p. 158 changeIC for 1st order system), Inman p.219: "impulsive load for the system initially at rest is calculated by recalling from physics that an impulse imparts a change in momentum to a body", p.557: IRF for PDE/string), Iyengar (p. 87: change IC for SDOF whilst delta load, p.121 IRF for MDOF), Jazar (pp. 173, p.188: "Impulse will only change the initial conditions, and hence, the response of a multi-DOF system will be the transient response to a new set of initial conditions"), Kabe (pp.149-150: "it would appear that applying a unit impulse at t = 0 is equivalent to giving the system an initial velocity", p.163), Klee (p.170: changeIC for 1st order system), Lathi (pp.164-165: "Find the impulse response h(t) for a system specified by (D^2 +5D+6)y(t) = (D+1)x(t)"), Luintel (p.215: "velocity of the system immediately after the application of impulse I is I/m", 507), Meirovitch (p.161: "effect of a unit impulse at t = 0 is to produce an equivalent initial velocity"), Nielsen (p.24: "Consequently, an impulsive load causes a discontinuous change of the velocity", p.63: solution for IRF for MDOF system), Palm (p.96: change IC for 1st/2nd order system, p.116: "Impulse Response of Second-Order Models"), Polking (p.231: IRF for 2nd order system), Schiff (p.82-83 2nd order system with impulse is equal to free vibration of the same system but changed IC), Silva (p.87 for 2nd order system for IRF mentioned change IC, "The Riddle of Zero Initial Conditions"), Sinha (p.69 mentioned changinIC for solution of 1st order ODE with unit impulse as load), Thorby (p.50: "unit impulse of force is applied to it ... that if dv is the change in velocity, then dv=1/m, but the change in isplacement is negligible"), Trench (pp. 478–480: solution some 2nd order system with impulse load), Tse (p. 54: changeIC for 2nd order system with delta load)
+   Angeles (p.115: "consequence, the ball undergoes a finite change in its velocity", p.116: change IC for IRF for 1st order system, p.119: change IC for IRF for 2nd order system, pp.132/136: derivative of delta as load), Balachandran (p. 301: IRF for 2nd order system), Baruh (p.259: change IC for 2nd order system due to impulse load), Beards (p.66: "the impulse F, acting on a body will result in a sudden change in its velocity without an appreciable change in its displacement. Thus the motion of a single degree of freedom system excited by an impulse F, corresponds to free vibration with initial conditions x = 0 and v0, = F/m at t = 0"), Chopra (Demonstrates that discontinuous forcing via impulse is mathematically equivalent to modified initial conditions; p.121 exact formulae for change IC for linear oscillator (from zero IC); p.616 example of impulse response for MDOF), Cooper (Provides explicit formula for piecewise smooth derivatives showing jump ↔ delta connection. Foundational reference proving mathematically that impulses (delta forces) arise naturally from discontinuities; p.5 change IC for pendulum was in rest), Duffy (p.93 "This avoids the problem of the Green's function not satisfying all of the initial conditions." + (3.1.7) provide the initial condition delivers the IRF as free motion., p.166, p.284), Edwards (p. 500, 2nd order with time shift), Esfandiari (p. 57: change IC for IRF for 2nd order system/"when impulsive forces are present in the system, initial values and initial conditions are indeed different", p.343: "Impulse Response of First-Order Systems",  p.351/359: "Impulse Response of Second-Order Systems"), Fairman (page 31, In addition we see from (1.81) that the zero-input response equals the impulse response when the initial state is x(0) = B (IRF is equal to some non-zero IC)), Franklin (p.110: change IC on 1st order system), Haddad (p.50 "we can always reproduce the impulsive response with the free response by setting x(0) = Bv"), Hallauer (p. 158 change IC for 1st order system), Inman p.219: "impulsive load for the system initially at rest is calculated by recalling from physics that an impulse imparts a change in momentum to a body", p.557: IRF for PDE/string), Iyengar (p. 87: change IC for SDOF whilst delta load, p.121 IRF for MDOF), Jazar (pp. 173, p.188: "Impulse will only change the initial conditions, and hence, the response of a multi-DOF system will be the transient response to a new set of initial conditions"), Kabe (pp.149-150: "it would appear that applying a unit impulse at t = 0 is equivalent to giving the system an initial velocity", p.163), Klee (p.170: change IC for 1st order system), Lathi (pp.164-165: "Find the impulse response h(t) for a system specified by (D^2 +5D+6)y(t) = (D+1)x(t)"), Luintel (p.215: "velocity of the system immediately after the application of impulse I is I/m", 507), Meirovitch (p.161: "effect of a unit impulse at t = 0 is to produce an equivalent initial velocity"), Nielsen (p.24: "Consequently, an impulsive load causes a discontinuous change of the velocity", p.63: solution for IRF for MDOF system), Palm (p.96: change IC for 1st/2nd order system, p.116: "Impulse Response of Second-Order Models"), Polking (p.231: IRF for 2nd order system), Schiff (p.82-83 2nd order system with impulse is equal to free vibration of the same system but changed IC), Silva (p.87 for 2nd order system for IRF mentioned change IC, "The Riddle of Zero Initial Conditions"), Sinha (p.69 mentioned changing IC for solution of 1st order ODE with unit impulse as load), Thorby (p.50: "unit impulse of force is applied to it ... that if dv is the change in velocity, then dv=1/m, but the change in isplacement is negligible"), Trench (pp. 478–480: solution some 2nd order system with impulse load), Tse (p. 54: change IC for 2nd order system with delta load)
 
 4. **Supply a formulae for the case where the load contains only the delta function (or its derivatives) for general $n$**
 
-   - Adkins (p. 319: provide formulae for changaing IC to calculate IRF as free response for LTI ODE n-th order)
-   - Beneš (article; for LTI ODE with delta load, provided thewhole fomulae for changing IC - (9); the authors were very close to provide the whole fomrulae - for LTI ODE with the delta and it's derivatives as load)
+   - Adkins (p. 319: provide formulae for changing IC to calculate IRF as free response for LTI ODE n-th order)
+   - Beneš (article; for LTI ODE with delta load, provided the whole formula for changing IC - (9); the authors were very close to provide the whole formula for LTI ODE with the delta and its derivatives as load)
    - Camporesi (p.2: for n-th order equation in the form giving a formulae for changing IC to get IRF as free vibration, p.5: example for 1st order system)
    - Campos (p. 166: change IC for oscillator with first derivative of delta, p.167: exact solution for oscillator with odd/even derivative of delta as load)
-   - Filippov (the authors used the approach from Beneš;  p.20: author provided the trick how to convert origin ODE with delta and it's derivatives as right side into system of 1st order ODE with changed right side that contains only regular function, not general ones. BUT the convertion formulae miised the importatnt part "how to change IC to solve the changes system". We need to conlude that the Filippov's result is not usable for engineering task)
+   - Filippov (the authors used the approach from Beneš; p.20: author provided the trick how to convert original ODE with delta and its derivatives as right side into system of 1st order ODE with changed right side that contains only regular function, not general ones. BUT the conversion formula missed the important part "how to change IC to solve the changed system". We need to conclude that Filippov's result is not usable for engineering tasks)
 
-5. **Closed‑form solution for an LTI ODE with a sum of derivatives of the Dirac delta as the forcing function**
-   To the best of our knowledge, there is no such solution, we considered it's as a conclusion for this review.
+5. **Closed-form solution for an LTI ODE with a sum of derivatives of the Dirac delta as the forcing function**
+   To the best of our knowledge, no such solution exists in the literature (see Conclusion).
 
-## REFERENCES
+### 3 Conclusion
+
+Across the sources surveyed, a consistent pattern emerges: the solution of an LTI ODE driven by a Dirac delta forcing term coincides with the solution of the corresponding homogeneous equation under a shifted initial condition (Section 1). The literature treats this equivalence unevenly, however. As the classification in Section 2 shows, most sources either use the equivalence implicitly, without stating it (category 1), or mention it qualitatively without an explicit formula (category 2); a smaller subset derive an explicit formula for a specific order of equation (category 3); and fewer still address the general case of an n-th order equation forced by the delta function alone (category 4). None of the surveyed sources provide a closed-form solution for the most general case — an LTI ODE forced by a sum of derivatives of the Dirac delta (category 5).
+
+This gap points to two open needs in the literature: a treatment of derivatives of the delta function as forcing terms that is as thorough as the treatment of the delta function itself, and a unified computational framework that covers the full range of derivative and equation orders within a single formula, rather than the equation-by-equation formulas found in category 3.
+
+### REFERENCES
 
 <div style="font-size: 0.85em; line-height: 1.5; column-count: 2; column-gap: 2em;">
 
@@ -345,5 +261,68 @@ Here the list of books we splitted onto those 5 groups:
 [71] Weber, H. J., & Arfken, G. B. (2003). *Essential mathematical methods for physicists*. Academic Press. (ISBN: 978-0-12-059877-9) https://doi.org/10.1016/B978-0-12-059877-9.X5000-7
 
 [72] Zill, D. G. (2023). A first course in differential equations with modeling applications (12th ed.). Cengage Learning. Hardcover ISBN: 978-0-357-76019-2
+
+</div>
+
+### Supplementary Bibliography
+
+Many additional books related to Control Theory discuss the IRF, the solution of an LTI ODE with zero IC and an impulse delta function as load, without directly addressing the equivalence question examined in this review. Here is a short list of such books, which could be used as a starting point for further studying Control Theory:
+
+<div style="font-size: 0.9em; line-height: 1.4; column-count: 2; column-gap: 2em;">
+
+1. Abdallah - Feedback Control Systems MATLAB Simulink Approach
+2. Alam, Jahangir - Control Engineering Theory and Applications
+3. Anderson - Control Theory: A Brief Introduction
+4. Antsaklis - Linear Systems Primer
+5. Asadi - Feedback Control Systems MATLAB Simulink Approach
+6. BURGHES - Control and Optimal Control Theories with Applications
+7. Babu - Control Systems
+8. Baillieul - Encyclopedia of Systems and Control (2ed)
+9. Bavafa-Toosi - Introduction to Linear Control Systems
+10. Bishop - Teaching Modern Control System Analysis and Design
+11. Bubnicki - Modern Control Theory
+12. D'Azzo - Linear Control System Analysis and Design (5ed)
+13. Diana - Control of Mechanical Systems
+14. Douglas - Fundamentals of Control Theory
+15. Doyle - Feedback Control Theory
+16. Frank - Control Theory Tutorial Basic Concepts
+17. Franklin, Gene F. - Feedback Control of Dynamic Systems (7ed)
+18. Gazi - Principles of Signals and Systems
+19. Ghosh - Control Systems Theory and Applications
+20. Gupta - Automatic Control Engineering
+21. Guzman - Automatic Control with Interactive Tools
+22. HARRIS - Stability of Input-Output Dynamical Systems
+23. HESPANHA, João P. - Linear Systems Theory
+24. Haidekker, Mark A. - Linear Feedback Controls: The Essentials (2ed)
+25. Hallauer, Arthur C. - Linear Time-Invariant Dynamic Systems
+26. Heaston, Richard - Modern Control Theory
+27. Häaglund, Tore - Automatic Control: Lecture Notes
+28. Jagan, S. - Control Systems
+29. KAMARAJU, K. - Linear Systems (2ed): Analysis and Applications
+30. Kani, S. - Control System Engineering (second edition)
+31. Keviczky, László - Control Engineering
+32. Khalil, Hassan K. - Control Systems: An Introduction
+33. Koppel, David B. - Introduction to Control Theory
+34. Krishnaveni, V. - Signals and Systems
+35. Larminat, Philippe de - Analysis and Control of Linear Systems
+36. Lathi, B. P. - Linear Systems and Signals (3ed)
+37. Luna, Maria P. - Advances in Dynamical Systems Theory, Models, Algorithms and Applications
+38. Narasimham, S. - Analysis of Linear Control System
+39. Ogata, Katsuhiko - Modern Control Engineering (5ed)
+40. Oppenheim, Alan V. - Signals and Systems (2ed)
+41. Padmanabhan, A. - Control Systems
+42. Paraskevopoulos, P. N. - Modern Control Engineering
+43. Qiu, Li - Introduction to Feedback Control
+44. Rawlings, James B. - Model Predictive Control (2ed)
+45. Sivanandam, S. N. - Control Systems Engineering using MATLAB (2)
+46. Skogestad, Sigurd - Multivariable Feedback Control: Analysis and Design
+47. TRIPATHI, A. - Control System Analysis and Design (2ed)
+48. Truxal, John G. - Automatic Feedback Control System Synthesis
+49. Tymerski, Robert - Classical and Modern Control Design with examples from power electronics
+50. Vinagre, Blas M. - Time in Control Theory: On Concepts, Measures and Uses
+51. Williams, Robert L. - Linear State Space Control Systems
+52. Zabczyk, Jerzy - Mathematical Control Theory: An Introduction (2ed)
+53. Zerz, Eva - Introduction to Systems and Control Theory
+54. Zhang, Qingsheng - Quantitative Process Control Theory
 
 </div>
