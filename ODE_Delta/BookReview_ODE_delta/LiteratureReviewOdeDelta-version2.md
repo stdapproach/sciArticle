@@ -24,8 +24,6 @@ While seeking a general method to solve such systems, we found that existing lit
 
 The sources reviewed here were identified through a manual survey of over 100 textbooks and articles in differential equations, vibration theory, and control theory, selected for their treatment of impulsive or discontinuous forcing in linear time-invariant systems. Section 1 establishes the equivalence pattern observed across this literature; Section 2 classifies the surveyed sources into five categories based on how explicitly they state this equivalence; Section 3 draws conclusions and identifies the resulting gaps.
 
-Beyond the sources analyzed in detail below, a broader survey of the Control Theory literature identified more than fifty additional textbooks that discuss the Impulse Response Function (IRF) — the solution of an LTI ODE with zero Initial Condition (IC) and an impulse delta function as load — without engaging the equivalence question directly. This broader bibliography is provided in the Supplementary Bibliography following the References, for readers seeking a starting point for further study of Control Theory.
-
 ### 1 Equivalence through initial condition's modification
 
 Several textbooks provide analytical solutions for first/second order LTI ODEs with a Dirac delta forcing function. Examples include Nagy (pp. 203-209: "The Impulse Response Function"), Ogata (p. 163: "Unit-Impulse Response of First-Order Systems"; p.178: "Impulse Response of Second-Order Systems"), Rao (p. 382: "4.5.1 Response to an Impulse"), and Zill (p. 330: "Two Initial-Value Problems").
@@ -271,68 +269,4 @@ Tse, F. S., Morse, I. E., & Hinkle, R. T. (2018). *Mechanical vibrations: Theory
 Weber, H. J., & Arfken, G. B. (2003). *Essential mathematical methods for physicists*. Academic Press. (ISBN: 978-0-12-059877-9) https://doi.org/10.1016/B978-0-12-059877-9.X5000-7
 
 Zill, D. G. (2023). A first course in differential equations with modeling applications (12th ed.). Cengage Learning. Hardcover ISBN: 978-0-357-76019-2
-
-</div>
-
-### Supplementary Bibliography
-
-Many additional books related to Control Theory discuss the IRF, the solution of an LTI ODE with zero IC and an impulse delta function as load, without directly addressing the equivalence question examined in this review. Here is a short list of such books, which could be used as a starting point for further studying Control Theory:
-
-<div style="font-size: 0.9em; line-height: 1.4; column-count: 2; column-gap: 2em;">
-
-- Abdallah - Feedback Control Systems MATLAB Simulink Approach
-- Alam, Jahangir - Control Engineering Theory and Applications
-- Anderson - Control Theory: A Brief Introduction
-- Antsaklis - Linear Systems Primer
-- Asadi - Feedback Control Systems MATLAB Simulink Approach
-- BURGHES - Control and Optimal Control Theories with Applications
-- Babu - Control Systems
-- Baillieul - Encyclopedia of Systems and Control (2ed)
-- Bavafa-Toosi - Introduction to Linear Control Systems
-- Bishop - Teaching Modern Control System Analysis and Design
-- Bubnicki - Modern Control Theory
-- D'Azzo - Linear Control System Analysis and Design (5ed)
-- Diana - Control of Mechanical Systems
-- Douglas - Fundamentals of Control Theory
-- Doyle - Feedback Control Theory
-- Frank - Control Theory Tutorial Basic Concepts
-- Franklin, Gene F. - Feedback Control of Dynamic Systems (7ed)
-- Gazi - Principles of Signals and Systems
-- Ghosh - Control Systems Theory and Applications
-- Gupta - Automatic Control Engineering
-- Guzman - Automatic Control with Interactive Tools
-- HARRIS - Stability of Input-Output Dynamical Systems
-- HESPANHA, João P. - Linear Systems Theory
-- Haidekker, Mark A. - Linear Feedback Controls: The Essentials (2ed)
-- Hallauer, Arthur C. - Linear Time-Invariant Dynamic Systems
-- Heaston, Richard - Modern Control Theory
-- Häaglund, Tore - Automatic Control: Lecture Notes
-- Jagan, S. - Control Systems
-- KAMARAJU, K. - Linear Systems (2ed): Analysis and Applications
-- Kani, S. - Control System Engineering (second edition)
-- Keviczky, László - Control Engineering
-- Khalil, Hassan K. - Control Systems: An Introduction
-- Koppel, David B. - Introduction to Control Theory
-- Krishnaveni, V. - Signals and Systems
-- Larminat, Philippe de - Analysis and Control of Linear Systems
-- Lathi, B. P. - Linear Systems and Signals (3ed)
-- Luna, Maria P. - Advances in Dynamical Systems Theory, Models, Algorithms and Applications
-- Narasimham, S. - Analysis of Linear Control System
-- Ogata, Katsuhiko - Modern Control Engineering (5ed)
-- Oppenheim, Alan V. - Signals and Systems (2ed)
-- Padmanabhan, A. - Control Systems
-- Paraskevopoulos, P. N. - Modern Control Engineering
-- Qiu, Li - Introduction to Feedback Control
-- Rawlings, James B. - Model Predictive Control (2ed)
-- Sivanandam, S. N. - Control Systems Engineering using MATLAB (2)
-- Skogestad, Sigurd - Multivariable Feedback Control: Analysis and Design
-- TRIPATHI, A. - Control System Analysis and Design (2ed)
-- Truxal, John G. - Automatic Feedback Control System Synthesis
-- Tymerski, Robert - Classical and Modern Control Design with examples from power electronics
-- Vinagre, Blas M. - Time in Control Theory: On Concepts, Measures and Uses
-- Williams, Robert L. - Linear State Space Control Systems
-- Zabczyk, Jerzy - Mathematical Control Theory: An Introduction (2ed)
-- Zerz, Eva - Introduction to Systems and Control Theory
-- Zhang, Qingsheng - Quantitative Process Control Theory
-
 </div>
