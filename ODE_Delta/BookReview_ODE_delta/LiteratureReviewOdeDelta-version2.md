@@ -1,4 +1,4 @@
-## Literature Review: Solution of Linear ODEs with Delta Function as Load
+## The Impulse–Initial Condition Equivalence in Linear ODEs: A Literature Review
 
 **Denis Pleshkov**
 <std.approach@gmail.com>
@@ -10,13 +10,13 @@ This literature review examines how linear time-invariant (LTI) ordinary differe
 
 ### Keywords
 
-Literature review, delta function, differential equation, ODE, impulse response
+Literature review, delta function, differential equation, ODE, impulse response, initial condition, equivalence
 
 ### Introduction
 
 The dynamics of evolving processes are often subject to abrupt changes, such as: impact of a hammer on a beam, a bat striking a ball, a bolt of lightning striking a tower.
 
-Such short-term perturbations are frequently treated as instantaneous events, often modeled as "impulses" (see also Cohen, p. 13, for an analogous billiard-ball example). Logan (p.166) "Many physical and biological processes have source terms that act at a single instant of time. For example, we can idealize an injection of medicine (a "shot") into the blood stream as occurring at a single instant; a mechanical system, for example, a damped spring–mass system in a shock absorber on a car can be given an impulsive force by hitting a bump in the road; the switch in an electrical circuit can be closed only for an instant, which leads to an impulsive, applied voltage". According to Rao (p. 381) "The simplest form is the impulsive force a force that has a large magnitude F and acts for a very short time". The system's response to such a force is termed the impulse response function (IRF). Mathematically, an impulse can be represented within an initial value problem (IVP) by incorporating the Dirac delta function as the external forcing term. An IVP consists of an ODE together with the system's state at some initial time; its solution is the unique function satisfying both. The impulse response of a system is defined as its output in response to an input $\delta(t)$, assuming the system is initially at rest.  
+Such short-term perturbations are frequently treated as instantaneous events, often modeled as "impulses" (see also Cohen, p. 13, for an analogous billiard-ball example). Logan (p.166) "Many physical and biological processes have source terms that act at a single instant of time. For example, we can idealize an injection of medicine (a "shot") into the blood stream as occurring at a single instant; a mechanical system, for example, a damped spring–mass system in a shock absorber on a car can be given an impulsive force by hitting a bump in the road; the switch in an electrical circuit can be closed only for an instant, which leads to an impulsive, applied voltage". According to Rao (p. 381) "The simplest form is the impulsive force a force that has a large magnitude F and acts for a very short time". The system's response to such a force is termed the impulse response function (IRF). Mathematically, an impulse can be represented within an initial value problem (IVP) by incorporating the Dirac delta function as the external forcing term. An IVP consists of an ODE together with the system's state at some initial time; its solution is the unique function satisfying both. The impulse response of a system is defined as its output in response to an input $\delta(t)$, assuming the system is initially at rest. A recurring pattern across this literature is that such an impulse-forced problem is equivalent to the corresponding homogeneous problem — the same ODE without forcing — with its initial condition shifted to account for the impulse. This impulse–initial condition equivalence is the central relationship this review investigates.
 
 We are searching the literature for solutions to LTI ODEs with a discontinuous right-hand side, including the delta function and its derivatives. The Dirac delta function is a well-known generalized function (distribution) used to model impulsive phenomena. Its properties are discussed extensively in the literature, including Arfken (pp.76-79), Bottega (p. 233), Chasnov (p. 58), Nagy (p. 196-201), Weber (p. 86-90), Zill (p. 328-330).
 
