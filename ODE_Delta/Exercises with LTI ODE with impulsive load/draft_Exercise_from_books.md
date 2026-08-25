@@ -58,6 +58,57 @@ $$
 \end{cases}
 $$
 
+## Esfandiari & Lu Modeling and analysis of dynamic systems
+
+p.57 "Example 2.27: Initial Condition ≠ Initial Value"
+$$
+ \ddot{x} + \dot{x} + 2x = \delta(t), \, x(0^-) = 0, \, \dot{x}(0^-) = 0
+\implies \dot{x}(0^+) =  1
+$$
+
+p.343 "Impulse Response of First-Order Systems"
+$$ x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau} $$
+where A - impulse's magnitude $\tau$ - cofficient for higher derivative in ODE.
+
+
+## Franklin & Powell & Emami-Naeini Feedback control of dynamic systems
+
+p. 110
+$$
+\dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
+$$
+
+p.151
+$$ 
+H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
+$$
+
+## Lathi Linear systems and signals
+p.164 "EXAMPLE 2.5 Impulse Response via Impulse Matching"
+Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)
+Solution
+$$ h(t) = (-e^{-2t} + 2e^{-3t})u(t) $$
+
+p.166 EXAMPLE 2.6
+Determine the unit impulse response h(t) for a system specified by the equation
+(D^2 +3D+2)y(t) = Dx(t)
+Solution
+$$ h(t) = (-e^{-t} + 2e^{-2t})u(t) $$
+
+p.167 DRILL 2.4 Finding the Impulse Response
+Determine the unit impulse response of LTIC systems described by the following equations:
+
+(a) $ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) $
+
+(b) $ D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t)$
+
+(c) $ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t)$
+
+p.364 DRILL 4.7 Laplace Transform to Solve a Second-Order Linear Differential Equation
+$$
+\frac{d^2y(t)}{dt^2} + 4\frac{dy(t)}{dt} + 3y(t) = 2\frac{dx(t)}{dt} + x(t) \\
+y(0^-) = 1 \quad \text{and} \quad \dot{y}(0^-) = 2 \implies \boxed{y(t) = \frac{1}{3}\left(1 + 9e^{-t} - 7e^{-3t}\right)u(t)}
+$$
 
 ---
 
@@ -75,6 +126,45 @@ Dorf: p.174 P2.36 "Determine the impulse response of the system"; p.178 "Conside
 
 Edwards: 9.326 4.6 Problems 1-8, 15-16 (equality of solution by changing IC)
 
+Esfandiari: p.59 Problems 19 through 24; p.62 Problem 10 "Solve the IVP"
+p.352 "8.3.2   Impulse Response of Second-Order Systems"
+p.353 "Example 8.5: Impulse Response"
+p.359  "Example 8.8: Impulse Response"
+p.363  "PROBLEM SET 8.2"/7-11, 20
+
+Franklin:
+p.230 EXAMPLE 4.9
+p.589 Problem 7.20
+
+Inman
+p.221 Example 3.1.1
+p.222 Example 3.1.3
+p.224 Example 3.1.4
+p.232 Example 3.2.3
+p.245 Example 3.4.4, Example 3.4.5
+p.287 Problems 3.1-3.6, 3.10-3.13
+p.377 Example 4.8.1 MDOF system with impulse
+p.382  Example 4.8.2 MDOF system with impulse
+p.386 Example 4.8.3 MDOF system with impulse
+p.428 Problem 4.76
+p.429 Problem 4.78
+p.440 Example 5.1.2
+p.557 Example 6.8.1 "Calculate the forced response of the string fixed at both ends ... subject to unit impulse"
+p.571 Problem 6.67
+
+Karris
+p.6-2 "Example 6.1"
+p.6-3 "Example 6.2"
+
+Kelly
+p.317 EXAMPLE 5 .1
+p.374 Problem 5.21-5.23
+
+Lathi: p.471 Problem 4.3-6
+
+Meirovitch: p.371 Problem 7.49
+p.463 Problem 8.38, 8.42, 8.44
+
 ---
 
 ## References
@@ -87,6 +177,24 @@ Campbell, S. L., & Haberman, R. (2008). Introduction to differential equations w
 Dorf, R. C., & Bishop, R. H. (2008). Modern control systems: Solution manual (11th ed.). Pearson Education, Inc. (ISBN: 0-13-227029-3)
 
 Edwards, C. H., & Penney, D. E. (2008). Elementary differential equations with boundary value problems (6th ed.). Pearson Education. ISBN 0-13-600613-2
+
+Esfandiari, R. S., & Lu, B. (2014). Modeling and analysis of dynamic systems (2nd ed.). CRC Press, Taylor & Francis Group. (ISBN: 978-1-4665-7495-3)
+https://doi.org/10.1201/b16443
+
+Franklin, G. F., Powell, J. D., & Emami-Naeini, A. (2015). Feedback control of dynamic
+systems (7th ed., Global ed.). Pearson Education Limited. (ISBN: 978-1-292-06890-9)
+
+Inman, D. J. (2014). Engineering vibration (4th ed.). Pearson Education, Inc. (ISBN:
+978-0-13-287169-3)
+
+Karris, S. T. (2003). Signals and systems with MATLAB® applications (2nd ed.). Orchard Publications. (ISBN: 9780970951168, 0970951167)
+
+Kelly, S. G. (2012). Mechanical vibrations: Theory and applications, SI. Cengage Learning. (ISBN: 9781439062142)
+
+Lathi, B. P., & Green, R. A. (2018). Linear systems and signals (3rd ed.). Oxford University Press. (ISBN: 978-0-19-020017-6)
+
+Meirovitch, L. (2001). Fundamentals of vibrations (International ed.). McGraw-Hill.
+(ISBN: 0-07-118174-1)
 
 ## Impulse Response Analysis
 
