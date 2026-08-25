@@ -220,8 +220,73 @@ $$
 \mathcal{L}^{-1} \left\{ \frac{s+1}{(s^2+1)(s^2+9)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8} \left( \cos t + \sin t - \cos 3t - \frac{1}{3} \sin 3t \right)
 $$
 
-## Xue & Chen & Atherton Linear feedback control: Analysis and design with MATLAB
-??
+## Gangadharaiah & Sandeep Engineering applications of the Laplace transform
+p.239 Example 3.8. Use the Laplace transform to find ... the impulse response of the system if the differential equation describes the system
+$$
+\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = \frac{d^2x(t)}{dt^2} + 8\frac{dx(t)}{dt} + 13x(t) \\
+\implies h(t) = \delta(t) + e^{-2t} + 2e^{-3t}
+$$
+
+p.240 Example 3.9. Consider the causal LTI system described by the second
+differential equation ... Determine the impulse response
+$$
+\frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \\
+\implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
+$$
+
+p.248 Example 3.11. Consider the causal LTI system described by the second differential equation ... Determine the impulse response
+$$
+\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \\
+\implies h(t) = e^{-2t} - e^{-3t}.
+$$
+
+p.254 Example 3.12. find the impulse response of the system if the third-order differential equation describes the system
+$$
+\frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \\
+\implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
+$$
+
+
+p.257 Example 3.14. Compute the impulse response of the transform with the transfer function
+$$
+H(s) = \frac{s^2 - s + 1}{s^2 + 2s + 1} \implies y(t) = \delta(t) - 3e^{-t} + 3te^{-t}.
+$$
+
+p.288 Example 3.27.find impulse response of the system if the differential equation
+describes the system
+$$
+\frac{d^2z(t)}{dt^2} + 3\frac{dz(t)}{dt} + 2z(t) = \frac{d^2x(t)}{dt^2} + 6\frac{dx(t)}{dt} + 7x(t) \\
+\implies h(t) = \delta(t) + 2e^{-t} + e^{-2t}.
+$$
+
+p.289 Example 3.28. find the impulse response of the system if the differential equation describes the system
+$$
+\frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
+$$
+
+p.306 Example 4.7. Solve the initial value problem
+$$
+\frac{d^2 y(t)}{dt^2} + 5 \frac{dy(t)}{dt} + 6y(t) = \delta(t - \pi) - \delta(t - 2\pi)
+$$
+
+with $ y(0) = 0 = y'(0) $.
+$$
+y(t) = \left( e^{-2(t-\pi)} - e^{-3(t-\pi)} \right) u(t - \pi) - \left( e^{-2(t-2\pi)} - e^{-3(t-2\pi)} \right) u(t - 2\pi).
+$$
+
+p.340 Example 4.25. Obtain the solution of the fourth-order differential equation
+$$
+\frac{d^4 y(t)}{dt^4} + 2 \frac{d^3 y(t)}{dt^3} - \frac{d^2 y(t)}{dt^2} - 2 \frac{dy(t)}{dt} = \delta(t)
+$$
+
+along with the initial condition
+$$
+y(0) = 1 \quad \text{and} \quad y'(0) = y''(0) = y'''(0) = 0.
+$$
+
+$$
+y(t) = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}.
+$$
 
 ---
 
@@ -374,6 +439,8 @@ Thorby, D. (2008). Structural dynamics and vibration in practice: An engineering
 Xie, W.-C. (2010). Differential equations for engineers. Cambridge University Press. ISBN-13 978-0-521-19424-2
 
 Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis and design with MATLAB. Society for Industrial and Applied Mathematics. ISBN 978-0-898716-38-2
+
+Gangadharaiah, Y. H., & Sandeep, N. (2021). Engineering applications of the Laplace transform. Cambridge Scholars Publishing. ISBN (13): 978-1-5275-7373-4
 
 
 **Document Status:** Draft  
