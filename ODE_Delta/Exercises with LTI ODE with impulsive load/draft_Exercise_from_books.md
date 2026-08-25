@@ -288,6 +288,19 @@ $$
 y(t) = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}.
 $$
 
+p.387 Example 4.49. Obtain the solution of the second-order differential equation
+$$
+\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = 3\delta(t-2) - 4\delta(t-4)
+$$
+
+along with the initial conditions $ y(0) = 0 = y'(0) $.
+$$
+y(t) = 3(e^{-2(t-2)} - e^{-3(t-2)})u(t-2) - 4(e^{-2(t-4)} - e^{-3(t-4)})u(t-4).
+$$
+
+
+
+
 ---
 
 ## Additional Exercises
