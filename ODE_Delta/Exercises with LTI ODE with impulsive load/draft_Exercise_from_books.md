@@ -110,6 +110,119 @@ $$
 y(0^-) = 1 \quad \text{and} \quad \dot{y}(0^-) = 2 \implies \boxed{y(t) = \frac{1}{3}\left(1 + 9e^{-t} - 7e^{-3t}\right)u(t)}
 $$
 
+## Nagy Ordinary differential equations
+p.202
+$$
+y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \\
+\implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
+$$
+
+p.205 Example 3.4.6. Find the impulse response function
+$$
+L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
+$$
+
+p.205 Example 3.4.7. Find the solution y to the initial value problem
+$$
+y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
+$$
+
+p.206 Example 3.4.8. Find the solution to the initial value problem
+$$
+y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \\
+\implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
+$$
+
+## Nagle Fundamentals of differential equations
+p.403 Example 4 A linear system is governed by the differential equation
+$$
+y'' + 2y' + 5y \implies = \frac{1}{2} e^{-t} \sin 2t
+$$
+
+p.409 Example 1
+$$
+\frac{d^2x}{dt^2} + 9x = 3\delta(t - \pi); \quad x(0) = 1, \quad \frac{dx}{dt}(0) = 0, \\
+\implies x(t) = 
+\begin{cases} 
+\cos 3t, & t < \pi, \\ 
+\cos 3t - \sin 3t, & \pi < t
+\end{cases}
+$$
+
+## Ogata Modern control engineering
+p.163 Unit-Impulse Response of First-Order Systems
+$$
+C(s) = \frac{1}{Ts + 1} \implies c(t) = \frac{1}{T} e^{-t/T}, \quad \text{for } t \geq 0
+$$
+
+p.178 Impulse Response of Second-Order Systems
+$$
+C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} \implies \\
+$$
+
+For $ 0 \leq \zeta < 1 $,
+
+$$
+c(t) = \frac{\omega_n}{\sqrt{1 - \zeta^2}} e^{-\zeta \omega_n t} \sin \omega_n \sqrt{1 - \zeta^2} t, \quad \text{for } t \geq 0
+$$
+
+For $ \zeta = 1 $,
+
+$$
+c(t) = \omega_n^2 t e^{-\omega_n t}, \quad \text{for } t \geq 0
+$$
+
+For $ \zeta > 1 $,
+
+$$
+c(t) = \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta - \sqrt{\zeta^2 - 1} \right) \omega_n t} - \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta + \sqrt{\zeta^2 - 1} \right) \omega_n t}, \quad \text{for } t \geq 0
+$$
+
+
+## Shabana Vibration of discrete and continuous systems
+p.41
+Example 1.10
+Find the response of the single degree of freedom system shown in Fig. 17 to the
+rectangular impulsive force shown in Fig. 16, where m = 10 kg, k = 9,000 N/m,
+c = 18 N· slm, and Fo = 10,000 N. The force is assumed to act at time t = 0 and
+the impact interval is assumed to be 0.005 s.
+The system response to the impulsive force is then given by
+$$
+\begin{aligned}
+x(t) &= \frac{l}{m\omega_d} e^{-\xi\omega t} \sin \omega_d t = \frac{50}{(10)(29.986)} e^{-(0.03)(30)t} \sin 29.986t = 0.1667e^{-0.9t} \sin 29.986t
+\end{aligned}
+$$
+
+## Xie Differential equations for engineers
+p.258 
+Example 6.11
+$$
+\mathcal{L}^{-1} \left\{ \frac{s}{(s-2)^5} \right\} \implies f(t) = \frac{1}{12} e^{2t} t^3 (2 + t)
+$$
+
+Example 6.12
+$$
+\mathcal{L}^{-1} \left\{ \frac{1 + e^{-3s}}{s^4} \right\} \implies \frac{1}{6} \left[ t^3 + (t-3)^3 u(t-3) \right]
+$$
+
+Example 6.13
+$$
+\mathcal{L}^{-1} \left\{ \frac{s}{(s^2 + 4)^2} \right\} \implies \frac{1}{4} l \sin 2l
+$$
+
+Example 6.14
+$$
+\mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
+$$
+
+Example 6.15
+$$
+\mathcal{L}^{-1} \left\{ \frac{s+1}{(s^2+1)(s^2+9)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8} \left( \cos t + \sin t - \cos 3t - \frac{1}{3} \sin 3t \right)
+$$
+
+## Xue & Chen & Atherton Linear feedback control: Analysis and design with MATLAB
+??
+
 ---
 
 ## Additional Exercises
@@ -121,6 +234,10 @@ Boyce: p.273-274 has many exercises
 Bottega: p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6; p.429: MDOF system under impuls load; p.470: double pendulum under impulse load; p.488: Ex 8.17 elastically supported frame under struck; p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE "Determine the response of the rod it is struck on its right end by an impulse of magnitude"; p.718: Ex 11.17 "The beam is impacted at its left end"
 
 Campbell: p.264 Exercises 1–8
+
+De Oliveira
+p.82 Problem 3.41 "Compute the inverse Laplace transform of the following complex-valued functions"
+p.83 Problem 3.44 "Compute the inverse Laplace transform"
 
 Dorf: p.174 P2.36 "Determine the impulse response of the system"; p.178 "Consider the unity feedback system described in the block diagram ... Compute analytically the response of the system to an impulse disturbance"; p.392 CP5.1 "Obtain the impulse response analytically"
 
@@ -165,6 +282,46 @@ Lathi: p.471 Problem 4.3-6
 Meirovitch: p.371 Problem 7.49
 p.463 Problem 8.38, 8.42, 8.44
 
+Nagle p.404 7.8 EXERCISES 5-12, 23-28
+p.410 7.9 Exercises 13-29, 35
+p.416 REVIEW PROBLEMS FOR CHAPTER 7 Problem 29-30
+
+Ogata
+p.196 MATLAB Program 5–8 "Unit-Impulse Response of G(s) = 1/(s^2 + 0.2s + 1)"
+p.264 B–5–4 "Consider the system shown in Figure 5–72.The system is initially at rest. Suppose that the cart is set into motion by an impulsive force whose strength is unity. Can it be stopped by another such impulsive force?"
+p.264 B-5-5, B-5-6
+p.265 B-5-10/11
+p.267 B-5-16
+
+Rao
+p.382 "4.5.1 Response to an Impulse"
+p.384 EXAMPLE 4.7 "Response of a Structure Under Impact"
+p.385 EXAMPLE 4.8 Response of a Structure Under Double Impact
+p.407  EXAMPLE 4.9 Unit Impulse Response of a First-Order System
+p.409  EXAMPLE 4.21 Unit Impulse Response of a Second-Order System
+p.437 EXAMPLE 4.33 Impulse Response of a Structure
+p.511 EXAMPLE 5.12 Response Under Impulse Using Laplace Transform Method
+
+Schiff
+p.87 Exercises 2.5 1-7
+
+Schabana
+p.45 Problems 1.3, 1.9
+
+Thorby
+p.51 Example 3.2
+
+Xue
+p.76 Example 3.20. Consider again the system model studied in Example 3.17. The impulse
+response of the system can be obtained as shown in Figure 3.11:
+>> G=tf([10 20],[10 23 26 23 10],’ioDelay’,1); impulse(G, 30);
+
+p.106 Problem 9
+Find impulse response for the system:
+$$
+\frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}
+$$
+
 ---
 
 ## References
@@ -173,6 +330,8 @@ Boyce, W. E., & DiPrima, R. C. (2017). Elementary differential equations and bou
 Bottega, W. J. (2006). *Engineering vibrations*. CRC Press. (ISBN: 9780849334207, 0849334209)
 
 Campbell, S. L., & Haberman, R. (2008). Introduction to differential equations with dynamical systems. Princeton University Press. (ISBN: 978-0-691-12474-6)
+
+De Oliveira, M. C. (2017). Fundamentals of linear control: A concise approach. Cambridge University Press. https://doi.org/10.1017/9781316941409 ISBN 978-1-107-18752-8 Hardback
 
 Dorf, R. C., & Bishop, R. H. (2008). Modern control systems: Solution manual (11th ed.). Pearson Education, Inc. (ISBN: 0-13-227029-3)
 
@@ -193,143 +352,28 @@ Kelly, S. G. (2012). Mechanical vibrations: Theory and applications, SI. Cengage
 
 Lathi, B. P., & Green, R. A. (2018). Linear systems and signals (3rd ed.). Oxford University Press. (ISBN: 978-0-19-020017-6)
 
-Meirovitch, L. (2001). Fundamentals of vibrations (International ed.). McGraw-Hill.
-(ISBN: 0-07-118174-1)
+Meirovitch, L. (2001). Fundamentals of vibrations (International ed.). McGraw-Hill. (ISBN: 0-07-118174-1)
 
-## Impulse Response Analysis
+Nagy, G. (n.d.). Ordinary differential equations. Mathematics Department, Michigan State University
 
-### Exercise 2.1: First-Order System Response to Impulse
-**Source:** Karris (2003), Cohen (2007)
-**Difficulty:** Beginner
+Nagle, R. K., Saff, E. B., & Snider, A. D. (2018). Fundamentals of differential equations
+(9th ed.). Pearson Education, Inc. (ISBN: 978-0-321-97706-9)
 
-Consider the first-order LTI system:
-$$\dot{x}(t) + 2x(t) = \delta(t)$$
+Ogata, K. (2010). Modern control engineering (5th ed.). Pearson Education, Inc. (ISBN-
+13: 978-0-13-615673-4)
 
-with initial condition $x(0^-) = 0$.
----
+Rao, S. S. (2011). Mechanical vibrations (5th ed.). Pearson Education. ISBN 978-0-13-212819-3
 
-### Exercise 2.2: Impulse Response via Laplace Transform
-**Source:** Boyce & DiPrima (2012), Cohen (2007)
-**Difficulty:** Intermediate
+Schiff, Joel L. (1999). The Laplace transform: Theory and applications. Springer-Verlag New York,
+Inc. (ISBN: 0-387-98698-7) https://doi.org/10.1007/978-0-387-22757-3
 
-Given the system transfer function:
-$$H(s) = \frac{1}{s^2 + 3s + 2}$$
+Shabana, A. A. (1997). Vibration of discrete and continuous systems (2nd ed.). Springer-Verlag. https://doi.org/10.1007/978-1-4612-4036-5 Print ISBN-13: 978-1-4612-8474-1
 
----
+Thorby, D. (2008). Structural dynamics and vibration in practice: An engineering handbook. Butterworth-Heinemann, an imprint of Elsevier. (ISBN: 978-0-7506-8002-8) https://doi.org/10.1016/B978-0-7506-8002-8.X0001-1
 
-## Modified Initial Conditions
+Xie, W.-C. (2010). Differential equations for engineers. Cambridge University Press. ISBN-13 978-0-521-19424-2
 
-### Exercise 3.1: IC Change Under Impulse (Second-Order System)
-**Source:** Meirovitch (2001), Beards (1996), Schmitz & Smith (2012)
-**Difficulty:** Intermediate
-
-Consider the second-order system:
-$$\ddot{x}(t) + 4\dot{x}(t) + 3x(t) = \delta(t)$$
-
-with pre-impulse conditions: $x(0^-) = 0, \dot{x}(0^-) = 0$.
-
----
-
-### Exercise 3.2: Damped Oscillator with Impulsive Force
-**Source:** Meirovitch (2001), Inman (2014)
-**Difficulty:** Intermediate
-
-A damped harmonic oscillator with mass $m = 1$ kg, damping $c = 0.4$ N·s/m, and stiffness $k = 1$ N/m receives an impulse of magnitude $J = 2$ N·s at $t = 0$.
-
-$$\ddot{x}(t) + 0.4\dot{x}(t) + x(t) = 2\delta(t)$$
-
-Initial conditions: $x(0^-) = 0, \dot{x}(0^-) = 0$.
-
----
-
-## Laplace Transform Methods
-
-### Exercise 4.1: Solving ODE with Delta Forcing via Laplace
-**Source:** Schiff (1999), Cohen (2007), Zill (2009)
-**Difficulty:** Intermediate
-
-Solve using Laplace transform:
-$$\ddot{x} + 5\dot{x} + 6x = \delta(t)$$
-
-with $x(0) = 0, \dot{x}(0) = 0$.
-
----
-
-### Exercise 4.2: Multiple Impulses
-**Source:** Karris (2003), Schiff (1999)
-**Difficulty:** Advanced
-
-Consider the system:
-$$\dot{x}(t) + 3x(t) = \delta(t) + 2\delta(t - 2)$$
-
-with $x(0^-) = 0$.
-
----
-
-## Second-Order LTI Systems
-
-### Exercise 5.1: Delta and Delta Derivative Forcing
-**Source:** Oliveira & Cortes (2011), Schiff (1999)
-**Difficulty:** Advanced
-
-Consider:
-$$\ddot{x}(t) + 2\dot{x}(t) + x(t) = \delta(t) + \delta'(t)$$
-
-with $x(0^-) = 0, \dot{x}(0^-) = 0$.
-
----
-
-### Exercise 5.2: Underdamped System with Impulse Train
-**Source:** Meirovitch (2001)
-**Difficulty:** Advanced
-
-A second-order underdamped system:
-$$\ddot{x} + 0.5\dot{x} + 2x = f(t)$$
-
-where $f(t) = \delta(t) + \delta(t - 3) + \delta(t - 6)$ (three impulses at $t = 0, 3, 6$)
-
-Initial conditions: $x(0^-) = 0, \dot{x}(0^-) = 0$.
----
-
-## Control Theory Applications
-
-### Exercise 6.2: Transfer Function and Impulse Response
-**Source:** Ogata (2010), Karris (2003)
-**Difficulty:** Intermediate
-
-Given the transfer function:
-$$H(s) = \frac{s + 1}{(s + 1)(s + 2)(s + 3)}$$
-
----
-
-## Structural Dynamics & Vibrations
-
-### Exercise 7.1: Impact Loading on Structures
-**Source:** Beards (1996), Schmitz & Smith (2012)
-**Difficulty:** Intermediate
-
-A structure modeled as a second-order system experiences an impact:
-$$m\ddot{x} + c\dot{x} + kx = F(t)$$
-
-where the impact imparts impulse $J = 10$ N·s.
-
-Given: $m = 1$ kg, $c = 2$ N·s/m, $k = 10$ N/m, pre-impact at rest.
-
----
-
-## Advanced Problems
-
-### Exercise 8.2: Coupled System with Impulsive Forcing
-**Source:** Meirovitch (2001)
-**Difficulty:** Advanced
-
-A two-degree-of-freedom system:
-$$\begin{bmatrix} m_1 & 0 \\ 0 & m_2 \end{bmatrix} \begin{bmatrix} \ddot{x}_1 \\ \ddot{x}_2 \end{bmatrix} + \begin{bmatrix} c_1 + c_c & -c_c \\ -c_c & c_2 + c_c \end{bmatrix} \begin{bmatrix} \dot{x}_1 \\ \dot{x}_2 \end{bmatrix} + \begin{bmatrix} k_1 + k_c & -k_c \\ -k_c & k_2 + k_c \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} \delta(t) \\ 0 \end{bmatrix}$$
-
-with $m_1 = m_2 = 1$, $k_1 = k_2 = 10$, $k_c = 5$, $c_1 = c_2 = 0.2$, $c_c = 0.1$.
-
-Initial conditions: $x_1(0^-) = x_2(0^-) = \dot{x}_1(0^-) = \dot{x}_2(0^-) = 0$.
----
+Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis and design with MATLAB. Society for Industrial and Applied Mathematics. ISBN 978-0-898716-38-2
 
 
 **Document Status:** Draft  
