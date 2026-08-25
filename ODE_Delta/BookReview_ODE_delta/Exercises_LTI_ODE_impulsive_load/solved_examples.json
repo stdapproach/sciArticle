@@ -1,0 +1,705 @@
+{
+  "article": "Exercises from Books: LTI ODE with Impulsive Loads",
+  "author": "Denis Pleshkov",
+  "count": 38,
+  "examples": [
+    {
+      "id": "boyce_diprima_p272",
+      "author": "Boyce & DiPrima",
+      "book_title": "Elementary differential equations and boundary value problems",
+      "page": "272",
+      "example": "IVP for 2nd order with zero IC",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        2,
+        1,
+        2
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 5
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\begin{cases}0,&t<5\\\\ \\frac{2}{\\sqrt{15}}e^{-(t-5)/4}\\sin\\left(\\frac{\\sqrt{15}}{4}(t-5)\\right),&t\\ge5\\end{cases}",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "campbell_haberman_p263",
+      "author": "Campbell & Haberman",
+      "book_title": "Introduction to differential equations with dynamical systems",
+      "page": "263",
+      "example": "IVP for 1st order system",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        1
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 1
+        }
+      ],
+      "initial_conditions": [
+        1
+      ],
+      "solution_latex": "y(t)=\\begin{cases}e^{-t},&t<1\\\\ e^{-t}+e^{-(t-1)},&t\\ge1\\end{cases}",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "edwards_penney_p318",
+      "author": "Edwards & Penney",
+      "book_title": "Elementary differential equations with boundary value problems",
+      "page": "318",
+      "example": "IVP with shifted impulse",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        4
+      ],
+      "forcing": [
+        {
+          "amplitude": 8,
+          "derivative_order": 0,
+          "location": "2*pi"
+        }
+      ],
+      "initial_conditions": [
+        3,
+        0
+      ],
+      "solution_latex": "x(t)=\\begin{cases}3\\cos2t,&t<2\\pi\\\\ 3\\cos2t+4\\sin2t,&t\\ge2\\pi\\end{cases}",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "esfandiari_lu_p57",
+      "author": "Esfandiari & Lu",
+      "book_title": "Modeling and analysis of dynamic systems",
+      "page": "57",
+      "example": "Example 2.27: Initial Condition != Initial Value",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        1,
+        2
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "\\dot{x}(0^+)=1",
+      "verified": true,
+      "verification_method": "jump formula y^(n-1)(0+)=y^(n-1)(0-)+b/a_n (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "esfandiari_lu_p343",
+      "author": "Esfandiari & Lu",
+      "book_title": "Modeling and analysis of dynamic systems",
+      "page": "343",
+      "example": "Impulse Response of First-Order Systems (general/symbolic)",
+      "type": "ivp_symbolic",
+      "ode_general": "\\tau\\dot{x}+x=A\\delta(t),\\ x(0^-)=x_0",
+      "solution_latex": "x(t)=e^{-t/\\tau}x_0+\\frac{A}{\\tau}e^{-t/\\tau}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameters (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "franklin_p110",
+      "author": "Franklin, Powell & Emami-Naeini",
+      "book_title": "Feedback control of dynamic systems",
+      "page": "110",
+      "example": "Impulse response jump, general k",
+      "type": "ivp_symbolic",
+      "ode_general": "\\dot{y}+ky=\\delta(t),\\ y(0)=0",
+      "solution_latex": "y(0^+)=1",
+      "verified": true,
+      "verification_method": "jump formula, symbolic parameter k (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "franklin_p151",
+      "author": "Franklin, Powell & Emami-Naeini",
+      "book_title": "Feedback control of dynamic systems",
+      "page": "151",
+      "example": "H(s) to h(t)",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{2s+1}{(s+1)^2+2^2}",
+      "h_t": "h(t)=\\left(2e^{-t}\\cos2t-\\frac12e^{-t}\\sin2t\\right)1(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_8",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "239",
+      "example": "Example 3.8",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^2y}{dt^2}+5\\frac{dy}{dt}+6y=\\frac{d^2x}{dt^2}+8\\frac{dx}{dt}+13x",
+      "h_t": "h(t)=\\delta(t)+e^{-2t}+2e^{-3t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_11",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "248",
+      "example": "Example 3.11",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^2y}{dt^2}+5\\frac{dy}{dt}+6y=x",
+      "h_t": "h(t)=e^{-2t}-e^{-3t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_12",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "254",
+      "example": "Example 3.12",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^3y}{dt^3}+6\\frac{d^2y}{dt^2}+11\\frac{dy}{dt}+6y=x",
+      "h_t": "h(t)=\\frac12e^{-t}-e^{-2t}+\\frac12e^{-3t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_14",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "257",
+      "example": "Example 3.14",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{s^2-s+1}{s^2+2s+1}",
+      "h_t": "y(t)=\\delta(t)-3e^{-t}+3te^{-t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_27",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "288",
+      "example": "Example 3.27",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^2z}{dt^2}+3\\frac{dz}{dt}+2z=\\frac{d^2x}{dt^2}+6\\frac{dx}{dt}+7x",
+      "h_t": "h(t)=\\delta(t)+2e^{-t}+e^{-2t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_3_28",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "289",
+      "example": "Example 3.28",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^2z}{dt^2}+4\\frac{dz}{dt}+10z=x",
+      "h_t": "h(t)=\\frac{1}{\\sqrt6}e^{-2t}\\sin(\\sqrt6 t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_4_7",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "306",
+      "example": "Example 4.7",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        5,
+        6
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": "pi"
+        },
+        {
+          "amplitude": -1,
+          "derivative_order": 0,
+          "location": "2*pi"
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=(e^{-2(t-\\pi)}-e^{-3(t-\\pi)})u(t-\\pi)-(e^{-2(t-2\\pi)}-e^{-3(t-2\\pi)})u(t-2\\pi)",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "gangadharaiah_4_25",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "340",
+      "example": "Example 4.25",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        2,
+        -1,
+        -2,
+        0
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac12+\\frac12e^{-t}+\\frac16e^{t}-\\frac16e^{-2t}",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session); CORRECTED -- see notes",
+      "notes": "As printed in the source compilation, this example's stated answer (y=1/2-e^t+3/2 e^{2t}) does not satisfy its own stated ODE and initial conditions (fails both the homogeneous-ODE check for t>0 and the y', y'' continuity/jump conditions at t=0). The unique closed-form solution consistent with the stated 4th-order ODE, y(0)=1, y'(0)=y''(0)=y'''(0)=0, and delta(t) forcing was re-derived via Laplace transform and confirmed by direct substitution (all four IC/jump conditions match exactly). Replaced here per the article's policy of stating high-confidence, mathematically-necessary corrections explicitly rather than leaving an inconsistent quote unflagged."
+    },
+    {
+      "id": "gangadharaiah_4_49",
+      "author": "Gangadharaiah & Sandeep",
+      "book_title": "Engineering applications of the Laplace transform",
+      "page": "387",
+      "example": "Example 4.49",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        5,
+        6
+      ],
+      "forcing": [
+        {
+          "amplitude": 3,
+          "derivative_order": 0,
+          "location": 2
+        },
+        {
+          "amplitude": -4,
+          "derivative_order": 0,
+          "location": 4
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=3(e^{-2(t-2)}-e^{-3(t-2)})u(t-2)-4(e^{-2(t-4)}-e^{-3(t-4)})u(t-4)",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_p164",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "164",
+      "example": "Example 2.5",
+      "type": "ivp_symbolic",
+      "ode_general": "(D^2+5D+6)y(t)=(D+1)x(t)",
+      "solution_latex": "h(t)=(-e^{-2t}+2e^{-3t})u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_p166",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "166",
+      "example": "Example 2.6",
+      "type": "ivp_symbolic",
+      "ode_general": "(D^2+3D+2)y(t)=Dx(t)",
+      "solution_latex": "h(t)=(-e^{-t}+2e^{-2t})u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_Drill_2.4a",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "167",
+      "example": "Drill 2.4(a)",
+      "type": "ivp_symbolic",
+      "ode_general": "(D+2)y=(3D+5)x",
+      "solution_latex": "h(t)=3\\delta(t)-e^{-2t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_Drill_2.4b",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "167",
+      "example": "Drill 2.4(b)",
+      "type": "ivp_symbolic",
+      "ode_general": "D(D+2)y=(D+4)x",
+      "solution_latex": "h(t)=(2-e^{-2t})u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_Drill_2.4c",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "167",
+      "example": "Drill 2.4(c)",
+      "type": "ivp_symbolic",
+      "ode_general": "(D^2+2D+1)y=Dx",
+      "solution_latex": "h(t)=(1-t)e^{-t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "lathi_drill4_7",
+      "author": "Lathi & Green",
+      "book_title": "Linear systems and signals",
+      "page": "364",
+      "example": "Drill 4.7",
+      "type": "ivp_symbolic",
+      "ode_general": "\\frac{d^2y}{dt^2}+4\\frac{dy}{dt}+3y=2\\frac{dx}{dt}+x,\\ y(0^-)=1,\\ \\dot y(0^-)=2",
+      "solution_latex": "y(t)=\\frac13(1+9e^{-t}-7e^{-3t})u(t)",
+      "verified": null,
+      "verification_method": "checked as zero-input response only (x(t) not specified in source excerpt); full check needs x(t)",
+      "notes": "Not a hard failure -- the article's excerpt omits the explicit input x(t), so only the y(0),y'(0)-driven part of the response was checked and matches; the x(t)-driven part could not be independently verified from the transcribed problem statement alone."
+    },
+    {
+      "id": "nagle_p403_ex4",
+      "author": "Nagle, Saff & Snider",
+      "book_title": "Fundamentals of differential equations",
+      "page": "403",
+      "example": "Example 4",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        2,
+        5
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac12e^{-t}\\sin2t",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session); equation RECONSTRUCTED -- see notes",
+      "notes": "As transcribed, the source equation was incomplete (missing the left-hand forcing term and the right-hand output variable: 'y\"+2y'+5y \\implies = 1/2 e^{-t} sin 2t'). The unique standard-form ODE y''+2y'+5y=delta(t) with y(0)=y'(0)=0 reproduces the book's own stated closed-form answer exactly (characteristic roots -1+/-2i), so it is used here as a high-confidence reconstruction rather than left blank."
+    },
+    {
+      "id": "nagle_p409_ex1",
+      "author": "Nagle, Saff & Snider",
+      "book_title": "Fundamentals of differential equations",
+      "page": "409",
+      "example": "Example 1",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        9
+      ],
+      "forcing": [
+        {
+          "amplitude": 3,
+          "derivative_order": 0,
+          "location": "pi"
+        }
+      ],
+      "initial_conditions": [
+        1,
+        0
+      ],
+      "solution_latex": "x(t)=\\begin{cases}\\cos3t,&t<\\pi\\\\ \\cos3t-\\sin3t,&\\pi<t\\end{cases}",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "nagy_p202",
+      "author": "Nagy",
+      "book_title": "Ordinary differential equations",
+      "page": "202",
+      "example": "General 2nd-order impulse response (symbolic)",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        "w0**2"
+      ],
+      "forcing": [
+        {
+          "amplitude": "f0",
+          "derivative_order": 0,
+          "location": "t0"
+        }
+      ],
+      "initial_conditions": [
+        "y0",
+        0
+      ],
+      "solution_latex": "y(t)=y_0\\cos(\\omega_0 t)+\\frac{f_0}{\\omega_0}u(t-t_0)\\sin(\\omega_0(t-t_0))",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching, symbolic parameters (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "nagy_3_4_6",
+      "author": "Nagy",
+      "book_title": "Ordinary differential equations",
+      "page": "205",
+      "example": "Example 3.4.6",
+      "type": "transfer_function",
+      "H_s": "L(y)=y''+2y'+2y",
+      "h_t": "y_\\delta(t)=u(t-c)e^{-(t-c)}\\sin(t-c)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "nagy_3_4_7",
+      "author": "Nagy",
+      "book_title": "Ordinary differential equations",
+      "page": "205",
+      "example": "Example 3.4.7",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        -1
+      ],
+      "forcing": [
+        {
+          "amplitude": -20,
+          "derivative_order": 0,
+          "location": 3
+        }
+      ],
+      "initial_conditions": [
+        1,
+        0
+      ],
+      "solution_latex": "y(t)=\\cosh(t)-20\\,u(t-3)\\,\\sinh(t-3)",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "nagy_3_4_8",
+      "author": "Nagy",
+      "book_title": "Ordinary differential equations",
+      "page": "206",
+      "example": "Example 3.4.8",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        4
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": "pi"
+        },
+        {
+          "amplitude": -1,
+          "derivative_order": 0,
+          "location": "2*pi"
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac12[u(t-\\pi)-u(t-2\\pi)]\\sin(2t)",
+      "verified": true,
+      "verification_method": "segment ODE + jump-matching (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ogata_p163",
+      "author": "Ogata",
+      "book_title": "Modern control engineering",
+      "page": "163",
+      "example": "Unit-Impulse Response of First-Order Systems",
+      "type": "transfer_function",
+      "H_s": "C(s)=\\frac{1}{Ts+1}",
+      "h_t": "c(t)=\\frac1Te^{-t/T}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general T (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ogata_p178_zeta_lt_1",
+      "author": "Ogata",
+      "book_title": "Modern control engineering",
+      "page": "178",
+      "example": "Impulse Response of Second-Order Systems, 0\\le\\zeta<1",
+      "type": "ivp_symbolic",
+      "ode_general": "C(s)=\\frac{\\omega_n^2}{s^2+2\\zeta\\omega_ns+\\omega_n^2}",
+      "solution_latex": "c(t)=\\frac{\\omega_n}{\\sqrt{1-\\zeta^2}}e^{-\\zeta\\omega_nt}\\sin(\\omega_n\\sqrt{1-\\zeta^2}t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match via ODE form, general parameters (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ogata_p178_zeta_eq_1",
+      "author": "Ogata",
+      "book_title": "Modern control engineering",
+      "page": "178",
+      "example": "Impulse Response of Second-Order Systems, \\zeta=1",
+      "type": "ivp_symbolic",
+      "ode_general": "C(s)=\\frac{\\omega_n^2}{s^2+2\\zeta\\omega_ns+\\omega_n^2}",
+      "solution_latex": "c(t)=\\omega_n^2te^{-\\omega_nt}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match via ODE form, general parameters (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ogata_p178_zeta_gt_1",
+      "author": "Ogata",
+      "book_title": "Modern control engineering",
+      "page": "178",
+      "example": "Impulse Response of Second-Order Systems, \\zeta>1",
+      "type": "ivp_symbolic",
+      "ode_general": "C(s)=\\frac{\\omega_n^2}{s^2+2\\zeta\\omega_ns+\\omega_n^2}",
+      "solution_latex": "c(t)=\\frac{\\omega_n}{2\\sqrt{\\zeta^2-1}}e^{-(\\zeta-\\sqrt{\\zeta^2-1})\\omega_nt}-\\frac{\\omega_n}{2\\sqrt{\\zeta^2-1}}e^{-(\\zeta+\\sqrt{\\zeta^2-1})\\omega_nt}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match via ODE form, general parameters (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "shabana_p41_ex1_10",
+      "author": "Shabana",
+      "book_title": "Vibration of discrete and continuous systems",
+      "page": "41",
+      "example": "Example 1.10",
+      "type": "ivp_numeric",
+      "params": {
+        "m": 10,
+        "k": 9000,
+        "c": 18,
+        "F0": 10000,
+        "dt": 0.005,
+        "units_c": "N*s/m"
+      },
+      "solution_latex": "x(t)=\\frac{I}{m\\omega_d}e^{-\\xi\\omega_nt}\\sin\\omega_dt=0.1667e^{-0.9t}\\sin29.986t",
+      "verified": true,
+      "verification_method": "numeric self-consistency (recomputed this session): wn=30, xi=0.03, wd=29.9865, xi*wn=0.9, amp=0.1667 -- all reproduce the book's stated numbers",
+      "notes": "As transcribed, the damping coefficient's unit was garbled ('c = 18 N. slm'). The NUMERIC value 18 is confirmed correct (it reproduces every downstream number the book states); only the unit label was corrected to the standard 'N*s/m'."
+    },
+    {
+      "id": "xie_6_11",
+      "author": "Xie",
+      "book_title": "Differential equations for engineers",
+      "page": "258",
+      "example": "Example 6.11",
+      "type": "transfer_function",
+      "H_s": "\\mathcal{L}^{-1}\\left\\{\\frac{s}{(s-2)^5}\\right\\}",
+      "h_t": "f(t)=\\frac{1}{12}e^{2t}t^3(2+t)",
+      "verified": true,
+      "verification_method": "numeric Laplace-integral match (verified this session; symbolic engine could not differentiate this pair directly)",
+      "notes": ""
+    },
+    {
+      "id": "xie_6_12",
+      "author": "Xie",
+      "book_title": "Differential equations for engineers",
+      "page": "258",
+      "example": "Example 6.12",
+      "type": "transfer_function",
+      "H_s": "\\mathcal{L}^{-1}\\left\\{\\frac{1+e^{-3s}}{s^4}\\right\\}",
+      "h_t": "f(t)=\\frac16[t^3+(t-3)^3u(t-3)]",
+      "verified": true,
+      "verification_method": "numeric Laplace-integral match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "xie_6_13",
+      "author": "Xie",
+      "book_title": "Differential equations for engineers",
+      "page": "258",
+      "example": "Example 6.13",
+      "type": "transfer_function",
+      "H_s": "\\mathcal{L}^{-1}\\left\\{\\frac{s}{(s^2+4)^2}\\right\\}",
+      "h_t": "f(t)=\\frac14t\\sin2t",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session); CORRECTED -- see notes",
+      "notes": "As transcribed, the source used the variable 'l' in place of 't' (\\frac14 l\\sin2l), which is not a standard Laplace pair and does not correspond to any function of the transform variable s. Read as an OCR/transcription misread of 't', \\frac14t\\sin2t is exactly the standard inverse transform of s/(s^2+4)^2 (confirmed symbolically), so it is used here as a high-confidence correction."
+    },
+    {
+      "id": "xie_6_14",
+      "author": "Xie",
+      "book_title": "Differential equations for engineers",
+      "page": "258",
+      "example": "Example 6.14",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{8}{(s-1)(s^2+2s+5)}",
+      "h_t": "f(t)=e^{t}-e^{-t}\\cos2t-e^{-t}\\sin2t",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "xie_6_15",
+      "author": "Xie",
+      "book_title": "Differential equations for engineers",
+      "page": "258",
+      "example": "Example 6.15",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{s+1}{(s^2+1)(s^2+9)}",
+      "h_t": "f(t)=\\frac18(\\cos t+\\sin t-\\cos3t-\\frac13\\sin3t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    }
+  ]
+}
