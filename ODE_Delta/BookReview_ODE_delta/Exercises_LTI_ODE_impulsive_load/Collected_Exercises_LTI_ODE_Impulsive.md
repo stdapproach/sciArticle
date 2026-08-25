@@ -23,7 +23,7 @@ The material is split into two categories:
 1. **Solved Exercises** — problems taken directly from a textbook together with their published closed-form solution. Nothing here is derived by the present author; it is a curated extraction of existing results, organized by source and alphabetized by author.
 2. **Additional Exercises** — pointers to further exercises in the same (and other) textbooks that are relevant to impulsive loading but for which no solution is reproduced here. These are page/problem-number references only, meant to guide further practice and reading.
 
-Both categories are ordered alphabetically by author surname, and the bibliography follows the same convention. A supplementary `UNUSED_REFERENCES` section (see below) lists any bibliographic entry that, after review, is not actually cited by name anywhere in the article — currently empty, since every listed reference is invoked at least once.
+Both categories are ordered alphabetically by author surname, and the bibliography follows the same convention.
 
 ---
 
@@ -66,7 +66,6 @@ Both categories are ordered alphabetically by author surname, and the bibliograp
    20. [Xue, Chen & Atherton](#xue-chen-atherton)
 4. [Conclusion](#conclusion)
 5. [References](#references)
-6. [Unused References](#unused-references)
 
 ---
 
@@ -517,17 +516,3 @@ Thorby, D. (2008). Structural dynamics and vibration in practice: An engineering
 Xie, W.-C. (2010). Differential equations for engineers. Cambridge University Press. ISBN-13 978-0-521-19424-2
 
 Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis and design with MATLAB. Society for Industrial and Applied Mathematics. ISBN 978-0-898716-38-2
-
----
-
-## Unused References
-
-None. Re-verified: all 23 entries in the References list above are cited by name at least once, either as a "Solved Exercises" subsection heading or as an "Additional Exercises" entry heading.
-
-*(This section is kept as a permanent checklist: if a future reference is added to the bibliography without a corresponding citation in the body, it should be moved here rather than left silently in the References list.)*
-
----
-
-**Document Status:** Draft
-**Maintenance:** Updated as exercises are solved and verified
-**Contributing:** To add exercises, reference source books and specify difficulty level; keep both exercise sections and the References list alphabetically sorted by author
