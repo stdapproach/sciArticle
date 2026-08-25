@@ -4,6 +4,14 @@
 <std.approach@gmail.com>
 **Last Modified:** August 25, 2026
 
+## Abstract
+
+This article compiles a curated collection of worked examples, drawn from published textbooks, illustrating the solution of linear time-invariant (LTI) ordinary differential equations (ODEs) forced by the Dirac delta function and its derivatives — the standard mathematical model of an impulsive load. No new mathematical results are derived here: each of the thirty-nine solved exercises in the "Solved Exercises" section reproduces a problem statement and its published closed-form solution essentially verbatim from its source, with full attribution by author, page, and edition. A further set of unsolved exercise references, spanning twenty additional textbooks, is indexed to guide further practice. The compilation serves two purposes. First, it is pedagogical: gathering material otherwise scattered across dozens of engineering-mathematics, vibrations, and control-theory textbooks into one alphabetically organized reference, suitable as a starting point for a reader studying impulsively forced LTI systems. Second, it is practical: because each solved exercise pairs a fully specified ODE with a known analytical solution, the collection can serve directly as a bank of regression or unit-test cases for validating symbolic or numerical ODE-solving software. The Conclusion section summarizes the scope and composition of the collected material and discusses its limitations as a literature survey.
+
+## Keywords
+
+Dirac delta function, impulse response, linear time-invariant ODE, initial value problem, Laplace transform, textbook exercise compilation, unit-test bank for ODE solvers
+
 ## Introduction
 
 This article is **pedagogical** in purpose. It is intended as a starting point for a reader who wants to study, in a structured way, linear time-invariant (LTI) ordinary differential equations subject to impulsive loads (the Dirac delta function and its derivatives as a forcing term). The article itself contains **no new mathematical results**: every worked example in the "Solved Exercises" section is extracted, essentially verbatim, from an existing textbook. Its only contribution is the *gathering, attribution, and organization* of material that is otherwise scattered across dozens of books on differential equations, vibrations, and control theory.
@@ -23,52 +31,48 @@ Both categories are ordered alphabetically by author surname, and the bibliograp
 
 1. [Introduction](#introduction)
 2. [Solved Exercises](#solved-exercises)
-   1. [Bottega](#bottega-engineering-vibrations)
-   2. [Boyce & DiPrima](#boyce-diprima-elementary-differential-equations-and-boundary-value-problems)
-   3. [Campbell & Haberman](#campbell-haberman-introduction-to-differential-equations-with-dynamical-systems)
-   4. [Edwards & Penney](#edwards-penney-elementary-differential-equations-with-boundary-value-problems)
-   5. [Esfandiari & Lu](#esfandiari-lu-modeling-and-analysis-of-dynamic-systems)
-   6. [Franklin, Powell & Emami-Naeini](#franklin-powell-emami-naeini-feedback-control-of-dynamic-systems)
-   7. [Gangadharaiah & Sandeep](#gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform)
-   8. [Lathi](#lathi-linear-systems-and-signals)
-   9. [Nagle](#nagle-fundamentals-of-differential-equations)
-   10. [Nagy](#nagy-ordinary-differential-equations)
-   11. [Ogata](#ogata-modern-control-engineering)
-   12. [Shabana](#shabana-vibration-of-discrete-and-continuous-systems)
-   13. [Xie](#xie-differential-equations-for-engineers)
+   1. [Boyce & DiPrima](#boyce-diprima-elementary-differential-equations-and-boundary-value-problems)
+   2. [Campbell & Haberman](#campbell-haberman-introduction-to-differential-equations-with-dynamical-systems)
+   3. [Edwards & Penney](#edwards-penney-elementary-differential-equations-with-boundary-value-problems)
+   4. [Esfandiari & Lu](#esfandiari-lu-modeling-and-analysis-of-dynamic-systems)
+   5. [Franklin, Powell & Emami-Naeini](#franklin-powell-emami-naeini-feedback-control-of-dynamic-systems)
+   6. [Gangadharaiah & Sandeep](#gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform)
+   7. [Lathi & Green](#lathi-green-linear-systems-and-signals)
+   8. [Nagle, Saff & Snider](#nagle-saff-snider-fundamentals-of-differential-equations)
+   9. [Nagy](#nagy-ordinary-differential-equations)
+   10. [Ogata](#ogata-modern-control-engineering)
+   11. [Shabana](#shabana-vibration-of-discrete-and-continuous-systems)
+   12. [Xie](#xie-differential-equations-for-engineers)
 3. [Additional Exercises](#additional-exercises)
    1. [Bottega](#bottega)
-   2. [Boyce](#boyce)
-   3. [Campbell](#campbell)
+   2. [Boyce & DiPrima](#boyce-diprima)
+   3. [Campbell & Haberman](#campbell-haberman)
    4. [De Oliveira](#de-oliveira)
-   5. [Dorf](#dorf)
-   6. [Edwards](#edwards)
-   7. [Esfandiari](#esfandiari)
-   8. [Franklin](#franklin)
+   5. [Dorf & Bishop](#dorf-bishop)
+   6. [Edwards & Penney](#edwards-penney)
+   7. [Esfandiari & Lu](#esfandiari-lu)
+   8. [Franklin, Powell & Emami-Naeini](#franklin-powell-emami-naeini)
    9. [Inman](#inman)
    10. [Karris](#karris)
    11. [Kelly](#kelly)
-   12. [Lathi](#lathi)
+   12. [Lathi & Green](#lathi-green)
    13. [Meirovitch](#meirovitch)
-   14. [Nagle](#nagle)
+   14. [Nagle, Saff & Snider](#nagle-saff-snider)
    15. [Ogata](#ogata)
    16. [Rao](#rao)
    17. [Schiff](#schiff)
    18. [Shabana](#shabana)
    19. [Thorby](#thorby)
-   20. [Xue](#xue)
-4. [References](#references)
-5. [Unused References](#unused-references)
+   20. [Xue, Chen & Atherton](#xue-chen-atherton)
+4. [Conclusion](#conclusion)
+5. [References](#references)
+6. [Unused References](#unused-references)
 
 ---
 
 ## Solved Exercises
 
-Worked examples reproduced from the source textbooks, including the original problem statement and its published closed-form solution. Sorted alphabetically by (first) author.
-
-### Bottega — Engineering vibrations
-p.238: Example 4.2 A tethered 1 pound ball hangs in the vertical plane
-when it is tapped with a racket. Following the tap the ball is observed to exhibit oscillatory motion of amplitude 0.2 radians with a period of 2 seconds. Determine the impulse imparted by the racket.
+Worked examples reproduced from the source textbooks, including the original problem statement and its published closed-form solution. Sorted alphabetically by (first) author. Following academic convention, verbatim text taken from a source (an example's title or its problem statement) is set in double quotation marks; page/example locators and the present author's own classification notes are left unquoted.
 
 ### Boyce & DiPrima — Elementary differential equations and boundary value problems
 p.272 Initial Value Problem (IVP) for 2nd order with zero Initial Condition (IC)
@@ -94,7 +98,7 @@ e^{-t} + e^{-(t-1)}, & t \ge 1
 p.318
 The IVP is
 $$
-  x'' + 4x = 8\delta_{2\pi}(t); \; x(0) = 3, \; x'(0) = 0 \implies xy(t)= \begin{cases}
+  x'' + 4x = 8\delta_{2\pi}(t); \; x(0) = 3, \; x'(0) = 0 \implies x(t)= \begin{cases}
 3\cos 2t, & t < 2\pi \\[4pt]
 3\cos 2t + 4\sin 2t, & t \ge 2\pi
 \end{cases}
@@ -110,7 +114,7 @@ $$
 
 p.343 "Impulse Response of First-Order Systems"
 $$ x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau} $$
-where A - impulse's magnitude $\tau$ - cofficient for higher derivative in ODE.
+where A - impulse's magnitude $\tau$ - coefficient for higher derivative in ODE.
 
 ### Franklin, Powell & Emami-Naeini — Feedback control of dynamic systems
 
@@ -125,49 +129,49 @@ H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \fr
 $$
 
 ### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform
-p.239 Example 3.8. Use the Laplace transform to find ... the impulse response of the system if the differential equation describes the system
+p.239 Example 3.8. "Use the Laplace transform to find ... the impulse response of the system if the differential equation describes the system"
 $$
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = \frac{d^2x(t)}{dt^2} + 8\frac{dx(t)}{dt} + 13x(t) \\
 \implies h(t) = \delta(t) + e^{-2t} + 2e^{-3t}
 $$
 
-p.240 Example 3.9. Consider the causal LTI system described by the second
-differential equation ... Determine the impulse response
+p.240 Example 3.9. "Consider the causal LTI system described by the second
+differential equation ... Determine the impulse response"
 $$
 \frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \\
 \implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
 $$
 
-p.248 Example 3.11. Consider the causal LTI system described by the second differential equation ... Determine the impulse response
+p.248 Example 3.11. "Consider the causal LTI system described by the second differential equation ... Determine the impulse response"
 $$
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \\
 \implies h(t) = e^{-2t} - e^{-3t}.
 $$
 
-p.254 Example 3.12. find the impulse response of the system if the third-order differential equation describes the system
+p.254 Example 3.12. "find the impulse response of the system if the third-order differential equation describes the system"
 $$
 \frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \\
 \implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
 $$
 
-p.257 Example 3.14. Compute the impulse response of the transform with the transfer function
+p.257 Example 3.14. "Compute the impulse response of the transform with the transfer function"
 $$
 H(s) = \frac{s^2 - s + 1}{s^2 + 2s + 1} \implies y(t) = \delta(t) - 3e^{-t} + 3te^{-t}.
 $$
 
-p.288 Example 3.27.find impulse response of the system if the differential equation
-describes the system
+p.288 Example 3.27. "find impulse response of the system if the differential equation
+describes the system"
 $$
 \frac{d^2z(t)}{dt^2} + 3\frac{dz(t)}{dt} + 2z(t) = \frac{d^2x(t)}{dt^2} + 6\frac{dx(t)}{dt} + 7x(t) \\
 \implies h(t) = \delta(t) + 2e^{-t} + e^{-2t}.
 $$
 
-p.289 Example 3.28. find the impulse response of the system if the differential equation describes the system
+p.289 Example 3.28. "find the impulse response of the system if the differential equation describes the system"
 $$
 \frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
 $$
 
-p.306 Example 4.7. Solve the initial value problem
+p.306 Example 4.7. "Solve the initial value problem"
 $$
 \frac{d^2 y(t)}{dt^2} + 5 \frac{dy(t)}{dt} + 6y(t) = \delta(t - \pi) - \delta(t - 2\pi)
 $$
@@ -177,7 +181,7 @@ $$
 y(t) = \left( e^{-2(t-\pi)} - e^{-3(t-\pi)} \right) u(t - \pi) - \left( e^{-2(t-2\pi)} - e^{-3(t-2\pi)} \right) u(t - 2\pi).
 $$
 
-p.340 Example 4.25. Obtain the solution of the fourth-order differential equation
+p.340 Example 4.25. "Obtain the solution of the fourth-order differential equation"
 $$
 \frac{d^4 y(t)}{dt^4} + 2 \frac{d^3 y(t)}{dt^3} - \frac{d^2 y(t)}{dt^2} - 2 \frac{dy(t)}{dt} = \delta(t)
 $$
@@ -191,7 +195,7 @@ $$
 y(t) = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}.
 $$
 
-p.387 Example 4.49. Obtain the solution of the second-order differential equation
+p.387 Example 4.49. "Obtain the solution of the second-order differential equation"
 $$
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = 3\delta(t-2) - 4\delta(t-4)
 $$
@@ -201,20 +205,20 @@ $$
 y(t) = 3(e^{-2(t-2)} - e^{-3(t-2)})u(t-2) - 4(e^{-2(t-4)} - e^{-3(t-4)})u(t-4).
 $$
 
-### Lathi — Linear systems and signals
+### Lathi & Green — Linear systems and signals
 p.164 "EXAMPLE 2.5 Impulse Response via Impulse Matching"
-Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)
+"Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)"
 Solution
 $$ h(t) = (-e^{-2t} + 2e^{-3t})u(t) $$
 
 p.166 EXAMPLE 2.6
-Determine the unit impulse response h(t) for a system specified by the equation
-(D^2 +3D+2)y(t) = Dx(t)
+"Determine the unit impulse response h(t) for a system specified by the equation
+(D^2 +3D+2)y(t) = Dx(t)"
 Solution
 $$ h(t) = (-e^{-t} + 2e^{-2t})u(t) $$
 
-p.167 DRILL 2.4 Finding the Impulse Response
-Determine the unit impulse response of LTIC systems described by the following equations:
+p.167 "DRILL 2.4 Finding the Impulse Response"
+"Determine the unit impulse response of LTIC systems described by the following equations:"
 
 (a) $ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) $
 
@@ -222,17 +226,18 @@ Determine the unit impulse response of LTIC systems described by the following e
 
 (c) $ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t)$
 
-p.364 DRILL 4.7 Laplace Transform to Solve a Second-Order Linear Differential Equation
+p.364 "DRILL 4.7 Laplace Transform to Solve a Second-Order Linear Differential Equation"
 $$
 \frac{d^2y(t)}{dt^2} + 4\frac{dy(t)}{dt} + 3y(t) = 2\frac{dx(t)}{dt} + x(t) \\
 y(0^-) = 1 \quad \text{and} \quad \dot{y}(0^-) = 2 \implies \boxed{y(t) = \frac{1}{3}\left(1 + 9e^{-t} - 7e^{-3t}\right)u(t)}
 $$
 
-### Nagle — Fundamentals of differential equations
-p.403 Example 4 A linear system is governed by the differential equation
+### Nagle, Saff & Snider — Fundamentals of differential equations
+p.403 Example 4 "A linear system is governed by the differential equation"
 $$
 y'' + 2y' + 5y \implies = \frac{1}{2} e^{-t} \sin 2t
 $$
+*[Editorial note: as transcribed, this equation is missing the forcing term on the left-hand side and the output variable on the right (the "$\implies =$" reads as incomplete). Left verbatim pending verification against Nagle, p.403, Example 4, rather than silently reconstructed.]*
 
 p.409 Example 1
 $$
@@ -251,29 +256,29 @@ y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \\
 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
 $$
 
-p.205 Example 3.4.6. Find the impulse response function
+p.205 Example 3.4.6. "Find the impulse response function"
 $$
 L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
 $$
 
-p.205 Example 3.4.7. Find the solution y to the initial value problem
+p.205 Example 3.4.7. "Find the solution y to the initial value problem"
 $$
 y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
 $$
 
-p.206 Example 3.4.8. Find the solution to the initial value problem
+p.206 Example 3.4.8. "Find the solution to the initial value problem"
 $$
 y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \\
 \implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
 $$
 
 ### Ogata — Modern control engineering
-p.163 Unit-Impulse Response of First-Order Systems
+p.163 "Unit-Impulse Response of First-Order Systems"
 $$
 C(s) = \frac{1}{Ts + 1} \implies c(t) = \frac{1}{T} e^{-t/T}, \quad \text{for } t \geq 0
 $$
 
-p.178 Impulse Response of Second-Order Systems
+p.178 "Impulse Response of Second-Order Systems"
 $$
 C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} \implies \\
 $$
@@ -299,10 +304,10 @@ $$
 ### Shabana — Vibration of discrete and continuous systems
 p.41
 Example 1.10
-Find the response of the single degree of freedom system shown in Fig. 17 to the
+"Find the response of the single degree of freedom system shown in Fig. 17 to the
 rectangular impulsive force shown in Fig. 16, where m = 10 kg, k = 9,000 N/m,
-c = 18 N· slm, and Fo = 10,000 N. The force is assumed to act at time t = 0 and
-the impact interval is assumed to be 0.005 s.
+c = 18 N· slm [sic — likely 'N·s/m'; verify against source], and Fo = 10,000 N. The force is assumed to act at time t = 0 and
+the impact interval is assumed to be 0.005 s."
 The system response to the impulsive force is then given by
 $$
 \begin{aligned}
@@ -344,32 +349,34 @@ $$
 Supplementary problems and variations, given as page/problem references only — no solution is reproduced here. Sorted alphabetically by author; intended to guide further practice.
 
 ### Bottega
-p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6; p.429: MDOF system under impuls load; p.470: double pendulum under impulse load; p.488: Ex 8.17 elastically supported frame under struck; p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE "Determine the response of the rod it is struck on its right end by an impulse of magnitude"; p.718: Ex 11.17 "The beam is impacted at its left end"
+p.238: Example 4.2 "A tethered 1 pound ball hangs in the vertical plane when it is tapped with a racket. Following the tap the ball is observed to exhibit oscillatory motion of amplitude 0.2 radians with a period of 2 seconds. Determine the impulse imparted by the racket." (Problem statement only — no closed-form solution given in the source, hence listed here rather than under Solved Exercises.)
 
-### Boyce
+p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6; p.429: MDOF system under impulse load; p.470: double pendulum under impulse load; p.488: Ex 8.17 elastically supported frame under struck; p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE "Determine the response of the rod it is struck on its right end by an impulse of magnitude"; p.718: Ex 11.17 "The beam is impacted at its left end"
+
+### Boyce & DiPrima
 p.273-274 has many exercises
 
-### Campbell
+### Campbell & Haberman
 p.264 Exercises 1–8
 
 ### De Oliveira
 p.82 Problem 3.41 "Compute the inverse Laplace transform of the following complex-valued functions"
 p.83 Problem 3.44 "Compute the inverse Laplace transform"
 
-### Dorf
+### Dorf & Bishop
 p.174 P2.36 "Determine the impulse response of the system"; p.178 "Consider the unity feedback system described in the block diagram ... Compute analytically the response of the system to an impulse disturbance"; p.392 CP5.1 "Obtain the impulse response analytically"
 
-### Edwards
+### Edwards & Penney
 9.326 4.6 Problems 1-8, 15-16 (equality of solution by changing IC)
 
-### Esfandiari
+### Esfandiari & Lu
 p.59 Problems 19 through 24; p.62 Problem 10 "Solve the IVP"
 p.352 "8.3.2   Impulse Response of Second-Order Systems"
 p.353 "Example 8.5: Impulse Response"
-p.359  "Example 8.8: Impulse Response"
-p.363  "PROBLEM SET 8.2"/7-11, 20
+p.359 "Example 8.8: Impulse Response"
+p.363 "PROBLEM SET 8.2"/7-11, 20
 
-### Franklin
+### Franklin, Powell & Emami-Naeini
 p.230 EXAMPLE 4.9
 p.589 Problem 7.20
 
@@ -381,7 +388,7 @@ p.232 Example 3.2.3
 p.245 Example 3.4.4, Example 3.4.5
 p.287 Problems 3.1-3.6, 3.10-3.13
 p.377 Example 4.8.1 MDOF system with impulse
-p.382  Example 4.8.2 MDOF system with impulse
+p.382 Example 4.8.2 MDOF system with impulse
 p.386 Example 4.8.3 MDOF system with impulse
 p.428 Problem 4.76
 p.429 Problem 4.78
@@ -397,17 +404,17 @@ p.6-3 "Example 6.2"
 p.317 EXAMPLE 5.1
 p.374 Problem 5.21-5.23
 
-### Lathi
+### Lathi & Green
 p.471 Problem 4.3-6
 
 ### Meirovitch
 p.371 Problem 7.49
 p.463 Problem 8.38, 8.42, 8.44
 
-### Nagle
-p.404 7.8 EXERCISES 5-12, 23-28
-p.410 7.9 Exercises 13-29, 35
-p.416 REVIEW PROBLEMS FOR CHAPTER 7 Problem 29-30
+### Nagle, Saff & Snider
+p.404 "7.8 EXERCISES" 5-12, 23-28
+p.410 "7.9 Exercises" 13-29, 35
+p.416 "REVIEW PROBLEMS FOR CHAPTER 7" Problem 29-30
 
 ### Ogata
 p.196 MATLAB Program 5–8 "Unit-Impulse Response of G(s) = 1/(s^2 + 0.2s + 1)"
@@ -419,11 +426,11 @@ p.267 B-5-16
 ### Rao
 p.382 "4.5.1 Response to an Impulse"
 p.384 EXAMPLE 4.7 "Response of a Structure Under Impact"
-p.385 EXAMPLE 4.8 Response of a Structure Under Double Impact
-p.407  EXAMPLE 4.9 Unit Impulse Response of a First-Order System
-p.409  EXAMPLE 4.21 Unit Impulse Response of a Second-Order System
-p.437 EXAMPLE 4.33 Impulse Response of a Structure
-p.511 EXAMPLE 5.12 Response Under Impulse Using Laplace Transform Method
+p.385 EXAMPLE 4.8 "Response of a Structure Under Double Impact"
+p.407 EXAMPLE 4.9 "Unit Impulse Response of a First-Order System"
+p.409 EXAMPLE 4.21 "Unit Impulse Response of a Second-Order System"
+p.437 EXAMPLE 4.33 "Impulse Response of a Structure"
+p.511 EXAMPLE 5.12 "Response Under Impulse Using Laplace Transform Method"
 
 ### Schiff
 p.87 Exercises 2.5 1-7
@@ -434,16 +441,26 @@ p.45 Problems 1.3, 1.9
 ### Thorby
 p.51 Example 3.2
 
-### Xue
-p.76 Example 3.20. Consider again the system model studied in Example 3.17. The impulse
-response of the system can be obtained as shown in Figure 3.11:
+### Xue, Chen & Atherton
+p.76 Example 3.20. "Consider again the system model studied in Example 3.17. The impulse
+response of the system can be obtained as shown in Figure 3.11:"
 >> G=tf([10 20],[10 23 26 23 10],'ioDelay',1); impulse(G, 30);
 
 p.106 Problem 9
-Find impulse response for the system:
+"Find impulse response for the system:"
 $$
 \frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}
 $$
+
+---
+
+## Conclusion
+
+This article gathered thirty-nine fully worked examples — each an LTI ODE (or, equivalently, a transfer function) forced by a Dirac delta impulse or its derivative, paired with a published closed-form solution — from twelve textbooks spanning ordinary differential equations, vibrations, signals and systems, and control engineering. These are supplemented by dozens of further exercise references, without solutions, indexed across twenty texts (several of which overlap with the solved set) to point the reader toward additional practice material. All content in both categories was extracted, not derived: no new analytical results are claimed.
+
+Two intended uses motivated the compilation, both discussed in the Introduction. As a pedagogical resource, the alphabetized, dual-category structure lets a reader move directly from a specific author or problem type to the relevant worked solution, without first locating and cross-referencing dozens of separate books. As a software-engineering resource, the thirty-nine solved exercises constitute a ready-made, source-attributed bank of test cases: each pairs a well-posed initial value problem with an independently published analytical answer, suitable for regression or unit testing of symbolic or numerical ODE solvers.
+
+Two limitations should be noted. First, the survey is not exhaustive: it reflects the books available to the present compiler and is best understood as a personal, growing reading list rather than a systematic literature search. Second, the solutions reproduced here were not independently re-derived or numerically re-verified by the present author; they are quoted as published, and a small number of transcription issues (flagged inline where found, e.g. in the Nagle and Shabana entries above) remain open for verification against the original sources. Extending the collection, and independently checking each closed-form solution numerically, are natural directions for future work.
 
 ---
 
@@ -505,7 +522,7 @@ Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis a
 
 ## Unused References
 
-None. Every entry in the References list above is cited by name at least once, either as a "Solved Exercises" subsection or as an "Additional Exercises" entry.
+None. Re-verified: all 23 entries in the References list above are cited by name at least once, either as a "Solved Exercises" subsection heading or as an "Additional Exercises" entry heading.
 
 *(This section is kept as a permanent checklist: if a future reference is added to the bibliography without a corresponding citation in the body, it should be moved here rather than left silently in the References list.)*
 
