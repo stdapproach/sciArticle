@@ -1,7 +1,7 @@
 {
   "article": "Exercises from Books: LTI ODE with Impulsive Loads",
   "author": "Denis Pleshkov",
-  "count": 38,
+  "count": 37,
   "examples": [
     {
       "id": "boyce_diprima_p272",
@@ -392,19 +392,6 @@
       "verified": true,
       "verification_method": "symbolic Laplace match (verified this session)",
       "notes": ""
-    },
-    {
-      "id": "lathi_drill4_7",
-      "author": "Lathi & Green",
-      "book_title": "Linear systems and signals",
-      "page": "364",
-      "example": "Drill 4.7",
-      "type": "ivp_symbolic",
-      "ode_general": "\\frac{d^2y}{dt^2}+4\\frac{dy}{dt}+3y=2\\frac{dx}{dt}+x,\\ y(0^-)=1,\\ \\dot y(0^-)=2",
-      "solution_latex": "y(t)=\\frac13(1+9e^{-t}-7e^{-3t})u(t)",
-      "verified": null,
-      "verification_method": "checked as zero-input response only (x(t) not specified in source excerpt); full check needs x(t)",
-      "notes": "Not a hard failure -- the article's excerpt omits the explicit input x(t), so only the y(0),y'(0)-driven part of the response was checked and matches; the x(t)-driven part could not be independently verified from the transcribed problem statement alone."
     },
     {
       "id": "nagle_p403_ex4",
