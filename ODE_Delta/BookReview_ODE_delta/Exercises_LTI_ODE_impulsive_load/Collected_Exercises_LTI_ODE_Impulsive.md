@@ -63,11 +63,7 @@ IVP for 1st order system $$ y' + y = \delta(t - 1), \, y(0) = 1 \implies  y(t)=\
 e^{-t}, & t < 1 \\[4pt]
 e^{-t} + e^{-(t-1)}, & t \ge 1
 \end{cases}$$
-*[WolframAlpha:*
-```
-y'[t] + y[t] == Delta[t - 1], y[0] == 1
-```
-*Returns $y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)$*]
+*[WolframAlpha: `y'[t] + y[t] == Delta[t - 1], y[0] == 1` — Returns $y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)$*]
 
 *[Jump condition at $t=1$: $y'+y=\delta(t-1)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(1)=(1)$.]*
 
@@ -77,11 +73,7 @@ y'[t] + y[t] == Delta[t - 1], y[0] == 1
 *[Note: with $x_0=0$, $A=1$, and $\tau=T$, this reduces to Ogata's p.163 case below, $c(t)=\frac{1}{T}e^{-t/T}$.]*
 $$ x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau} $$
 where A - impulse's magnitude $\tau$ - coefficient for higher derivative in ODE.
-*[WolframAlpha:*
-```
-tau x'[t] + x[t] == A Delta[t], x[0] == x0
-```
-*Returns $x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau}$*]
+*[WolframAlpha: `tau x'[t] + x[t] == A Delta[t], x[0] == x0` — Returns $x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau}$*]
 
 *[Jump condition at $t=0$: normalizing $\tau x'+x=A\delta(t)$ to $x'+\tfrac1\tau x=\tfrac{A}{\tau}\delta(t)$ (first order). Phase vector $\mathbf x=(x)$ changes by $\Delta\mathbf x(0)=\left(\dfrac{A}{\tau}\right)$.]*
 
@@ -91,11 +83,7 @@ tau x'[t] + x[t] == A Delta[t], x[0] == x0
 $$
 \dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
 $$
-*[WolframAlpha:*
-```
-y'[t] + k y[t] == Delta[t], y[0] == 0
-```
-*Returns $y(t) = e^{-k t} \, u(t)$ (at $t=0^+$ this gives $y(0^+)=1$, matching the book)*]
+*[WolframAlpha: `y'[t] + k y[t] == Delta[t], y[0] == 0` — Returns $y(t) = e^{-k t} \, u(t)$ (at $t=0^+$ this gives $y(0^+)=1$, matching the book)*]
 
 *[Jump condition at $t=0$: confirming the book's own reduction, $y'+ky=\delta(t)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(0)=(1)$.]*
 
@@ -106,11 +94,7 @@ y'[t] + k y[t] == Delta[t], y[0] == 0
 $$
 C(s) = \frac{1}{Ts + 1} \implies c(t) = \frac{1}{T} e^{-t/T}, \quad \text{for } t \geq 0
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1/(T s + 1), s, t]
-```
-*Returns $c(t) = \frac{1}{T} e^{-t/T}$*]
+*[WolframAlpha: `InverseLaplaceTransform[1/(T s + 1), s, t]` — Returns $c(t) = \frac{1}{T} e^{-t/T}$*]
 
 *[Jump condition at $t=0$: normalizing $Tc'+c=\delta(t)$ to $c'+\tfrac1T c=\tfrac1T\delta(t)$ (first order). Phase vector $\mathbf c=(c)$ changes by $\Delta\mathbf c(0)=\left(\dfrac1T\right)$.]*
 
@@ -118,11 +102,7 @@ InverseLaplaceTransform[1/(T s + 1), s, t]
 $$L^{-1} \left\{ \frac{0.25}{s} - \frac{0.55}{s+3} + \frac{0.40}{s+4} \right\}
 = 0.25 - 0.55e^{-3t} + 0.40e^{-4t} \quad t \geq 0
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[0.25/s - 0.55/(s + 3) + 0.40/(s + 4), s, t]
-```
-*Returns $0.25 - 0.55\,e^{-3t} + 0.40\,e^{-4t}$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[0.25/s - 0.55/(s + 3) + 0.40/(s + 4), s, t]` — Returns $0.25 - 0.55\,e^{-3t} + 0.40\,e^{-4t}$, matching the book*]
 
 *[Jump condition at $t=0$: the given partial-fraction form already exhibits $Y(s)$ as a sum of three decoupled first-order modes, $\dot y_1 = 0.25\,\delta(t)$, $\dot y_2+3y_2=-0.55\,\delta(t)$, $\dot y_3+4y_3=0.40\,\delta(t)$ (with $y=y_1+y_2+y_3$, all at rest for $t<0$). Each mode's phase vector jumps by the residue at its own pole: $\Delta y_1(0)=0.25$, $\Delta y_2(0)=-0.55$, $\Delta y_3(0)=0.40$.]*
 
@@ -130,11 +110,7 @@ InverseLaplaceTransform[0.25/s - 0.55/(s + 3) + 0.40/(s + 4), s, t]
 $$L^{-1} \left\{ \frac{1.65}{s+3} - \frac{1.60}{s+4} \right\}
 = 1.65e^{-3t} - 1.60e^{-4t} \quad t \geq 0
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1.65/(s + 3) - 1.60/(s + 4), s, t]
-```
-*Returns $1.65\,e^{-3t} - 1.60\,e^{-4t}$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[1.65/(s + 3) - 1.60/(s + 4), s, t]` — Returns $1.65\,e^{-3t} - 1.60\,e^{-4t}$, matching the book*]
 
 *[Jump condition at $t=0$: the given partial-fraction form already exhibits $Y(s)$ as a sum of two decoupled first-order modes, $\dot y_1+3y_1=1.65\,\delta(t)$, $\dot y_2+4y_2=-1.60\,\delta(t)$ (with $y=y_1+y_2$, both at rest for $t<0$). Each mode's phase vector jumps by the residue at its own pole: $\Delta y_1(0)=1.65$, $\Delta y_2(0)=-1.60$.]*
 
@@ -153,11 +129,7 @@ $$
 $$
 \text{(b)}\quad x(t) = 2\delta(t) - 5e^{-3t}u(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(2 s + 1)/(s + 3), s, t]
-```
-*Returns the causal (right-sided) inverse, $x(t) = 2\delta(t) - 5e^{-3t}u(t)$, confirming case (b). WolframAlpha's default convention is causal, so it cannot directly return case (a); that left-sided branch was instead verified from the bilateral Laplace integral $\int_{-\infty}^{0} 5e^{-3t}e^{-st}\,dt = -\dfrac{5}{s+3}$ for $\text{Re}\{s\}<-3$, which matches $X(s)-2$ exactly (confirmed numerically as well).*]
+*[WolframAlpha: `InverseLaplaceTransform[(2 s + 1)/(s + 3), s, t]` — Returns the causal (right-sided) inverse, $x(t) = 2\delta(t) - 5e^{-3t}u(t)$, confirming case (b). WolframAlpha's default convention is causal, so it cannot directly return case (a); that left-sided branch was instead verified from the bilateral Laplace integral $\int_{-\infty}^{0} 5e^{-3t}e^{-st}\,dt = -\dfrac{5}{s+3}$ for $\text{Re}\{s\}<-3$, which matches $X(s)-2$ exactly (confirmed numerically as well).*]
 
 *[Jump condition at $t=0$: $X(s)=(2s+1)/(s+3)$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $2$ (matching the $2\delta(t)$ common to both cases). For the causal case (b), $\text{Re}\{s\}>-3$: the regular part $x_{\text{reg}}(t)=-5e^{-3t}u(t)$ jumps from $0$ at $t=0^-$ up to $x_{\text{reg}}(0^+)=-5$, the usual zero-state impulse-response jump. For the anticausal case (a), $\text{Re}\{s\}<-3$: the regular part $x_{\text{reg}}(t)=5e^{-3t}u(-t)$ instead jumps from $x_{\text{reg}}(0^-)=5$ down to $0$ at $t=0^+$ — the mirror image of the causal jump, since this branch is left-sided rather than a zero-state response driven from $t=0$.]*
 
@@ -167,11 +139,7 @@ Example 8.24. Find the inverse Laplace transform of
 $$
 X(s) = \frac{s(s+3)}{(s+3)^2}, \quad \text{ROC: } \text{Re}\{s\} > -3 \implies x(t) = \delta(t) - 3e^{-3t}u(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s (s + 3)/(s + 3)^2, s, t]
-```
-*Returns $x(t) = \delta(t) - 3e^{-3t}u(t)$. Note that $X(s)$ as stated has a removable common factor: $s(s+3)/(s+3)^2 = s/(s+3)$ for $s\neq -3$, and since the pole at $s=-3$ lies outside the stated ROC $\text{Re}\{s\}>-3$ anyway, the cancellation does not affect the transform — confirmed by evaluating both the uncancelled and cancelled forms symbolically, which agree exactly.*]
+*[WolframAlpha: `InverseLaplaceTransform[s (s + 3)/(s + 3)^2, s, t]` — Returns $x(t) = \delta(t) - 3e^{-3t}u(t)$. Note that $X(s)$ as stated has a removable common factor: $s(s+3)/(s+3)^2 = s/(s+3)$ for $s\neq -3$, and since the pole at $s=-3$ lies outside the stated ROC $\text{Re}\{s\}>-3$ anyway, the cancellation does not affect the transform — confirmed by evaluating both the uncancelled and cancelled forms symbolically, which agree exactly.*]
 
 *[Jump condition at $t=0$: in cancelled form $X(s)=s/(s+3)$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $1$ (matching $\delta(t)$). The regular part $x_{\text{reg}}(t)=-3e^{-3t}u(t)$ jumps from $0$ at $t=0^-$ up to $x_{\text{reg}}(0^+)=-3$, the usual zero-state impulse-response jump.]*
 
@@ -180,11 +148,7 @@ InverseLaplaceTransform[s (s + 3)/(s + 3)^2, s, t]
 "DRILL 2.4(a) Finding the Impulse Response"
 "Determine the unit impulse response of LTIC systems described by the following equation:"
 $$ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]
-```
-*Returns $h(t) = 3\delta(t) - e^{-2t} u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]` — Returns $h(t) = 3\delta(t) - e^{-2t} u(t)$*]
 
 *[Jump condition at $t=0$: $(D+2)y=(3D+5)x$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $3$ plus a remainder that changes by $\Delta\mathbf y_{\text{reg}}(0)=(-1)$.]*
 
@@ -198,11 +162,7 @@ InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]
 $$
 Y(s) = \frac{K}{K-1} \left( \frac{1}{s} - \frac{1}{s-1+K} \right) \implies y(t) = \frac{K}{K-1} \left( 1 - e^{-(K-1)t} \right), \quad t \geq 0
 $$
-*[WolframAlpha:*
-```
-y''[t] + (K-1) y'[t] == K DiracDelta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \dfrac{K}{K-1}\left(1 - e^{-(K-1)t}\right)$*]
+*[WolframAlpha: `y''[t] + (K-1) y'[t] == K DiracDelta[t], y[0] == 0, y'[0] == 0` — Returns $y(t) = \dfrac{K}{K-1}\left(1 - e^{-(K-1)t}\right)$*]
 
 *[Jump condition at $t=0$: $y''+(K-1)y'=K\delta(t)$ (leading coefficient $1$, no $y$ term). Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,K)$.]*
 
@@ -212,11 +172,7 @@ Example 11.
 $$
 \ddot{\theta}(t) + \theta(t) = \delta(t), \quad \theta(0^-) = 0, \quad \dot{\theta}(0^-) = 0 \implies \theta(t) = \sin(t)\, u(t)
 $$
-*[WolframAlpha:*
-```
-theta''[t] + theta[t] == DiracDelta[t], theta[0] == 0, theta'[0] == 0
-```
-*Returns $\theta(t) = \sin(t)$*]
+*[WolframAlpha: `theta''[t] + theta[t] == DiracDelta[t], theta[0] == 0, theta'[0] == 0` — Returns $\theta(t) = \sin(t)$*]
 
 *[Jump condition at $t=0$: $\ddot\theta+\theta=\delta(t)$. Phase vector $(\theta,\dot\theta)$ changes by $\Delta(\theta,\dot\theta)(0)=(0,1)$, matching the given post-impulse conditions $\theta(0^+)=0$, $\dot\theta(0^+)=1$.]*
 
@@ -234,11 +190,7 @@ $$
 \dfrac{2}{\sqrt{15}} e^{-(t-5)/4} \sin\left(\dfrac{\sqrt{15}}{4}(t-5)\right), & t \ge 5
 \end{cases}
 $$
-*[WolframAlpha:*
-```
-2 y''[t] + y'[t] + 2 y[t] == Delta[t - 5], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{2 \, e^{5/4 - t/4} \, u(t-5) \, \sin\left(\frac{1}{4} \, \sqrt{15} \, (t-5)\right)}{\sqrt{15}}$*]
+*[WolframAlpha: `2 y''[t] + y'[t] + 2 y[t] == Delta[t - 5], y[0] == 0, y'[0] == 0` — Returns $y(t) = \frac{2 \, e^{5/4 - t/4} \, u(t-5) \, \sin\left(\frac{1}{4} \, \sqrt{15} \, (t-5)\right)}{\sqrt{15}}$*]
 
 *[Jump condition at $t=5$: the equation $2y''+y'+2y=\delta(t-5)$ normalizes to $y''+\tfrac12 y'+y=\tfrac12\delta(t-5)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(5)=\left(0,\tfrac12\right)$.]*
 
@@ -251,11 +203,7 @@ $$
 3\cos 2t + 4\sin 2t, & t \ge 2\pi
 \end{cases}
 $$
-*[WolframAlpha:*
-```
-x''[t] + 4 x[t] == 8 Delta[t - 2 Pi], x[0] == 3, x'[0] == 0
-```
-*Returns $x(t) = 3\cos(2t) + 4\sin(2t) \, u(t-2\pi)$*]
+*[WolframAlpha: `x''[t] + 4 x[t] == 8 Delta[t - 2 Pi], x[0] == 3, x'[0] == 0` — Returns $x(t) = 3\cos(2t) + 4\sin(2t) \, u(t-2\pi)$*]
 
 *[Jump condition at $t=2\pi$: phase vector $\mathbf x=(x,x')$ changes by $\Delta\mathbf x(2\pi)=(0,8)$, the impulse strength.]*
 
@@ -265,11 +213,7 @@ x''[t] + 4 x[t] == 8 Delta[t - 2 Pi], x[0] == 3, x'[0] == 0
 $$
 \mathcal{L}(f(t))(s) = \frac{1}{s^2 - 1} \implies f(t) = \frac{e^t - e^{-t}}{2} = \sinh(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1/(s^2 - 1), s, t]
-```
-*Returns $f(t) = \sinh(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[1/(s^2 - 1), s, t]` — Returns $f(t) = \sinh(t)$*]
 
 *[Jump condition at $t=0$: reading $\mathcal{L}(f)(s)=1/(s^2-1)$ as the impulse response of the zero-state 2nd-order ODE $\ddot f - f = \delta(t)$ (relative degree $2$). Phase vector $\mathbf f=(f,\dot f)$ changes by $\Delta\mathbf f(0)=(0,1)$.]*
 
@@ -280,11 +224,7 @@ $$
  \ddot{x} + \dot{x} + 2x = \delta(t), \, x(0^-) = 0, \, \dot{x}(0^-) = 0
 \implies \dot{x}(0^+) =  1
 $$
-*[WolframAlpha:*
-```
-x''[t] + x'[t] + 2 x[t] == Delta[t], x[0] == 0, x'[0] == 0
-```
-*Returns $x(t) = \frac{2 \, e^{-t/2} \, u(t) \, \sin\left(\frac{\sqrt{7}}{2} t\right)}{\sqrt{7}}$ (the book only states the jump $\dot x(0^+)=1$; this full closed form is consistent with it — differentiating gives $\dot x(0^+)=1$)*]
+*[WolframAlpha: `x''[t] + x'[t] + 2 x[t] == Delta[t], x[0] == 0, x'[0] == 0` — Returns $x(t) = \frac{2 \, e^{-t/2} \, u(t) \, \sin\left(\frac{\sqrt{7}}{2} t\right)}{\sqrt{7}}$ (the book only states the jump $\dot x(0^+)=1$; this full closed form is consistent with it — differentiating gives $\dot x(0^+)=1$)*]
 
 *[Jump condition at $t=0$: confirming the book's own claim, $\ddot x+\dot x+2x=\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,1)$.]*
 
@@ -294,11 +234,7 @@ Example 48.1. "A spring-mass system with mass 2, damping 4, and spring constant 
 $$
 2y'' + 4y' + 10y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{4} e^{-t} \sin(2t) \, u(t)
 $$
-*[WolframAlpha:*
-```
-2 y''[t] + 4 y'[t] + 10 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{4} e^{-t} \sin(2t)$*]
+*[WolframAlpha: `2 y''[t] + 4 y'[t] + 10 y[t] == Delta[t], y[0] == 0, y'[0] == 0` — Returns $y(t) = \frac{1}{4} e^{-t} \sin(2t)$*]
 
 *[Jump condition at $t=0$: $2y''+4y'+10y=\delta(t)$ has leading coefficient $2$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,\frac12)$.]*
 
@@ -311,11 +247,7 @@ $$
 $$
 y(t) = \frac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)
 $$
-*[WolframAlpha:*
-```
-Assuming[a > 0 && b > 0 && a != b, InverseLaplaceTransform[a b/((s + a) (s + b)), s, t]]
-```
-*Returns $y(t) = \dfrac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)$*]
+*[WolframAlpha: `Assuming[a > 0 && b > 0 && a != b, InverseLaplaceTransform[a b/((s + a) (s + b)), s, t]]` — Returns $y(t) = \dfrac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)$*]
 
 *[Jump condition at $t=0$: $P(s)=ab/((s+a)(s+b))$ corresponds to the zero-state 2nd-order ODE $\ddot y+(a+b)\dot y+ab\,y=ab\,\delta(t)$ (relative degree $2$). Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,ab)$.]*
 
@@ -325,11 +257,7 @@ Example 3.11. "Consider the causal LTI system described by the second differenti
 $$
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = e^{-2t} - e^{-3t}.
 $$
-*[WolframAlpha:*
-```
-y''[t] + 5 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $h(t) = e^{-2t} - e^{-3t}$*]
+*[WolframAlpha: `y''[t] + 5 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0` — Returns $h(t) = e^{-2t} - e^{-3t}$*]
 
 *[Jump condition at $t=0$: $y''+5y'+6y=\delta(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
 
@@ -339,11 +267,7 @@ Example 3.28. "find the impulse response of the system if the differential equat
 $$
 \frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
 $$
-*[WolframAlpha:*
-```
-z''[t] + 4 z'[t] + 10 z[t] == Delta[t], z[0] == 0, z'[0] == 0
-```
-*Returns $h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)$*]
+*[WolframAlpha: `z''[t] + 4 z'[t] + 10 z[t] == Delta[t], z[0] == 0, z'[0] == 0` — Returns $h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)$*]
 
 *[Jump condition at $t=0$: $z''+4z'+10z=\delta(t)$. Phase vector $\mathbf z=(z,z')$ changes by $\Delta\mathbf z(0)=(0,1)$.]*
 
@@ -358,11 +282,7 @@ with $ y(0) = 0 = y'(0) $.
 $$
 y(t) = \left( e^{-2(t-\pi)} - e^{-3(t-\pi)} \right) u(t - \pi) - \left( e^{-2(t-2\pi)} - e^{-3(t-2\pi)} \right) u(t - 2\pi).
 $$
-*[WolframAlpha:*
-```
-y''[t] + 5 y'[t] + 6 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \left(e^{-2(t-\pi)} - e^{-3(t-\pi)}\right) u(t-\pi) - \left(e^{-2(t-2\pi)} - e^{-3(t-2\pi)}\right) u(t-2\pi)$*]
+*[WolframAlpha: `y''[t] + 5 y'[t] + 6 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0` — Returns $y(t) = \left(e^{-2(t-\pi)} - e^{-3(t-\pi)}\right) u(t-\pi) - \left(e^{-2(t-2\pi)} - e^{-3(t-2\pi)}\right) u(t-2\pi)$*]
 
 *[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(\pi)=(0,1)$ at $t=\pi$, and by $\Delta\mathbf y(2\pi)=(0,-1)$ at $t=2\pi$ (the coefficient of $-\delta(t-2\pi)$).]*
 
@@ -377,11 +297,7 @@ along with the initial conditions $ y(0) = 0 = y'(0) $.
 $$
 y(t) = 3(e^{-2(t-2)} - e^{-3(t-2)})u(t-2) - 4(e^{-2(t-4)} - e^{-3(t-4)})u(t-4).
 $$
-*[WolframAlpha:*
-```
-y''[t] + 5 y'[t] + 6 y[t] == 3 Delta[t - 2] - 4 Delta[t - 4], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = 3\left(e^{-2(t-2)} - e^{-3(t-2)}\right) u(t-2) - 4\left(e^{-2(t-4)} - e^{-3(t-4)}\right) u(t-4)$*]
+*[WolframAlpha: `y''[t] + 5 y'[t] + 6 y[t] == 3 Delta[t - 2] - 4 Delta[t - 4], y[0] == 0, y'[0] == 0` — Returns $y(t) = 3\left(e^{-2(t-2)} - e^{-3(t-2)}\right) u(t-2) - 4\left(e^{-2(t-4)} - e^{-3(t-4)}\right) u(t-4)$*]
 
 *[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(2)=(0,3)$ at $t=2$ (the coefficient of $3\delta(t-2)$), and by $\Delta\mathbf y(4)=(0,-4)$ at $t=4$ (the coefficient of $-4\delta(t-4)$).]*
 
@@ -391,11 +307,7 @@ Example 8.21. Find the inverse Laplace transform of
 $$
 X(s) = \frac{2}{s^2 + 3s + 2}, \quad \text{Re}\{s\} > -1 \implies x(t) = -2e^{-2t}u(t) + 2e^{-t}u(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[2/(s^2 + 3 s + 2), s, t]
-```
-*Returns $x(t) = 2e^{-t} - 2e^{-2t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[2/(s^2 + 3 s + 2), s, t]` — Returns $x(t) = 2e^{-t} - 2e^{-2t}$*]
 
 *[Jump condition at $t=0$: reading $X(s)=2/(s^2+3s+2)$ as the impulse response of the zero-state 2nd-order ODE $\ddot x+3\dot x+2x=2\delta(t)$ (relative degree $2$). Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,2)$.]*
 
@@ -415,11 +327,7 @@ $$
 $$
 \text{(c)}\quad x(t) = \frac{1}{8}\left(e^{-5t} - e^{3t}\right)u(-t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1/((s + 5) (s - 3)), s, t]
-```
-*Returns the fully causal inverse, $x(t) = \frac{1}{8}\left(e^{3t} - e^{-5t}\right)u(t)$, confirming case (b). WolframAlpha's default convention is causal, so cases (a) and (c) — each of which includes a left-sided (anticausal) component — cannot be returned directly; those branches were instead verified from the bilateral Laplace pairs $e^{3t}u(-t) \leftrightarrow -\dfrac{1}{s-3}$ for $\text{Re}\{s\}<3$ and $e^{-5t}u(-t) \leftrightarrow -\dfrac{1}{s+5}$ for $\text{Re}\{s\}<-5$, applied to the partial-fraction expansion $X(s) = -\dfrac{1}{8(s+5)} + \dfrac{1}{8(s-3)}$ (confirmed numerically as well).*]
+*[WolframAlpha: `InverseLaplaceTransform[1/((s + 5) (s - 3)), s, t]` — Returns the fully causal inverse, $x(t) = \frac{1}{8}\left(e^{3t} - e^{-5t}\right)u(t)$, confirming case (b). WolframAlpha's default convention is causal, so cases (a) and (c) — each of which includes a left-sided (anticausal) component — cannot be returned directly; those branches were instead verified from the bilateral Laplace pairs $e^{3t}u(-t) \leftrightarrow -\dfrac{1}{s-3}$ for $\text{Re}\{s\}<3$ and $e^{-5t}u(-t) \leftrightarrow -\dfrac{1}{s+5}$ for $\text{Re}\{s\}<-5$, applied to the partial-fraction expansion $X(s) = -\dfrac{1}{8(s+5)} + \dfrac{1}{8(s-3)}$ (confirmed numerically as well).*]
 
 *[Jump condition at $t=0$: $X(s)=1/((s+5)(s-3))$ has $\deg N=0 < \deg D=2$ (relative degree $2$, strictly proper), so none of the three ROC cases carries a direct-feedthrough $\delta(t)$ term, and $x(t)$ itself is continuous at $t=0$ in every case. The jump instead shows up one derivative later, in $\dot x$, by the same amount ($\Delta\dot x(0)=1$, the leading-coefficient ratio $1/1$) regardless of ROC: for the causal case (b), $\dot x(0^-)=0$ up to $\dot x(0^+)=1$, the usual zero-state jump of the 2nd-order ODE $\ddot x+2\dot x-15x=\delta(t)$; for the anticausal case (c), $\dot x(0^-)=-1$ down to $\dot x(0^+)=0$, the mirror image; and for the two-sided case (a), the jump straddles $t=0$ the same way but centered on a different baseline, $\dot x(0^-)=-3/8$ up to $\dot x(0^+)=5/8$ — the same $+1$ jump, just neither purely causal nor purely anticausal.]*
 
@@ -429,11 +337,7 @@ Example 8.31. Using Laplace transform, solve the differential equation with zero
 $$
 \frac{d^2}{dt^2}y(t) + 4\frac{d}{dt}y(t) + 4y(t) = \delta(t) + 2u(t) \implies y(t) = \frac{1}{2}u(t) - \frac{1}{2}e^{-2t}u(t)
 $$
-*[WolframAlpha:*
-```
-y''[t] + 4 y'[t] + 4 y[t] == DiracDelta[t] + 2 UnitStep[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{2} - \frac{1}{2}e^{-2t}$*]
+*[WolframAlpha: `y''[t] + 4 y'[t] + 4 y[t] == DiracDelta[t] + 2 UnitStep[t], y[0] == 0, y'[0] == 0` — Returns $y(t) = \frac{1}{2} - \frac{1}{2}e^{-2t}$*]
 
 *[Jump condition at $t=0$: $\ddot y+4\dot y+4y=\delta(t)+2u(t)$; the step term $2u(t)$ is a regular (non-impulsive) forcing and contributes no jump, so the jump at $t=0$ comes entirely from $\delta(t)$. Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
 
@@ -443,11 +347,7 @@ Example 8.32. Find the output $y(t)$ of an LTI system represented. Assume that t
 $$
 \frac{d^2}{dt^2}y(t) + 3\frac{d}{dt}y(t) + 2y(t) = \delta(t) \implies y(t) = -e^{-2t}u(t) + e^{-t}u(t)
 $$
-*[WolframAlpha:*
-```
-y''[t] + 3 y'[t] + 2 y[t] == DiracDelta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = e^{-t} - e^{-2t}$*]
+*[WolframAlpha: `y''[t] + 3 y'[t] + 2 y[t] == DiracDelta[t], y[0] == 0, y'[0] == 0` — Returns $y(t) = e^{-t} - e^{-2t}$*]
 
 *[Jump condition at $t=0$: $\ddot y+3\dot y+2y=\delta(t)$. Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
 
@@ -457,11 +357,7 @@ Example 4 "A linear system is governed by the differential equation"
 $$
 y'' + 2y' + 5y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} e^{-t} \sin 2t
 $$
-*[WolframAlpha:*
-```
-y''[t] + 2 y'[t] + 5 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{2} e^{-t} \sin(2t)$*]
+*[WolframAlpha: `y''[t] + 2 y'[t] + 5 y[t] == Delta[t], y[0] == 0, y'[0] == 0` — Returns $y(t) = \frac{1}{2} e^{-t} \sin(2t)$*]
 
 *[Jump condition at $t=0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
 *[Editorial note: as transcribed, this equation was incomplete — missing the forcing term on the left-hand side and the output variable on the right (the "$\implies =$" read as a fragment). The equation above, $y''+2y'+5y=\delta(t)$ with zero initial conditions, is the unique standard-form IVP whose closed-form solution matches the book's own stated answer exactly (characteristic roots $-1\pm2i$ give precisely $\frac{1}{2}e^{-t}\sin2t$), and is used here as a high-confidence reconstruction rather than left incomplete.]*
@@ -476,11 +372,7 @@ $$
 \cos 3t - \sin 3t, & \pi < t
 \end{cases}
 $$
-*[WolframAlpha:*
-```
-x''[t] + 9 x[t] == 3 Delta[t - Pi], x[0] == 1, x'[0] == 0
-```
-*Returns $x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)$*]
+*[WolframAlpha: `x''[t] + 9 x[t] == 3 Delta[t - Pi], x[0] == 1, x'[0] == 0` — Returns $x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)$*]
 
 *[Jump condition at $t=\pi$: phase vector $\mathbf x=(x,x')$ changes by $\Delta\mathbf x(\pi)=(0,3)$, the impulse strength.]*
 
@@ -490,11 +382,7 @@ Example 3.4.6. "Find the impulse response function"
 $$
 L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
 $$
-*[WolframAlpha:*
-```
-y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y_\delta(t) = e^{-t} \sin(t) \, u(t)$ (the $c=0$ case of the book's general $u(t-c)e^{-(t-c)}\sin(t-c)$)*]
+*[WolframAlpha: `y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0` — Returns $y_\delta(t) = e^{-t} \sin(t) \, u(t)$ (the $c=0$ case of the book's general $u(t-c)e^{-(t-c)}\sin(t-c)$)*]
 
 *[Jump condition at $t=c$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(c)=(0,1)$.]*
 
@@ -504,11 +392,7 @@ y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0
 $$
 y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
 $$
-*[WolframAlpha:*
-```
-y''[t] + w0^2 y[t] == f0 Delta[t - t0], y[0] == y0, y'[0] == 0
-```
-*Returns $y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)$*]
+*[WolframAlpha: `y''[t] + w0^2 y[t] == f0 Delta[t - t0], y[0] == y0, y'[0] == 0` — Returns $y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)$*]
 
 *[Jump condition at $t=t_0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(t_0)=(0,f_0)$, the impulse strength.]*
 
@@ -518,11 +402,7 @@ Example 3.4.7. "Find the solution y to the initial value problem"
 $$
 y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
 $$
-*[WolframAlpha:*
-```
-y''[t] - y[t] == -20 Delta[t - 3], y[0] == 1, y'[0] == 0
-```
-*Returns $y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)$*]
+*[WolframAlpha: `y''[t] - y[t] == -20 Delta[t - 3], y[0] == 1, y'[0] == 0` — Returns $y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)$*]
 
 *[Jump condition at $t=3$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(3)=(0,-20)$, the impulse strength.]*
 
@@ -532,11 +412,7 @@ Example 3.4.8. "Find the solution to the initial value problem"
 $$
 y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
 $$
-*[WolframAlpha:*
-```
-y''[t] + 4 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)$*]
+*[WolframAlpha: `y''[t] + 4 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0` — Returns $y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)$*]
 
 *[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(\pi)=(0,1)$ at $t=\pi$, and by $\Delta\mathbf y(2\pi)=(0,-1)$ at $t=2\pi$ (the coefficient of $-\delta(t-2\pi)$).]*
 
@@ -588,11 +464,7 @@ $$
 x(t) &= \frac{l}{m\omega_d} e^{-\xi\omega t} \sin \omega_d t = \frac{50}{(10)(29.986)} e^{-(0.03)(30)t} \sin 29.986t = 0.1667e^{-0.9t} \sin 29.986t
 \end{aligned}
 $$
-*[WolframAlpha:*
-```
-m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt[m k]); wd = wn Sqrt[1 - xi^2]; N[{wn, xi, wd, xi wn, (F0 dt)/(m wd)}]
-```
-*Returns $\{\omega_n,\,\xi,\,\omega_d,\,\xi\omega_n,\,\text{amplitude}\} = \{30,\ 0.03,\ 29.9865,\ 0.9,\ 0.166742\}$ (matches the book's stated 29.986, 0.9, 0.1667)*]
+*[WolframAlpha: `m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt[m k]); wd = wn Sqrt[1 - xi^2]; N[{wn, xi, wd, xi wn, (F0 dt)/(m wd)}]` — Returns $\{\omega_n,\,\xi,\,\omega_d,\,\xi\omega_n,\,\text{amplitude}\} = \{30,\ 0.03,\ 29.9865,\ 0.9,\ 0.166742\}$ (matches the book's stated 29.986, 0.9, 0.1667)*]
 
 *[Jump condition at $t=0$: the finite-duration force is idealized as an impulse of magnitude $I=F_0\Delta t=(10{,}000)(0.005)=50\ \text{N}\cdot\text{s}$ applied to $m\ddot x+c\dot x+kx=I\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,I/m)=(0,5\ \text{m/s})$, the impulse–momentum theorem (consistent with the stated amplitude $x_0/(m\omega_d)=50/(10\cdot29.986)=0.1667$).]*
 *[Editorial note: as transcribed, the damping coefficient's unit was garbled ("c = 18 N· slm"). Recomputing $\omega_n, \xi, \omega_d, \xi\omega_n$, and the response amplitude from $m=10$, $k=9000$, $c=18$, $F_0=10{,}000$, $\Delta t=0.005$ reproduces every downstream number the book states (29.986, 0.9, 0.1667) exactly, confirming the numeric value 18 is correct; only the unit label was corrected here, to the standard "N·s/m".]*
@@ -609,11 +481,7 @@ $$
 $$
 \implies\; x(t) = e^{-\zeta\omega_n t}\left[\cos(\omega_d t) - \frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\omega_d t)\right] u(t), \quad \omega_d = \omega_n\sqrt{1-\zeta^2} \quad (0\le\zeta<1)
 $$
-*[WolframAlpha:*
-```
-Assuming[0 < zeta < 1 && wn > 0, InverseLaplaceTransform[s/(s^2 + 2 zeta wn s + wn^2), s, t]]
-```
-*Returns $x(t) = e^{-\zeta\omega_n t}\cos\left(\omega_n\sqrt{1-\zeta^2}\,t\right) - \dfrac{\zeta}{\sqrt{1-\zeta^2}}\, e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)$*]
+*[WolframAlpha: `Assuming[0 < zeta < 1 && wn > 0, InverseLaplaceTransform[s/(s^2 + 2 zeta wn s + wn^2), s, t]]` — Returns $x(t) = e^{-\zeta\omega_n t}\cos\left(\omega_n\sqrt{1-\zeta^2}\,t\right) - \dfrac{\zeta}{\sqrt{1-\zeta^2}}\, e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)$*]
 
 *[Jump condition at $t=0$: the doublet forcing $\dot\delta(t)$ gives $\ddot x+2\zeta\omega_n\dot x+\omega_n^2x=\dot\delta(t)$ relative degree $1$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(1,-2\zeta\omega_n)$.]*
 
@@ -623,11 +491,7 @@ Example A.6. "Find the time-domain representation of"
 $$
 F(s) = \frac{2s + 12}{s^2 + 2s + 5} \implies f(t) = 5e^{-t}\sin 2t + 2e^{-t}\cos 2t, \quad t \geq 0
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(2 s + 12)/(s^2 + 2 s + 5), s, t]
-```
-*Returns $f(t) = 5 e^{-t}\sin(2t) + 2 e^{-t}\cos(2t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(2 s + 12)/(s^2 + 2 s + 5), s, t]` — Returns $f(t) = 5 e^{-t}\sin(2t) + 2 e^{-t}\cos(2t)$*]
 
 *[Jump condition at $t=0$: $F(s)=(2s+12)/(s^2+2s+5)$ is strictly proper with relative degree $1$ ($\deg N=\deg D-1$). Phase vector $\mathbf f=(f,\dot f)$ changes by $\Delta\mathbf f(0)=(2,8)$.]*
 
@@ -636,22 +500,14 @@ InverseLaplaceTransform[(2 s + 12)/(s^2 + 2 s + 5), s, t]
 $$ 
 H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]
-```
-*Returns $h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]` — Returns $h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)$*]
 
 *[Jump condition at $t=0$: because the right-hand side carries a derivative of the (impulsive) input, $2x'+x$ with $x=\delta(t)$, the relative degree of $H(s)$ drops to $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(2,-3)$.]*
 
 ##### Hallauer Introduction to linear, time-invariant, dynamic systems for students of engineering, p.2-17
 Ex.2.9.a
 $ F(s) = \frac{s+3}{(s+1)(s+5)}  \text{[Answer: } f(t) = \frac{1}{2} \left( e^{-t} + e^{-5t} \right), t \geq 0 \text{]}$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 3)/((s + 1) (s + 5)), s, t]
-```
-*Returns $f(t) = \frac12\left(e^{-t} + e^{-5t}\right)$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 3)/((s + 1) (s + 5)), s, t]` — Returns $f(t) = \frac12\left(e^{-t} + e^{-5t}\right)$, matching the book*]
 
 *[Jump condition at $t=0$: $F(s)=(s+3)/((s+1)(s+5))$ has denominator $(s+1)(s+5)=s^2+6s+5$ and numerator $s+3$ (relative degree $1$), corresponding to the second-order ODE $y''+6y'+5y=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-3)$.]*
 
@@ -662,11 +518,7 @@ EXAMPLE 2.6
 (D^2 +3D+2)y(t) = Dx(t)"
 Solution
 $$ h(t) = (-e^{-t} + 2e^{-2t})u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]
-```
-*Returns $h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]` — Returns $h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)$*]
 
 *[Jump condition at $t=0$: the input enters as $Dx$, again giving relative degree $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-3)$.]*
 
@@ -675,11 +527,7 @@ InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]
 "DRILL 2.4(c) Finding the Impulse Response"
 "Determine the unit impulse response of LTIC systems described by the following equation:"
 $$ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s + 1)^2, s, t]
-```
-*Returns $h(t) = (1-t) e^{-t} u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[s/(s + 1)^2, s, t]` — Returns $h(t) = (1-t) e^{-t} u(t)$*]
 
 *[Jump condition at $t=0$: $(D^2+2D+1)y=Dx$ likewise: $\Delta\mathbf y(0)=(1,-2)$.]*
 
@@ -689,11 +537,7 @@ InverseLaplaceTransform[s/(s + 1)^2, s, t]
 "Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)"
 Solution
 $$ h(t) = (-e^{-2t} + 2e^{-3t})u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]
-```
-*Returns $h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]` — Returns $h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)$*]
 
 *[Jump condition at $t=0$: because the input enters as $(D+1)x$, the relative degree of the transfer function is $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-4)$.]*
 
@@ -702,11 +546,7 @@ InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]
 "DRILL 2.4(b) Finding the Impulse Response"
 "Determine the unit impulse response of LTIC systems described by the following equation:"
 $$ D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 4)/(s (s + 2)), s, t]
-```
-*Returns $h(t) = \left(2 - e^{-2t}\right) u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 4)/(s (s + 2)), s, t]` — Returns $h(t) = \left(2 - e^{-2t}\right) u(t)$*]
 
 *[Jump condition at $t=0$: $D(D+2)y=(D+4)x$ has relative degree $1$: $\Delta\mathbf y(0)=(1,2)$.]*
 
@@ -715,11 +555,7 @@ Example A.2.b Inverse Laplace Transform
 $$X(s) = \frac{s}{s^2 + 2s + 2}
 \implies e^{-t}(\cos t - \sin t)u_s(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s^2 + 2 s + 2), s, t]
-```
-*Returns $x(t) = e^{-t}\cos(t) - e^{-t}\sin(t)$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[s/(s^2 + 2 s + 2), s, t]` — Returns $x(t) = e^{-t}\cos(t) - e^{-t}\sin(t)$, matching the book*]
 
 *[Jump condition at $t=0$: $X(s)=s/(s^2+2s+2)$ has relative degree $1$ (a pure $\dot\delta(t)$ forcing), corresponding to $y''+2y'+2y=\delta'(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-2)$.]*
 #### C. Second derivative of delta {#second-order-c-second-derivative}
@@ -730,11 +566,7 @@ Example 3.8. "Use the Laplace transform to find ... the impulse response of the 
 $$
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = \frac{d^2x(t)}{dt^2} + 8\frac{dx(t)}{dt} + 13x(t) \implies h(t) = \delta(t) + e^{-2t} + 2e^{-3t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s^2 + 8 s + 13)/(s^2 + 5 s + 6), s, t]
-```
-*Returns $h(t) = \delta(t) + e^{-2t} + 2 e^{-3t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s^2 + 8 s + 13)/(s^2 + 5 s + 6), s, t]` — Returns $h(t) = \delta(t) + e^{-2t} + 2 e^{-3t}$*]
 
 *[Jump condition at $t=0$: numerator and denominator of $H(s)=(s^2+8s+13)/(s^2+5s+6)$ share degree $2$, so the input's own $\delta(t)$ passes straight through as a direct-feedthrough term (coefficient $=1$) on top of the smooth part $h_{\text{reg}}(t)=e^{-2t}+2e^{-3t}$. Phase vector $\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')$ changes by $\Delta\mathbf h_{\text{reg}}(0)=(3,-8)$.]*
 
@@ -744,11 +576,7 @@ Example 3.14. "Compute the impulse response of the transform with the transfer f
 $$
 H(s) = \frac{s^2 - s + 1}{s^2 + 2s + 1} \implies y(t) = \delta(t) - 3e^{-t} + 3te^{-t}.
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s^2 - s + 1)/(s^2 + 2 s + 1), s, t]
-```
-*Returns $y(t) = \delta(t) - 3 e^{-t} + 3 t e^{-t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s^2 - s + 1)/(s^2 + 2 s + 1), s, t]` — Returns $y(t) = \delta(t) - 3 e^{-t} + 3 t e^{-t}$*]
 
 *[Jump condition at $t=0$: as in Example 3.8, $\deg N=\deg D=2$ for $H(s)=(s^2-s+1)/(s^2+2s+1)$, giving a direct feedthrough of coefficient $1$ plus a smooth remainder $y_{\text{reg}}(t)=-3e^{-t}+3te^{-t}$. Phase vector $\mathbf y_{\text{reg}}=(y_{\text{reg}},y_{\text{reg}}')$ changes by $\Delta\mathbf y_{\text{reg}}(0)=(-3,6)$.]*
 
@@ -759,11 +587,7 @@ describes the system"
 $$
 \frac{d^2z(t)}{dt^2} + 3\frac{dz(t)}{dt} + 2z(t) = \frac{d^2x(t)}{dt^2} + 6\frac{dx(t)}{dt} + 7x(t) \implies h(t) = \delta(t) + 2e^{-t} + e^{-2t}.
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s^2 + 6 s + 7)/(s^2 + 3 s + 2), s, t]
-```
-*Returns $h(t) = \delta(t) + 2 e^{-t} + e^{-2t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s^2 + 6 s + 7)/(s^2 + 3 s + 2), s, t]` — Returns $h(t) = \delta(t) + 2 e^{-t} + e^{-2t}$*]
 
 *[Jump condition at $t=0$: again $\deg N=\deg D=2$ for $H(s)=(s^2+6s+7)/(s^2+3s+2)$, giving a direct feedthrough of coefficient $1$ plus a smooth remainder $h_{\text{reg}}(t)=2e^{-t}+e^{-2t}$. Phase vector $\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')$ changes by $\Delta\mathbf h_{\text{reg}}(0)=(3,-4)$.]*
 
@@ -773,11 +597,7 @@ InverseLaplaceTransform[(s^2 + 6 s + 7)/(s^2 + 3 s + 2), s, t]
 $$
 \left(\frac{s}{s+1}\right)^2 \implies \delta(t) - 2e^{-t} + t e^{-t}.
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s/(s + 1))^2, s, t]
-```
-*Returns $f(t) = \delta(t) - 2e^{-t} + t\,e^{-t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s/(s + 1))^2, s, t]` — Returns $f(t) = \delta(t) - 2e^{-t} + t\,e^{-t}$*]
 
 *[Jump condition at $t=0$: $F(s)=(s/(s+1))^2=s^2/(s^2+2s+1)$ has $\deg N=\deg D=2$ (in fact $N(s)=s^2$ exactly — pure $\ddot\delta(t)$ forcing), so a $\delta(t)$ term of coefficient $1$ passes straight through on top of the smooth remainder $y_{\text{reg}}(t)=-2e^{-t}+te^{-t}$. Phase vector $\mathbf y_{\text{reg}}=(y_{\text{reg}},y_{\text{reg}}')$ changes by $\Delta\mathbf y_{\text{reg}}(0)=(-2,3)$.]*
 
@@ -787,11 +607,7 @@ Example 8.27. Find the inverse Laplace transform of
 $$
 X(s) = \frac{s^2 - 3s + 2}{s^2 + 3s + 2}, \quad \text{Re}\{s\} > -1 \implies x(t) = \delta(t) + 6e^{-t}u(t) - 12e^{-2t}u(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s^2 - 3 s + 2)/(s^2 + 3 s + 2), s, t]
-```
-*Returns $x(t) = \delta(t) + 6e^{-t}u(t) - 12e^{-2t}u(t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s^2 - 3 s + 2)/(s^2 + 3 s + 2), s, t]` — Returns $x(t) = \delta(t) + 6e^{-t}u(t) - 12e^{-2t}u(t)$*]
 
 *[Editorial note: as pasted, the stated answer was $x(t)=\delta(t)-12e^{-2t}u(t)-6e^{-t}u(t)$, with the $e^{-t}$ term negative. Partial fractions give $X(s)=1+\dfrac{6}{s+1}-\dfrac{12}{s+2}$ (from $s^2-3s+2=(s^2+3s+2)-6s$ and $-6s/((s+1)(s+2))=6/(s+1)-12/(s+2)$), so the $e^{-t}$ coefficient is $+6$, not $-6$; confirmed both symbolically and by evaluating $X(s)$ numerically against both candidate answers at a test point away from the poles, which agrees only with the $+6$ version.]*
 
@@ -805,11 +621,7 @@ Example 3.1. "Consider the system"
 $$
 L(s) = \frac{3s^2 + 3s + 4}{s^3 + s^2 + 3s + 3} \implies l(t) = 2\cos\sqrt{3}t + \frac{1}{\sqrt{3}}\sin\sqrt{3}t + e^{-t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(3 s^2 + 3 s + 4)/(s^3 + s^2 + 3 s + 3), s, t]
-```
-*Returns $l(t) = \sqrt{3}\sin(\sqrt{3}t)/3 + 2\cos(\sqrt{3}t) + e^{-t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(3 s^2 + 3 s + 4)/(s^3 + s^2 + 3 s + 3), s, t]` — Returns $l(t) = \sqrt{3}\sin(\sqrt{3}t)/3 + 2\cos(\sqrt{3}t) + e^{-t}$*]
 
 *[Jump condition at $t=0$: $L(s)=(3s^2+3s+4)/(s^3+s^2+3s+3)$ is strictly proper with relative degree $1$ ($\deg N=\deg D-1$), corresponding to the third-order ODE $\dddot y+\ddot y+3\dot y+3y=3\ddot\delta(t)+3\dot\delta(t)+4\delta(t)$. Phase vector $\mathbf y=(y,\dot y,\ddot y)$ changes by $\Delta\mathbf y(0)=(3,0,-5)$.]*
 
@@ -819,11 +631,7 @@ p.254 Example 3.12. "find the impulse response of the system if the third-order 
 $$
 \frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
 $$
-*[WolframAlpha:*
-```
-y'''[t] + 6 y''[t] + 11 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0
-```
-*Returns $h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}$*]
+*[WolframAlpha: `y'''[t] + 6 y''[t] + 11 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0` — Returns $h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}$*]
 
 *[Jump condition at $t=0$: this third-order equation. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,1)$.]*
 
@@ -836,11 +644,7 @@ $$
 $$
 f(t) = -\frac{1}{2}te^{-t} + \frac{3}{4}e^{-t} - \frac{3}{4}e^{-3t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/((s + 1)^2 (s + 3)), s, t]
-```
-*Returns $f(t) = -\dfrac12\,t\,e^{-t} + \dfrac34\,e^{-t} - \dfrac34\,e^{-3t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[s/((s + 1)^2 (s + 3)), s, t]` — Returns $f(t) = -\dfrac12\,t\,e^{-t} + \dfrac34\,e^{-t} - \dfrac34\,e^{-3t}$*]
 
 *[Jump condition at $t=0$: $F(s)=s/((s+1)^2(s+3))$ has denominator $(s+1)^2(s+3)=s^3+5s^2+7s+3$ and numerator $s$ (relative degree $2$), corresponding to the third-order ODE $y'''+5y''+7y'+3y=\dot\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,-5)$.]*
 
@@ -854,11 +658,7 @@ $$
 $$
 f(t) = \frac{2}{3}e^{-t} - \frac{1}{2}e^{-2t} - \frac{1}{6}e^{-4t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 3)/((s + 1) (s + 2) (s + 4)), s, t]
-```
-*Returns $f(t) = \dfrac23\,e^{-t} - \dfrac12\,e^{-2t} - \dfrac16\,e^{-4t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 3)/((s + 1) (s + 2) (s + 4)), s, t]` — Returns $f(t) = \dfrac23\,e^{-t} - \dfrac12\,e^{-2t} - \dfrac16\,e^{-4t}$*]
 
 *[Jump condition at $t=0$: $F(s)=(s+3)/((s+1)(s+2)(s+4))$ has denominator $(s+1)(s+2)(s+4)=s^3+7s^2+14s+8$ and numerator $s+3$ (relative degree $2$), corresponding to the third-order ODE $y'''+7y''+14y'+8y=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,-4)$.]*
 
@@ -872,22 +672,14 @@ $$
 $$
 f(t) = \frac{3}{2} - 2e^{-t} + \frac{1}{2}e^{-2t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 3)/(s (s + 1) (s + 2)), s, t]
-```
-*Returns $f(t) = \dfrac32 - 2\,e^{-t} + \dfrac12\,e^{-2t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 3)/(s (s + 1) (s + 2)), s, t]` — Returns $f(t) = \dfrac32 - 2\,e^{-t} + \dfrac12\,e^{-2t}$*]
 
 *[Jump condition at $t=0$: $F(s)=(s+3)/(s(s+1)(s+2))$ has denominator $s(s+1)(s+2)=s^3+3s^2+2s$ and numerator $s+3$ (relative degree $2$), corresponding to the third-order ODE $y'''+3y''+2y'=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,0)$.]*
 
 #### Hallauer Introduction to linear, time-invariant, dynamic systems for students of engineering, p.2-17
 Ex.2.9.b $ F(s) = \frac{2(s+1)}{s(s+3)(s+4)} 
  \text{[Answer: } f(t) = \frac{1}{6} + \frac{4}{3} e^{-3t} - \frac{3}{2} e^{-4t}, t \geq 0 \text{]}$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[2 (s + 1)/(s (s + 3) (s + 4)), s, t]
-```
-*Returns $f(t) = \frac16 + \frac43 e^{-3t} - \frac32 e^{-4t}$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[2 (s + 1)/(s (s + 3) (s + 4)), s, t]` — Returns $f(t) = \frac16 + \frac43 e^{-3t} - \frac32 e^{-4t}$, matching the book*]
 
 *[Jump condition at $t=0$: $F(s)=2(s+1)/(s(s+3)(s+4))$ has denominator $s(s+3)(s+4)=s^3+7s^2+12s$ and numerator $2(s+1)=2s+2$ (relative degree $2$), corresponding to the third-order ODE $y'''+7y''+12y'=2\dot\delta(t)+2\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,2,-12)$.]*
 
@@ -900,11 +692,7 @@ $$
 $$
 L^{-1}[F(s)] = \frac{1}{3} \left[ e^{-2t} - \cos\sqrt{5}\,t + \sqrt{5}\sin\sqrt{5}\,t \right]
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 5)/((s + 2) (s^2 + 8)), s, t]
-```
-*Returns $f(t) = \dfrac14 e^{-2t} - \dfrac14\cos(2\sqrt2\,t) + \dfrac{3\sqrt2}{8}\sin(2\sqrt2\,t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 5)/((s + 2) (s^2 + 8)), s, t]` — Returns $f(t) = \dfrac14 e^{-2t} - \dfrac14\cos(2\sqrt2\,t) + \dfrac{3\sqrt2}{8}\sin(2\sqrt2\,t)$*]
 
 *[Editorial note: as transcribed, the source states $L^{-1}[F(s)] = \frac{1}{3}\left[e^{-2t} - \cos\sqrt5\,t + \sqrt5\sin\sqrt5\,t\right]$, but $F(s)$'s poles are at $s=-2$ and $s=\pm2\sqrt2\,i$ (from the factor $s^2+8$, not $s^2+5$), so both the oscillation frequency and the leading fraction are mistranscribed. Partial fractions give $F(s)=\dfrac{1/4}{s+2}+\dfrac{-\frac14 s+\frac32}{s^2+8}$, whose inverse is $f(t)=\frac14 e^{-2t}-\frac14\cos(2\sqrt2\,t)+\frac{3\sqrt2}{8}\sin(2\sqrt2\,t)$ — confirmed both symbolically and by direct back-substitution into $F(s)$.]*
 
@@ -917,11 +705,7 @@ $$
 \frac{s + 1}{s(s^2 + 4)}
 \implies \frac{1}{2} \sin 2t + \frac{1}{4} [1 - \cos 2t]
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 1)/(s (s^2 + 4)), s, t]
-```
-*Returns $f(t) = \dfrac12\sin(2t) + \dfrac14\left(1-\cos(2t)\right)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 1)/(s (s^2 + 4)), s, t]` — Returns $f(t) = \dfrac12\sin(2t) + \dfrac14\left(1-\cos(2t)\right)$*]
 
 *[Jump condition at $t=0$: $F(s)=(s+1)/(s(s^2+4))$ has denominator $s(s^2+4)=s^3+4s$ and numerator $s+1$ (relative degree $2$), corresponding to the third-order ODE $y'''+4y'=\dot\delta(t)+\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,1)$.]*
 
@@ -934,11 +718,7 @@ $$
 $$
 g(t) = \left( \frac{1}{\omega^2} + \frac{1}{\omega} \sin \omega t - \frac{1}{\omega^2} \cos \omega t \right) 1(t)
 $$
-*[WolframAlpha:*
-```
-Assuming[omega > 0, InverseLaplaceTransform[(s + 1)/(s (s^2 + omega^2)), s, t]]
-```
-*Returns $g(t) = \dfrac{1}{\omega^2} + \dfrac{1}{\omega}\sin(\omega t) - \dfrac{1}{\omega^2}\cos(\omega t)$*]
+*[WolframAlpha: `Assuming[omega > 0, InverseLaplaceTransform[(s + 1)/(s (s^2 + omega^2)), s, t]]` — Returns $g(t) = \dfrac{1}{\omega^2} + \dfrac{1}{\omega}\sin(\omega t) - \dfrac{1}{\omega^2}\cos(\omega t)$*]
 
 *[Jump condition at $t=0$: $G(s)=(s+1)/(s(s^2+\omega^2))$ has denominator $s(s^2+\omega^2)=s^3+\omega^2 s$ and numerator $s+1$ (relative degree $2$), corresponding to the third-order ODE $g'''+\omega^2 g'=\dot\delta(t)+\delta(t)$. Phase vector $\mathbf g=(g,g',g'')$ changes by $\Delta\mathbf g(0)=(0,1,1)$.]*
 
@@ -951,11 +731,7 @@ $$
 $$
 K_1 = \frac{KA}{ab},\qquad K_2 = \frac{-KA}{a(b-a)},\qquad K_3 = \frac{KA}{b(b-a)}
 $$
-*[WolframAlpha:*
-```
-Assuming[K > 0 && A > 0 && a > 0 && b > 0 && a != b, InverseLaplaceTransform[K A/(s (s + a) (s + b)), s, t]]
-```
-*Returns $y(t) = \dfrac{KA}{ab} - \dfrac{KA}{a(b-a)}e^{-at} + \dfrac{KA}{b(b-a)}e^{-bt}$*]
+*[WolframAlpha: `Assuming[K > 0 && A > 0 && a > 0 && b > 0 && a != b, InverseLaplaceTransform[K A/(s (s + a) (s + b)), s, t]]` — Returns $y(t) = \dfrac{KA}{ab} - \dfrac{KA}{a(b-a)}e^{-at} + \dfrac{KA}{b(b-a)}e^{-bt}$*]
 
 *[Jump condition at $t=0$: $Y(s)=KA/(s(s+a)(s+b))$ has denominator $s(s+a)(s+b)=s^3+(a+b)s^2+ab\,s$ and numerator $KA$ (relative degree $3$), corresponding to the third-order ODE $y'''+(a+b)y''+ab\,y'=KA\,\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,KA)$.]*
 
@@ -965,11 +741,7 @@ Example A-1. Find the inverse Laplace transform of
 $$
 F(s) = \frac{1}{s^3 + 12s^2 + 44s + 48} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8}\left(e^{-2t} - 2e^{-4t} + e^{-6t}\right), \quad t \geq 0.
 $$
-*[WolframAlpha:*
-```
-y'''[t] + 12 y''[t] + 44 y'[t] + 48 y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0
-```
-*Returns $f(t) = \frac{1}{8}e^{-2t} - \frac{1}{4}e^{-4t} + \frac{1}{8}e^{-6t}$*]
+*[WolframAlpha: `y'''[t] + 12 y''[t] + 44 y'[t] + 48 y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0` — Returns $f(t) = \frac{1}{8}e^{-2t} - \frac{1}{4}e^{-4t} + \frac{1}{8}e^{-6t}$*]
 
 *[Jump condition at $t=0$: $F(s)=1/(s^3+12s^2+44s+48)=1/((s+2)(s+4)(s+6))$ is the impulse response of the zero-state third-order equation $y'''+12y''+44y'+48y=\delta(t)$ (leading coefficient $1$). Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,1)$.]*
 
@@ -982,11 +754,7 @@ $$
 $$
 f(t) = \mathcal{L}^{-1}\{F(s)\} = e^{-t} - e^{-t/2}\cos\left(\frac{\sqrt3}{2}t\right) + \frac{1}{\sqrt3}e^{-t/2}\sin\left(\frac{\sqrt3}{2}t\right), \quad t \geq 0.
 $$
-*[WolframAlpha:*
-```
-y'''[t] + 2 y''[t] + 2 y'[t] + y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0
-```
-*Returns $f(t) = e^{-t} - e^{-t/2}\cos\left(\frac{\sqrt3}{2}t\right) + \frac{1}{\sqrt3}e^{-t/2}\sin\left(\frac{\sqrt3}{2}t\right)$*]
+*[WolframAlpha: `y'''[t] + 2 y''[t] + 2 y'[t] + y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0` — Returns $f(t) = e^{-t} - e^{-t/2}\cos\left(\frac{\sqrt3}{2}t\right) + \frac{1}{\sqrt3}e^{-t/2}\sin\left(\frac{\sqrt3}{2}t\right)$*]
 
 *[Jump condition at $t=0$: $F(s)=1/(s^3+2s^2+2s+1)=1/((s+1)(s^2+s+1))$ is the impulse response of the zero-state third-order equation $y'''+2y''+2y'+y=\delta(t)$ (leading coefficient $1$). Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,1)$.]*
 
@@ -996,11 +764,7 @@ EXAMPLE A2.1. Find an inverse Laplace transform
 $$
 F(s) = \frac{2s + 4}{s^3 + 7s^2 + 15s + 9} \implies f(t) = 0.5e^{-t} - 0.5e^{-3t} + te^{-3t}.
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(2 s + 4)/(s^3 + 7 s^2 + 15 s + 9), s, t]
-```
-*Returns $f(t) = 0.5e^{-t} - 0.5e^{-3t} + te^{-3t}$*]
+*[WolframAlpha: `InverseLaplaceTransform[(2 s + 4)/(s^3 + 7 s^2 + 15 s + 9), s, t]` — Returns $f(t) = 0.5e^{-t} - 0.5e^{-3t} + te^{-3t}$*]
 
 *[Jump condition at $t=0$: $F(s)=(2s+4)/(s^3+7s^2+15s+9)=(2s+4)/((s+1)(s+3)^2)$ has $\deg N=1<\deg D=3$ (relative degree $2$), so reading it as the impulse response of a zero-state third-order ODE, the forcing is $2\delta'(t)+4\delta(t)$ (the linear numerator contributes a first-derivative-of-delta component alongside plain $\delta(t)$). $f(t)$ itself stays continuous ($f(0^+)=0$), and the jump appears one derivative later: $f'(0^+)=2$, the leading-coefficient ratio $2/1$ (with $f''(0^+)=-10$).]*
 
@@ -1010,11 +774,7 @@ EXAMPLE A2.2. Find the inverse Laplace transform of
 $$
 F(s) = \frac{4}{s(s^2 + 2.4s + 4)} \implies f(t) = 1 - 1.25e^{-1.2t}\sin(1.6t + 0.9273)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[4/(s (s^2 + 2.4 s + 4)), s, t]
-```
-*Returns $f(t) = 1 - 1.25e^{-1.2t}\sin(1.6t + 0.9273)$*]
+*[WolframAlpha: `InverseLaplaceTransform[4/(s (s^2 + 2.4 s + 4)), s, t]` — Returns $f(t) = 1 - 1.25e^{-1.2t}\sin(1.6t + 0.9273)$*]
 
 *[Editorial note: as pasted, the stated answer was $f(t) = 1 + 1.25e^{-1.2t}\sin(0.9273 + 1.6t)$, with a plus sign in front of the oscillatory term. Partial fractions give $F(s)=\frac{1}{s}-\frac{s+2.4}{(s+1.2)^2+1.6^2}=\frac{1}{s}-\frac{s+1.2}{(s+1.2)^2+1.6^2}-\frac{1.2}{(s+1.2)^2+1.6^2}$, whose inverse is $f(t)=1-e^{-1.2t}\cos(1.6t)-0.75e^{-1.2t}\sin(1.6t)$; combining the two oscillatory terms into a single sinusoid ($\sqrt{1^2+0.75^2}=1.25$, $\arctan(1/0.75)=0.9273\,\text{rad}$, matching the book's own amplitude and phase constants exactly) gives $f(t)=1-1.25e^{-1.2t}\sin(1.6t+0.9273)$ — confirmed both symbolically and by numeric evaluation of $F(s)$ against both candidate signs, which agrees only with the minus version.]*
 
@@ -1026,11 +786,7 @@ Example 2.3. Find the inverse Laplace transform
 $$
 F(s) = \frac{1}{(s+2)(s+5)(s+11)} \implies f(t) = \frac{1}{54}\left(2e^{-2t} - 3e^{-5t} + e^{-11t}\right)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1/((s + 2) (s + 5) (s + 11)), s, t]
-```
-*Returns $f(t) = \frac{1}{54}\left(2e^{-2t} - 3e^{-5t} + e^{-11t}\right)$*]
+*[WolframAlpha: `InverseLaplaceTransform[1/((s + 2) (s + 5) (s + 11)), s, t]` — Returns $f(t) = \frac{1}{54}\left(2e^{-2t} - 3e^{-5t} + e^{-11t}\right)$*]
 
 *[Jump condition at $t=0$: $F(s)=1/((s+2)(s+5)(s+11))$ has $\deg N=0<\deg D=3$ (relative degree $3$), so reading it as the impulse response of a zero-state third-order ODE, $f(t)$ and $f'(t)$ are both continuous at $t=0$ ($f(0^+)=f'(0^+)=0$), and the jump appears in the second derivative: $f''(0^+)=1$, the leading-coefficient ratio $1/1$.]*
 
@@ -1040,11 +796,7 @@ Example 6.14
 $$
 \mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[8/((s - 1)(s^2 + 2 s + 5)), s, t]
-```
-*Returns $f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[8/((s - 1)(s^2 + 2 s + 5)), s, t]` — Returns $f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)$*]
 
 *[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 3rd-order ODE with denominator $(s-1)(s^2+2s+5)$ (relative degree $3$). Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,8)$.]*
 
@@ -1053,11 +805,7 @@ Example A.2.a Inverse Laplace Transform
 $$X(s) = \frac{3s^2 + 11s + 11}{s^3 + 4s^2 + 5s + 2}
 \implies (e^{-2t} + 2e^{-t} + 3te^{-t})u_s(t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(3 s^2 + 11 s + 11)/(s^3 + 4 s^2 + 5 s + 2), s, t]
-```
-*Returns $x(t) = e^{-2t} + 2e^{-t} + 3t\,e^{-t}$, matching the book*]
+*[WolframAlpha: `InverseLaplaceTransform[(3 s^2 + 11 s + 11)/(s^3 + 4 s^2 + 5 s + 2), s, t]` — Returns $x(t) = e^{-2t} + 2e^{-t} + 3t\,e^{-t}$, matching the book*]
 
 *[Jump condition at $t=0$: $X(s)=(3s^2+11s+11)/(s^3+4s^2+5s+2)$ has denominator $s^3+4s^2+5s+2$ and numerator $3s^2+11s+11$ (relative degree $1$), corresponding to the third-order ODE $y'''+4y''+5y'+2y=3\delta''(t)+11\delta'(t)+11\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(3,-1,0)$.]*
 
@@ -1072,11 +820,7 @@ $$
 $$
 \implies\; l(t) = \frac{1}{\sqrt{3}}\,t\sin\sqrt{3}t + \frac{1}{6\sqrt{3}}\left(\sin\sqrt{3}t - \sqrt{3}\,t\cos\sqrt{3}t\right) + t e^{-t}
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s^4 + 2 s^3 + 11 s^2 + 4 s + 10)/(s^6 + 2 s^5 + 7 s^4 + 12 s^3 + 15 s^2 + 18 s + 9), s, t]
-```
-*Returns $l(t) = \frac{\sqrt3}{3}\,t\sin(\sqrt3\,t) - \frac16\,t\cos(\sqrt3\,t) + t e^{-t} + \frac{\sqrt3}{18}\sin(\sqrt3\,t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s^4 + 2 s^3 + 11 s^2 + 4 s + 10)/(s^6 + 2 s^5 + 7 s^4 + 12 s^3 + 15 s^2 + 18 s + 9), s, t]` — Returns $l(t) = \frac{\sqrt3}{3}\,t\sin(\sqrt3\,t) - \frac16\,t\cos(\sqrt3\,t) + t e^{-t} + \frac{\sqrt3}{18}\sin(\sqrt3\,t)$*]
 
 *[Jump condition at $t=0$: $L(s)=(s^4+2s^3+11s^2+4s+10)/(s^6+2s^5+7s^4+12s^3+15s^2+18s+9)$ is strictly proper with relative degree $2$ ($\deg N=\deg D-2$; the denominator factors as $(s+1)^2(s^2+3)^2$), corresponding to the sixth-order ODE $y^{(6)}+2y^{(5)}+7y^{(4)}+12y'''+15y''+18y'+9y=\delta^{(4)}(t)+2\delta'''(t)+11\delta''(t)+4\delta'(t)+10\delta(t)$. Phase vector $\mathbf y=(y,y',y'',y''',y'''',y''''')$ changes by $\Delta\mathbf y(0)=(0,1,0,4,-16,-1)$.]*
 
@@ -1089,11 +833,7 @@ $$
 $$
 \implies\; l(t) = e^{t} + e^{-2t} + \frac{5}{3}e^{0.8t}\sin(0.6t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(2 s^3 - 1.2 s^2 + 1.4 s - 1)/(s^4 - 0.6 s^3 - 2.6 s^2 + 4.2 s - 2), s, t]
-```
-*Returns $l(t) = e^{t} + e^{-2t} + \frac{5}{3}e^{0.8t}\sin(0.6t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(2 s^3 - 1.2 s^2 + 1.4 s - 1)/(s^4 - 0.6 s^3 - 2.6 s^2 + 4.2 s - 2), s, t]` — Returns $l(t) = e^{t} + e^{-2t} + \frac{5}{3}e^{0.8t}\sin(0.6t)$*]
 
 *[Editorial note: as transcribed, the source states $l(t) = \left[1 - \frac{1}{0.6}e^{0.8t}\sin\left(0.6t + \tan^{-1}(0.75)\right)\right] + e^{t} + e^{-2t}$; this does not satisfy its own stated $L(s)$ (the two disagree for $t>0$, though they coincide at $t=0$). The denominator factors exactly as $(s-1)(s+2)(s^2-1.6s+1)$, and partial-fraction decomposition gives $L(s)=\dfrac{1}{s-1}+\dfrac{1}{s+2}+\dfrac{1}{s^2-1.6s+1}$ — a constant, not linear, numerator over the quadratic factor $(s-0.8)^2+0.36$, so the oscillatory term is a pure sine of amplitude $\frac{1}{0.6}=\frac53$ with no phase shift and no accompanying constant term. The closed form above is the unique function consistent with the stated $L(s)$; it was independently confirmed by symbolic Laplace inversion and by direct substitution back into the corresponding fourth-order ODE.]*
 
@@ -1114,11 +854,7 @@ $$
 $$
 y(t) = \frac{1}{2} + \frac{1}{2}e^{-t} + \frac{1}{6}e^{t} - \frac{1}{6}e^{-2t}.
 $$
-*[WolframAlpha:*
-```
-y''''[t] + 2 y'''[t] - y''[t] - 2 y'[t] == Delta[t], y[0] == 1, y'[0] == 0, y''[0] == 0, y'''[0] == 0
-```
-*Returns $y(t) = \frac{1}{2} + \frac{1}{2} e^{-t} + \frac{1}{6} e^{t} - \frac{1}{6} e^{-2t}$*]
+*[WolframAlpha: `y''''[t] + 2 y'''[t] - y''[t] - 2 y'[t] == Delta[t], y[0] == 1, y'[0] == 0, y''[0] == 0, y'''[0] == 0` — Returns $y(t) = \frac{1}{2} + \frac{1}{2} e^{-t} + \frac{1}{6} e^{t} - \frac{1}{6} e^{-2t}$*]
 
 *[Jump condition at $t=0$: this fourth-order equation. Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,1)$.]*
 *[Editorial note: as transcribed, this example's stated answer ($y = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}$) does not satisfy its own stated differential equation and initial conditions — it fails the homogeneous-equation check for $t>0$ and the required continuity of $y'$ and $y''$ at $t=0$. The closed-form solution above is the unique function consistent with the stated fourth-order equation, $y(0)=1$, $y'(0)=y''(0)=y'''(0)=0$, and $\delta(t)$ forcing; it was re-derived via the Laplace transform and independently confirmed by direct substitution back into the differential equation. It replaces the original transcription here as a high-confidence, mathematically necessary correction rather than a silent guess.]*
@@ -1131,11 +867,7 @@ $$
 \implies
 \frac{1}{2a} \left[ \sin at - a \cos at \right]
 $$
-*[WolframAlpha:*
-```
-Assuming[a > 0, InverseLaplaceTransform[a^2/(s^2 + a^2)^2, s, t]]
-```
-*Returns $f(t) = \dfrac{1}{2a}\left[\sin(at) - at\cos(at)\right]$*]
+*[WolframAlpha: `Assuming[a > 0, InverseLaplaceTransform[a^2/(s^2 + a^2)^2, s, t]]` — Returns $f(t) = \dfrac{1}{2a}\left[\sin(at) - at\cos(at)\right]$*]
 
 *[Jump condition at $t=0$: reading $F(s)=a^2/(s^2+a^2)^2$ as the impulse response of the zero-state 4th-order ODE with denominator $(s^2+a^2)^2=s^4+2a^2s^2+a^4$ (relative degree $4$). Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,a^2)$.]*
 
@@ -1145,11 +877,7 @@ Example 6.11
 $$
 \mathcal{L}^{-1} \left\{ \frac{s}{(s-2)^5} \right\} \implies f(t) = \frac{1}{12} e^{2t} t^3 (2 + t)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s - 2)^5, s, t]
-```
-*Returns $f(t) = \frac{1}{12} e^{2t} t^3 (2+t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[s/(s - 2)^5, s, t]` — Returns $f(t) = \frac{1}{12} e^{2t} t^3 (2+t)$*]
 
 *[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 5th-order ODE with denominator $(s-2)^5$ (relative degree $4$). Phase vector $\mathbf y=(y,y',y'',y''',y^{(4)})$ changes by $\Delta\mathbf y(0)=(0,0,0,1,10)$.]*
 
@@ -1159,11 +887,7 @@ Example 6.12
 $$
 \mathcal{L}^{-1} \left\{ \frac{1 + e^{-3s}}{s^4} \right\} \implies \frac{1}{6} \left[ t^3 + (t-3)^3 u(t-3) \right]
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(1 + Exp[-3 s])/s^4, s, t]
-```
-*Returns $f(t) = \frac{1}{6}\left[t^3 + (t-3)^3 \, u(t-3)\right]$*]
+*[WolframAlpha: `InverseLaplaceTransform[(1 + Exp[-3 s])/s^4, s, t]` — Returns $f(t) = \frac{1}{6}\left[t^3 + (t-3)^3 \, u(t-3)\right]$*]
 
 *[Jump conditions: the numerator $1+e^{-3s}=\mathcal L\{\delta(t)+\delta(t-3)\}$, so this is the zero-state response of the 4th-order pure-integrator ODE $y''''=x(t)$ to two unit impulses. Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,1)$ at $t=0$, and by $\Delta\mathbf y(3)=(0,0,0,1)$ at $t=3$.]*
 
@@ -1173,11 +897,7 @@ Example 6.13
 $$
 \mathcal{L}^{-1} \left\{ \frac{s}{(s^2 + 4)^2} \right\} \implies \frac{1}{4} t \sin 2t
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s^2 + 4)^2, s, t]
-```
-*Returns $f(t) = \frac{1}{4} t \sin(2t)$*]
+*[WolframAlpha: `InverseLaplaceTransform[s/(s^2 + 4)^2, s, t]` — Returns $f(t) = \frac{1}{4} t \sin(2t)$*]
 
 *[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 4th-order ODE with denominator $(s^2+4)^2$ (relative degree $3$). Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,1,0)$.]*
 
@@ -1187,11 +907,7 @@ Example 6.15
 $$
 \mathcal{L}^{-1} \left\{ \frac{s+1}{(s^2+1)(s^2+9)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8} \left( \cos t + \sin t - \cos 3t - \frac{1}{3} \sin 3t \right)
 $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 1)/((s^2 + 1)(s^2 + 9)), s, t]
-```
-*Returns $f(t) = \frac{1}{8}\left(\cos t + \sin t - \cos 3t - \frac{1}{3}\sin 3t\right)$*]
+*[WolframAlpha: `InverseLaplaceTransform[(s + 1)/((s^2 + 1)(s^2 + 9)), s, t]` — Returns $f(t) = \frac{1}{8}\left(\cos t + \sin t - \cos 3t - \frac{1}{3}\sin 3t\right)$*]
 
 *[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 4th-order ODE with denominator $(s^2+1)(s^2+9)$ (relative degree $3$). Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,1,1)$.]*
 
