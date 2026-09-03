@@ -57,19 +57,19 @@ Each entry also carries a bracketed *WolframAlpha verification* block: a Wolfram
 
 #### A. No delta function in the answer {#first-order-a-no-delta}
 
-##### Franklin, Powell & Emami-Naeini — Feedback control of dynamic systems, p. 110
+##### Campbell & Haberman — Introduction to differential equations with dynamical systems, p.263
 
-*[Note: this is the same example as Angeles, p.116.]*
-$$
-\dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
-$$
+IVP for 1st order system $$ y' + y = \delta(t - 1), \, y(0) = 1 \implies  y(t)=\begin{cases}
+e^{-t}, & t < 1 \\[4pt]
+e^{-t} + e^{-(t-1)}, & t \ge 1
+\end{cases}$$
 *[WolframAlpha:*
 ```
-y'[t] + k y[t] == Delta[t], y[0] == 0
+y'[t] + y[t] == Delta[t - 1], y[0] == 1
 ```
-*Returns $y(t) = e^{-k t} \, u(t)$ (at $t=0^+$ this gives $y(0^+)=1$, matching the book)*]
+*Returns $y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)$*]
 
-*[Jump condition at $t=0$: confirming the book's own reduction, $y'+ky=\delta(t)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(0)=(1)$.]*
+*[Jump condition at $t=1$: $y'+y=\delta(t-1)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(1)=(1)$.]*
 
 ##### Esfandiari & Lu — Modeling and analysis of dynamic systems, p.343
 
@@ -84,6 +84,20 @@ tau x'[t] + x[t] == A Delta[t], x[0] == x0
 *Returns $x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau}$*]
 
 *[Jump condition at $t=0$: normalizing $\tau x'+x=A\delta(t)$ to $x'+\tfrac1\tau x=\tfrac{A}{\tau}\delta(t)$ (first order). Phase vector $\mathbf x=(x)$ changes by $\Delta\mathbf x(0)=\left(\dfrac{A}{\tau}\right)$.]*
+
+##### Franklin, Powell & Emami-Naeini — Feedback control of dynamic systems, p. 110
+
+*[Note: this is the same example as Angeles, p.116.]*
+$$
+\dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
+$$
+*[WolframAlpha:*
+```
+y'[t] + k y[t] == Delta[t], y[0] == 0
+```
+*Returns $y(t) = e^{-k t} \, u(t)$ (at $t=0^+$ this gives $y(0^+)=1$, matching the book)*]
+
+*[Jump condition at $t=0$: confirming the book's own reduction, $y'+ky=\delta(t)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(0)=(1)$.]*
 
 ##### Ogata — Modern control engineering, p.163
 
@@ -100,34 +114,31 @@ InverseLaplaceTransform[1/(T s + 1), s, t]
 
 *[Jump condition at $t=0$: normalizing $Tc'+c=\delta(t)$ to $c'+\tfrac1T c=\tfrac1T\delta(t)$ (first order). Phase vector $\mathbf c=(c)$ changes by $\Delta\mathbf c(0)=\left(\dfrac1T\right)$.]*
 
-##### Campbell & Haberman — Introduction to differential equations with dynamical systems, p.263
-
-IVP for 1st order system $$ y' + y = \delta(t - 1), \, y(0) = 1 \implies  y(t)=\begin{cases}
-e^{-t}, & t < 1 \\[4pt]
-e^{-t} + e^{-(t-1)}, & t \ge 1
-\end{cases}$$
+##### Williams & Lawrence Linear state-space control systems, p.67
+$$L^{-1} \left\{ \frac{0.25}{s} - \frac{0.55}{s+3} + \frac{0.40}{s+4} \right\}
+= 0.25 - 0.55e^{-3t} + 0.40e^{-4t} \quad t \geq 0
+$$
 *[WolframAlpha:*
 ```
-y'[t] + y[t] == Delta[t - 1], y[0] == 1
+InverseLaplaceTransform[0.25/s - 0.55/(s + 3) + 0.40/(s + 4), s, t]
 ```
-*Returns $y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)$*]
+*Returns $0.25 - 0.55\,e^{-3t} + 0.40\,e^{-4t}$, matching the book*]
 
-*[Jump condition at $t=1$: $y'+y=\delta(t-1)$ is first order. Phase vector $\mathbf y=(y)$ changes by $\Delta\mathbf y(1)=(1)$.]*
+*[Jump condition at $t=0$: the given partial-fraction form already exhibits $Y(s)$ as a sum of three decoupled first-order modes, $\dot y_1 = 0.25\,\delta(t)$, $\dot y_2+3y_2=-0.55\,\delta(t)$, $\dot y_3+4y_3=0.40\,\delta(t)$ (with $y=y_1+y_2+y_3$, all at rest for $t<0$). Each mode's phase vector jumps by the residue at its own pole: $\Delta y_1(0)=0.25$, $\Delta y_2(0)=-0.55$, $\Delta y_3(0)=0.40$.]*
+
+##### Williams & Lawrence Linear state-space control systems, p.67
+$$L^{-1} \left\{ \frac{1.65}{s+3} - \frac{1.60}{s+4} \right\}
+= 1.65e^{-3t} - 1.60e^{-4t} \quad t \geq 0
+$$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[1.65/(s + 3) - 1.60/(s + 4), s, t]
+```
+*Returns $1.65\,e^{-3t} - 1.60\,e^{-4t}$, matching the book*]
+
+*[Jump condition at $t=0$: the given partial-fraction form already exhibits $Y(s)$ as a sum of two decoupled first-order modes, $\dot y_1+3y_1=1.65\,\delta(t)$, $\dot y_2+4y_2=-1.60\,\delta(t)$ (with $y=y_1+y_2$, both at rest for $t<0$). Each mode's phase vector jumps by the residue at its own pole: $\Delta y_1(0)=1.65$, $\Delta y_2(0)=-1.60$.]*
 
 #### B. Delta function in the answer {#first-order-b-delta}
-
-##### Lathi & Green — Linear systems and signals, p.167
-
-"DRILL 2.4(a) Finding the Impulse Response"
-"Determine the unit impulse response of LTIC systems described by the following equation:"
-$$ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]
-```
-*Returns $h(t) = 3\delta(t) - e^{-2t} u(t)$*]
-
-*[Jump condition at $t=0$: $(D+2)y=(3D+5)x$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $3$ plus a remainder that changes by $\Delta\mathbf y_{\text{reg}}(0)=(-1)$.]*
 
 ##### Krishnaveni & Rajeswari — Signals and systems, p.472
 
@@ -164,152 +175,50 @@ InverseLaplaceTransform[s (s + 3)/(s + 3)^2, s, t]
 
 *[Jump condition at $t=0$: in cancelled form $X(s)=s/(s+3)$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $1$ (matching $\delta(t)$). The regular part $x_{\text{reg}}(t)=-3e^{-3t}u(t)$ jumps from $0$ at $t=0^-$ up to $x_{\text{reg}}(0^+)=-3$, the usual zero-state impulse-response jump.]*
 
+##### Lathi & Green — Linear systems and signals, p.167
+
+"DRILL 2.4(a) Finding the Impulse Response"
+"Determine the unit impulse response of LTIC systems described by the following equation:"
+$$ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) $$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]
+```
+*Returns $h(t) = 3\delta(t) - e^{-2t} u(t)$*]
+
+*[Jump condition at $t=0$: $(D+2)y=(3D+5)x$ has $\deg N=\deg D=1$, a direct feedthrough of coefficient $3$ plus a remainder that changes by $\Delta\mathbf y_{\text{reg}}(0)=(-1)$.]*
+
 ### 2.2 Second-order equations (n = 2) {#second-order-equations}
 
 
 #### A. Only delta load {#second-order-a-delta-load}
-##### Esfandiari & Lu — Modeling and analysis of dynamic systems, p.57
 
-"Example 2.27: Initial Condition ≠ Initial Value"
+##### Anderson — Control Theory, p.22
+
 $$
- \ddot{x} + \dot{x} + 2x = \delta(t), \, x(0^-) = 0, \, \dot{x}(0^-) = 0
-\implies \dot{x}(0^+) =  1
-$$
-*[WolframAlpha:*
-```
-x''[t] + x'[t] + 2 x[t] == Delta[t], x[0] == 0, x'[0] == 0
-```
-*Returns $x(t) = \frac{2 \, e^{-t/2} \, u(t) \, \sin\left(\frac{\sqrt{7}}{2} t\right)}{\sqrt{7}}$ (the book only states the jump $\dot x(0^+)=1$; this full closed form is consistent with it — differentiating gives $\dot x(0^+)=1$)*]
-
-*[Jump condition at $t=0$: confirming the book's own claim, $\ddot x+\dot x+2x=\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,1)$.]*
-
-##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.248
-
-Example 3.11. "Consider the causal LTI system described by the second differential equation ... Determine the impulse response"
-$$
-\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = e^{-2t} - e^{-3t}.
+Y(s) = \frac{K}{K-1} \left( \frac{1}{s} - \frac{1}{s-1+K} \right) \implies y(t) = \frac{K}{K-1} \left( 1 - e^{-(K-1)t} \right), \quad t \geq 0
 $$
 *[WolframAlpha:*
 ```
-y''[t] + 5 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0
+y''[t] + (K-1) y'[t] == K DiracDelta[t], y[0] == 0, y'[0] == 0
 ```
-*Returns $h(t) = e^{-2t} - e^{-3t}$*]
+*Returns $y(t) = \dfrac{K}{K-1}\left(1 - e^{-(K-1)t}\right)$*]
 
-*[Jump condition at $t=0$: $y''+5y'+6y=\delta(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
+*[Jump condition at $t=0$: $y''+(K-1)y'=K\delta(t)$ (leading coefficient $1$, no $y$ term). Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,K)$.]*
 
-##### Finan, p.57
+##### Anderson — Control Theory, p.206
 
-Example 48.1. "A spring-mass system with mass 2, damping 4, and spring constant 10 is subject to a hammer blow at time $t = 0$: The blow imparts a total impulse of 1 to the system, which was initially at rest. Find the response of the system."
+Example 11.
 $$
-2y'' + 4y' + 10y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{4} e^{-t} \sin(2t) \, u(t)
+\ddot{\theta}(t) + \theta(t) = \delta(t), \quad \theta(0^-) = 0, \quad \dot{\theta}(0^-) = 0 \implies \theta(t) = \sin(t)\, u(t)
 $$
 *[WolframAlpha:*
 ```
-2 y''[t] + 4 y'[t] + 10 y[t] == Delta[t], y[0] == 0, y'[0] == 0
+theta''[t] + theta[t] == DiracDelta[t], theta[0] == 0, theta'[0] == 0
 ```
-*Returns $y(t) = \frac{1}{4} e^{-t} \sin(2t)$*]
+*Returns $\theta(t) = \sin(t)$*]
 
-*[Jump condition at $t=0$: $2y''+4y'+10y=\delta(t)$ has leading coefficient $2$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,\frac12)$.]*
-
-##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.289
-
-Example 3.28. "find the impulse response of the system if the differential equation describes the system"
-$$
-\frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
-$$
-*[WolframAlpha:*
-```
-z''[t] + 4 z'[t] + 10 z[t] == Delta[t], z[0] == 0, z'[0] == 0
-```
-*Returns $h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)$*]
-
-*[Jump condition at $t=0$: $z''+4z'+10z=\delta(t)$. Phase vector $\mathbf z=(z,z')$ changes by $\Delta\mathbf z(0)=(0,1)$.]*
-
-##### Nagle, Saff & Snider — Fundamentals of differential equations, p.403
-
-Example 4 "A linear system is governed by the differential equation"
-$$
-y'' + 2y' + 5y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} e^{-t} \sin 2t
-$$
-*[WolframAlpha:*
-```
-y''[t] + 2 y'[t] + 5 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{2} e^{-t} \sin(2t)$*]
-
-*[Jump condition at $t=0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
-*[Editorial note: as transcribed, this equation was incomplete — missing the forcing term on the left-hand side and the output variable on the right (the "$\implies =$" read as a fragment). The equation above, $y''+2y'+5y=\delta(t)$ with zero initial conditions, is the unique standard-form IVP whose closed-form solution matches the book's own stated answer exactly (characteristic roots $-1\pm2i$ give precisely $\frac{1}{2}e^{-t}\sin2t$), and is used here as a high-confidence reconstruction rather than left incomplete.]*
-
-##### Nagy — Ordinary differential equations, p.205
-
-Example 3.4.6. "Find the impulse response function"
-$$
-L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
-$$
-*[WolframAlpha:*
-```
-y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y_\delta(t) = e^{-t} \sin(t) \, u(t)$ (the $c=0$ case of the book's general $u(t-c)e^{-(t-c)}\sin(t-c)$)*]
-
-*[Jump condition at $t=c$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(c)=(0,1)$.]*
-
-##### Ogata — Modern control engineering, p.178
-
-"Impulse Response of Second-Order Systems"
-*[Note: this is similar to Angeles, p.120.]*
-$$
-C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} \implies \\
-$$
-
-For $ 0 \leq \zeta < 1 $,
-
-$$
-c(t) = \frac{\omega_n}{\sqrt{1 - \zeta^2}} e^{-\zeta \omega_n t} \sin \omega_n \sqrt{1 - \zeta^2} t, \quad \text{for } t \geq 0
-$$
-
-For $ \zeta = 1 $,
-
-$$
-c(t) = \omega_n^2 t e^{-\omega_n t}, \quad \text{for } t \geq 0
-$$
-
-For $ \zeta > 1 $,
-
-$$
-c(t) = \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta - \sqrt{\zeta^2 - 1} \right) \omega_n t} - \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta + \sqrt{\zeta^2 - 1} \right) \omega_n t}, \quad \text{for } t \geq 0
-$$
-*[WolframAlpha: this one needs the assumption on $\zeta$ made explicit (unlike the other entries, a bare equation list would leave $\zeta$'s range ambiguous), so paste each line separately:*
-```
-Assuming[0 < zeta < 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
-Assuming[zeta == 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
-Assuming[zeta > 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
-```
-*Returns, respectively: $c(t) = \frac{\omega_n}{\sqrt{1-\zeta^2}} e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)$, $\; c(t) = \omega_n^2 t \, e^{-\omega_n t}$, $\; c(t) = \frac{\omega_n}{2\sqrt{\zeta^2-1}} e^{-(\zeta-\sqrt{\zeta^2-1})\omega_n t} - \frac{\omega_n}{2\sqrt{\zeta^2-1}} e^{-(\zeta+\sqrt{\zeta^2-1})\omega_n t}$*]
-
-*[Jump condition at $t=0$ (all three damping cases): phase vector $\mathbf c=(c,c')$ changes by $\Delta\mathbf c(0)=(0,\omega_n^2)$, independent of $\zeta$.]*
-
-##### Shabana — Vibration of discrete and continuous systems, p.41
-
-Example 1.10
-"Find the response of the single degree of freedom system shown in Fig. 17 to the
-rectangular impulsive force shown in Fig. 16, where m = 10 kg, k = 9,000 N/m,
-c = 18 N·s/m, and Fo = 10,000 N. The force is assumed to act at time t = 0 and
-the impact interval is assumed to be 0.005 s."
-The system response to the impulsive force is then given by
-$$
-\begin{aligned}
-x(t) &= \frac{l}{m\omega_d} e^{-\xi\omega t} \sin \omega_d t = \frac{50}{(10)(29.986)} e^{-(0.03)(30)t} \sin 29.986t = 0.1667e^{-0.9t} \sin 29.986t
-\end{aligned}
-$$
-*[WolframAlpha:*
-```
-m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt[m k]); wd = wn Sqrt[1 - xi^2]; N[{wn, xi, wd, xi wn, (F0 dt)/(m wd)}]
-```
-*Returns $\{\omega_n,\,\xi,\,\omega_d,\,\xi\omega_n,\,\text{amplitude}\} = \{30,\ 0.03,\ 29.9865,\ 0.9,\ 0.166742\}$ (matches the book's stated 29.986, 0.9, 0.1667)*]
-
-*[Jump condition at $t=0$: the finite-duration force is idealized as an impulse of magnitude $I=F_0\Delta t=(10{,}000)(0.005)=50\ \text{N}\cdot\text{s}$ applied to $m\ddot x+c\dot x+kx=I\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,I/m)=(0,5\ \text{m/s})$, the impulse–momentum theorem (consistent with the stated amplitude $x_0/(m\omega_d)=50/(10\cdot29.986)=0.1667$).]*
-*[Editorial note: as transcribed, the damping coefficient's unit was garbled ("c = 18 N· slm"). Recomputing $\omega_n, \xi, \omega_d, \xi\omega_n$, and the response amplitude from $m=10$, $k=9000$, $c=18$, $F_0=10{,}000$, $\Delta t=0.005$ reproduces every downstream number the book states (29.986, 0.9, 0.1667) exactly, confirming the numeric value 18 is correct; only the unit label was corrected here, to the standard "N·s/m".]*
+*[Jump condition at $t=0$: $\ddot\theta+\theta=\delta(t)$. Phase vector $(\theta,\dot\theta)$ changes by $\Delta(\theta,\dot\theta)(0)=(0,1)$, matching the given post-impulse conditions $\theta(0^+)=0$, $\dot\theta(0^+)=1$.]*
 
 ##### Boyce & DiPrima — Elementary differential equations and boundary value problems, p.272
 
@@ -350,6 +259,94 @@ x''[t] + 4 x[t] == 8 Delta[t - 2 Pi], x[0] == 3, x'[0] == 0
 
 *[Jump condition at $t=2\pi$: phase vector $\mathbf x=(x,x')$ changes by $\Delta\mathbf x(2\pi)=(0,8)$, the impulse strength.]*
 
+##### Engelberg — A mathematical introduction to control theory, p.31
+
+"Find the inverse transform of the function"
+$$
+\mathcal{L}(f(t))(s) = \frac{1}{s^2 - 1} \implies f(t) = \frac{e^t - e^{-t}}{2} = \sinh(t)
+$$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[1/(s^2 - 1), s, t]
+```
+*Returns $f(t) = \sinh(t)$*]
+
+*[Jump condition at $t=0$: reading $\mathcal{L}(f)(s)=1/(s^2-1)$ as the impulse response of the zero-state 2nd-order ODE $\ddot f - f = \delta(t)$ (relative degree $2$). Phase vector $\mathbf f=(f,\dot f)$ changes by $\Delta\mathbf f(0)=(0,1)$.]*
+
+##### Esfandiari & Lu — Modeling and analysis of dynamic systems, p.57
+
+"Example 2.27: Initial Condition ≠ Initial Value"
+$$
+ \ddot{x} + \dot{x} + 2x = \delta(t), \, x(0^-) = 0, \, \dot{x}(0^-) = 0
+\implies \dot{x}(0^+) =  1
+$$
+*[WolframAlpha:*
+```
+x''[t] + x'[t] + 2 x[t] == Delta[t], x[0] == 0, x'[0] == 0
+```
+*Returns $x(t) = \frac{2 \, e^{-t/2} \, u(t) \, \sin\left(\frac{\sqrt{7}}{2} t\right)}{\sqrt{7}}$ (the book only states the jump $\dot x(0^+)=1$; this full closed form is consistent with it — differentiating gives $\dot x(0^+)=1$)*]
+
+*[Jump condition at $t=0$: confirming the book's own claim, $\ddot x+\dot x+2x=\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,1)$.]*
+
+##### Finan, p.57
+
+Example 48.1. "A spring-mass system with mass 2, damping 4, and spring constant 10 is subject to a hammer blow at time $t = 0$: The blow imparts a total impulse of 1 to the system, which was initially at rest. Find the response of the system."
+$$
+2y'' + 4y' + 10y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{4} e^{-t} \sin(2t) \, u(t)
+$$
+*[WolframAlpha:*
+```
+2 y''[t] + 4 y'[t] + 10 y[t] == Delta[t], y[0] == 0, y'[0] == 0
+```
+*Returns $y(t) = \frac{1}{4} e^{-t} \sin(2t)$*]
+
+*[Jump condition at $t=0$: $2y''+4y'+10y=\delta(t)$ has leading coefficient $2$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,\frac12)$.]*
+
+##### Frank — Control theory tutorial, p.29
+
+$$
+P(s) = \left(\frac{a}{s+a}\right)\left(\frac{b}{s+b}\right) = \frac{ab}{(s+a)(s+b)}
+$$
+"For example, if the input into this system is a unit impulse at time zero, then the system output is"
+$$
+y(t) = \frac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)
+$$
+*[WolframAlpha:*
+```
+Assuming[a > 0 && b > 0 && a != b, InverseLaplaceTransform[a b/((s + a) (s + b)), s, t]]
+```
+*Returns $y(t) = \dfrac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)$*]
+
+*[Jump condition at $t=0$: $P(s)=ab/((s+a)(s+b))$ corresponds to the zero-state 2nd-order ODE $\ddot y+(a+b)\dot y+ab\,y=ab\,\delta(t)$ (relative degree $2$). Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,ab)$.]*
+
+##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.248
+
+Example 3.11. "Consider the causal LTI system described by the second differential equation ... Determine the impulse response"
+$$
+\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = e^{-2t} - e^{-3t}.
+$$
+*[WolframAlpha:*
+```
+y''[t] + 5 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0
+```
+*Returns $h(t) = e^{-2t} - e^{-3t}$*]
+
+*[Jump condition at $t=0$: $y''+5y'+6y=\delta(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
+
+##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.289
+
+Example 3.28. "find the impulse response of the system if the differential equation describes the system"
+$$
+\frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
+$$
+*[WolframAlpha:*
+```
+z''[t] + 4 z'[t] + 10 z[t] == Delta[t], z[0] == 0, z'[0] == 0
+```
+*Returns $h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)$*]
+
+*[Jump condition at $t=0$: $z''+4z'+10z=\delta(t)$. Phase vector $\mathbf z=(z,z')$ changes by $\Delta\mathbf z(0)=(0,1)$.]*
+
 ##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.306
 
 Example 4.7. "Solve the initial value problem"
@@ -387,124 +384,6 @@ y''[t] + 5 y'[t] + 6 y[t] == 3 Delta[t - 2] - 4 Delta[t - 4], y[0] == 0, y'[0] =
 *Returns $y(t) = 3\left(e^{-2(t-2)} - e^{-3(t-2)}\right) u(t-2) - 4\left(e^{-2(t-4)} - e^{-3(t-4)}\right) u(t-4)$*]
 
 *[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(2)=(0,3)$ at $t=2$ (the coefficient of $3\delta(t-2)$), and by $\Delta\mathbf y(4)=(0,-4)$ at $t=4$ (the coefficient of $-4\delta(t-4)$).]*
-
-##### Nagle, Saff & Snider — Fundamentals of differential equations, p.409
-
-Example 1
-$$
-\frac{d^2x}{dt^2} + 9x = 3\delta(t - \pi); \quad x(0) = 1, \quad \frac{dx}{dt}(0) = 0 \implies x(t) = 
-\begin{cases} 
-\cos 3t, & t < \pi, \\ 
-\cos 3t - \sin 3t, & \pi < t
-\end{cases}
-$$
-*[WolframAlpha:*
-```
-x''[t] + 9 x[t] == 3 Delta[t - Pi], x[0] == 1, x'[0] == 0
-```
-*Returns $x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)$*]
-
-*[Jump condition at $t=\pi$: phase vector $\mathbf x=(x,x')$ changes by $\Delta\mathbf x(\pi)=(0,3)$, the impulse strength.]*
-
-##### Nagy — Ordinary differential equations, p.202
-
-*[Note: this is similar to Angeles, p.119, in the case of $f_0=1$ and $t_0=0$.]*
-$$
-y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
-$$
-*[WolframAlpha:*
-```
-y''[t] + w0^2 y[t] == f0 Delta[t - t0], y[0] == y0, y'[0] == 0
-```
-*Returns $y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)$*]
-
-*[Jump condition at $t=t_0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(t_0)=(0,f_0)$, the impulse strength.]*
-
-##### Nagy — Ordinary differential equations, p.205
-
-Example 3.4.7. "Find the solution y to the initial value problem"
-$$
-y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
-$$
-*[WolframAlpha:*
-```
-y''[t] - y[t] == -20 Delta[t - 3], y[0] == 1, y'[0] == 0
-```
-*Returns $y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)$*]
-
-*[Jump condition at $t=3$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(3)=(0,-20)$, the impulse strength.]*
-
-##### Nagy — Ordinary differential equations, p.206
-
-Example 3.4.8. "Find the solution to the initial value problem"
-$$
-y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
-$$
-*[WolframAlpha:*
-```
-y''[t] + 4 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)$*]
-
-*[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(\pi)=(0,1)$ at $t=\pi$, and by $\Delta\mathbf y(2\pi)=(0,-1)$ at $t=2\pi$ (the coefficient of $-\delta(t-2\pi)$).]*
-
-##### Anderson — Control Theory, p.22
-
-$$
-Y(s) = \frac{K}{K-1} \left( \frac{1}{s} - \frac{1}{s-1+K} \right) \implies y(t) = \frac{K}{K-1} \left( 1 - e^{-(K-1)t} \right), \quad t \geq 0
-$$
-*[WolframAlpha:*
-```
-y''[t] + (K-1) y'[t] == K DiracDelta[t], y[0] == 0, y'[0] == 0
-```
-*Returns $y(t) = \dfrac{K}{K-1}\left(1 - e^{-(K-1)t}\right)$*]
-
-*[Jump condition at $t=0$: $y''+(K-1)y'=K\delta(t)$ (leading coefficient $1$, no $y$ term). Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,K)$.]*
-
-##### Anderson — Control Theory, p.206
-
-Example 11.
-$$
-\ddot{\theta}(t) + \theta(t) = \delta(t), \quad \theta(0^-) = 0, \quad \dot{\theta}(0^-) = 0 \implies \theta(t) = \sin(t)\, u(t)
-$$
-*[WolframAlpha:*
-```
-theta''[t] + theta[t] == DiracDelta[t], theta[0] == 0, theta'[0] == 0
-```
-*Returns $\theta(t) = \sin(t)$*]
-
-*[Jump condition at $t=0$: $\ddot\theta+\theta=\delta(t)$. Phase vector $(\theta,\dot\theta)$ changes by $\Delta(\theta,\dot\theta)(0)=(0,1)$, matching the given post-impulse conditions $\theta(0^+)=0$, $\dot\theta(0^+)=1$.]*
-
-##### Engelberg — A mathematical introduction to control theory, p.31
-
-"Find the inverse transform of the function"
-$$
-\mathcal{L}(f(t))(s) = \frac{1}{s^2 - 1} \implies f(t) = \frac{e^t - e^{-t}}{2} = \sinh(t)
-$$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[1/(s^2 - 1), s, t]
-```
-*Returns $f(t) = \sinh(t)$*]
-
-*[Jump condition at $t=0$: reading $\mathcal{L}(f)(s)=1/(s^2-1)$ as the impulse response of the zero-state 2nd-order ODE $\ddot f - f = \delta(t)$ (relative degree $2$). Phase vector $\mathbf f=(f,\dot f)$ changes by $\Delta\mathbf f(0)=(0,1)$.]*
-
-##### Frank — Control theory tutorial, p.29
-
-$$
-P(s) = \left(\frac{a}{s+a}\right)\left(\frac{b}{s+b}\right) = \frac{ab}{(s+a)(s+b)}
-$$
-"For example, if the input into this system is a unit impulse at time zero, then the system output is"
-$$
-y(t) = \frac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)
-$$
-*[WolframAlpha:*
-```
-Assuming[a > 0 && b > 0 && a != b, InverseLaplaceTransform[a b/((s + a) (s + b)), s, t]]
-```
-*Returns $y(t) = \dfrac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)$*]
-
-*[Jump condition at $t=0$: $P(s)=ab/((s+a)(s+b))$ corresponds to the zero-state 2nd-order ODE $\ddot y+(a+b)\dot y+ab\,y=ab\,\delta(t)$ (relative degree $2$). Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,ab)$.]*
 
 ##### Krishnaveni & Rajeswari — Signals and systems, p.471
 
@@ -572,75 +451,153 @@ y''[t] + 3 y'[t] + 2 y[t] == DiracDelta[t], y[0] == 0, y'[0] == 0
 
 *[Jump condition at $t=0$: $\ddot y+3\dot y+2y=\delta(t)$. Phase vector $\mathbf y=(y,\dot y)$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
 
-#### B. First derivative of delta {#second-order-b-first-derivative}
+##### Nagle, Saff & Snider — Fundamentals of differential equations, p.403
 
-##### Lathi & Green — Linear systems and signals, p.166
-
-EXAMPLE 2.6
-"Determine the unit impulse response h(t) for a system specified by the equation
-(D^2 +3D+2)y(t) = Dx(t)"
-Solution
-$$ h(t) = (-e^{-t} + 2e^{-2t})u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]
-```
-*Returns $h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)$*]
-
-*[Jump condition at $t=0$: the input enters as $Dx$, again giving relative degree $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-3)$.]*
-
-##### Lathi & Green — Linear systems and signals, p.167
-
-"DRILL 2.4(c) Finding the Impulse Response"
-"Determine the unit impulse response of LTIC systems described by the following equation:"
-$$ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t) $$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[s/(s + 1)^2, s, t]
-```
-*Returns $h(t) = (1-t) e^{-t} u(t)$*]
-
-*[Jump condition at $t=0$: $(D^2+2D+1)y=Dx$ likewise: $\Delta\mathbf y(0)=(1,-2)$.]*
-
-##### Franklin, Powell & Emami-Naeini — Feedback control of dynamic systems, p.151
-
-$$ 
-H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
+Example 4 "A linear system is governed by the differential equation"
+$$
+y'' + 2y' + 5y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} e^{-t} \sin 2t
 $$
 *[WolframAlpha:*
 ```
-InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]
+y''[t] + 2 y'[t] + 5 y[t] == Delta[t], y[0] == 0, y'[0] == 0
 ```
-*Returns $h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)$*]
+*Returns $y(t) = \frac{1}{2} e^{-t} \sin(2t)$*]
 
-*[Jump condition at $t=0$: because the right-hand side carries a derivative of the (impulsive) input, $2x'+x$ with $x=\delta(t)$, the relative degree of $H(s)$ drops to $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(2,-3)$.]*
+*[Jump condition at $t=0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(0,1)$.]*
+*[Editorial note: as transcribed, this equation was incomplete — missing the forcing term on the left-hand side and the output variable on the right (the "$\implies =$" read as a fragment). The equation above, $y''+2y'+5y=\delta(t)$ with zero initial conditions, is the unique standard-form IVP whose closed-form solution matches the book's own stated answer exactly (characteristic roots $-1\pm2i$ give precisely $\frac{1}{2}e^{-t}\sin2t$), and is used here as a high-confidence reconstruction rather than left incomplete.]*
 
-##### Lathi & Green — Linear systems and signals, p.164
+##### Nagle, Saff & Snider — Fundamentals of differential equations, p.409
 
-"EXAMPLE 2.5 Impulse Response via Impulse Matching"
-"Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)"
-Solution
-$$ h(t) = (-e^{-2t} + 2e^{-3t})u(t) $$
+Example 1
+$$
+\frac{d^2x}{dt^2} + 9x = 3\delta(t - \pi); \quad x(0) = 1, \quad \frac{dx}{dt}(0) = 0 \implies x(t) = 
+\begin{cases} 
+\cos 3t, & t < \pi, \\ 
+\cos 3t - \sin 3t, & \pi < t
+\end{cases}
+$$
 *[WolframAlpha:*
 ```
-InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]
+x''[t] + 9 x[t] == 3 Delta[t - Pi], x[0] == 1, x'[0] == 0
 ```
-*Returns $h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)$*]
+*Returns $x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)$*]
 
-*[Jump condition at $t=0$: because the input enters as $(D+1)x$, the relative degree of the transfer function is $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-4)$.]*
+*[Jump condition at $t=\pi$: phase vector $\mathbf x=(x,x')$ changes by $\Delta\mathbf x(\pi)=(0,3)$, the impulse strength.]*
 
-##### Lathi & Green — Linear systems and signals, p.167
+##### Nagy — Ordinary differential equations, p.205
 
-"DRILL 2.4(b) Finding the Impulse Response"
-"Determine the unit impulse response of LTIC systems described by the following equation:"
-$$ D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t) $$
+Example 3.4.6. "Find the impulse response function"
+$$
+L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
+$$
 *[WolframAlpha:*
 ```
-InverseLaplaceTransform[(s + 4)/(s (s + 2)), s, t]
+y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0
 ```
-*Returns $h(t) = \left(2 - e^{-2t}\right) u(t)$*]
+*Returns $y_\delta(t) = e^{-t} \sin(t) \, u(t)$ (the $c=0$ case of the book's general $u(t-c)e^{-(t-c)}\sin(t-c)$)*]
 
-*[Jump condition at $t=0$: $D(D+2)y=(D+4)x$ has relative degree $1$: $\Delta\mathbf y(0)=(1,2)$.]*
+*[Jump condition at $t=c$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(c)=(0,1)$.]*
+
+##### Nagy — Ordinary differential equations, p.202
+
+*[Note: this is similar to Angeles, p.119, in the case of $f_0=1$ and $t_0=0$.]*
+$$
+y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
+$$
+*[WolframAlpha:*
+```
+y''[t] + w0^2 y[t] == f0 Delta[t - t0], y[0] == y0, y'[0] == 0
+```
+*Returns $y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)$*]
+
+*[Jump condition at $t=t_0$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(t_0)=(0,f_0)$, the impulse strength.]*
+
+##### Nagy — Ordinary differential equations, p.205
+
+Example 3.4.7. "Find the solution y to the initial value problem"
+$$
+y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
+$$
+*[WolframAlpha:*
+```
+y''[t] - y[t] == -20 Delta[t - 3], y[0] == 1, y'[0] == 0
+```
+*Returns $y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)$*]
+
+*[Jump condition at $t=3$: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(3)=(0,-20)$, the impulse strength.]*
+
+##### Nagy — Ordinary differential equations, p.206
+
+Example 3.4.8. "Find the solution to the initial value problem"
+$$
+y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
+$$
+*[WolframAlpha:*
+```
+y''[t] + 4 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
+```
+*Returns $y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)$*]
+
+*[Jump conditions: phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(\pi)=(0,1)$ at $t=\pi$, and by $\Delta\mathbf y(2\pi)=(0,-1)$ at $t=2\pi$ (the coefficient of $-\delta(t-2\pi)$).]*
+
+##### Ogata — Modern control engineering, p.178
+
+"Impulse Response of Second-Order Systems"
+*[Note: this is similar to Angeles, p.120.]*
+$$
+C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} \implies \\
+$$
+
+For $ 0 \leq \zeta < 1 $,
+
+$$
+c(t) = \frac{\omega_n}{\sqrt{1 - \zeta^2}} e^{-\zeta \omega_n t} \sin \omega_n \sqrt{1 - \zeta^2} t, \quad \text{for } t \geq 0
+$$
+
+For $ \zeta = 1 $,
+
+$$
+c(t) = \omega_n^2 t e^{-\omega_n t}, \quad \text{for } t \geq 0
+$$
+
+For $ \zeta > 1 $,
+
+$$
+c(t) = \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta - \sqrt{\zeta^2 - 1} \right) \omega_n t} - \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta + \sqrt{\zeta^2 - 1} \right) \omega_n t}, \quad \text{for } t \geq 0
+$$
+*[WolframAlpha: this one needs the assumption on $\zeta$ made explicit (unlike the other entries, a bare equation list would leave $\zeta$'s range ambiguous), so paste each line separately:*
+```
+Assuming[0 < zeta < 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
+Assuming[zeta == 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
+Assuming[zeta > 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
+```
+*Returns, respectively: $c(t) = \frac{\omega_n}{\sqrt{1-\zeta^2}} e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)$, $\; c(t) = \omega_n^2 t \, e^{-\omega_n t}$, $\; c(t) = \frac{\omega_n}{2\sqrt{\zeta^2-1}} e^{-(\zeta-\sqrt{\zeta^2-1})\omega_n t} - \frac{\omega_n}{2\sqrt{\zeta^2-1}} e^{-(\zeta+\sqrt{\zeta^2-1})\omega_n t}$*]
+
+*[Jump condition at $t=0$ (all three damping cases): phase vector $\mathbf c=(c,c')$ changes by $\Delta\mathbf c(0)=(0,\omega_n^2)$, independent of $\zeta$.]*
+
+##### Shabana — Vibration of discrete and continuous systems, p.41
+
+Example 1.10
+"Find the response of the single degree of freedom system shown in Fig. 17 to the
+rectangular impulsive force shown in Fig. 16, where m = 10 kg, k = 9,000 N/m,
+c = 18 N·s/m, and Fo = 10,000 N. The force is assumed to act at time t = 0 and
+the impact interval is assumed to be 0.005 s."
+The system response to the impulsive force is then given by
+$$
+\begin{aligned}
+x(t) &= \frac{l}{m\omega_d} e^{-\xi\omega t} \sin \omega_d t = \frac{50}{(10)(29.986)} e^{-(0.03)(30)t} \sin 29.986t = 0.1667e^{-0.9t} \sin 29.986t
+\end{aligned}
+$$
+*[WolframAlpha:*
+```
+m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt[m k]); wd = wn Sqrt[1 - xi^2]; N[{wn, xi, wd, xi wn, (F0 dt)/(m wd)}]
+```
+*Returns $\{\omega_n,\,\xi,\,\omega_d,\,\xi\omega_n,\,\text{amplitude}\} = \{30,\ 0.03,\ 29.9865,\ 0.9,\ 0.166742\}$ (matches the book's stated 29.986, 0.9, 0.1667)*]
+
+*[Jump condition at $t=0$: the finite-duration force is idealized as an impulse of magnitude $I=F_0\Delta t=(10{,}000)(0.005)=50\ \text{N}\cdot\text{s}$ applied to $m\ddot x+c\dot x+kx=I\delta(t)$. Phase vector $\mathbf x=(x,\dot x)$ changes by $\Delta\mathbf x(0)=(0,I/m)=(0,5\ \text{m/s})$, the impulse–momentum theorem (consistent with the stated amplitude $x_0/(m\omega_d)=50/(10\cdot29.986)=0.1667$).]*
+*[Editorial note: as transcribed, the damping coefficient's unit was garbled ("c = 18 N· slm"). Recomputing $\omega_n, \xi, \omega_d, \xi\omega_n$, and the response amplitude from $m=10$, $k=9000$, $c=18$, $F_0=10{,}000$, $\Delta t=0.005$ reproduces every downstream number the book states (29.986, 0.9, 0.1667) exactly, confirming the numeric value 18 is correct; only the unit label was corrected here, to the standard "N·s/m".]*
+
+#### B. First derivative of delta {#second-order-b-first-derivative}
 
 ##### Angeles, p.132
 
@@ -673,6 +630,87 @@ InverseLaplaceTransform[(2 s + 12)/(s^2 + 2 s + 5), s, t]
 *Returns $f(t) = 5 e^{-t}\sin(2t) + 2 e^{-t}\cos(2t)$*]
 
 *[Jump condition at $t=0$: $F(s)=(2s+12)/(s^2+2s+5)$ is strictly proper with relative degree $1$ ($\deg N=\deg D-1$). Phase vector $\mathbf f=(f,\dot f)$ changes by $\Delta\mathbf f(0)=(2,8)$.]*
+
+##### Franklin, Powell & Emami-Naeini — Feedback control of dynamic systems, p.151
+
+$$ 
+H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
+$$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]
+```
+*Returns $h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)$*]
+
+*[Jump condition at $t=0$: because the right-hand side carries a derivative of the (impulsive) input, $2x'+x$ with $x=\delta(t)$, the relative degree of $H(s)$ drops to $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(2,-3)$.]*
+
+##### Lathi & Green — Linear systems and signals, p.166
+
+EXAMPLE 2.6
+"Determine the unit impulse response h(t) for a system specified by the equation
+(D^2 +3D+2)y(t) = Dx(t)"
+Solution
+$$ h(t) = (-e^{-t} + 2e^{-2t})u(t) $$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]
+```
+*Returns $h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)$*]
+
+*[Jump condition at $t=0$: the input enters as $Dx$, again giving relative degree $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-3)$.]*
+
+##### Lathi & Green — Linear systems and signals, p.167
+
+"DRILL 2.4(c) Finding the Impulse Response"
+"Determine the unit impulse response of LTIC systems described by the following equation:"
+$$ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t) $$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[s/(s + 1)^2, s, t]
+```
+*Returns $h(t) = (1-t) e^{-t} u(t)$*]
+
+*[Jump condition at $t=0$: $(D^2+2D+1)y=Dx$ likewise: $\Delta\mathbf y(0)=(1,-2)$.]*
+
+##### Lathi & Green — Linear systems and signals, p.164
+
+"EXAMPLE 2.5 Impulse Response via Impulse Matching"
+"Find the impulse response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)"
+Solution
+$$ h(t) = (-e^{-2t} + 2e^{-3t})u(t) $$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]
+```
+*Returns $h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)$*]
+
+*[Jump condition at $t=0$: because the input enters as $(D+1)x$, the relative degree of the transfer function is $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-4)$.]*
+
+##### Lathi & Green — Linear systems and signals, p.167
+
+"DRILL 2.4(b) Finding the Impulse Response"
+"Determine the unit impulse response of LTIC systems described by the following equation:"
+$$ D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t) $$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(s + 4)/(s (s + 2)), s, t]
+```
+*Returns $h(t) = \left(2 - e^{-2t}\right) u(t)$*]
+
+*[Jump condition at $t=0$: $D(D+2)y=(D+4)x$ has relative degree $1$: $\Delta\mathbf y(0)=(1,2)$.]*
+
+##### Yang Signals and systems with MATLAB©, p.392
+Example A.2.b Inverse Laplace Transform
+$$X(s) = \frac{s}{s^2 + 2s + 2}
+\implies e^{-t}(\cos t - \sin t)u_s(t)
+$$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[s/(s^2 + 2 s + 2), s, t]
+```
+*Returns $x(t) = e^{-t}\cos(t) - e^{-t}\sin(t)$, matching the book*]
+
+*[Jump condition at $t=0$: $X(s)=s/(s^2+2s+2)$ has relative degree $1$ (a pure $\dot\delta(t)$ forcing), corresponding to $y''+2y'+2y=\delta'(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-2)$.]*
 
 #### C. Second derivative of delta {#second-order-c-second-derivative}
 
@@ -750,25 +788,6 @@ InverseLaplaceTransform[(s^2 - 3 s + 2)/(s^2 + 3 s + 2), s, t]
 *[Jump condition at $t=0$: $X(s)=(s^2-3s+2)/(s^2+3s+2)$ has $\deg N=\deg D=2$, so the input's own $\delta(t)$ passes straight through as a direct-feedthrough term (coefficient $1$) on top of the smooth remainder $x_{\text{reg}}(t)=6e^{-t}-12e^{-2t}$. Phase vector $\mathbf x_{\text{reg}}=(x_{\text{reg}},\dot x_{\text{reg}})$ changes by $\Delta\mathbf x_{\text{reg}}(0)=(-6,18)$.]*
 
 ### 2.3 Third-order equations (n = 3) {#third-order-equations}
-
-#### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.79
-
-Inverse transform of the function
-$$
-F(s) = \frac{s + 5}{(s + 2)(s^2 + 8)}
-$$
-$$
-L^{-1}[F(s)] = \frac{1}{3} \left[ e^{-2t} - \cos\sqrt{5}\,t + \sqrt{5}\sin\sqrt{5}\,t \right]
-$$
-*[WolframAlpha:*
-```
-InverseLaplaceTransform[(s + 5)/((s + 2) (s^2 + 8)), s, t]
-```
-*Returns $f(t) = \dfrac14 e^{-2t} - \dfrac14\cos(2\sqrt2\,t) + \dfrac{3\sqrt2}{8}\sin(2\sqrt2\,t)$*]
-
-*[Editorial note: as transcribed, the source states $L^{-1}[F(s)] = \frac{1}{3}\left[e^{-2t} - \cos\sqrt5\,t + \sqrt5\sin\sqrt5\,t\right]$, but $F(s)$'s poles are at $s=-2$ and $s=\pm2\sqrt2\,i$ (from the factor $s^2+8$, not $s^2+5$), so both the oscillation frequency and the leading fraction are mistranscribed. Partial fractions give $F(s)=\dfrac{1/4}{s+2}+\dfrac{-\frac14 s+\frac32}{s^2+8}$, whose inverse is $f(t)=\frac14 e^{-2t}-\frac14\cos(2\sqrt2\,t)+\frac{3\sqrt2}{8}\sin(2\sqrt2\,t)$ — confirmed both symbolically and by direct back-substitution into $F(s)$.]*
-
-*[Jump condition at $t=0$: $F(s)=(s+5)/((s+2)(s^2+8))$ has denominator $(s+2)(s^2+8)=s^3+2s^2+8s+16$ and numerator $s+5$ (relative degree $2$), corresponding to the third-order ODE $y'''+2y''+8y'+16y=\dot\delta(t)+5\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,3)$.]*
 
 #### Bavafa-Toosi — Introduction to linear control systems, p.203
 
@@ -851,19 +870,24 @@ InverseLaplaceTransform[(s + 3)/(s (s + 1) (s + 2)), s, t]
 
 *[Jump condition at $t=0$: $F(s)=(s+3)/(s(s+1)(s+2))$ has denominator $s(s+1)(s+2)=s^3+3s^2+2s$ and numerator $s+3$ (relative degree $2$), corresponding to the third-order ODE $y'''+3y''+2y'=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,0)$.]*
 
-#### Xie — Differential equations for engineers
+#### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.79
 
-Example 6.14
+Inverse transform of the function
 $$
-\mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
+F(s) = \frac{s + 5}{(s + 2)(s^2 + 8)}
+$$
+$$
+L^{-1}[F(s)] = \frac{1}{3} \left[ e^{-2t} - \cos\sqrt{5}\,t + \sqrt{5}\sin\sqrt{5}\,t \right]
 $$
 *[WolframAlpha:*
 ```
-InverseLaplaceTransform[8/((s - 1)(s^2 + 2 s + 5)), s, t]
+InverseLaplaceTransform[(s + 5)/((s + 2) (s^2 + 8)), s, t]
 ```
-*Returns $f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)$*]
+*Returns $f(t) = \dfrac14 e^{-2t} - \dfrac14\cos(2\sqrt2\,t) + \dfrac{3\sqrt2}{8}\sin(2\sqrt2\,t)$*]
 
-*[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 3rd-order ODE with denominator $(s-1)(s^2+2s+5)$ (relative degree $3$). Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,8)$.]*
+*[Editorial note: as transcribed, the source states $L^{-1}[F(s)] = \frac{1}{3}\left[e^{-2t} - \cos\sqrt5\,t + \sqrt5\sin\sqrt5\,t\right]$, but $F(s)$'s poles are at $s=-2$ and $s=\pm2\sqrt2\,i$ (from the factor $s^2+8$, not $s^2+5$), so both the oscillation frequency and the leading fraction are mistranscribed. Partial fractions give $F(s)=\dfrac{1/4}{s+2}+\dfrac{-\frac14 s+\frac32}{s^2+8}$, whose inverse is $f(t)=\frac14 e^{-2t}-\frac14\cos(2\sqrt2\,t)+\frac{3\sqrt2}{8}\sin(2\sqrt2\,t)$ — confirmed both symbolically and by direct back-substitution into $F(s)$.]*
+
+*[Jump condition at $t=0$: $F(s)=(s+5)/((s+2)(s^2+8))$ has denominator $(s+2)(s^2+8)=s^3+2s^2+8s+16$ and numerator $s+5$ (relative degree $2$), corresponding to the third-order ODE $y'''+2y''+8y'+16y=\dot\delta(t)+5\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,3)$.]*
 
 #### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.106
 
@@ -989,23 +1013,34 @@ InverseLaplaceTransform[1/((s + 2) (s + 5) (s + 11)), s, t]
 
 *[Jump condition at $t=0$: $F(s)=1/((s+2)(s+5)(s+11))$ has $\deg N=0<\deg D=3$ (relative degree $3$), so reading it as the impulse response of a zero-state third-order ODE, $f(t)$ and $f'(t)$ are both continuous at $t=0$ ($f(0^+)=f'(0^+)=0$), and the jump appears in the second derivative: $f''(0^+)=1$, the leading-coefficient ratio $1/1$.]*
 
-### 2.4 Higher-order equations (order 4 and higher) {#higher-order-equations}
+#### Xie — Differential equations for engineers
 
-#### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.99
-
-**Example 4.17.** Find the inverse Laplace transform of
+Example 6.14
 $$
-\frac{a^2}{(s^2 + a^2)^2}
-\implies
-\frac{1}{2a} \left[ \sin at - a \cos at \right]
+\mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
 $$
 *[WolframAlpha:*
 ```
-Assuming[a > 0, InverseLaplaceTransform[a^2/(s^2 + a^2)^2, s, t]]
+InverseLaplaceTransform[8/((s - 1)(s^2 + 2 s + 5)), s, t]
 ```
-*Returns $f(t) = \dfrac{1}{2a}\left[\sin(at) - at\cos(at)\right]$*]
+*Returns $f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)$*]
 
-*[Jump condition at $t=0$: reading $F(s)=a^2/(s^2+a^2)^2$ as the impulse response of the zero-state 4th-order ODE with denominator $(s^2+a^2)^2=s^4+2a^2s^2+a^4$ (relative degree $4$). Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,a^2)$.]*
+*[Jump condition at $t=0$: reading $F(s)$ as the impulse response of the zero-state 3rd-order ODE with denominator $(s-1)(s^2+2s+5)$ (relative degree $3$). Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,0,8)$.]*
+
+#### Yang Signals and systems with MATLAB©, p.392
+Example A.2.a Inverse Laplace Transform
+$$X(s) = \frac{3s^2 + 11s + 11}{s^3 + 4s^2 + 5s + 2}
+\implies (e^{-2t} + 2e^{-t} + 3te^{-t})u_s(t)
+$$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(3 s^2 + 11 s + 11)/(s^3 + 4 s^2 + 5 s + 2), s, t]
+```
+*Returns $x(t) = e^{-2t} + 2e^{-t} + 3t\,e^{-t}$, matching the book*]
+
+*[Jump condition at $t=0$: $X(s)=(3s^2+11s+11)/(s^3+4s^2+5s+2)$ has denominator $s^3+4s^2+5s+2$ and numerator $3s^2+11s+11$ (relative degree $1$), corresponding to the third-order ODE $y'''+4y''+5y'+2y=3\delta''(t)+11\delta'(t)+11\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(3,-1,0)$.]*
+
+### 2.4 Higher-order equations (order 4 and higher) {#higher-order-equations}
 
 #### Bavafa-Toosi — Introduction to linear control systems, p.204
 
@@ -1066,6 +1101,22 @@ y''''[t] + 2 y'''[t] - y''[t] - 2 y'[t] == Delta[t], y[0] == 1, y'[0] == 0, y''[
 
 *[Jump condition at $t=0$: this fourth-order equation. Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,1)$.]*
 *[Editorial note: as transcribed, this example's stated answer ($y = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}$) does not satisfy its own stated differential equation and initial conditions — it fails the homogeneous-equation check for $t>0$ and the required continuity of $y'$ and $y''$ at $t=0$. The closed-form solution above is the unique function consistent with the stated fourth-order equation, $y(0)=1$, $y'(0)=y''(0)=y'''(0)=0$, and $\delta(t)$ forcing; it was re-derived via the Laplace transform and independently confirmed by direct substitution back into the differential equation. It replaces the original transcription here as a high-confidence, mathematically necessary correction rather than a silent guess.]*
+
+#### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.99
+
+**Example 4.17.** Find the inverse Laplace transform of
+$$
+\frac{a^2}{(s^2 + a^2)^2}
+\implies
+\frac{1}{2a} \left[ \sin at - a \cos at \right]
+$$
+*[WolframAlpha:*
+```
+Assuming[a > 0, InverseLaplaceTransform[a^2/(s^2 + a^2)^2, s, t]]
+```
+*Returns $f(t) = \dfrac{1}{2a}\left[\sin(at) - at\cos(at)\right]$*]
+
+*[Jump condition at $t=0$: reading $F(s)=a^2/(s^2+a^2)^2$ as the impulse response of the zero-state 4th-order ODE with denominator $(s^2+a^2)^2=s^4+2a^2s^2+a^4$ (relative degree $4$). Phase vector $\mathbf y=(y,y',y'',y''')$ changes by $\Delta\mathbf y(0)=(0,0,0,a^2)$.]*
 
 #### Xie — Differential equations for engineers, p.258
 
@@ -1131,6 +1182,33 @@ InverseLaplaceTransform[(s + 1)/((s^2 + 1)(s^2 + 9)), s, t]
 
 Supplementary problems and variations, given as page/problem references only — no solution is reproduced here. Sorted alphabetically by author; intended to guide further practice.
 
+###Qiu
+p.181 Compute Inverse Laplace Transform
+1. $$ G(s) = \frac{s^3 + 2s^2 + 3s + 4}{s^4 + s^3 + 10s^2 + 6s + 8} $$
+
+2. $$ G(s) = \frac{s^4 + s^3 + 13s^2 + 9s + 21}{s^5 + 2s^4 + 16s^3 + 24s^2 + 48s + 32} $$
+
+3. $$ G(s) = \frac{2s^3 + 4s^2 + 24s + 32}{s^4 + 2s^3 + 12s^2 + 16s + 16} $$
+
+4. $$ G(s) = \frac{s^3 - s^2 + 18s - 9}{s^4 + 3s^3 + 27s^2 + 54s + 81} $$
+
+### Yang
+p.47 Formula P1.4.1a, P1.4.1b
+
+### Truxal
+p.36 formula 1.140
+p.73 formula 1.237
+
+### Rabie
+p.20 Example 2.8, 2.9
+p.64 Example 6.1 
+
+
+### Paraskevopoulos
+p.61 Ex.5
+p.152 Example 4.2.2
+p. 395 inverse Laplace transform for $\frac{12(s^2 + 4.75s + 25)}{s}$
+
 ### Bottega
 p.238: Example 4.2 "A tethered 1 pound ball hangs in the vertical plane when it is tapped with a racket. Following the tap the ball is observed to exhibit oscillatory motion of amplitude 0.2 radians with a period of 2 seconds. Determine the impulse imparted by the racket." (Problem statement only — no closed-form solution given in the source, hence listed here rather than under Solved Exercises.)
 
@@ -1142,12 +1220,10 @@ p.273-274 has many exercises
 ### Campbell & Haberman
 p.264 Exercises 1–8
 
-### de Oliveira
-p. 82 Ex. 3.40,3.41
-p.214 Formula 7.2
-
 ### De Oliveira
+p.82 Ex. 3.40,3.41
 p.82 Problem 3.41 "Compute the inverse Laplace transform of the following complex-valued functions"; p.83 Problem 3.44 "Compute the inverse Laplace transform"
+p.214 Formula 7.2
 
 ### Dorf & Bishop
 p.174 P2.36 "Determine the impulse response of the system"; p.178 "Consider the unity feedback system described in the block diagram ... Compute analytically the response of the system to an impulse disturbance"; p.392 CP5.1 "Obtain the impulse response analytically"
@@ -1292,6 +1368,19 @@ Two limitations should be noted. First, the survey is not exhaustive: it reflect
 
 ## References
 
+Qiu, L., & Zhou, K. (2009). Introduction to feedback control. Pearson Education.
+
+Yang, W. Y., Chang, T. G., Song, I. H., Cho, Y. S., Heo, J., Jeon, W. G., Lee, J. W., & Kim, J. K. (2009). Signals and systems with MATLAB©. Springer-Verlag. https://doi.org/10.1007/978-3-540-92954-3
+
+Williams, R. L., II, & Lawrence, D. A. (2007). Linear state-space control systems. John Wiley & Sons.
+
+Truxal, J. G. (1955). Control system synthesis. McGraw-Hill Book Company.
+
+Rabie, M. G. (2010). Automatic control for mechanical engineers. [Publisher unknown].
+ISBN: 977-17-9869-3.
+
+Paraskevopoulos, P. N. (2002). Modern control engineering. Marcel Dekker.
+
 Anderson, B., & Rufer, S. (2018, August 13). Control theory: A brief introduction. Bruin Racing, Baja SAE, University of California, Los Angeles. https://doi.org/10.13140/RG.2.2.14805.17129
 
 Angeles, J. (2011). Dynamic response of linear mechanical systems: Modeling, analysis and simulation. Springer. https://doi.org/10.1007/978-1-4419-1027-1 (ISBN 978-1-4419-1026-4; e-ISBN 978-1-4419-1027-1; ISSN 0941-5122; e-ISSN 2192-063X)
@@ -1303,8 +1392,6 @@ Bottega, W. J. (2006). *Engineering vibrations*. CRC Press. (ISBN: 9780849334207
 Boyce, W. E., & DiPrima, R. C. (2017). Elementary differential equations and boundary value problems (11th ed.). John Wiley & Sons, Inc. (ISBN: 978-1-119-38164-8)
 
 Campbell, S. L., & Haberman, R. (2008). Introduction to differential equations with dynamical systems. Princeton University Press. (ISBN: 978-0-691-12474-6)
-
-de Oliveira, M. C. (2017). Fundamentals of linear control: A concise approach. Cambridge University Press. ISBN: 978-1-107-18752-8.
 
 De Oliveira, M. C. (2017). Fundamentals of linear control: A concise approach. Cambridge University Press. https://doi.org/10.1017/9781316941409 ISBN 978-1-107-18752-8 Hardback
 
