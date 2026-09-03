@@ -599,7 +599,7 @@ m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt
 
 #### B. First derivative of delta {#second-order-b-first-derivative}
 
-##### Angeles, p.132
+##### Angeles Dynamic Response of Linear Mechanical Systems Modeling Analysis and Simulation, p.132
 
 "2.5.3.1 Doublet Response"
 *[Note: Angeles states the resulting jump as $x(0^+)=1$, $\dot x(0^+)=0$; \textcolor{red}{this appears to be incorrect for the damped case} ($\zeta\neq0$) — the derivation below gives $\dot x(0^+)=-2\zeta\omega_n$, matching the author's claim only when $\zeta=0$ — and will be verified in a follow-up paper.]*
@@ -643,6 +643,17 @@ InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]
 *Returns $h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)$*]
 
 *[Jump condition at $t=0$: because the right-hand side carries a derivative of the (impulsive) input, $2x'+x$ with $x=\delta(t)$, the relative degree of $H(s)$ drops to $1$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(2,-3)$.]*
+
+##### Hallauer Introduction to linear, time-invariant, dynamic systems for students of engineering, p.2-17
+Ex.2.9.a
+$ F(s) = \frac{s+3}{(s+1)(s+5)}  \text{[Answer: } f(t) = \frac{1}{2} \left( e^{-t} + e^{-5t} \right), t \geq 0 \text{]}$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[(s + 3)/((s + 1) (s + 5)), s, t]
+```
+*Returns $f(t) = \frac12\left(e^{-t} + e^{-5t}\right)$, matching the book*]
+
+*[Jump condition at $t=0$: $F(s)=(s+3)/((s+1)(s+5))$ has denominator $(s+1)(s+5)=s^2+6s+5$ and numerator $s+3$ (relative degree $1$), corresponding to the second-order ODE $y''+6y'+5y=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-3)$.]*
 
 ##### Lathi & Green — Linear systems and signals, p.166
 
@@ -711,7 +722,6 @@ InverseLaplaceTransform[s/(s^2 + 2 s + 2), s, t]
 *Returns $x(t) = e^{-t}\cos(t) - e^{-t}\sin(t)$, matching the book*]
 
 *[Jump condition at $t=0$: $X(s)=s/(s^2+2s+2)$ has relative degree $1$ (a pure $\dot\delta(t)$ forcing), corresponding to $y''+2y'+2y=\delta'(t)$. Phase vector $\mathbf y=(y,y')$ changes by $\Delta\mathbf y(0)=(1,-2)$.]*
-
 #### C. Second derivative of delta {#second-order-c-second-derivative}
 
 ##### Gangadharaiah & Sandeep — Engineering applications of the Laplace transform, p.239
@@ -869,6 +879,17 @@ InverseLaplaceTransform[(s + 3)/(s (s + 1) (s + 2)), s, t]
 *Returns $f(t) = \dfrac32 - 2\,e^{-t} + \dfrac12\,e^{-2t}$*]
 
 *[Jump condition at $t=0$: $F(s)=(s+3)/(s(s+1)(s+2))$ has denominator $s(s+1)(s+2)=s^3+3s^2+2s$ and numerator $s+3$ (relative degree $2$), corresponding to the third-order ODE $y'''+3y''+2y'=\dot\delta(t)+3\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,1,0)$.]*
+
+#### Hallauer Introduction to linear, time-invariant, dynamic systems for students of engineering, p.2-17
+Ex.2.9.b $ F(s) = \frac{2(s+1)}{s(s+3)(s+4)} 
+ \text{[Answer: } f(t) = \frac{1}{6} + \frac{4}{3} e^{-3t} - \frac{3}{2} e^{-4t}, t \geq 0 \text{]}$
+*[WolframAlpha:*
+```
+InverseLaplaceTransform[2 (s + 1)/(s (s + 3) (s + 4)), s, t]
+```
+*Returns $f(t) = \frac16 + \frac43 e^{-3t} - \frac32 e^{-4t}$, matching the book*]
+
+*[Jump condition at $t=0$: $F(s)=2(s+1)/(s(s+3)(s+4))$ has denominator $s(s+3)(s+4)=s^3+7s^2+12s$ and numerator $2(s+1)=2s+2$ (relative degree $2$), corresponding to the third-order ODE $y'''+7y''+12y'=2\dot\delta(t)+2\delta(t)$. Phase vector $\mathbf y=(y,y',y'')$ changes by $\Delta\mathbf y(0)=(0,2,-12)$.]*
 
 #### Kamaraju & Narasimham — Linear systems: Analysis and applications, p.79
 
@@ -1182,154 +1203,65 @@ InverseLaplaceTransform[(s + 1)/((s^2 + 1)(s^2 + 9)), s, t]
 
 Supplementary problems and variations, given as page/problem references only — no solution is reproduced here. Sorted alphabetically by author; intended to guide further practice.
 
-###Qiu
-p.181 Compute Inverse Laplace Transform
-1. $$ G(s) = \frac{s^3 + 2s^2 + 3s + 4}{s^4 + s^3 + 10s^2 + 6s + 8} $$
+**Bottega** p.238: Example 4.2 "A tethered 1 pound ball hangs in the vertical plane when it is tapped with a racket. Following the tap the ball is observed to exhibit oscillatory motion of amplitude 0.2 radians with a period of 2 seconds. Determine the impulse imparted by the racket." (Problem statement only — no closed-form solution given in the source, hence listed here rather than under Solved Exercises.); p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6; p.429: MDOF system under impulse load; p.470: double pendulum under impulse load; p.488: Ex 8.17 elastically supported frame under struck; p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE "Determine the response of the rod it is struck on its right end by an impulse of magnitude"; p.718: Ex 11.17 "The beam is impacted at its left end"
 
-2. $$ G(s) = \frac{s^4 + s^3 + 13s^2 + 9s + 21}{s^5 + 2s^4 + 16s^3 + 24s^2 + 48s + 32} $$
+**Boyce & DiPrima** p.273-274 has many exercises
 
-3. $$ G(s) = \frac{2s^3 + 4s^2 + 24s + 32}{s^4 + 2s^3 + 12s^2 + 16s + 16} $$
+**Campbell & Haberman** p.264 Exercises 1–8
 
-4. $$ G(s) = \frac{s^3 - s^2 + 18s - 9}{s^4 + 3s^3 + 27s^2 + 54s + 81} $$
+**De Oliveira** p.82 Ex. 3.40,3.41; p.82 Problem 3.41 "Compute the inverse Laplace transform of the following complex-valued functions"; p.83 Problem 3.44 "Compute the inverse Laplace transform"; p.214 Formula 7.2
 
-### Yang
-p.47 Formula P1.4.1a, P1.4.1b
+**Dorf & Bishop** p.174 P2.36 "Determine the impulse response of the system"; p.178 "Consider the unity feedback system described in the block diagram ... Compute analytically the response of the system to an impulse disturbance"; p.392 CP5.1 "Obtain the impulse response analytically"
 
-### Truxal
-p.36 formula 1.140
-p.73 formula 1.237
+**Edwards & Penney** 9.326 4.6 Problems 1-8, 15-16 (equality of solution by changing IC)
 
-### Rabie
-p.20 Example 2.8, 2.9
-p.64 Example 6.1 
+**Esfandiari & Lu** p.59 Problems 19 through 24; p.62 Problem 10 "Solve the IVP"; p.352 "8.3.2 Impulse Response of Second-Order Systems"; p.353 "Example 8.5: Impulse Response"; p.359 "Example 8.8: Impulse Response"; p.363 "PROBLEM SET 8.2"/7-11, 20
 
+**Franklin, Powell & Emami-Naeini** p.230 EXAMPLE 4.9; p.589 Problem 7.20
 
-### Paraskevopoulos
-p.61 Ex.5
-p.152 Example 4.2.2
-p. 395 inverse Laplace transform for $\frac{12(s^2 + 4.75s + 25)}{s}$
+**Ghosh** p.34 Problem 3: find $f(t)$ for (i) $F(s)=\dfrac{s}{(s+1)(s+2)}$; p.58 Problem 15: impulse response of $G(s)=\dfrac{2}{(s+1)(s+3)}$
 
-### Bottega
-p.238: Example 4.2 "A tethered 1 pound ball hangs in the vertical plane when it is tapped with a racket. Following the tap the ball is observed to exhibit oscillatory motion of amplitude 0.2 radians with a period of 2 seconds. Determine the impulse imparted by the racket." (Problem statement only — no closed-form solution given in the source, hence listed here rather than under Solved Exercises.)
+**Gupta** p.116 P1. Find the step response and impulse response of the transfer function $G(s) = \frac{20}{s^2 + 4s + 25}$
 
-p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6; p.429: MDOF system under impulse load; p.470: double pendulum under impulse load; p.488: Ex 8.17 elastically supported frame under struck; p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE "Determine the response of the rod it is struck on its right end by an impulse of magnitude"; p.718: Ex 11.17 "The beam is impacted at its left end"
+**Inman** p.221 Example 3.1.1; p.222 Example 3.1.3; p.224 Example 3.1.4; p.232 Example 3.2.3; p.245 Example 3.4.4, Example 3.4.5; p.287 Problems 3.1-3.6, 3.10-3.13; p.377 Example 4.8.1 MDOF system with impulse; p.382 Example 4.8.2 MDOF system with impulse; p.386 Example 4.8.3 MDOF system with impulse; p.428 Problem 4.76; p.429 Problem 4.78; p.440 Example 5.1.2; p.557 Example 6.8.1 "Calculate the forced response of the string fixed at both ends ... subject to unit impulse"; p.571 Problem 6.67
 
-### Boyce & DiPrima
-p.273-274 has many exercises
+**Jagan** p.410 Find Inverse Laplace Transform: A. $\frac{1}{s(s+1)}$  B. $\frac{1}{(s+1)^2}$  C. $\frac{1}{s(s+1) + 1}$  D. $\frac{1}{s^2 + 1}$; p.465 for the system $\dot{X} = \begin{bmatrix} 2 & 0 \\ 0 & 4 \end{bmatrix} X + \begin{bmatrix} 1 \\ 1 \end{bmatrix} u, \qquad y = \begin{bmatrix} 4 & 0 \end{bmatrix} X$ with u as unit impulse and with zero initial state, find the output y
 
-### Campbell & Haberman
-p.264 Exercises 1–8
+**Karris** p.6-2 "Example 6.1"; p.6-3 "Example 6.2"
 
-### De Oliveira
-p.82 Ex. 3.40,3.41
-p.82 Problem 3.41 "Compute the inverse Laplace transform of the following complex-valued functions"; p.83 Problem 3.44 "Compute the inverse Laplace transform"
-p.214 Formula 7.2
+**Kelly** p.317 EXAMPLE 5.1; p.374 Problem 5.21-5.23
 
-### Dorf & Bishop
-p.174 P2.36 "Determine the impulse response of the system"; p.178 "Consider the unity feedback system described in the block diagram ... Compute analytically the response of the system to an impulse disturbance"; p.392 CP5.1 "Obtain the impulse response analytically"
+**Lathi & Green** p.471 Problem 4.3-6
 
-### Edwards & Penney
-9.326 4.6 Problems 1-8, 15-16 (equality of solution by changing IC)
+**Meirovitch** p.371 Problem 7.49; p.463 Problem 8.38, 8.42, 8.44
 
-### Esfandiari & Lu
-p.59 Problems 19 through 24; p.62 Problem 10 "Solve the IVP"; p.352 "8.3.2 Impulse Response of Second-Order Systems"; p.353 "Example 8.5: Impulse Response"; p.359 "Example 8.8: Impulse Response"; p.363 "PROBLEM SET 8.2"/7-11, 20
+**Nagle, Saff & Snider** p.404 "7.8 EXERCISES" 5-12, 23-28; p.410 "7.9 Exercises" 13-29, 35; p.416 "REVIEW PROBLEMS FOR CHAPTER 7" Problem 29-30
 
-### Franklin, Powell & Emami-Naeini
-p.230 EXAMPLE 4.9; p.589 Problem 7.20
+**Narasimham** p.36 Example 2.4, 2.5; p.148 Third-Order System; p.182 Example 3.24
 
-### Ghosh
-p.34
-3. Find f(t), where
+**Nise** p.36 Example 2.2; p.37 Formula 2.4; p.38 Formula 2.7; p.223 Ex.61
 
-(i)
-$$
-F(s) = \frac{s}{(s+1)(s+2)}
-$$
+**Ogata** p.196 MATLAB Program 5–8 "Unit-Impulse Response of G(s) = 1/(s^2 + 0.2s + 1)"; p.264 B–5–4 "Consider the system shown in Figure 5–72. The system is initially at rest. Suppose that the cart is set into motion by an impulsive force whose strength is unity. Can it be stopped by another such impulsive force?"; p.264 B-5-5, B-5-6; p.265 B-5-10/11; p.267 B-5-16
 
-**Ans.** $-e^{-t} + 2e^{-2t}$
+**Paraskevopoulos** p.61 Ex.5; p.152 Example 4.2.2; p. 395 inverse Laplace transform for $\frac{12(s^2 + 4.75s + 25)}{s}$
 
-p.58
-15. The impulse response of a system $ G(s) = \frac{2}{(s+1)(s+3)} $
+**Qiu** p.181 Compute Inverse Laplace Transform: 1. $G(s) = \frac{s^3 + 2s^2 + 3s + 4}{s^4 + s^3 + 10s^2 + 6s + 8}$  2. $G(s) = \frac{s^4 + s^3 + 13s^2 + 9s + 21}{s^5 + 2s^4 + 16s^3 + 24s^2 + 48s + 32}$  3. $G(s) = \frac{2s^3 + 4s^2 + 24s + 32}{s^4 + 2s^3 + 12s^2 + 16s + 16}$  4. $G(s) = \frac{s^3 - s^2 + 18s - 9}{s^4 + 3s^3 + 27s^2 + 54s + 81}$
 
-### Gupta
-p.116
-P1. Find the step response and impulse response of the transfer function  
-$$
-G(s) = \frac{20}{s^2 + 4s + 25}
-$$
+**Rabie** p.20 Example 2.8, 2.9; p.64 Example 6.1
 
-### Inman
-p.221 Example 3.1.1; p.222 Example 3.1.3; p.224 Example 3.1.4; p.232 Example 3.2.3; p.245 Example 3.4.4, Example 3.4.5; p.287 Problems 3.1-3.6, 3.10-3.13; p.377 Example 4.8.1 MDOF system with impulse; p.382 Example 4.8.2 MDOF system with impulse; p.386 Example 4.8.3 MDOF system with impulse; p.428 Problem 4.76; p.429 Problem 4.78; p.440 Example 5.1.2; p.557 Example 6.8.1 "Calculate the forced response of the string fixed at both ends ... subject to unit impulse"; p.571 Problem 6.67
+**Rao** p.382 "4.5.1 Response to an Impulse"; p.384 EXAMPLE 4.7 "Response of a Structure Under Impact"; p.385 EXAMPLE 4.8 "Response of a Structure Under Double Impact"; p.407 EXAMPLE 4.9 "Unit Impulse Response of a First-Order System"; p.409 EXAMPLE 4.21 "Unit Impulse Response of a Second-Order System"; p.437 EXAMPLE 4.33 "Impulse Response of a Structure"; p.511 EXAMPLE 5.12 "Response Under Impulse Using Laplace Transform Method"
 
-### Jagan
-p.410 Find Inverse Laplace Transform
+**Schiff** p.87 Exercises 2.5 1-7
 
-A. $\frac{1}{s(s+1)}$
+**Shabana** p.45 Problems 1.3, 1.9
 
-B. $\frac{1}{(s+1)^2}$
+**Thorby** p.51 Example 3.2
 
-C. $\frac{1}{s(s+1) + 1}$
+**Truxal** p.36 formula 1.140; p.73 formula 1.237
 
-D. $\frac{1}{s^2 + 1}$
+**Xue, Chen & Atherton** p.76 Example 3.20. "Consider again the system model studied in Example 3.17. The impulse response of the system can be obtained as shown in Figure 3.11:" `>> G=tf([10 20],[10 23 26 23 10],'ioDelay',1); impulse(G, 30);`; p.106 Problem 9 "Find impulse response for the system:" $\frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}$
 
-p.465
-For the system 
-$$
-\dot{X} = \begin{bmatrix} 2 & 0 \\ 0 & 4 \end{bmatrix} X + \begin{bmatrix} 1 \\ 1 \end{bmatrix} u, \qquad y = \begin{bmatrix} 4 & 0 \end{bmatrix} X
-$$
-with u as unit impulse and with zero initial state, find the output y
-
-### Karris
-p.6-2 "Example 6.1"; p.6-3 "Example 6.2"
-
-### Kelly
-p.317 EXAMPLE 5.1; p.374 Problem 5.21-5.23
-
-### Lathi & Green
-p.471 Problem 4.3-6
-
-### Meirovitch
-p.371 Problem 7.49; p.463 Problem 8.38, 8.42, 8.44
-
-### Nagle, Saff & Snider
-p.404 "7.8 EXERCISES" 5-12, 23-28; p.410 "7.9 Exercises" 13-29, 35; p.416 "REVIEW PROBLEMS FOR CHAPTER 7" Problem 29-30
-
-### Narasimham
-p.36 Example 2.4, 2.5
-p.148 Third-Order System
-p.182 Example 3.24
-
-### Nise
-p.36 Example 2.2
-p.37 Formula 2.4
-p.38 Formula 2.7
-p.223 Ex.61
-
-### Ogata
-p.196 MATLAB Program 5–8 "Unit-Impulse Response of G(s) = 1/(s^2 + 0.2s + 1)"; p.264 B–5–4 "Consider the system shown in Figure 5–72. The system is initially at rest. Suppose that the cart is set into motion by an impulsive force whose strength is unity. Can it be stopped by another such impulsive force?"; p.264 B-5-5, B-5-6; p.265 B-5-10/11; p.267 B-5-16
-
-### Rao
-p.382 "4.5.1 Response to an Impulse"; p.384 EXAMPLE 4.7 "Response of a Structure Under Impact"; p.385 EXAMPLE 4.8 "Response of a Structure Under Double Impact"; p.407 EXAMPLE 4.9 "Unit Impulse Response of a First-Order System"; p.409 EXAMPLE 4.21 "Unit Impulse Response of a Second-Order System"; p.437 EXAMPLE 4.33 "Impulse Response of a Structure"; p.511 EXAMPLE 5.12 "Response Under Impulse Using Laplace Transform Method"
-
-### Schiff
-p.87 Exercises 2.5 1-7
-
-### Shabana
-p.45 Problems 1.3, 1.9
-
-### Thorby
-p.51 Example 3.2
-
-### Xue, Chen & Atherton
-p.76 Example 3.20. "Consider again the system model studied in Example 3.17. The impulse
-response of the system can be obtained as shown in Figure 3.11:"
->> G=tf([10 20],[10 23 26 23 10],'ioDelay',1); impulse(G, 30);
-
-p.106 Problem 9
-"Find impulse response for the system:"
-$$
-\frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}
-$$
+**Yang** p.47 Formula P1.4.1a, P1.4.1b
 
 ---
 
@@ -1368,20 +1300,7 @@ Two limitations should be noted. First, the survey is not exhaustive: it reflect
 
 ## References
 
-Qiu, L., & Zhou, K. (2009). Introduction to feedback control. Pearson Education.
-
-Yang, W. Y., Chang, T. G., Song, I. H., Cho, Y. S., Heo, J., Jeon, W. G., Lee, J. W., & Kim, J. K. (2009). Signals and systems with MATLAB©. Springer-Verlag. https://doi.org/10.1007/978-3-540-92954-3
-
-Williams, R. L., II, & Lawrence, D. A. (2007). Linear state-space control systems. John Wiley & Sons.
-
-Truxal, J. G. (1955). Control system synthesis. McGraw-Hill Book Company.
-
-Rabie, M. G. (2010). Automatic control for mechanical engineers. [Publisher unknown].
-ISBN: 977-17-9869-3.
-
-Paraskevopoulos, P. N. (2002). Modern control engineering. Marcel Dekker.
-
-Anderson, B., & Rufer, S. (2018, August 13). Control theory: A brief introduction. Bruin Racing, Baja SAE, University of California, Los Angeles. https://doi.org/10.13140/RG.2.2.14805.17129
+Anderson, B., & Rufer, S. (2018, August 13). Control theory: A brief introduction. Bruin Racing, Baja SAE, University of California, Los Angeles.
 
 Angeles, J. (2011). Dynamic response of linear mechanical systems: Modeling, analysis and simulation. Springer. https://doi.org/10.1007/978-1-4419-1027-1 (ISBN 978-1-4419-1026-4; e-ISBN 978-1-4419-1027-1; ISSN 0941-5122; e-ISSN 2192-063X)
 
@@ -1389,9 +1308,9 @@ Bavafa-Toosi, Y. (2017). Introduction to linear control systems. Academic Press.
 
 Bottega, W. J. (2006). *Engineering vibrations*. CRC Press. (ISBN: 9780849334207, 0849334209)
 
-Boyce, W. E., & DiPrima, R. C. (2017). Elementary differential equations and boundary value problems (11th ed.). John Wiley & Sons, Inc. (ISBN: 978-1-119-38164-8)
+Boyce, W. E., DiPrima, R. C., & Meade, D. B. (2017). Elementary differential equations and boundary value problems (11th ed.). John Wiley & Sons, Inc. (ISBN: 978-1-119-16978-9)
 
-Campbell, S. L., & Haberman, R. (2008). Introduction to differential equations with dynamical systems. Princeton University Press. (ISBN: 978-0-691-12474-6)
+Campbell, S. L., & Haberman, R. (2008). Introduction to differential equations with dynamical systems. Princeton University Press. https://doi.org/10.1515/9781400841325 (ISBN: 978-0-691-12474-2)
 
 De Oliveira, M. C. (2017). Fundamentals of linear control: A concise approach. Cambridge University Press. https://doi.org/10.1017/9781316941409 ISBN 978-1-107-18752-8 Hardback
 
@@ -1399,7 +1318,7 @@ Dorf, R. C., & Bishop, R. H. (2008). Modern control systems: Solution manual (11
 
 Edwards, C. H., & Penney, D. E. (2008). Elementary differential equations with boundary value problems (6th ed.). Pearson Education. ISBN 0-13-600613-2
 
-Engelberg, S. (2024). A mathematical introduction to control theory (3rd ed.). World Scientific Publishing Company. (ISBN: 978-1-80061-554-0)
+Engelberg, S. (2024). A mathematical introduction to control theory (3rd ed.). World Scientific Publishing Company. https://doi.org/10.1142/q0459 (ISBN: 978-1-80061-554-0)
 
 Esfandiari, R. S., & Lu, B. (2014). Modeling and analysis of dynamic systems (2nd ed.). CRC Press, Taylor & Francis Group. (ISBN: 978-1-4665-7495-3)
 https://doi.org/10.1201/b16907
@@ -1415,14 +1334,16 @@ Gangadharaiah, Y. H., & Sandeep, N. (2021). Engineering applications of the Lapl
 
 Ghosh, S. (2012). Control systems: Theory and applications (2nd ed.). Pearson Education. (ISBN: 978-81-317-5837-3)
 
-Gupta, A., & Verma, Y. P. (2020). Automatic control engineering (1st ed.). I.K. International Pvt. Ltd.
+Gupta, A., & Verma, Y. P. (2015). Automatic control engineering (1st ed.). I.K. International Pvt. Ltd. (ISBN-13: 978-93-84588-23-6)
+
+Hallauer, W. L., Jr. (2016). Introduction to linear, time-invariant, dynamic systems for students of engineering. Virginia Tech. http://hdl.handle.net/10919/78864
 
 Inman, D. J. (2014). Engineering vibration (4th ed.). Pearson Education, Inc. (ISBN:
 978-0-13-287169-3)
 
-Jagan, N. C. (2008). Control systems (2nd ed.). BS Publications.
+Jagan, N. C. (2008). Control systems (2nd ed.). BS Publications. (ISBN-13: 978-81-7800-139-5)
 
-Kamaraju, V., & Narasimham, R. L. (2009). Linear systems: Analysis and applications (2nd ed.). I.K. International Publishing House.
+Kamaraju, V., & Narasimham, R. L. (2009). Linear systems: Analysis and applications (2nd ed.). I.K. International Publishing House. (ISBN-13: 978-93-8002-671-8)
 
 Karris, S. T. (2003). Signals and systems with MATLAB® applications (2nd ed.). Orchard Publications. (ISBN: 9780970951168, 0970951167)
 
@@ -1432,7 +1353,7 @@ Khalil, H. K. (2023). Control systems: An introduction. Michigan Publishing Serv
 
 Krishnaveni, V., & Rajeswari, A. (2012). Signals and systems (1st ed.). Wiley India Pvt. Ltd. (ISBN-13: 978-81-265-2289-7)
 
-Kulakowski, B. T., Gardner, J. F., & Shearer, J. L. (2007). Dynamic modeling and control of engineering systems (3rd ed.). Cambridge University Press. (ISBN: 978-0-521-86435-0)
+Kulakowski, B. T., Gardner, J. F., & Shearer, J. L. (2007). Dynamic modeling and control of engineering systems (3rd ed.). Cambridge University Press. https://doi.org/10.1017/CBO9780511805417 (ISBN: 978-0-521-86435-0)
 
 Lathi, B. P., & Green, R. A. (2018). Linear systems and signals (3rd ed.). Oxford University Press. (ISBN: 978-0-19-020017-6)
 
@@ -1441,25 +1362,38 @@ Meirovitch, L. (2001). Fundamentals of vibrations (International ed.). McGraw-Hi
 Nagle, R. K., Saff, E. B., & Snider, A. D. (2018). Fundamentals of differential equations
 (9th ed.). Pearson Education, Inc. (ISBN: 978-0-321-97706-9)
 
-Nagy, G. (n.d.). Ordinary differential equations. Mathematics Department, Michigan State University
+Nagy, G. (2021). Ordinary differential equations. Mathematics Department, Michigan State University. https://users.math.msu.edu/users/gnagy/teaching/ode.pdf
 
 Narasimham, R. L. (2008). Analysis of linear control systems. I.K. International Publishing House. (ISBN: 978-81-89866-27-3)
 
 Nise, N. S. (2010). Control systems engineering (6th ed.). John Wiley & Sons.
-ISBN: 978-0-470-54756-4 (hbk); 978-0-470-91769-5 (pbk).
+ISBN: 978-0-470-54756-4 (hbk); 978-0-470-91769-5 (binder-ready/loose-leaf ed.).
 
 Ogata, K. (2010). Modern control engineering (5th ed.). Pearson Education, Inc. (ISBN-
 13: 978-0-13-615673-4)
+
+Paraskevopoulos, P. N. (2002). Modern control engineering. Marcel Dekker. (ISBN: 0-8247-8981-4)
+
+Qiu, L., & Zhou, K. (2009). Introduction to feedback control. Prentice Hall. (ISBN: 978-0-13-235396-0)
+
+Rabie, M. G. (2010). Automatic control for mechanical engineers. Self-published (Cairo, Egypt).
+ISBN: 977-17-9869-3.
 
 Rao, S. S. (2011). Mechanical vibrations (5th ed.). Pearson Education. ISBN 978-0-13-212819-3
 
 Schiff, Joel L. (1999). The Laplace transform: Theory and applications. Springer-Verlag New York,
 Inc. (ISBN: 0-387-98698-7) https://doi.org/10.1007/978-0-387-22757-3
 
-Shabana, A. A. (1997). Vibration of discrete and continuous systems (2nd ed.). Springer-Verlag. https://doi.org/10.1007/978-1-4612-4036-5 Print ISBN-13: 978-1-4612-8474-1
+Shabana, A. A. (1996). Vibration of discrete and continuous systems (2nd ed.). Springer-Verlag. https://doi.org/10.1007/978-1-4612-4036-5 Print ISBN-13: 978-1-4612-8474-1
 
 Thorby, D. (2008). Structural dynamics and vibration in practice: An engineering handbook. Butterworth-Heinemann, an imprint of Elsevier. (ISBN: 978-0-7506-8002-8)
 
-Xie, W.-C. (2010). Differential equations for engineers. Cambridge University Press. ISBN-13 978-0-521-19424-2
+Truxal, J. G. (1955). Automatic feedback control system synthesis. McGraw-Hill Book Company.
 
-Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis and design with MATLAB. Society for Industrial and Applied Mathematics. ISBN 978-0-898716-38-2
+Williams, R. L., II, & Lawrence, D. A. (2007). Linear state-space control systems. John Wiley & Sons. https://doi.org/10.1002/9780470117873 (ISBN: 978-0-471-73555-7)
+
+Xie, W.-C. (2010). Differential equations for engineers. Cambridge University Press. https://doi.org/10.1017/CBO9780511761683 ISBN-13 978-0-521-19424-2
+
+Xue, D., Chen, Y., & Atherton, D. P. (2007). Linear feedback control: Analysis and design with MATLAB. Society for Industrial and Applied Mathematics. https://doi.org/10.1137/1.9780898718621 ISBN 978-0-898716-38-2
+
+Yang, W. Y., Chang, T. G., Song, I. H., Cho, Y. S., Heo, J., Jeon, W. G., Lee, J. W., & Kim, J. K. (2009). Signals and systems with MATLAB©. Springer-Verlag. https://doi.org/10.1007/978-3-540-92954-3
