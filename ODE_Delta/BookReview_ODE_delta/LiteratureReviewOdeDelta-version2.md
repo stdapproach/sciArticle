@@ -122,6 +122,11 @@ Across the sources surveyed, a consistent pattern emerges: the solution of an LT
 
 This gap points to two open needs in the literature: a treatment of derivatives of the delta function as forcing terms that is as thorough as the treatment of the delta function itself, and a unified computational framework that covers the full range of derivative and equation orders within a single formula, rather than the equation-by-equation formulas found in category 3.
 
+---
+
+**Acknowledgements** We are grateful to Dr. Ricardo Felipe Torres Naranjo for carefully reading the manuscript and making a number of valuable suggestions for improvement.
+
+
 ### REFERENCES
 
 <div style="font-size: 0.85em; line-height: 1.5; column-count: 2; column-gap: 2em;">

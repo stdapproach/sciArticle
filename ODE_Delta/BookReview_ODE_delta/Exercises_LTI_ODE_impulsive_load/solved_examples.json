@@ -1,7 +1,7 @@
 {
-  "article": "Exercises from Books: LTI ODE with Impulsive Loads",
+  "article": "A Verified Collection of Worked Exercises: Linear Time-Invariant ODEs with Impulsive Loads",
   "author": "Denis Pleshkov",
-  "count": 37,
+  "count": 79,
   "examples": [
     {
       "id": "boyce_diprima_p272",
@@ -686,6 +686,627 @@
       "h_t": "f(t)=\\frac18(\\cos t+\\sin t-\\cos3t-\\frac13\\sin3t)",
       "verified": true,
       "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "angeles_p132",
+      "author": "Angeles",
+      "book_title": "Dynamic response of linear mechanical systems: Modeling, analysis and simulation",
+      "page": "132",
+      "example": "2.5.3.1 Doublet Response",
+      "type": "ivp_symbolic",
+      "ode_general": "\\ddot{x}+2\\zeta\\omega_n\\dot{x}+\\omega_n^2x=\\dot{\\delta}(t),\\ x(0^-)=0,\\ \\dot{x}(0^-)=0",
+      "solution_latex": "x(t)=e^{-\\zeta\\omega_nt}\\left[\\cos(\\omega_dt)-\\frac{\\zeta}{\\sqrt{1-\\zeta^2}}\\sin(\\omega_dt)\\right]u(t),\\ \\omega_d=\\omega_n\\sqrt{1-\\zeta^2}\\ (0\\le\\zeta<1)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameters (verified this session)",
+      "notes": "Angeles states the resulting jump as x(0+)=1, xdot(0+)=0; this appears to be correct only for the undamped (zeta=0) special case -- for zeta!=0 the derived jump is (1, -2*zeta*wn), not (1,0). Flagged for verification in a follow-up paper."
+    },
+    {
+      "id": "finan_p57",
+      "author": "Finan",
+      "book_title": "Laplace transforms: Theory, problems, and solutions",
+      "page": "57",
+      "example": "Example 48.1",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        2,
+        4,
+        10
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac14e^{-t}\\sin(2t)\\,u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "anderson_p206",
+      "author": "Anderson",
+      "book_title": "Control Theory",
+      "page": "206",
+      "example": "Example 11",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        0,
+        1
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "\\theta(t)=\\sin(t)\\,u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "anderson_p22",
+      "author": "Anderson",
+      "book_title": "Control Theory",
+      "page": "22",
+      "example": "Y(s) closed-loop feedback response",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        "K-1",
+        0
+      ],
+      "forcing": [
+        {
+          "amplitude": "K",
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac{K}{K-1}\\left(1-e^{-(K-1)t}\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameter K (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "bavafa_toosi_p203",
+      "author": "Bavafa-Toosi",
+      "book_title": "Introduction to linear control systems",
+      "page": "203",
+      "example": "Example 3.1",
+      "type": "transfer_function",
+      "H_s": "L(s)=\\frac{3s^2+3s+4}{s^3+s^2+3s+3}",
+      "h_t": "l(t)=2\\cos(\\sqrt3t)+\\frac{1}{\\sqrt3}\\sin(\\sqrt3t)+e^{-t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "bavafa_toosi_p204",
+      "author": "Bavafa-Toosi",
+      "book_title": "Introduction to linear control systems",
+      "page": "204",
+      "example": "Example 3.2",
+      "type": "transfer_function",
+      "H_s": "L(s)=\\frac{s^4+2s^3+11s^2+4s+10}{s^6+2s^5+7s^4+12s^3+15s^2+18s+9}",
+      "h_t": "l(t)=\\frac{1}{\\sqrt3}t\\sin(\\sqrt3t)+\\frac{1}{6\\sqrt3}\\left(\\sin(\\sqrt3t)-\\sqrt3t\\cos(\\sqrt3t)\\right)+te^{-t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "bavafa_toosi_p204_ex3_3",
+      "author": "Bavafa-Toosi",
+      "book_title": "Introduction to linear control systems",
+      "page": "204",
+      "example": "Example 3.3",
+      "type": "transfer_function",
+      "H_s": "L(s)=\\frac{2s^3-1.2s^2+1.4s-1}{s^4-0.6s^3-2.6s^2+4.2s-2}",
+      "h_t": "l(t)=e^{t}+e^{-2t}+\\frac{5}{3}e^{0.8t}\\sin(0.6t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match; partial-fraction cross-check (verified this session)",
+      "notes": "Source states l(t)=[1-(1/0.6)e^{0.8t}sin(0.6t+atan(0.75))]+e^t+e^{-2t}, which does not satisfy its own stated L(s) for t>0 (matches only at t=0). Denominator factors exactly as (s-1)(s+2)(s^2-1.6s+1); partial fractions give a constant, not linear, numerator over the quadratic factor, so the correct oscillatory term is a pure sine with no phase shift and no extra constant. Corrected via symbolic Laplace inversion and direct ODE substitution."
+    },
+    {
+      "id": "bavafa_toosi_p822",
+      "author": "Bavafa-Toosi",
+      "book_title": "Introduction to linear control systems",
+      "page": "822",
+      "example": "Example A.6",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{2s+12}{s^2+2s+5}",
+      "h_t": "f(t)=5e^{-t}\\sin(2t)+2e^{-t}\\cos(2t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "engelberg_p31",
+      "author": "Engelberg",
+      "book_title": "A mathematical introduction to control theory",
+      "page": "31",
+      "example": "Find the inverse transform of the function",
+      "type": "transfer_function",
+      "H_s": "\\mathcal{L}(f(t))(s)=\\frac{1}{s^2-1}",
+      "h_t": "f(t)=\\sinh(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "frank_p29",
+      "author": "Frank",
+      "book_title": "Control theory tutorial: Basic concepts illustrated by software examples",
+      "page": "29",
+      "example": "Unit impulse response of P(s)",
+      "type": "transfer_function",
+      "H_s": "P(s)=\\frac{ab}{(s+a)(s+b)}",
+      "h_t": "y(t)=\\frac{ab}{b-a}\\left(e^{-at}-e^{-bt}\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameters a,b (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ghosh_p23",
+      "author": "Ghosh",
+      "book_title": "Control systems: Theory and applications",
+      "page": "23",
+      "example": "Inverse Laplace transform of F(s)",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s}{(s+1)^2(s+3)}",
+      "h_t": "f(t)=-\\frac12te^{-t}+\\frac34e^{-t}-\\frac34e^{-3t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ghosh_p24",
+      "author": "Ghosh",
+      "book_title": "Control systems: Theory and applications",
+      "page": "24",
+      "example": "Example 2.4",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s+3}{(s+1)(s+2)(s+4)}",
+      "h_t": "f(t)=\\frac23e^{-t}-\\frac12e^{-2t}-\\frac16e^{-4t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ghosh_p33",
+      "author": "Ghosh",
+      "book_title": "Control systems: Theory and applications",
+      "page": "33",
+      "example": "Example 2.12",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s+3}{s(s+1)(s+2)}",
+      "h_t": "f(t)=\\frac32-2e^{-t}+\\frac12e^{-2t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kamaraju_p105",
+      "author": "Kamaraju & Narasimham",
+      "book_title": "Linear systems: Analysis and applications",
+      "page": "105",
+      "example": "Example 4.24",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\left(\\frac{s}{s+1}\\right)^2",
+      "h_t": "f(t)=\\delta(t)-2e^{-t}+te^{-t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kamaraju_p79",
+      "author": "Kamaraju & Narasimham",
+      "book_title": "Linear systems: Analysis and applications",
+      "page": "79",
+      "example": "Inverse transform of F(s)",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s+5}{(s+2)(s^2+8)}",
+      "h_t": "f(t)=\\frac14e^{-2t}-\\frac14\\cos(2\\sqrt2\\,t)+\\frac{3\\sqrt2}{8}\\sin(2\\sqrt2\\,t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session); corrected transcription -- source stated cos/sin of sqrt(5)t and a leading 1/3, but F(s)'s poles at s=+-2sqrt(2)i (from s^2+8) require sqrt(8)=2sqrt(2) and a leading 1/4",
+      "notes": ""
+    },
+    {
+      "id": "kamaraju_p106",
+      "author": "Kamaraju & Narasimham",
+      "book_title": "Linear systems: Analysis and applications",
+      "page": "106",
+      "example": "Example 4.25",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s+1}{s(s^2+4)}",
+      "h_t": "f(t)=\\frac12\\sin2t+\\frac14(1-\\cos2t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kamaraju_p99",
+      "author": "Kamaraju & Narasimham",
+      "book_title": "Linear systems: Analysis and applications",
+      "page": "99",
+      "example": "Example 4.17 (general parameter a)",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{a^2}{(s^2+a^2)^2}",
+      "h_t": "f(t)=\\frac{1}{2a}\\left(\\sin at-at\\cos at\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameter a (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "khalil_p68",
+      "author": "Khalil",
+      "book_title": "Control systems: An introduction",
+      "page": "68",
+      "example": "Impulse response for G(s), general parameter omega",
+      "type": "transfer_function",
+      "H_s": "G(s)=\\frac{s+1}{s(s^2+\\omega^2)}",
+      "h_t": "g(t)=\\frac{1}{\\omega^2}+\\frac{1}{\\omega}\\sin\\omega t-\\frac{1}{\\omega^2}\\cos\\omega t",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameter omega (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "khalil_p84",
+      "author": "Khalil",
+      "book_title": "Control systems: An introduction",
+      "page": "84",
+      "example": "Inverse Laplace transform of Y(s), general parameters K,A,a,b",
+      "type": "transfer_function",
+      "H_s": "Y(s)=\\frac{KA}{s(s+a)(s+b)}",
+      "h_t": "y(t)=\\frac{KA}{ab}-\\frac{KA}{a(b-a)}e^{-at}+\\frac{KA}{b(b-a)}e^{-bt}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, general parameters K,A,a,b (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "khalil_p439",
+      "author": "Khalil",
+      "book_title": "Control systems: An introduction",
+      "page": "439",
+      "example": "Example A-1",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^3y}{dt^3}+12\\frac{d^2y}{dt^2}+44\\frac{dy}{dt}+48y=x",
+      "h_t": "f(t)=\\frac18e^{-2t}-\\frac14e^{-4t}+\\frac18e^{-6t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "khalil_p440",
+      "author": "Khalil",
+      "book_title": "Control systems: An introduction",
+      "page": "440",
+      "example": "Example A-2",
+      "type": "transfer_function",
+      "H_s": "\\frac{d^3y}{dt^3}+2\\frac{d^2y}{dt^2}+2\\frac{dy}{dt}+y=x",
+      "h_t": "f(t)=e^{-t}-e^{-t/2}\\cos\\left(\\frac{\\sqrt3}{2}t\\right)+\\frac{1}{\\sqrt3}e^{-t/2}\\sin\\left(\\frac{\\sqrt3}{2}t\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p471",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "471",
+      "example": "Example 8.21",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{2}{s^2+3s+2}",
+      "h_t": "x(t)=2e^{-t}-2e^{-2t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p472_case_b",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "472",
+      "example": "Example 8.22, case (b): causal inverse, ROC Re{s}>-3",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{2s+1}{s+3}",
+      "h_t": "x(t)=2\\delta(t)-5e^{-3t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, causal branch (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p472_case_a",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "472",
+      "example": "Example 8.22, case (a): anticausal inverse, ROC Re{s}<-3",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{2s+1}{s+3}",
+      "h_t": "x(t)=2\\delta(t)+5e^{-3t}u(-t)",
+      "verified": true,
+      "verification_method": "bilateral Laplace integral, anticausal branch (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p472_ex823_case_b",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "472",
+      "example": "Example 8.23, case (b): fully causal inverse, ROC Re{s}>3",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{1}{(s+5)(s-3)}",
+      "h_t": "x(t)=\\frac{1}{8}\\left(e^{3t}-e^{-5t}\\right)u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, causal branch (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p472_ex823_case_a",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "472",
+      "example": "Example 8.23, case (a): two-sided inverse, ROC -5<Re{s}<3",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{1}{(s+5)(s-3)}",
+      "h_t": "x(t)=-\\frac{1}{8}e^{-5t}u(t)-\\frac{1}{8}e^{3t}u(-t)",
+      "verified": true,
+      "verification_method": "bilateral Laplace integral, two-sided branch (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p472_ex823_case_c",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "472",
+      "example": "Example 8.23, case (c): fully anticausal inverse, ROC Re{s}<-5",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{1}{(s+5)(s-3)}",
+      "h_t": "x(t)=\\frac{1}{8}\\left(e^{-5t}-e^{3t}\\right)u(-t)",
+      "verified": true,
+      "verification_method": "bilateral Laplace integral, anticausal branch (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p473",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "473",
+      "example": "Example 8.24",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{s(s+3)}{(s+3)^2}",
+      "h_t": "x(t)=\\delta(t)-3e^{-3t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match, uncancelled and cancelled forms agree (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p476",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "476",
+      "example": "Example 8.27",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{s^2-3s+2}{s^2+3s+2}",
+      "h_t": "x(t)=\\delta(t)+6e^{-t}u(t)-12e^{-2t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session); corrected transcription -- source stated the e^(-t) term as -6, but partial fractions (X(s)=1+6/(s+1)-12/(s+2)) require +6",
+      "notes": ""
+    },
+    {
+      "id": "krishnaveni_rajeswari_p482",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "482",
+      "example": "Example 8.31",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        4,
+        4
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=\\frac{1}{2}u(t)-\\frac{1}{2}e^{-2t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": "forcing list captures only the delta(t) term; the stated ODE also carries a regular step forcing +2*u(t) on the right-hand side, not representable in this amplitude/derivative_order/location schema -- both terms together are needed to reproduce solution_latex"
+    },
+    {
+      "id": "krishnaveni_rajeswari_p483",
+      "author": "Krishnaveni & Rajeswari",
+      "book_title": "Signals and systems",
+      "page": "483",
+      "example": "Example 8.32",
+      "type": "ivp",
+      "ode_coeffs_highest_to_lowest": [
+        1,
+        3,
+        2
+      ],
+      "forcing": [
+        {
+          "amplitude": 1,
+          "derivative_order": 0,
+          "location": 0
+        }
+      ],
+      "initial_conditions": [
+        0,
+        0
+      ],
+      "solution_latex": "y(t)=-e^{-2t}u(t)+e^{-t}u(t)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kulakowski_p434",
+      "author": "Kulakowski, Gardner & Shearer",
+      "book_title": "Dynamic modeling and control of engineering systems",
+      "page": "434",
+      "example": "Example A2.1",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{2s+4}{s^3+7s^2+15s+9}",
+      "h_t": "f(t)=0.5e^{-t}-0.5e^{-3t}+te^{-3t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kulakowski_p435",
+      "author": "Kulakowski, Gardner & Shearer",
+      "book_title": "Dynamic modeling and control of engineering systems",
+      "page": "435",
+      "example": "Example A2.2",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{4}{s(s^2+2.4s+4)}",
+      "h_t": "f(t)=1-1.25e^{-1.2t}\\sin(1.6t+0.9273)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session); corrected transcription -- source stated a plus sign on the oscillatory term, but partial fractions (F(s)=1/s-(s+1.2)/((s+1.2)^2+1.6^2)-1.2/((s+1.2)^2+1.6^2)) require minus",
+      "notes": ""
+    },
+    {
+      "id": "narasimham_p36",
+      "author": "Narasimham",
+      "book_title": "Analysis of linear control systems",
+      "page": "36",
+      "example": "Example 2.3",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{1}{(s+2)(s+5)(s+11)}",
+      "h_t": "f(t)=\\frac{1}{54}\\left(2e^{-2t}-3e^{-5t}+e^{-11t}\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "williams_lawrence_p67_1",
+      "author": "Williams & Lawrence",
+      "book_title": "Linear state-space control systems",
+      "page": "67",
+      "example": "Partial-fraction inverse Laplace transform (3-term)",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{0.25}{s} - \\frac{0.55}{s+3} + \\frac{0.40}{s+4}",
+      "h_t": "h(t)=0.25 - 0.55e^{-3t} + 0.40e^{-4t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match; jump computed from residues at each pole (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "williams_lawrence_p67_2",
+      "author": "Williams & Lawrence",
+      "book_title": "Linear state-space control systems",
+      "page": "67",
+      "example": "Partial-fraction inverse Laplace transform (2-term)",
+      "type": "transfer_function",
+      "H_s": "H(s)=\\frac{1.65}{s+3} - \\frac{1.60}{s+4}",
+      "h_t": "h(t)=1.65e^{-3t} - 1.60e^{-4t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match; jump computed from residues at each pole (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "ahuja_arya_p6",
+      "author": "Ahuja & Arya",
+      "book_title": "Consistent initialization of the Laplace transform (arXiv:1909.07813)",
+      "page": "6",
+      "example": "Equation (16-17): U-tube manometer",
+      "type": "ivp_symbolic",
+      "ode_general": "m\\ddot{v}(t)+l\\dot{v}(t)+kv(t)=A\\dot{p}(t),\\ p(t)=p(0^-)+M\\delta(t),\\ v(0^-)=AM,\\ \\dot v(0^-)=-2AM",
+      "solution_latex": "v(0^+)=2AM,\\ \\dot v(0^+)=-4AM",
+      "verified": true,
+      "verification_method": "jump condition from A^{-1}d (Type-1 formula), confirmed against paper's own Eqs. (24)-(25) (verified this session)",
+      "notes": "As pasted, Equation (16) read two first-derivative terms (not a valid 2nd-order ODE); corrected to the paper's actual m*v''+l*v'+k*v=A*p' with m=1, l=2, k=1."
+    },
+    {
+      "id": "hallauer_ex2_9a",
+      "author": "Hallauer",
+      "book_title": "Introduction to linear, time-invariant, dynamic systems for students of engineering",
+      "page": "2-17",
+      "example": "Ex.2.9.a",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{s+3}{(s+1)(s+5)}",
+      "h_t": "f(t)=\\frac12\\left(e^{-t}+e^{-5t}\\right)",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "hallauer_ex2_9b",
+      "author": "Hallauer",
+      "book_title": "Introduction to linear, time-invariant, dynamic systems for students of engineering",
+      "page": "2-17",
+      "example": "Ex.2.9.b",
+      "type": "transfer_function",
+      "H_s": "F(s)=\\frac{2(s+1)}{s(s+3)(s+4)}",
+      "h_t": "f(t)=\\frac16+\\frac43e^{-3t}-\\frac32e^{-4t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "yang_p392_a2a",
+      "author": "Yang",
+      "book_title": "Signals and systems with MATLAB©",
+      "page": "392",
+      "example": "Example A.2.a",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{3s^2+11s+11}{s^3+4s^2+5s+2}",
+      "h_t": "x(t)=e^{-2t}+2e^{-t}+3te^{-t}",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "yang_p392_a2b",
+      "author": "Yang",
+      "book_title": "Signals and systems with MATLAB©",
+      "page": "392",
+      "example": "Example A.2.b",
+      "type": "transfer_function",
+      "H_s": "X(s)=\\frac{s}{s^2+2s+2}",
+      "h_t": "x(t)=e^{-t}\\cos t - e^{-t}\\sin t",
+      "verified": true,
+      "verification_method": "symbolic Laplace match (verified this session)",
+      "notes": ""
+    },
+    {
+      "id": "kavaja_piazzi_p17",
+      "author": "Kavaja & Piazzi",
+      "book_title": "Input–output jumps of scalar linear systems",
+      "page": "17",
+      "example": "5. An example",
+      "type": "transfer_function",
+      "H_s": "H(s)=-4\\frac{(s-1)(s+1)}{(s+2)(s^2+s+2)}",
+      "h_t": "h(t)=-3e^{-2t}-e^{-t/2}\\cos\\left(\\frac{\\sqrt7}{2}t\\right)+\\frac{11}{\\sqrt7}e^{-t/2}\\sin\\left(\\frac{\\sqrt7}{2}t\\right)",
+      "verified": true,
+      "verification_method": "partial-fraction expansion, pole residues, and Initial Value Theorem cross-check (verified this session)",
       "notes": ""
     }
   ]

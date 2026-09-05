@@ -51,6 +51,21 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \lstset{breaklines=true, breakatwhitespace=false, basicstyle=\ttfamily\small, columns=fullflexible, postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}}
+
+% The Second-order equations subsection now nests individual example headings one level
+% deeper than before (Markdown "##### ...", i.e. LaTeX \paragraph after --shift-heading-level-by=-1),
+% since they sit under the new "A./B./C." grouping headings (subsubsection level) rather than
+% directly under the order-level section. Standard article.cls makes \paragraph a run-in heading
+% (negative afterskip -1em: heading text merges into the following line), which would visually
+% break from every other example heading in the document (all typeset as standalone \subsubsection
+% headings). Redefine \paragraph to use the exact same standalone block style as \subsubsection,
+% so the visual appearance of example headings is identical everywhere regardless of nesting depth.
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -58,7 +73,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Exercises from Books: LTI ODE with Impulsive Loads},
+  pdftitle={A Verified Collection of Worked Exercises: Linear Time-Invariant ODEs with Impulsive Loads},
   pdfauthor={Denis Pleshkov ~},
   colorlinks=true,
   linkcolor={blue},
@@ -67,10 +82,10 @@
   urlcolor={blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{Exercises from Books: LTI ODE with Impulsive Loads}
+\title{A Verified Collection of Worked Exercises: Linear Time-Invariant ODEs with Impulsive Loads}
 \author{Denis Pleshkov
 ~\href{mailto:std.approach@gmail.com}{std.approach@gmail.com}}
-\date{Last Modified: August 25, 2026}
+\date{Last Modified: September 4, 2026}
 
 \begin{document}
 \maketitle
@@ -80,6 +95,11 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\textbf{Denis Pleshkov}
+\href{mailto:std.approach@gmail.com}{\nolinkurl{std.approach@gmail.com}}
+\textbf{Last Modified:} September 4, 2026
+
 \hypertarget{abstract}{%
 \section{Abstract}\label{abstract}}
 
@@ -88,35 +108,38 @@ of worked examples, drawn from published textbooks, illustrating the
 solution of linear time-invariant (LTI) ordinary differential equations
 (ODEs) forced by the Dirac delta function and its derivatives --- the
 standard mathematical model of an impulsive load. No new mathematical
-results are derived here: each of the thirty-seven solved exercises in
-the ``Solved Exercises'' section reproduces a problem statement and its
+results are derived here: each of the seventy-four exercises in the
+``Solved Exercises'' section reproduces a problem statement and its
 published closed-form solution essentially verbatim from its source,
 with full attribution by author, page, and edition. What distinguishes
 this compilation from a plain survey is that every one of those
-thirty-seven solutions was additionally checked, by symbolic
+seventy-four solutions was additionally checked, by symbolic
 Laplace-transform matching, segment-wise ODE and jump-matching, or
 numeric recomputation, against its own stated equation and initial
-conditions; the handful of transcription issues this uncovered ---
-including one textbook example whose printed answer did not actually
-satisfy its own stated problem --- are corrected inline with an explicit
-derivation rather than left silently as-is. Each solved example
-additionally carries a ready-to-run Wolfram Language snippet that a
-reader can paste directly into WolframAlpha to reproduce its closed-form
-solution independently. A machine-readable export (JSON and CSV) of the
-full verified example set accompanies the article. A further set of
-unsolved exercise references, spanning twenty additional textbooks, is
-indexed to guide further practice. The compilation serves two purposes.
-First, it is pedagogical: gathering material otherwise scattered across
-dozens of engineering-mathematics, vibrations, and control-theory
-textbooks into one alphabetically organized reference, suitable as a
-starting point for a reader studying impulsively forced LTI systems.
-Second, it is practical: because each solved exercise pairs a fully
-specified, independently verified ODE with a known analytical solution,
-the collection functions directly as a benchmark/regression-test suite
-for validating symbolic or numerical ODE-solving software. The
-Verification Methodology and Conclusion sections detail the checking
-process and summarize the scope, composition, and limitations of the
-collected material.
+conditions; nine of those seventy-four exercises were found to contain
+an error --- a transcription slip or a mistake in the source's own
+printed answer --- and are corrected inline with an explicit derivation
+rather than left silently as-is. Each solved example additionally
+carries a ready-to-run Wolfram Language snippet that a reader can paste
+directly into WolframAlpha to reproduce its closed-form solution
+independently. A machine-readable export (JSON and CSV) of the full
+verified example set accompanies the article. A further set of unsolved
+exercise references, drawn from nineteen textbooks not already used as a
+solved-example source, is indexed to guide further practice; in total,
+the References section cites forty-nine published works spanning control
+theory, vibrations, and differential-equations textbooks. The
+compilation serves two purposes. First, it is pedagogical: gathering
+material otherwise scattered across dozens of engineering-mathematics,
+vibrations, and control-theory textbooks into one reference organized by
+the order of the governing differential equation and, within that, by
+author, suitable as a starting point for a reader studying impulsively
+forced LTI systems. Second, it is practical: because each solved
+exercise pairs a fully specified, independently verified ODE with a
+known analytical solution, the collection functions directly as a
+benchmark/regression-test suite for validating symbolic or numerical
+ODE-solving software. The Verification Methodology and Conclusion
+sections detail the checking process and summarize the scope,
+composition, and limitations of the collected material.
 
 \hypertarget{keywords}{%
 \section{Keywords}\label{keywords}}
@@ -160,6 +183,19 @@ snippet that can be pasted directly into WolframAlpha to reproduce that
 one closed-form solution on the spot, without setting up a full test
 harness.
 
+\textbf{Relative to existing work}, this compilation differs in kind
+from numerical ODE-solver benchmark suites such as the ODE Test Problems
+(OTP) package, which supplies stiff and nonstiff numerical integration
+test cases without tying them to a published source. Every entry here is
+instead traceable to a specific textbook and verified symbolically or
+analytically against a closed-form solution, rather than assembled as a
+bare numerical test case. The two kinds of suite are complementary: a
+numerical-integration benchmark like OTP is suited to testing an
+integrator's accuracy under stiffness or chaotic dynamics, while the
+present collection is suited to testing a symbolic or closed-form
+solver's correctness against a known, source-attributed analytical
+answer.
+
 The material is split into two categories:
 
 \begin{enumerate}
@@ -169,7 +205,8 @@ The material is split into two categories:
   \textbf{Solved Exercises} --- problems taken directly from a textbook
   together with their published closed-form solution. Nothing here is
   derived by the present author; it is a curated extraction of existing
-  results, organized by source and alphabetized by author.
+  results, grouped by the order of the governing ODE and alphabetized by
+  author within each group.
 \item
   \textbf{Additional Exercises} --- pointers to further exercises in the
   same (and other) textbooks that are relevant to impulsive loading but
@@ -178,8 +215,78 @@ The material is split into two categories:
   and reading.
 \end{enumerate}
 
-Both categories are ordered alphabetically by author surname, and the
-bibliography follows the same convention.
+Solved Exercises are grouped by the order of the governing ODE and
+alphabetized by author surname within each group; Additional Exercises
+are ordered alphabetically by author surname, as is the bibliography.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{table-of-contents}{%
+\section{Table of Contents}\label{table-of-contents}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \protect\hyperlink{introduction}{Introduction}
+\item
+  \protect\hyperlink{solved-exercises}{Solved Exercises}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{first-order-equations}{2.1 First-order equations}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{first-order-a-no-delta}{A. No delta function in
+      the answer}
+    \item
+      \protect\hyperlink{first-order-b-delta}{B. Delta function in the
+      answer}
+    \end{itemize}
+  \item
+    \protect\hyperlink{second-order-equations}{2.2 Second-order
+    equations}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{second-order-a-delta-load}{A. Only delta load}
+    \item
+      \protect\hyperlink{second-order-b-first-derivative}{B. First
+      derivative of delta}
+    \item
+      \protect\hyperlink{second-order-c-second-derivative}{C. Second
+      derivative of delta}
+    \end{itemize}
+  \item
+    \protect\hyperlink{third-order-equations}{2.3 Third-order equations}
+  \item
+    \protect\hyperlink{higher-order-equations}{2.4 Higher-order
+    equations}
+  \end{itemize}
+\item
+  \protect\hyperlink{additional-exercises}{Additional Exercises} ---
+  Bottega, Boyce \& DiPrima, Campbell \& Haberman, De Oliveira, Dorf \&
+  Bishop, Edwards \& Penney, Esfandiari \& Lu,
+  Franklin/Powell/Emami-Naeini, Ghosh, Gupta, Inman, Jagan, Karris,
+  Kelly, Lathi \& Green, Lundberg, Meirovitch, Nagle/Saff/Snider,
+  Narasimham, Nise, Ogata, Paraskevopoulos, Qiu, Rabie, Rao, Schiff,
+  Shabana, Thorby, Truxal, Xue/Chen/Atherton, Yang
+\item
+  \protect\hyperlink{verification-methodology}{Verification Methodology}
+\item
+  \protect\hyperlink{conclusion}{Conclusion}
+\item
+  \protect\hyperlink{limitations}{Limitations}
+\item
+  \protect\hyperlink{data-and-code-availability}{Data and Code
+  Availability}
+\item
+  \protect\hyperlink{references}{References}
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -188,10 +295,12 @@ bibliography follows the same convention.
 
 Worked examples reproduced from the source textbooks, including the
 original problem statement and its published closed-form solution.
-Sorted alphabetically by (first) author. Following academic convention,
-verbatim text taken from a source (an example's title or its problem
-statement) is set in double quotation marks; page/example locators and
-the present author's own classification notes are left unquoted.
+Grouped by the order of the governing ODE (first, second, third, and
+higher), and alphabetized by (first) author within each group. Following
+academic convention, verbatim text taken from a source (an example's
+title or its problem statement) is set in double quotation marks;
+page/example locators and the present author's own classification notes
+are left unquoted.
 
 Each entry also carries a bracketed \emph{WolframAlpha verification}
 block: a Wolfram Language command that can be pasted into the input box
@@ -201,30 +310,251 @@ hand and cross-checked symbolically offline rather than run live (see
 Verification Methodology below), so pasting one in may be giving it its
 first live test.
 
-\hypertarget{boyce-diprima-elementary-differential-equations-and-boundary-value-problems}{%
-\subsection{Boyce \& DiPrima --- Elementary differential equations and
-boundary value
-problems}\label{boyce-diprima-elementary-differential-equations-and-boundary-value-problems}}
+\hypertarget{first-order-equations}{%
+\subsection{2.1 First-order equations (n =
+1)}\label{first-order-equations}}
 
-p.272 Initial Value Problem (IVP) for 2nd order with zero Initial
-Condition (IC) \[
+\hypertarget{first-order-a-no-delta}{%
+\subsubsection{A. No delta function in the
+answer}\label{first-order-a-no-delta}}
+
+\hypertarget{campbell-haberman-introduction-to-differential-equations-with-dynamical-systems-p.263}{%
+\paragraph{Campbell \& Haberman --- Introduction to differential
+equations with dynamical systems,
+p.263}\label{campbell-haberman-introduction-to-differential-equations-with-dynamical-systems-p.263}}
+
+IVP for 1st order system
+\[ y' + y = \delta(t - 1), \, y(0) = 1 \implies  y(t)=\begin{cases}
+e^{-t}, & t < 1 \\[4pt]
+e^{-t} + e^{-(t-1)}, & t \ge 1
+\end{cases}\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}{[}t{]}\ +\ y{[}t{]}\ ==\ Delta{[}t\ -\ 1{]},\ y{[}0{]}\ ==\ 1}
+--- Returns \(y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)\)*{]}
+
+\emph{{[}Jump condition at \(t=1\): \(y'+y=\delta(t-1)\) is first order.
+Phase vector \(\mathbf y=(y)\) changes by
+\(\Delta\mathbf y(1)=(1)\).{]}}
+
+\hypertarget{esfandiari-lu-modeling-and-analysis-of-dynamic-systems-p.343}{%
+\paragraph{Esfandiari \& Lu --- Modeling and analysis of dynamic
+systems,
+p.343}\label{esfandiari-lu-modeling-and-analysis-of-dynamic-systems-p.343}}
+
+``Impulse Response of First-Order Systems'' \emph{{[}Note: with
+\(x_0=0\), \(A=1\), and \(\tau=T\), this reduces to Ogata's p.163 case
+below, \(c(t)=\frac{1}{T}e^{-t/T}\).{]}}
+\[ x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau} \] where A -
+impulse's magnitude \(\tau\) - coefficient for higher derivative in ODE.
+*{[}WolframAlpha:
+\texttt{tau\ x\textquotesingle{}{[}t{]}\ +\ x{[}t{]}\ ==\ A\ Delta{[}t{]},\ x{[}0{]}\ ==\ x0}
+--- Returns \(x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): normalizing \(\tau x'+x=A\delta(t)\)
+to \(x'+\tfrac1\tau x=\tfrac{A}{\tau}\delta(t)\) (first order). Phase
+vector \(\mathbf x=(x)\) changes by
+\(\Delta\mathbf x(0)=\left(\dfrac{A}{\tau}\right)\).{]}}
+
+\hypertarget{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems-p.-110}{%
+\paragraph{Franklin, Powell \& Emami-Naeini --- Feedback control of
+dynamic systems,
+p.~110}\label{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems-p.-110}}
+
+\emph{{[}Note: this is the same example as Angeles, p.116.{]}} \[
+\dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}{[}t{]}\ +\ k\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = e^{-k t} \, u(t)\) (at \(t=0^+\) this gives
+\(y(0^+)=1\), matching the book)*{]}
+
+\emph{{[}Jump condition at \(t=0\): confirming the book's own reduction,
+\(y'+ky=\delta(t)\) is first order. Phase vector \(\mathbf y=(y)\)
+changes by \(\Delta\mathbf y(0)=(1)\).{]}}
+
+\hypertarget{ogata-modern-control-engineering-p.163}{%
+\paragraph{Ogata --- Modern control engineering,
+p.163}\label{ogata-modern-control-engineering-p.163}}
+
+``Unit-Impulse Response of First-Order Systems'' \emph{{[}Note: this is
+the \(A=1\), \(x_0=0\), \(\tau=T\) special case of Esfandiari \& Lu's
+p.343 formula above,
+\(x(t)=e^{-t/\tau}x_0+\frac{A}{\tau}e^{-t/\tau}\).{]}} \[
+C(s) = \frac{1}{Ts + 1} \implies c(t) = \frac{1}{T} e^{-t/T}, \quad \text{for } t \geq 0
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}1/(T\ s\ +\ 1),\ s,\ t{]}} --- Returns
+\(c(t) = \frac{1}{T} e^{-t/T}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): normalizing \(Tc'+c=\delta(t)\) to
+\(c'+\tfrac1T c=\tfrac1T\delta(t)\) (first order). Phase vector
+\(\mathbf c=(c)\) changes by
+\(\Delta\mathbf c(0)=\left(\dfrac1T\right)\).{]}}
+
+\hypertarget{williams-lawrence-linear-state-space-control-systems-p.67}{%
+\paragraph{Williams \& Lawrence Linear state-space control systems,
+p.67}\label{williams-lawrence-linear-state-space-control-systems-p.67}}
+
+\[L^{-1} \left\{ \frac{0.25}{s} - \frac{0.55}{s+3} + \frac{0.40}{s+4} \right\}
+= 0.25 - 0.55e^{-3t} + 0.40e^{-4t} \quad t \geq 0
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}0.25/s\ -\ 0.55/(s\ +\ 3)\ +\ 0.40/(s\ +\ 4),\ s,\ t{]}}
+--- Returns \(0.25 - 0.55\,e^{-3t} + 0.40\,e^{-4t}\), matching the
+book*{]}
+
+\emph{{[}Jump condition at \(t=0\): the given partial-fraction form
+already exhibits \(Y(s)\) as a sum of three decoupled first-order modes,
+\(\dot y_1 = 0.25\,\delta(t)\), \(\dot y_2+3y_2=-0.55\,\delta(t)\),
+\(\dot y_3+4y_3=0.40\,\delta(t)\) (with \(y=y_1+y_2+y_3\), all at rest
+for \(t<0\)). Each mode's phase vector jumps by the residue at its own
+pole: \(\Delta y_1(0)=0.25\), \(\Delta y_2(0)=-0.55\),
+\(\Delta y_3(0)=0.40\).{]}}
+
+\hypertarget{williams-lawrence-linear-state-space-control-systems-p.67-1}{%
+\paragraph{Williams \& Lawrence Linear state-space control systems,
+p.67}\label{williams-lawrence-linear-state-space-control-systems-p.67-1}}
+
+\[L^{-1} \left\{ \frac{1.65}{s+3} - \frac{1.60}{s+4} \right\}
+= 1.65e^{-3t} - 1.60e^{-4t} \quad t \geq 0
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}1.65/(s\ +\ 3)\ -\ 1.60/(s\ +\ 4),\ s,\ t{]}}
+--- Returns \(1.65\,e^{-3t} - 1.60\,e^{-4t}\), matching the book*{]}
+
+\emph{{[}Jump condition at \(t=0\): the given partial-fraction form
+already exhibits \(Y(s)\) as a sum of two decoupled first-order modes,
+\(\dot y_1+3y_1=1.65\,\delta(t)\), \(\dot y_2+4y_2=-1.60\,\delta(t)\)
+(with \(y=y_1+y_2\), both at rest for \(t<0\)). Each mode's phase vector
+jumps by the residue at its own pole: \(\Delta y_1(0)=1.65\),
+\(\Delta y_2(0)=-1.60\).{]}}
+
+\hypertarget{first-order-b-delta}{%
+\subsubsection{B. Delta function in the
+answer}\label{first-order-b-delta}}
+
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.472}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.472}\label{krishnaveni-rajeswari-signals-and-systems-p.472}}
+
+Example 8.22. Find the inverse Laplace transform of \[
+X(s) = \frac{2s+1}{s+3}
+\] for (a) ROC: \(\text{Re}\{s\} < -3\); (b) ROC:
+\(\text{Re}\{s\} > -3\) \[
+\text{(a)}\quad x(t) = 2\delta(t) + 5e^{-3t}u(-t)
+\] \[
+\text{(b)}\quad x(t) = 2\delta(t) - 5e^{-3t}u(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(2\ s\ +\ 1)/(s\ +\ 3),\ s,\ t{]}} ---
+Returns the causal (right-sided) inverse,
+\(x(t) = 2\delta(t) - 5e^{-3t}u(t)\), confirming case (b).
+WolframAlpha's default convention is causal, so it cannot directly
+return case (a); that left-sided branch was instead verified from the
+bilateral Laplace integral
+\(\int_{-\infty}^{0} 5e^{-3t}e^{-st}\,dt = -\dfrac{5}{s+3}\) for
+\(\text{Re}\{s\}<-3\), which matches \(X(s)-2\) exactly (confirmed
+numerically as well).*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(X(s)=(2s+1)/(s+3)\) has
+\(\deg N=\deg D=1\), a direct feedthrough of coefficient \(2\) (matching
+the \(2\delta(t)\) common to both cases). For the causal case (b),
+\(\text{Re}\{s\}>-3\): the regular part
+\(x_{\text{reg}}(t)=-5e^{-3t}u(t)\) jumps from \(0\) at \(t=0^-\) up to
+\(x_{\text{reg}}(0^+)=-5\), the usual zero-state impulse-response jump.
+For the anticausal case (a), \(\text{Re}\{s\}<-3\): the regular part
+\(x_{\text{reg}}(t)=5e^{-3t}u(-t)\) instead jumps from
+\(x_{\text{reg}}(0^-)=5\) down to \(0\) at \(t=0^+\) --- the mirror
+image of the causal jump, since this branch is left-sided rather than a
+zero-state response driven from \(t=0\).{]}}
+
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.473}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.473}\label{krishnaveni-rajeswari-signals-and-systems-p.473}}
+
+Example 8.24. Find the inverse Laplace transform of \[
+X(s) = \frac{s(s+3)}{(s+3)^2}, \quad \text{ROC: } \text{Re}\{s\} > -3 \implies x(t) = \delta(t) - 3e^{-3t}u(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s\ (s\ +\ 3)/(s\ +\ 3)\^{}2,\ s,\ t{]}}
+--- Returns \(x(t) = \delta(t) - 3e^{-3t}u(t)\). Note that \(X(s)\) as
+stated has a removable common factor: \(s(s+3)/(s+3)^2 = s/(s+3)\) for
+\(s\neq -3\), and since the pole at \(s=-3\) lies outside the stated ROC
+\(\text{Re}\{s\}>-3\) anyway, the cancellation does not affect the
+transform --- confirmed by evaluating both the uncancelled and cancelled
+forms symbolically, which agree exactly.*{]}
+
+\emph{{[}Jump condition at \(t=0\): in cancelled form \(X(s)=s/(s+3)\)
+has \(\deg N=\deg D=1\), a direct feedthrough of coefficient \(1\)
+(matching \(\delta(t)\)). The regular part
+\(x_{\text{reg}}(t)=-3e^{-3t}u(t)\) jumps from \(0\) at \(t=0^-\) up to
+\(x_{\text{reg}}(0^+)=-3\), the usual zero-state impulse-response
+jump.{]}}
+
+\hypertarget{lathi-green-linear-systems-and-signals-p.167}{%
+\paragraph{Lathi \& Green --- Linear systems and signals,
+p.167}\label{lathi-green-linear-systems-and-signals-p.167}}
+
+``DRILL 2.4(a) Finding the Impulse Response'' ``Determine the unit
+impulse response of LTIC systems described by the following equation:''
+\[ (D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t) \]
+*{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(3\ s\ +\ 5)/(s\ +\ 2),\ s,\ t{]}} ---
+Returns \(h(t) = 3\delta(t) - e^{-2t} u(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \((D+2)y=(3D+5)x\) has
+\(\deg N=\deg D=1\), a direct feedthrough of coefficient \(3\) plus a
+remainder that changes by \(\Delta\mathbf y_{\text{reg}}(0)=(-1)\).{]}}
+
+\hypertarget{second-order-equations}{%
+\subsection{2.2 Second-order equations (n =
+2)}\label{second-order-equations}}
+
+\hypertarget{second-order-a-delta-load}{%
+\subsubsection{A. Only delta load}\label{second-order-a-delta-load}}
+
+\hypertarget{anderson-control-theory-p.22}{%
+\paragraph{Anderson --- Control Theory,
+p.22}\label{anderson-control-theory-p.22}}
+
+\[
+Y(s) = \frac{K}{K-1} \left( \frac{1}{s} - \frac{1}{s-1+K} \right) \implies y(t) = \frac{K}{K-1} \left( 1 - e^{-(K-1)t} \right), \quad t \geq 0
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ (K-1)\ y\textquotesingle{}{[}t{]}\ ==\ K\ DiracDelta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = \dfrac{K}{K-1}\left(1 - e^{-(K-1)t}\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(y''+(K-1)y'=K\delta(t)\) (leading
+coefficient \(1\), no \(y\) term). Phase vector \(\mathbf y=(y,y')\)
+changes by \(\Delta\mathbf y(0)=(0,K)\).{]}}
+
+\hypertarget{anderson-control-theory-p.206}{%
+\paragraph{Anderson --- Control Theory,
+p.206}\label{anderson-control-theory-p.206}}
+
+Example 11. \[
+\ddot{\theta}(t) + \theta(t) = \delta(t), \quad \theta(0^-) = 0, \quad \dot{\theta}(0^-) = 0 \implies \theta(t) = \sin(t)\, u(t)
+\] *{[}WolframAlpha:
+\texttt{theta\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ theta{[}t{]}\ ==\ DiracDelta{[}t{]},\ theta{[}0{]}\ ==\ 0,\ theta\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(\theta(t) = \sin(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(\ddot\theta+\theta=\delta(t)\).
+Phase vector \((\theta,\dot\theta)\) changes by
+\(\Delta(\theta,\dot\theta)(0)=(0,1)\), matching the given post-impulse
+conditions \(\theta(0^+)=0\), \(\dot\theta(0^+)=1\).{]}}
+
+\hypertarget{boyce-diprima-elementary-differential-equations-and-boundary-value-problems-p.272}{%
+\paragraph{Boyce \& DiPrima --- Elementary differential equations and
+boundary value problems,
+p.272}\label{boyce-diprima-elementary-differential-equations-and-boundary-value-problems-p.272}}
+
+Initial Value Problem (IVP) for 2nd order with zero Initial Condition
+(IC) \[
 \begin{aligned}
 &2y'' + y' + 2y = \delta(t - 5) \\
 &y(0) = 0, \quad y'(0) = 0
 \end{aligned}
-\implies y(t) =
+\implies y(t) = 
 \begin{cases}
 0, & t < 5 \\[6pt]
 \dfrac{2}{\sqrt{15}} e^{-(t-5)/4} \sin\left(\dfrac{\sqrt{15}}{4}(t-5)\right), & t \ge 5
 \end{cases}
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-2 y''[t] + y'[t] + 2 y[t] == Delta[t - 5], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = \frac{2 \, e^{5/4 - t/4} \, u(t-5) \, \sin\left(\frac{1}{4} \, \sqrt{15} \, (t-5)\right)}{\sqrt{15}}\)}{]}
+\] *{[}WolframAlpha:
+\texttt{2\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ y\textquotesingle{}{[}t{]}\ +\ 2\ y{[}t{]}\ ==\ Delta{[}t\ -\ 5{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = \frac{2 \, e^{5/4 - t/4} \, u(t-5) \, \sin\left(\frac{1}{4} \, \sqrt{15} \, (t-5)\right)}{\sqrt{15}}\)*{]}
 
 \emph{{[}Jump condition at \(t=5\): the equation
 \(2y''+y'+2y=\delta(t-5)\) normalizes to
@@ -232,385 +562,267 @@ Condition (IC) \[
 \(\mathbf y=(y,y')\) changes by
 \(\Delta\mathbf y(5)=\left(0,\tfrac12\right)\).{]}}
 
-\hypertarget{campbell-haberman-introduction-to-differential-equations-with-dynamical-systems}{%
-\subsection{Campbell \& Haberman --- Introduction to differential
-equations with dynamical
-systems}\label{campbell-haberman-introduction-to-differential-equations-with-dynamical-systems}}
+\hypertarget{edwards-penney-elementary-differential-equations-with-boundary-value-problems-p.318}{%
+\paragraph{Edwards \& Penney --- Elementary differential equations with
+boundary value problems,
+p.318}\label{edwards-penney-elementary-differential-equations-with-boundary-value-problems-p.318}}
 
-p.263 IVP for 1st order system
-\[ y' + y = \delta(t - 1), \, y(0) = 1 \implies  y(t)=\begin{cases}
-e^{-t}, & t < 1 \\[4pt]
-e^{-t} + e^{-(t-1)}, & t \ge 1
-\end{cases}\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y'[t] + y[t] == Delta[t - 1], y[0] == 1
-\end{lstlisting}
-
-\emph{Returns \(y(t) = e^{-t} + e^{-(t-1)} \, u(t-1)\)}{]}
-
-\emph{{[}Jump condition at \(t=1\): \(y'+y=\delta(t-1)\) is first order.
-Phase vector \(\mathbf y=(y)\) changes by
-\(\Delta\mathbf y(1)=(1)\).{]}}
-
-\hypertarget{edwards-penney-elementary-differential-equations-with-boundary-value-problems}{%
-\subsection{Edwards \& Penney --- Elementary differential equations with
-boundary value
-problems}\label{edwards-penney-elementary-differential-equations-with-boundary-value-problems}}
-
-p.318 The IVP is \[
+The IVP is \[
   x'' + 4x = 8\delta_{2\pi}(t); \; x(0) = 3, \; x'(0) = 0 \implies x(t)= \begin{cases}
 3\cos 2t, & t < 2\pi \\[4pt]
 3\cos 2t + 4\sin 2t, & t \ge 2\pi
 \end{cases}
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-x''[t] + 4 x[t] == 8 Delta[t - 2 Pi], x[0] == 3, x'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(x(t) = 3\cos(2t) + 4\sin(2t) \, u(t-2\pi)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{x\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 4\ x{[}t{]}\ ==\ 8\ Delta{[}t\ -\ 2\ Pi{]},\ x{[}0{]}\ ==\ 3,\ x\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(x(t) = 3\cos(2t) + 4\sin(2t) \, u(t-2\pi)\)*{]}
 
 \emph{{[}Jump condition at \(t=2\pi\): phase vector \(\mathbf x=(x,x')\)
 changes by \(\Delta\mathbf x(2\pi)=(0,8)\), the impulse strength.{]}}
 
-\hypertarget{esfandiari-lu-modeling-and-analysis-of-dynamic-systems}{%
-\subsection{Esfandiari \& Lu --- Modeling and analysis of dynamic
-systems}\label{esfandiari-lu-modeling-and-analysis-of-dynamic-systems}}
+\hypertarget{engelberg-a-mathematical-introduction-to-control-theory-p.31}{%
+\paragraph{Engelberg --- A mathematical introduction to control theory,
+p.31}\label{engelberg-a-mathematical-introduction-to-control-theory-p.31}}
 
-p.57 ``Example 2.27: Initial Condition \(\neq\) Initial Value'' \[
+``Find the inverse transform of the function'' \[
+\mathcal{L}(f(t))(s) = \frac{1}{s^2 - 1} \implies f(t) = \frac{e^t - e^{-t}}{2} = \sinh(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}1/(s\^{}2\ -\ 1),\ s,\ t{]}} ---
+Returns \(f(t) = \sinh(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): reading
+\(\mathcal{L}(f)(s)=1/(s^2-1)\) as the impulse response of the
+zero-state 2nd-order ODE \(\ddot f - f = \delta(t)\) (relative degree
+\(2\)). Phase vector \(\mathbf f=(f,\dot f)\) changes by
+\(\Delta\mathbf f(0)=(0,1)\).{]}}
+
+\hypertarget{esfandiari-lu-modeling-and-analysis-of-dynamic-systems-p.57}{%
+\paragraph{Esfandiari \& Lu --- Modeling and analysis of dynamic
+systems,
+p.57}\label{esfandiari-lu-modeling-and-analysis-of-dynamic-systems-p.57}}
+
+``Example 2.27: Initial Condition ≠ Initial Value'' \[
  \ddot{x} + \dot{x} + 2x = \delta(t), \, x(0^-) = 0, \, \dot{x}(0^-) = 0
 \implies \dot{x}(0^+) =  1
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-x''[t] + x'[t] + 2 x[t] == Delta[t], x[0] == 0, x'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
+\] *{[}WolframAlpha:
+\texttt{x\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ x\textquotesingle{}{[}t{]}\ +\ 2\ x{[}t{]}\ ==\ Delta{[}t{]},\ x{[}0{]}\ ==\ 0,\ x\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
 \(x(t) = \frac{2 \, e^{-t/2} \, u(t) \, \sin\left(\frac{\sqrt{7}}{2} t\right)}{\sqrt{7}}\)
 (the book only states the jump \(\dot x(0^+)=1\); this full closed form
-is consistent with it --- differentiating gives \(\dot x(0^+)=1\))}{]}
+is consistent with it --- differentiating gives \(\dot x(0^+)=1\))*{]}
 
 \emph{{[}Jump condition at \(t=0\): confirming the book's own claim,
 \(\ddot x+\dot x+2x=\delta(t)\). Phase vector \(\mathbf x=(x,\dot x)\)
 changes by \(\Delta\mathbf x(0)=(0,1)\).{]}}
 
-p.343 ``Impulse Response of First-Order Systems''
-\[ x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau} \] where A -
-impulse's magnitude \(\tau\) - coefficient for higher derivative in ODE.
-\emph{{[}WolframAlpha:}
+\hypertarget{finan-p.57}{%
+\paragraph{Finan, p.57}\label{finan-p.57}}
 
-\begin{lstlisting}
-tau x'[t] + x[t] == A Delta[t], x[0] == x0
-\end{lstlisting}
+Example 48.1. ``A spring-mass system with mass 2, damping 4, and spring
+constant 10 is subject to a hammer blow at time \(t = 0\): The blow
+imparts a total impulse of 1 to the system, which was initially at rest.
+Find the response of the system.'' \[
+2y'' + 4y' + 10y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{4} e^{-t} \sin(2t) \, u(t)
+\] *{[}WolframAlpha:
+\texttt{2\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 4\ y\textquotesingle{}{[}t{]}\ +\ 10\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = \frac{1}{4} e^{-t} \sin(2t)\)*{]}
 
-\emph{Returns
-\(x(t) = e^{-t/\tau} x_0 + \frac{A}{\tau} e^{-t/\tau}\)}{]}
+\emph{{[}Jump condition at \(t=0\): \(2y''+4y'+10y=\delta(t)\) has
+leading coefficient \(2\). Phase vector \(\mathbf y=(y,y')\) changes by
+\(\Delta\mathbf y(0)=(0,\frac12)\).{]}}
 
-\emph{{[}Jump condition at \(t=0\): normalizing \(\tau x'+x=A\delta(t)\)
-to \(x'+\tfrac1\tau x=\tfrac{A}{\tau}\delta(t)\) (first order). Phase
-vector \(\mathbf x=(x)\) changes by
-\(\Delta\mathbf x(0)=\left(\dfrac{A}{\tau}\right)\).{]}}
+\hypertarget{frank-control-theory-tutorial-p.29}{%
+\paragraph{Frank --- Control theory tutorial,
+p.29}\label{frank-control-theory-tutorial-p.29}}
 
-\hypertarget{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems}{%
-\subsection{Franklin, Powell \& Emami-Naeini --- Feedback control of
-dynamic
-systems}\label{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems}}
-
-p.~110 \[
-\dot{y} + ky = u = \delta(t), y(0) = 0 \equiv \dot{y} + ky = 0, \quad y(0^+) = 1
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y'[t] + k y[t] == Delta[t], y[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(y(t) = e^{-k t} \, u(t)\) (at \(t=0^+\) this gives
-\(y(0^+)=1\), matching the book)}{]}
-
-\emph{{[}Jump condition at \(t=0\): confirming the book's own reduction,
-\(y'+ky=\delta(t)\) is first order. Phase vector \(\mathbf y=(y)\)
-changes by \(\Delta\mathbf y(0)=(1)\).{]}}
-
-p.151 \[
-H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(2 s + 1)/((s + 1)^2 + 4), s, t]
-\end{lstlisting}
-
-\emph{Returns
-\(h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): because the right-hand side carries
-a derivative of the (impulsive) input, \(2x'+x\) with \(x=\delta(t)\),
-the relative degree of \(H(s)\) drops to \(1\). Phase vector
-\(\mathbf y=(y,y')\) changes by \(\Delta\mathbf y(0)=(2,-3)\).{]}}
-
-\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform}{%
-\subsection{Gangadharaiah \& Sandeep --- Engineering applications of the
-Laplace
-transform}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform}}
-
-p.239 Example 3.8. ``Use the Laplace transform to find \ldots{} the
-impulse response of the system if the differential equation describes
-the system'' \[
-\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = \frac{d^2x(t)}{dt^2} + 8\frac{dx(t)}{dt} + 13x(t) \implies h(t) = \delta(t) + e^{-2t} + 2e^{-3t}
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(s^2 + 8 s + 13)/(s^2 + 5 s + 6), s, t]
-\end{lstlisting}
-
-\emph{Returns \(h(t) = \delta(t) + e^{-2t} + 2 e^{-3t}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): numerator and denominator of
-\(H(s)=(s^2+8s+13)/(s^2+5s+6)\) share degree \(2\), so the input's own
-\(\delta(t)\) passes straight through as a direct-feedthrough term
-(coefficient \(=1\)) on top of the smooth part
-\(h_{\text{reg}}(t)=e^{-2t}+2e^{-3t}\). Phase vector
-\(\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')\) changes by
-\(\Delta\mathbf h_{\text{reg}}(0)=(3,-8)\).{]}}
-
-p.248 Example 3.11. ``Consider the causal LTI system described by the
-second differential equation \ldots{} Determine the impulse response''
 \[
+P(s) = \left(\frac{a}{s+a}\right)\left(\frac{b}{s+b}\right) = \frac{ab}{(s+a)(s+b)}
+\] ``For example, if the input into this system is a unit impulse at
+time zero, then the system output is'' \[
+y(t) = \frac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)
+\] *{[}WolframAlpha:
+\texttt{Assuming{[}a\ \textgreater{}\ 0\ \&\&\ b\ \textgreater{}\ 0\ \&\&\ a\ !=\ b,\ InverseLaplaceTransform{[}a\ b/((s\ +\ a)\ (s\ +\ b)),\ s,\ t{]}{]}}
+--- Returns \(y(t) = \dfrac{ab}{b-a}\left(e^{-at} - e^{-bt}\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(P(s)=ab/((s+a)(s+b))\) corresponds
+to the zero-state 2nd-order ODE
+\(\ddot y+(a+b)\dot y+ab\,y=ab\,\delta(t)\) (relative degree \(2\)).
+Phase vector \(\mathbf y=(y,\dot y)\) changes by
+\(\Delta\mathbf y(0)=(0,ab)\).{]}}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.248}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.248}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.248}}
+
+Example 3.11. ``Consider the causal LTI system described by the second
+differential equation \ldots{} Determine the impulse response'' \[
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = e^{-2t} - e^{-3t}.
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 5 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(h(t) = e^{-2t} - e^{-3t}\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 5\ y\textquotesingle{}{[}t{]}\ +\ 6\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(h(t) = e^{-2t} - e^{-3t}\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): \(y''+5y'+6y=\delta(t)\). Phase
 vector \(\mathbf y=(y,y')\) changes by \(\Delta\mathbf y(0)=(0,1)\).{]}}
 
-p.254 Example 3.12. ``find the impulse response of the system if the
-third-order differential equation describes the system'' \[
-\frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
-\] \emph{{[}WolframAlpha:}
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.289}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.289}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.289}}
 
-\begin{lstlisting}
-y'''[t] + 6 y''[t] + 11 y'[t] + 6 y[t] == Delta[t], y[0] == 0, y'[0] == 0, y''[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): this third-order equation. Phase
-vector \(\mathbf y=(y,y',y'')\) changes by
-\(\Delta\mathbf y(0)=(0,0,1)\).{]}}
-
-p.257 Example 3.14. ``Compute the impulse response of the transform with
-the transfer function'' \[
-H(s) = \frac{s^2 - s + 1}{s^2 + 2s + 1} \implies y(t) = \delta(t) - 3e^{-t} + 3te^{-t}.
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(s^2 - s + 1)/(s^2 + 2 s + 1), s, t]
-\end{lstlisting}
-
-\emph{Returns \(y(t) = \delta(t) - 3 e^{-t} + 3 t e^{-t}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): as in Example 3.8,
-\(\deg N=\deg D=2\) for \(H(s)=(s^2-s+1)/(s^2+2s+1)\), giving a direct
-feedthrough of coefficient \(1\) plus a smooth remainder
-\(y_{\text{reg}}(t)=-3e^{-t}+3te^{-t}\). Phase vector
-\(\mathbf y_{\text{reg}}=(y_{\text{reg}},y_{\text{reg}}')\) changes by
-\(\Delta\mathbf y_{\text{reg}}(0)=(-3,6)\).{]}}
-
-p.288 Example 3.27. ``find impulse response of the system if the
-differential equation describes the system'' \[
-\frac{d^2z(t)}{dt^2} + 3\frac{dz(t)}{dt} + 2z(t) = \frac{d^2x(t)}{dt^2} + 6\frac{dx(t)}{dt} + 7x(t) \implies h(t) = \delta(t) + 2e^{-t} + e^{-2t}.
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(s^2 + 6 s + 7)/(s^2 + 3 s + 2), s, t]
-\end{lstlisting}
-
-\emph{Returns \(h(t) = \delta(t) + 2 e^{-t} + e^{-2t}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): again \(\deg N=\deg D=2\) for
-\(H(s)=(s^2+6s+7)/(s^2+3s+2)\), giving a direct feedthrough of
-coefficient \(1\) plus a smooth remainder
-\(h_{\text{reg}}(t)=2e^{-t}+e^{-2t}\). Phase vector
-\(\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')\) changes by
-\(\Delta\mathbf h_{\text{reg}}(0)=(3,-4)\).{]}}
-
-p.289 Example 3.28. ``find the impulse response of the system if the
+Example 3.28. ``find the impulse response of the system if the
 differential equation describes the system'' \[
 \frac{d^2z(t)}{dt^2} + 4\frac{dz(t)}{dt} + 10z(t) = x(t) \implies h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6}t\right).
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-z''[t] + 4 z'[t] + 10 z[t] == Delta[t], z[0] == 0, z'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{z\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 4\ z\textquotesingle{}{[}t{]}\ +\ 10\ z{[}t{]}\ ==\ Delta{[}t{]},\ z{[}0{]}\ ==\ 0,\ z\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(h(t) = \frac{1}{\sqrt{6}} e^{-2t} \sin\left(\sqrt{6} \, t\right)\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): \(z''+4z'+10z=\delta(t)\). Phase
 vector \(\mathbf z=(z,z')\) changes by \(\Delta\mathbf z(0)=(0,1)\).{]}}
 
-p.306 Example 4.7. ``Solve the initial value problem'' \[
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.306}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.306}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.306}}
+
+Example 4.7. ``Solve the initial value problem'' \[
 \frac{d^2 y(t)}{dt^2} + 5 \frac{dy(t)}{dt} + 6y(t) = \delta(t - \pi) - \delta(t - 2\pi)
 \]
 
 with \(y(0) = 0 = y'(0)\). \[
 y(t) = \left( e^{-2(t-\pi)} - e^{-3(t-\pi)} \right) u(t - \pi) - \left( e^{-2(t-2\pi)} - e^{-3(t-2\pi)} \right) u(t - 2\pi).
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 5 y'[t] + 6 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = \left(e^{-2(t-\pi)} - e^{-3(t-\pi)}\right) u(t-\pi) - \left(e^{-2(t-2\pi)} - e^{-3(t-2\pi)}\right) u(t-2\pi)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 5\ y\textquotesingle{}{[}t{]}\ +\ 6\ y{[}t{]}\ ==\ Delta{[}t\ -\ Pi{]}\ -\ Delta{[}t\ -\ 2\ Pi{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = \left(e^{-2(t-\pi)} - e^{-3(t-\pi)}\right) u(t-\pi) - \left(e^{-2(t-2\pi)} - e^{-3(t-2\pi)}\right) u(t-2\pi)\)*{]}
 
 \emph{{[}Jump conditions: phase vector \(\mathbf y=(y,y')\) changes by
 \(\Delta\mathbf y(\pi)=(0,1)\) at \(t=\pi\), and by
 \(\Delta\mathbf y(2\pi)=(0,-1)\) at \(t=2\pi\) (the coefficient of
 \(-\delta(t-2\pi)\)).{]}}
 
-p.340 Example 4.25. ``Obtain the solution of the fourth-order
-differential equation'' \[
-\frac{d^4 y(t)}{dt^4} + 2 \frac{d^3 y(t)}{dt^3} - \frac{d^2 y(t)}{dt^2} - 2 \frac{dy(t)}{dt} = \delta(t)
-\]
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.387}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.387}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.387}}
 
-along with the initial condition \[
-y(0) = 1 \quad \text{and} \quad y'(0) = y''(0) = y'''(0) = 0.
-\]
-
-\[
-y(t) = \frac{1}{2} + \frac{1}{2}e^{-t} + \frac{1}{6}e^{t} - \frac{1}{6}e^{-2t}.
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''''[t] + 2 y'''[t] - y''[t] - 2 y'[t] == Delta[t], y[0] == 1, y'[0] == 0, y''[0] == 0, y'''[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = \frac{1}{2} + \frac{1}{2} e^{-t} + \frac{1}{6} e^{t} - \frac{1}{6} e^{-2t}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): this fourth-order equation. Phase
-vector \(\mathbf y=(y,y',y'',y''')\) changes by
-\(\Delta\mathbf y(0)=(0,0,0,1)\).{]}} \emph{{[}Editorial note: as
-transcribed, this example's stated answer
-(\(y = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}\)) does not satisfy its own
-stated differential equation and initial conditions --- it fails the
-homogeneous-equation check for \(t>0\) and the required continuity of
-\(y'\) and \(y''\) at \(t=0\). The closed-form solution above is the
-unique function consistent with the stated fourth-order equation,
-\(y(0)=1\), \(y'(0)=y''(0)=y'''(0)=0\), and \(\delta(t)\) forcing; it
-was re-derived via the Laplace transform and independently confirmed by
-direct substitution back into the differential equation. It replaces the
-original transcription here as a high-confidence, mathematically
-necessary correction rather than a silent guess.{]}}
-
-p.387 Example 4.49. ``Obtain the solution of the second-order
-differential equation'' \[
+Example 4.49. ``Obtain the solution of the second-order differential
+equation'' \[
 \frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = 3\delta(t-2) - 4\delta(t-4)
 \]
 
 along with the initial conditions \(y(0) = 0 = y'(0)\). \[
 y(t) = 3(e^{-2(t-2)} - e^{-3(t-2)})u(t-2) - 4(e^{-2(t-4)} - e^{-3(t-4)})u(t-4).
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 5 y'[t] + 6 y[t] == 3 Delta[t - 2] - 4 Delta[t - 4], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = 3\left(e^{-2(t-2)} - e^{-3(t-2)}\right) u(t-2) - 4\left(e^{-2(t-4)} - e^{-3(t-4)}\right) u(t-4)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 5\ y\textquotesingle{}{[}t{]}\ +\ 6\ y{[}t{]}\ ==\ 3\ Delta{[}t\ -\ 2{]}\ -\ 4\ Delta{[}t\ -\ 4{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = 3\left(e^{-2(t-2)} - e^{-3(t-2)}\right) u(t-2) - 4\left(e^{-2(t-4)} - e^{-3(t-4)}\right) u(t-4)\)*{]}
 
 \emph{{[}Jump conditions: phase vector \(\mathbf y=(y,y')\) changes by
 \(\Delta\mathbf y(2)=(0,3)\) at \(t=2\) (the coefficient of
 \(3\delta(t-2)\)), and by \(\Delta\mathbf y(4)=(0,-4)\) at \(t=4\) (the
 coefficient of \(-4\delta(t-4)\)).{]}}
 
-\hypertarget{lathi-green-linear-systems-and-signals}{%
-\subsection{Lathi \& Green --- Linear systems and
-signals}\label{lathi-green-linear-systems-and-signals}}
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.471}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.471}\label{krishnaveni-rajeswari-signals-and-systems-p.471}}
 
-p.164 ``EXAMPLE 2.5 Impulse Response via Impulse Matching'' ``Find the
-impulse response h(t) for a system specified by (D2 +5D+6)y(t) =
-(D+1)x(t)'' Solution \[ h(t) = (-e^{-2t} + 2e^{-3t})u(t) \]
-\emph{{[}WolframAlpha:}
+Example 8.21. Find the inverse Laplace transform of \[
+X(s) = \frac{2}{s^2 + 3s + 2}, \quad \text{Re}\{s\} > -1 \implies x(t) = -2e^{-2t}u(t) + 2e^{-t}u(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}2/(s\^{}2\ +\ 3\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(x(t) = 2e^{-t} - 2e^{-2t}\)*{]}
 
-\begin{lstlisting}
-InverseLaplaceTransform[(s + 1)/(s^2 + 5 s + 6), s, t]
-\end{lstlisting}
+\emph{{[}Jump condition at \(t=0\): reading \(X(s)=2/(s^2+3s+2)\) as the
+impulse response of the zero-state 2nd-order ODE
+\(\ddot x+3\dot x+2x=2\delta(t)\) (relative degree \(2\)). Phase vector
+\(\mathbf x=(x,\dot x)\) changes by \(\Delta\mathbf x(0)=(0,2)\).{]}}
 
-\emph{Returns \(h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)\)}{]}
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.472-1}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.472}\label{krishnaveni-rajeswari-signals-and-systems-p.472-1}}
 
-\emph{{[}Jump condition at \(t=0\): because the input enters as
-\((D+1)x\), the relative degree of the transfer function is \(1\). Phase
-vector \(\mathbf y=(y,y')\) changes by
-\(\Delta\mathbf y(0)=(1,-4)\).{]}}
+Example 8.23. Find the inverse Laplace transform of \[
+X(s) = \frac{1}{(s+5)(s-3)}
+\] for (a) ROC: \(-5 < \text{Re}\{s\} < 3\); (b) ROC:
+\(\text{Re}\{s\} > 3\); (c) ROC: \(\text{Re}\{s\} < -5\) \[
+\text{(a)}\quad x(t) = -\frac{1}{8}e^{-5t}u(t) - \frac{1}{8}e^{3t}u(-t)
+\] \[
+\text{(b)}\quad x(t) = \frac{1}{8}\left(e^{3t} - e^{-5t}\right)u(t)
+\] \[
+\text{(c)}\quad x(t) = \frac{1}{8}\left(e^{-5t} - e^{3t}\right)u(-t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}1/((s\ +\ 5)\ (s\ -\ 3)),\ s,\ t{]}}
+--- Returns the fully causal inverse,
+\(x(t) = \frac{1}{8}\left(e^{3t} - e^{-5t}\right)u(t)\), confirming case
+(b). WolframAlpha's default convention is causal, so cases (a) and (c)
+--- each of which includes a left-sided (anticausal) component ---
+cannot be returned directly; those branches were instead verified from
+the bilateral Laplace pairs
+\(e^{3t}u(-t) \leftrightarrow -\dfrac{1}{s-3}\) for \(\text{Re}\{s\}<3\)
+and \(e^{-5t}u(-t) \leftrightarrow -\dfrac{1}{s+5}\) for
+\(\text{Re}\{s\}<-5\), applied to the partial-fraction expansion
+\(X(s) = -\dfrac{1}{8(s+5)} + \dfrac{1}{8(s-3)}\) (confirmed numerically
+as well).*{]}
 
-p.166 EXAMPLE 2.6 ``Determine the unit impulse response h(t) for a
-system specified by the equation (D\^{}2 +3D+2)y(t) = Dx(t)'' Solution
-\[ h(t) = (-e^{-t} + 2e^{-2t})u(t) \] \emph{{[}WolframAlpha:}
+\emph{{[}Jump condition at \(t=0\): \(X(s)=1/((s+5)(s-3))\) has
+\(\deg N=0 < \deg D=2\) (relative degree \(2\), strictly proper), so
+none of the three ROC cases carries a direct-feedthrough \(\delta(t)\)
+term, and \(x(t)\) itself is continuous at \(t=0\) in every case. The
+jump instead shows up one derivative later, in \(\dot x\), by the same
+amount (\(\Delta\dot x(0)=1\), the leading-coefficient ratio \(1/1\))
+regardless of ROC: for the causal case (b), \(\dot x(0^-)=0\) up to
+\(\dot x(0^+)=1\), the usual zero-state jump of the 2nd-order ODE
+\(\ddot x+2\dot x-15x=\delta(t)\); for the anticausal case (c),
+\(\dot x(0^-)=-1\) down to \(\dot x(0^+)=0\), the mirror image; and for
+the two-sided case (a), the jump straddles \(t=0\) the same way but
+centered on a different baseline, \(\dot x(0^-)=-3/8\) up to
+\(\dot x(0^+)=5/8\) --- the same \(+1\) jump, just neither purely causal
+nor purely anticausal.{]}}
 
-\begin{lstlisting}
-InverseLaplaceTransform[s/(s^2 + 3 s + 2), s, t]
-\end{lstlisting}
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.482}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.482}\label{krishnaveni-rajeswari-signals-and-systems-p.482}}
 
-\emph{Returns \(h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)\)}{]}
+Example 8.31. Using Laplace transform, solve the differential equation
+with zero initial conditions \[
+\frac{d^2}{dt^2}y(t) + 4\frac{d}{dt}y(t) + 4y(t) = \delta(t) + 2u(t) \implies y(t) = \frac{1}{2}u(t) - \frac{1}{2}e^{-2t}u(t)
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 4\ y\textquotesingle{}{[}t{]}\ +\ 4\ y{[}t{]}\ ==\ DiracDelta{[}t{]}\ +\ 2\ UnitStep{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = \frac{1}{2} - \frac{1}{2}e^{-2t}\)*{]}
 
-\emph{{[}Jump condition at \(t=0\): the input enters as \(Dx\), again
-giving relative degree \(1\). Phase vector \(\mathbf y=(y,y')\) changes
-by \(\Delta\mathbf y(0)=(1,-3)\).{]}}
+\emph{{[}Jump condition at \(t=0\):
+\(\ddot y+4\dot y+4y=\delta(t)+2u(t)\); the step term \(2u(t)\) is a
+regular (non-impulsive) forcing and contributes no jump, so the jump at
+\(t=0\) comes entirely from \(\delta(t)\). Phase vector
+\(\mathbf y=(y,\dot y)\) changes by \(\Delta\mathbf y(0)=(0,1)\).{]}}
 
-p.167 ``DRILL 2.4 Finding the Impulse Response'' ``Determine the unit
-impulse response of LTIC systems described by the following equations:''
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.483}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.483}\label{krishnaveni-rajeswari-signals-and-systems-p.483}}
 
-\begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
-\item
-  \((D + 2)y(t) = (3D + 5)x(t) \implies h(t)=3\delta(t) - e^{-2t}u(t)\)
-\item
-  \(D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t)\)
-\item
-  \((D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t)\)
-  \emph{{[}WolframAlpha:}
-\end{enumerate}
+Example 8.32. Find the output \(y(t)\) of an LTI system represented.
+Assume that the system is initially at rest. \[
+\frac{d^2}{dt^2}y(t) + 3\frac{d}{dt}y(t) + 2y(t) = \delta(t) \implies y(t) = -e^{-2t}u(t) + e^{-t}u(t)
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 3\ y\textquotesingle{}{[}t{]}\ +\ 2\ y{[}t{]}\ ==\ DiracDelta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = e^{-t} - e^{-2t}\)*{]}
 
-\begin{lstlisting}
-InverseLaplaceTransform[(3 s + 5)/(s + 2), s, t]
-InverseLaplaceTransform[(s + 4)/(s (s + 2)), s, t]
-InverseLaplaceTransform[s/(s + 1)^2, s, t]
-\end{lstlisting}
+\emph{{[}Jump condition at \(t=0\): \(\ddot y+3\dot y+2y=\delta(t)\).
+Phase vector \(\mathbf y=(y,\dot y)\) changes by
+\(\Delta\mathbf y(0)=(0,1)\).{]}}
 
-\emph{Returns, respectively: \(h(t) = 3\delta(t) - e^{-2t} u(t)\),
-\(\; h(t) = \left(2 - e^{-2t}\right) u(t)\),
-\(\; h(t) = (1-t) e^{-t} u(t)\)}{]}
+\hypertarget{nagle-saff-snider-fundamentals-of-differential-equations-p.403}{%
+\paragraph{Nagle, Saff \& Snider --- Fundamentals of differential
+equations,
+p.403}\label{nagle-saff-snider-fundamentals-of-differential-equations-p.403}}
 
-\emph{{[}Jump conditions at \(t=0\), one per part: (a)
-\((D+2)y=(3D+5)x\) has \(\deg N=\deg D=1\), a direct feedthrough of
-coefficient \(3\) plus a remainder that changes by
-\(\Delta\mathbf y_{\text{reg}}(0)=(-1)\); (b) \(D(D+2)y=(D+4)x\) has
-relative degree \(1\): \(\Delta\mathbf y(0)=(1,2)\); (c)
-\((D^2+2D+1)y=Dx\) likewise: \(\Delta\mathbf y(0)=(1,-2)\).{]}}
-
-\hypertarget{nagle-saff-snider-fundamentals-of-differential-equations}{%
-\subsection{Nagle, Saff \& Snider --- Fundamentals of differential
-equations}\label{nagle-saff-snider-fundamentals-of-differential-equations}}
-
-p.403 Example 4 ``A linear system is governed by the differential
-equation'' \[
+Example 4 ``A linear system is governed by the differential equation''
+\[
 y'' + 2y' + 5y = \delta(t), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} e^{-t} \sin 2t
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 2 y'[t] + 5 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(y(t) = \frac{1}{2} e^{-t} \sin(2t)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 2\ y\textquotesingle{}{[}t{]}\ +\ 5\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = \frac{1}{2} e^{-t} \sin(2t)\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): phase vector \(\mathbf y=(y,y')\)
 changes by \(\Delta\mathbf y(0)=(0,1)\).{]}} \emph{{[}Editorial note: as
@@ -623,107 +835,89 @@ stated answer exactly (characteristic roots \(-1\pm2i\) give precisely
 \(\frac{1}{2}e^{-t}\sin2t\)), and is used here as a high-confidence
 reconstruction rather than left incomplete.{]}}
 
-p.409 Example 1 \[
-\frac{d^2x}{dt^2} + 9x = 3\delta(t - \pi); \quad x(0) = 1, \quad \frac{dx}{dt}(0) = 0 \implies x(t) =
-\begin{cases}
-\cos 3t, & t < \pi, \\
+\hypertarget{nagle-saff-snider-fundamentals-of-differential-equations-p.409}{%
+\paragraph{Nagle, Saff \& Snider --- Fundamentals of differential
+equations,
+p.409}\label{nagle-saff-snider-fundamentals-of-differential-equations-p.409}}
+
+Example 1 \[
+\frac{d^2x}{dt^2} + 9x = 3\delta(t - \pi); \quad x(0) = 1, \quad \frac{dx}{dt}(0) = 0 \implies x(t) = 
+\begin{cases} 
+\cos 3t, & t < \pi, \\ 
 \cos 3t - \sin 3t, & \pi < t
 \end{cases}
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-x''[t] + 9 x[t] == 3 Delta[t - Pi], x[0] == 1, x'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{x\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 9\ x{[}t{]}\ ==\ 3\ Delta{[}t\ -\ Pi{]},\ x{[}0{]}\ ==\ 1,\ x\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(x(t) = \cos(3t) - \sin(3t) \, u(t-\pi)\)*{]}
 
 \emph{{[}Jump condition at \(t=\pi\): phase vector \(\mathbf x=(x,x')\)
 changes by \(\Delta\mathbf x(\pi)=(0,3)\), the impulse strength.{]}}
 
-\hypertarget{nagy-ordinary-differential-equations}{%
-\subsection{Nagy --- Ordinary differential
-equations}\label{nagy-ordinary-differential-equations}}
+\hypertarget{nagy-ordinary-differential-equations-p.205}{%
+\paragraph{Nagy --- Ordinary differential equations,
+p.205}\label{nagy-ordinary-differential-equations-p.205}}
 
-p.202 \[
-y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + w0^2 y[t] == f0 Delta[t - t0], y[0] == y0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)\)}{]}
-
-\emph{{[}Jump condition at \(t=t_0\): phase vector \(\mathbf y=(y,y')\)
-changes by \(\Delta\mathbf y(t_0)=(0,f_0)\), the impulse strength.{]}}
-
-p.205 Example 3.4.6. ``Find the impulse response function'' \[
+Example 3.4.6. ``Find the impulse response function'' \[
 L(y) = y'' + 2y' + 2y \implies y_\delta(t) = u(t-c)e^{-(t-c)}\sin(t-c)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 2 y'[t] + 2 y[t] == Delta[t], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(y_\delta(t) = e^{-t} \sin(t) \, u(t)\) (the \(c=0\) case
-of the book's general \(u(t-c)e^{-(t-c)}\sin(t-c)\))}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 2\ y\textquotesingle{}{[}t{]}\ +\ 2\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y_\delta(t) = e^{-t} \sin(t) \, u(t)\) (the \(c=0\) case
+of the book's general \(u(t-c)e^{-(t-c)}\sin(t-c)\))*{]}
 
 \emph{{[}Jump condition at \(t=c\): phase vector \(\mathbf y=(y,y')\)
 changes by \(\Delta\mathbf y(c)=(0,1)\).{]}}
 
-p.205 Example 3.4.7. ``Find the solution y to the initial value
-problem'' \[
+\hypertarget{nagy-ordinary-differential-equations-p.202}{%
+\paragraph{Nagy --- Ordinary differential equations,
+p.202}\label{nagy-ordinary-differential-equations-p.202}}
+
+\emph{{[}Note: this is similar to Angeles, p.119, in the case of
+\(f_0=1\) and \(t_0=0\).{]}} \[
+y'' + \omega_0^2 y = f_0 \delta(t - t_0), \quad y(0) = y_0, \quad y'(0) = 0 \implies y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} u(t - t_0) \sin(\omega_0 (t - t_0))
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ w0\^{}2\ y{[}t{]}\ ==\ f0\ Delta{[}t\ -\ t0{]},\ y{[}0{]}\ ==\ y0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = y_0 \cos(\omega_0 t) + \frac{f_0}{\omega_0} \, u(t-t_0) \sin\left(\omega_0 (t-t_0)\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=t_0\): phase vector \(\mathbf y=(y,y')\)
+changes by \(\Delta\mathbf y(t_0)=(0,f_0)\), the impulse strength.{]}}
+
+\hypertarget{nagy-ordinary-differential-equations-p.205-1}{%
+\paragraph{Nagy --- Ordinary differential equations,
+p.205}\label{nagy-ordinary-differential-equations-p.205-1}}
+
+Example 3.4.7. ``Find the solution y to the initial value problem'' \[
 y'' - y = -20 \delta(t-3), \quad y(0) = 1, \quad y'(0) = 0 \implies y(t) = \cosh(t) - 20 \, u(t-3) \, \sinh(t-3)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] - y[t] == -20 Delta[t - 3], y[0] == 1, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns \(y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ -\ y{[}t{]}\ ==\ -20\ Delta{[}t\ -\ 3{]},\ y{[}0{]}\ ==\ 1,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns \(y(t) = \cosh(t) - 20 \, u(t-3) \sinh(t-3)\)*{]}
 
 \emph{{[}Jump condition at \(t=3\): phase vector \(\mathbf y=(y,y')\)
 changes by \(\Delta\mathbf y(3)=(0,-20)\), the impulse strength.{]}}
 
-p.206 Example 3.4.8. ``Find the solution to the initial value problem''
-\[
+\hypertarget{nagy-ordinary-differential-equations-p.206}{%
+\paragraph{Nagy --- Ordinary differential equations,
+p.206}\label{nagy-ordinary-differential-equations-p.206}}
+
+Example 3.4.8. ``Find the solution to the initial value problem'' \[
 y'' + 4y = \delta(t - \pi) - \delta(t - 2\pi), \quad y(0) = 0, \quad y'(0) = 0 \implies y(t) = \frac{1}{2} \left[ u(t - \pi) - u(t - 2\pi) \right] \sin(2t)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-y''[t] + 4 y[t] == Delta[t - Pi] - Delta[t - 2 Pi], y[0] == 0, y'[0] == 0
-\end{lstlisting}
-
-\emph{Returns
-\(y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 4\ y{[}t{]}\ ==\ Delta{[}t\ -\ Pi{]}\ -\ Delta{[}t\ -\ 2\ Pi{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = \frac{1}{2}\left[u(t-\pi) - u(t-2\pi)\right] \sin(2t)\)*{]}
 
 \emph{{[}Jump conditions: phase vector \(\mathbf y=(y,y')\) changes by
 \(\Delta\mathbf y(\pi)=(0,1)\) at \(t=\pi\), and by
 \(\Delta\mathbf y(2\pi)=(0,-1)\) at \(t=2\pi\) (the coefficient of
 \(-\delta(t-2\pi)\)).{]}}
 
-\hypertarget{ogata-modern-control-engineering}{%
-\subsection{Ogata --- Modern control
-engineering}\label{ogata-modern-control-engineering}}
+\hypertarget{ogata-modern-control-engineering-p.178}{%
+\paragraph{Ogata --- Modern control engineering,
+p.178}\label{ogata-modern-control-engineering-p.178}}
 
-p.163 ``Unit-Impulse Response of First-Order Systems'' \[
-C(s) = \frac{1}{Ts + 1} \implies c(t) = \frac{1}{T} e^{-t/T}, \quad \text{for } t \geq 0
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[1/(T s + 1), s, t]
-\end{lstlisting}
-
-\emph{Returns \(c(t) = \frac{1}{T} e^{-t/T}\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): normalizing \(Tc'+c=\delta(t)\) to
-\(c'+\tfrac1T c=\tfrac1T\delta(t)\) (first order). Phase vector
-\(\mathbf c=(c)\) changes by
-\(\Delta\mathbf c(0)=\left(\dfrac1T\right)\).{]}}
-
-p.178 ``Impulse Response of Second-Order Systems'' \[
-C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}
+``Impulse Response of Second-Order Systems'' \emph{{[}Note: this is
+similar to Angeles, p.120.{]}} \[
+C(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} \implies \\
 \]
 
 For \(0 \leq \zeta < 1\),
@@ -746,11 +940,11 @@ c(t) = \frac{\omega_n}{2 \sqrt{\zeta^2 - 1}} e^{-\left( \zeta - \sqrt{\zeta^2 - 
 made explicit (unlike the other entries, a bare equation list would
 leave \(\zeta\)'s range ambiguous), so paste each line separately:}
 
-\begin{lstlisting}
+\begin{verbatim}
 Assuming[0 < zeta < 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
 Assuming[zeta == 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
 Assuming[zeta > 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^2 Delta[t], y[0] == 0, y'[0] == 0}, y[t], t]]
-\end{lstlisting}
+\end{verbatim}
 
 \emph{Returns, respectively:
 \(c(t) = \frac{\omega_n}{\sqrt{1-\zeta^2}} e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)\),
@@ -761,32 +955,28 @@ Assuming[zeta > 1 && wn > 0, DSolve[{y''[t] + 2 zeta wn y'[t] + wn^2 y[t] == wn^
 vector \(\mathbf c=(c,c')\) changes by
 \(\Delta\mathbf c(0)=(0,\omega_n^2)\), independent of \(\zeta\).{]}}
 
-\hypertarget{shabana-vibration-of-discrete-and-continuous-systems}{%
-\subsection{Shabana --- Vibration of discrete and continuous
-systems}\label{shabana-vibration-of-discrete-and-continuous-systems}}
+\hypertarget{shabana-vibration-of-discrete-and-continuous-systems-p.41}{%
+\paragraph{Shabana --- Vibration of discrete and continuous systems,
+p.41}\label{shabana-vibration-of-discrete-and-continuous-systems-p.41}}
 
-p.41 Example 1.10 ``Find the response of the single degree of freedom
-system shown in Fig. 17 to the rectangular impulsive force shown in Fig.
-16, where m = 10 kg, k = 9,000 N/m, c = 18 N·s/m, and Fo = 10,000 N. The
+Example 1.10 ``Find the response of the single degree of freedom system
+shown in Fig. 17 to the rectangular impulsive force shown in Fig. 16,
+where m = 10 kg, k = 9,000 N/m, c = 18 N·s/m, and Fo = 10,000 N. The
 force is assumed to act at time t = 0 and the impact interval is assumed
 to be 0.005 s.'' The system response to the impulsive force is then
 given by \[
 \begin{aligned}
 x(t) &= \frac{l}{m\omega_d} e^{-\xi\omega t} \sin \omega_d t = \frac{50}{(10)(29.986)} e^{-(0.03)(30)t} \sin 29.986t = 0.1667e^{-0.9t} \sin 29.986t
 \end{aligned}
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-m = 10; k = 9000; c = 18; F0 = 10000; dt = 0.005; wn = Sqrt[k/m]; xi = c/(2 Sqrt[m k]); wd = wn Sqrt[1 - xi^2]; N[{wn, xi, wd, xi wn, (F0 dt)/(m wd)}]
-\end{lstlisting}
-
-\emph{Returns
+\] *{[}WolframAlpha:
+\texttt{m\ =\ 10;\ k\ =\ 9000;\ c\ =\ 18;\ F0\ =\ 10000;\ dt\ =\ 0.005;\ wn\ =\ Sqrt{[}k/m{]};\ xi\ =\ c/(2\ Sqrt{[}m\ k{]});\ wd\ =\ wn\ Sqrt{[}1\ -\ xi\^{}2{]};\ N{[}\{wn,\ xi,\ wd,\ xi\ wn,\ (F0\ dt)/(m\ wd)\}{]}}
+--- Returns
 \(\{\omega_n,\,\xi,\,\omega_d,\,\xi\omega_n,\,\text{amplitude}\} = \{30,\ 0.03,\ 29.9865,\ 0.9,\ 0.166742\}\)
-(matches the book's stated 29.986, 0.9, 0.1667)}{]}
+(matches the book's stated 29.986, 0.9, 0.1667)*{]}
 
 \emph{{[}Jump condition at \(t=0\): the finite-duration force is
 idealized as an impulse of magnitude
-\(I=F_0\Delta t=(10{,}000)(0.005)=50\ \text{N·s}\) applied to
+\(I=F_0\Delta t=(10{,}000)(0.005)=50\ \text{N}\cdot\text{s}\) applied to
 \(m\ddot x+c\dot x+kx=I\delta(t)\). Phase vector
 \(\mathbf x=(x,\dot x)\) changes by
 \(\Delta\mathbf x(0)=(0,I/m)=(0,5\ \text{m/s})\), the impulse--momentum
@@ -800,19 +990,795 @@ the book states (29.986, 0.9, 0.1667) exactly, confirming the numeric
 value 18 is correct; only the unit label was corrected here, to the
 standard ``N·s/m''.{]}}
 
+\hypertarget{second-order-b-first-derivative}{%
+\subsubsection{B. First derivative of
+delta}\label{second-order-b-first-derivative}}
+
+\hypertarget{ahuja-arya-consistent-initialization-of-the-laplace-transform-arxiv1909.07813-p.6}{%
+\paragraph{Ahuja \& Arya Consistent initialization of the Laplace
+transform (arXiv:1909.07813),
+p.6}\label{ahuja-arya-consistent-initialization-of-the-laplace-transform-arxiv1909.07813-p.6}}
+
+Equation (16-17). U-tube manometer example; numeric values \(m=1\),
+\(l=2\), \(k=1\), with pre-impulse state \(v(0^-)=AM\),
+\(\dot v(0^-)=-2AM\).
+\[m\ddot{v}(t) + l\dot{v}(t) + kv(t) = A\dot{p}(t), \quad t \geq 0,\]
+
+\[ p(t) = p(0^-) + M \delta(t), \quad t \geq 0, 
+\implies\] changing IC
+\[v(0^+) = 2AM \, \text{and} \, \dot{v}(0^+) = -4AM \, \]
+*{[}WolframAlpha:
+\texttt{m\ =\ 1;\ l\ =\ 2;\ Simplify{[}\{A\ M\ +\ A\ M/m,\ -2\ A\ M\ -\ l\ A\ M/m\^{}2\}{]}}
+--- Returns \(\{2AM,\ -4AM\}\), matching the paper*{]}
+
+\emph{{[}Editorial note: as pasted, Equation (16) read
+``\(m\dot v(t)+l\dot v(t)+kv(t)=A\dot p(t)\)'' --- two first-derivative
+terms, not a valid second-order ODE. The paper's actual Eq. (16) is
+\(m\ddot v(t)+l\dot v(t)+kv(t)=A\dot p(t)\) (a U-tube manometer's
+inertia + damping + stiffness), with the numeric example using \(m=1\),
+\(l=2\), \(k=1\) and pre-impulse state \(v(0^-)=AM\),
+\(\dot v(0^-)=-2AM\) --- none of which were in the pasted snippet, but
+both are needed to reproduce the stated \(v(0^+)=2AM\),
+\(\dot v(0^+)=-4AM\). Corrected here to match the source, confirmed
+against the paper's own Eqs. (24)--(25).{]}}
+
+\emph{{[}Jump condition at \(t=0\): with \(p(t)\) constant apart from
+the impulse, \(\dot p(t)=M\,\delta'(t)\), reducing the ODE to
+\(\ddot v+2\dot v+v=AM\,\delta'(t)\) --- first derivative of delta,
+relative degree \(1\). Phase vector \(\mathbf v=(v,\dot v)\) jumps by
+\(\Delta\mathbf v(0)=(AM,-2AM)\), taking the paper's pre-impulse state
+\(v(0^-)=AM,\ \dot v(0^-)=-2AM\) to \(v(0^+)=2AM,\ \dot v(0^+)=-4AM\)
+--- matching the stated result.{]}}
+
+\hypertarget{angeles-dynamic-response-of-linear-mechanical-systems-modeling-analysis-and-simulation-p.132}{%
+\paragraph{Angeles Dynamic Response of Linear Mechanical Systems
+Modeling Analysis and Simulation,
+p.132}\label{angeles-dynamic-response-of-linear-mechanical-systems-modeling-analysis-and-simulation-p.132}}
+
+``2.5.3.1 Doublet Response'' \emph{{[}Note: Angeles states the resulting
+jump as \(x(0^+)=1\), \(\dot x(0^+)=0\);
+\textcolor{red}{this appears to be incorrect for the damped case}
+(\(\zeta\neq0\)) --- the derivation below gives
+\(\dot x(0^+)=-2\zeta\omega_n\), matching the author's claim only when
+\(\zeta=0\) --- and will be verified in a follow-up paper.{]}} \[
+\ddot{x} + 2\zeta\omega_n\dot{x} + \omega_n^2 x = \dot{\delta}(t), \quad x(0^-) = 0, \quad \dot{x}(0^-) = 0, \quad t > 0^-
+\] \[
+\implies\; x(t) = e^{-\zeta\omega_n t}\left[\cos(\omega_d t) - \frac{\zeta}{\sqrt{1-\zeta^2}}\sin(\omega_d t)\right] u(t), \quad \omega_d = \omega_n\sqrt{1-\zeta^2} \quad (0\le\zeta<1)
+\] *{[}WolframAlpha:
+\texttt{Assuming{[}0\ \textless{}\ zeta\ \textless{}\ 1\ \&\&\ wn\ \textgreater{}\ 0,\ InverseLaplaceTransform{[}s/(s\^{}2\ +\ 2\ zeta\ wn\ s\ +\ wn\^{}2),\ s,\ t{]}{]}}
+--- Returns
+\(x(t) = e^{-\zeta\omega_n t}\cos\left(\omega_n\sqrt{1-\zeta^2}\,t\right) - \dfrac{\zeta}{\sqrt{1-\zeta^2}}\, e^{-\zeta\omega_n t}\sin\left(\omega_n\sqrt{1-\zeta^2}\,t\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): the doublet forcing
+\(\dot\delta(t)\) gives
+\(\ddot x+2\zeta\omega_n\dot x+\omega_n^2x=\dot\delta(t)\) relative
+degree \(1\). Phase vector \(\mathbf x=(x,\dot x)\) changes by
+\(\Delta\mathbf x(0)=(1,-2\zeta\omega_n)\).{]}}
+
+\hypertarget{bavafa-toosi-introduction-to-linear-control-systems-p.822}{%
+\paragraph{Bavafa-Toosi --- Introduction to linear control systems,
+p.822}\label{bavafa-toosi-introduction-to-linear-control-systems-p.822}}
+
+Example A.6. ``Find the time-domain representation of'' \[
+F(s) = \frac{2s + 12}{s^2 + 2s + 5} \implies f(t) = 5e^{-t}\sin 2t + 2e^{-t}\cos 2t, \quad t \geq 0
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(2\ s\ +\ 12)/(s\^{}2\ +\ 2\ s\ +\ 5),\ s,\ t{]}}
+--- Returns \(f(t) = 5 e^{-t}\sin(2t) + 2 e^{-t}\cos(2t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(2s+12)/(s^2+2s+5)\) is
+strictly proper with relative degree \(1\) (\(\deg N=\deg D-1\)). Phase
+vector \(\mathbf f=(f,\dot f)\) changes by
+\(\Delta\mathbf f(0)=(2,8)\).{]}}
+
+\hypertarget{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems-p.151}{%
+\paragraph{Franklin, Powell \& Emami-Naeini --- Feedback control of
+dynamic systems,
+p.151}\label{franklin-powell-emami-naeini-feedback-control-of-dynamic-systems-p.151}}
+
+\[ 
+H(s) = \frac{2s + 1}{(s+1)^2 + 2^2} \implies h(t) = \left( 2e^{-t} \cos 2t - \frac{1}{2}e^{-t} \sin 2t \right) 1(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(2\ s\ +\ 1)/((s\ +\ 1)\^{}2\ +\ 4),\ s,\ t{]}}
+--- Returns
+\(h(t) = 2 e^{-t} \cos(2t) - \frac{1}{2} e^{-t} \sin(2t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): because the right-hand side carries
+a derivative of the (impulsive) input, \(2x'+x\) with \(x=\delta(t)\),
+the relative degree of \(H(s)\) drops to \(1\). Phase vector
+\(\mathbf y=(y,y')\) changes by \(\Delta\mathbf y(0)=(2,-3)\).{]}}
+
+\hypertarget{hallauer-introduction-to-linear-time-invariant-dynamic-systems-for-students-of-engineering-p.2-17}{%
+\paragraph{Hallauer Introduction to linear, time-invariant, dynamic
+systems for students of engineering,
+p.2-17}\label{hallauer-introduction-to-linear-time-invariant-dynamic-systems-for-students-of-engineering-p.2-17}}
+
+Ex.2.9.a
+\(F(s) = \frac{s+3}{(s+1)(s+5)} \text{[Answer: } f(t) = \frac{1}{2} \left( e^{-t} + e^{-5t} \right), t \geq 0 \text{]}\)
+*{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 3)/((s\ +\ 1)\ (s\ +\ 5)),\ s,\ t{]}}
+--- Returns \(f(t) = \frac12\left(e^{-t} + e^{-5t}\right)\), matching
+the book*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s+3)/((s+1)(s+5))\) has
+denominator \((s+1)(s+5)=s^2+6s+5\) and numerator \(s+3\) (relative
+degree \(1\)), corresponding to the second-order ODE
+\(y''+6y'+5y=\dot\delta(t)+3\delta(t)\). Phase vector
+\(\mathbf y=(y,y')\) changes by \(\Delta\mathbf y(0)=(1,-3)\).{]}}
+
+\hypertarget{lathi-green-linear-systems-and-signals-p.166}{%
+\paragraph{Lathi \& Green --- Linear systems and signals,
+p.166}\label{lathi-green-linear-systems-and-signals-p.166}}
+
+EXAMPLE 2.6 ``Determine the unit impulse response h(t) for a system
+specified by the equation (D\^{}2 +3D+2)y(t) = Dx(t)'' Solution
+\[ h(t) = (-e^{-t} + 2e^{-2t})u(t) \] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/(s\^{}2\ +\ 3\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(h(t) = \left(-e^{-t} + 2 e^{-2t}\right) u(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): the input enters as \(Dx\), again
+giving relative degree \(1\). Phase vector \(\mathbf y=(y,y')\) changes
+by \(\Delta\mathbf y(0)=(1,-3)\).{]}}
+
+\hypertarget{lathi-green-linear-systems-and-signals-p.167-1}{%
+\paragraph{Lathi \& Green --- Linear systems and signals,
+p.167}\label{lathi-green-linear-systems-and-signals-p.167-1}}
+
+``DRILL 2.4(c) Finding the Impulse Response'' ``Determine the unit
+impulse response of LTIC systems described by the following equation:''
+\[ (D^2 + 2D + 1)y(t) = Dx(t) \implies h(t)=(1 - t)e^{-t}u(t) \]
+*{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/(s\ +\ 1)\^{}2,\ s,\ t{]}} ---
+Returns \(h(t) = (1-t) e^{-t} u(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \((D^2+2D+1)y=Dx\) likewise:
+\(\Delta\mathbf y(0)=(1,-2)\).{]}}
+
+\hypertarget{lathi-green-linear-systems-and-signals-p.164}{%
+\paragraph{Lathi \& Green --- Linear systems and signals,
+p.164}\label{lathi-green-linear-systems-and-signals-p.164}}
+
+``EXAMPLE 2.5 Impulse Response via Impulse Matching'' ``Find the impulse
+response h(t) for a system specified by (D2 +5D+6)y(t) = (D+1)x(t)''
+Solution \[ h(t) = (-e^{-2t} + 2e^{-3t})u(t) \] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 1)/(s\^{}2\ +\ 5\ s\ +\ 6),\ s,\ t{]}}
+--- Returns \(h(t) = \left(-e^{-2t} + 2 e^{-3t}\right) u(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): because the input enters as
+\((D+1)x\), the relative degree of the transfer function is \(1\). Phase
+vector \(\mathbf y=(y,y')\) changes by
+\(\Delta\mathbf y(0)=(1,-4)\).{]}}
+
+\hypertarget{lathi-green-linear-systems-and-signals-p.167-2}{%
+\paragraph{Lathi \& Green --- Linear systems and signals,
+p.167}\label{lathi-green-linear-systems-and-signals-p.167-2}}
+
+``DRILL 2.4(b) Finding the Impulse Response'' ``Determine the unit
+impulse response of LTIC systems described by the following equation:''
+\[ D(D + 2)y(t) = (D + 4)x(t) \implies h(t)=(2 - e^{-2t})u(t) \]
+*{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 4)/(s\ (s\ +\ 2)),\ s,\ t{]}}
+--- Returns \(h(t) = \left(2 - e^{-2t}\right) u(t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(D(D+2)y=(D+4)x\) has relative
+degree \(1\): \(\Delta\mathbf y(0)=(1,2)\).{]}}
+
+\hypertarget{yang-signals-and-systems-with-matlab-p.392}{%
+\paragraph{Yang Signals and systems with MATLAB©,
+p.392}\label{yang-signals-and-systems-with-matlab-p.392}}
+
+Example A.2.b Inverse Laplace Transform \[X(s) = \frac{s}{s^2 + 2s + 2}
+\implies e^{-t}(\cos t - \sin t)u_s(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/(s\^{}2\ +\ 2\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(x(t) = e^{-t}\cos(t) - e^{-t}\sin(t)\), matching the
+book*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(X(s)=s/(s^2+2s+2)\) has relative
+degree \(1\) (a pure \(\dot\delta(t)\) forcing), corresponding to
+\(y''+2y'+2y=\delta'(t)\). Phase vector \(\mathbf y=(y,y')\) changes by
+\(\Delta\mathbf y(0)=(1,-2)\).{]}} \#\#\#\# C. Second derivative of
+delta \{\#second-order-c-second-derivative\}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.239}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.239}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.239}}
+
+Example 3.8. ``Use the Laplace transform to find \ldots{} the impulse
+response of the system if the differential equation describes the
+system'' \[
+\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + 6y(t) = \frac{d^2x(t)}{dt^2} + 8\frac{dx(t)}{dt} + 13x(t) \implies h(t) = \delta(t) + e^{-2t} + 2e^{-3t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\^{}2\ +\ 8\ s\ +\ 13)/(s\^{}2\ +\ 5\ s\ +\ 6),\ s,\ t{]}}
+--- Returns \(h(t) = \delta(t) + e^{-2t} + 2 e^{-3t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): numerator and denominator of
+\(H(s)=(s^2+8s+13)/(s^2+5s+6)\) share degree \(2\), so the input's own
+\(\delta(t)\) passes straight through as a direct-feedthrough term
+(coefficient \(=1\)) on top of the smooth part
+\(h_{\text{reg}}(t)=e^{-2t}+2e^{-3t}\). Phase vector
+\(\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')\) changes by
+\(\Delta\mathbf h_{\text{reg}}(0)=(3,-8)\).{]}}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.257}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.257}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.257}}
+
+Example 3.14. ``Compute the impulse response of the transform with the
+transfer function'' \[
+H(s) = \frac{s^2 - s + 1}{s^2 + 2s + 1} \implies y(t) = \delta(t) - 3e^{-t} + 3te^{-t}.
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\^{}2\ -\ s\ +\ 1)/(s\^{}2\ +\ 2\ s\ +\ 1),\ s,\ t{]}}
+--- Returns \(y(t) = \delta(t) - 3 e^{-t} + 3 t e^{-t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): as in Example 3.8,
+\(\deg N=\deg D=2\) for \(H(s)=(s^2-s+1)/(s^2+2s+1)\), giving a direct
+feedthrough of coefficient \(1\) plus a smooth remainder
+\(y_{\text{reg}}(t)=-3e^{-t}+3te^{-t}\). Phase vector
+\(\mathbf y_{\text{reg}}=(y_{\text{reg}},y_{\text{reg}}')\) changes by
+\(\Delta\mathbf y_{\text{reg}}(0)=(-3,6)\).{]}}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.288}{%
+\paragraph{Gangadharaiah \& Sandeep --- Engineering applications of the
+Laplace transform,
+p.288}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.288}}
+
+Example 3.27. ``find impulse response of the system if the differential
+equation describes the system'' \[
+\frac{d^2z(t)}{dt^2} + 3\frac{dz(t)}{dt} + 2z(t) = \frac{d^2x(t)}{dt^2} + 6\frac{dx(t)}{dt} + 7x(t) \implies h(t) = \delta(t) + 2e^{-t} + e^{-2t}.
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\^{}2\ +\ 6\ s\ +\ 7)/(s\^{}2\ +\ 3\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(h(t) = \delta(t) + 2 e^{-t} + e^{-2t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): again \(\deg N=\deg D=2\) for
+\(H(s)=(s^2+6s+7)/(s^2+3s+2)\), giving a direct feedthrough of
+coefficient \(1\) plus a smooth remainder
+\(h_{\text{reg}}(t)=2e^{-t}+e^{-2t}\). Phase vector
+\(\mathbf h_{\text{reg}}=(h_{\text{reg}},h_{\text{reg}}')\) changes by
+\(\Delta\mathbf h_{\text{reg}}(0)=(3,-4)\).{]}}
+
+\hypertarget{kamaraju-narasimham-linear-systems-analysis-and-applications-p.105}{%
+\paragraph{Kamaraju \& Narasimham --- Linear systems: Analysis and
+applications,
+p.105}\label{kamaraju-narasimham-linear-systems-analysis-and-applications-p.105}}
+
+\textbf{Example 4.24.} Find the inverse transform of \[
+\left(\frac{s}{s+1}\right)^2 \implies \delta(t) - 2e^{-t} + t e^{-t}.
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s/(s\ +\ 1))\^{}2,\ s,\ t{]}} ---
+Returns \(f(t) = \delta(t) - 2e^{-t} + t\,e^{-t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s/(s+1))^2=s^2/(s^2+2s+1)\)
+has \(\deg N=\deg D=2\) (in fact \(N(s)=s^2\) exactly --- pure
+\(\ddot\delta(t)\) forcing), so a \(\delta(t)\) term of coefficient
+\(1\) passes straight through on top of the smooth remainder
+\(y_{\text{reg}}(t)=-2e^{-t}+te^{-t}\). Phase vector
+\(\mathbf y_{\text{reg}}=(y_{\text{reg}},y_{\text{reg}}')\) changes by
+\(\Delta\mathbf y_{\text{reg}}(0)=(-2,3)\).{]}}
+
+\hypertarget{krishnaveni-rajeswari-signals-and-systems-p.476}{%
+\paragraph{Krishnaveni \& Rajeswari --- Signals and systems,
+p.476}\label{krishnaveni-rajeswari-signals-and-systems-p.476}}
+
+Example 8.27. Find the inverse Laplace transform of \[
+X(s) = \frac{s^2 - 3s + 2}{s^2 + 3s + 2}, \quad \text{Re}\{s\} > -1 \implies x(t) = \delta(t) + 6e^{-t}u(t) - 12e^{-2t}u(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\^{}2\ -\ 3\ s\ +\ 2)/(s\^{}2\ +\ 3\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(x(t) = \delta(t) + 6e^{-t}u(t) - 12e^{-2t}u(t)\)*{]}
+
+\emph{{[}Editorial note: the source textbook itself prints
+\(x(t)=\delta(t)-12e^{-2t}u(t)-6e^{-t}u(t)\), with the \(e^{-t}\) term
+negative (confirmed against a scan of the printed page) --- this is not
+a transcription slip but an error in the book's own answer key. Partial
+fractions give \(X(s)=1+\dfrac{6}{s+1}-\dfrac{12}{s+2}\) (from
+\(s^2-3s+2=(s^2+3s+2)-6s\) and \(-6s/((s+1)(s+2))=6/(s+1)-12/(s+2)\)),
+so the \(e^{-t}\) coefficient is \(+6\), not \(-6\); confirmed
+independently by partial-fraction expansion, by direct residue
+computation at each pole, and by evaluating \(X(s)\) numerically against
+both candidate answers at a test point away from the poles, which agrees
+only with the \(+6\) version.{]}}
+
+\emph{{[}Jump condition at \(t=0\): \(X(s)=(s^2-3s+2)/(s^2+3s+2)\) has
+\(\deg N=\deg D=2\), so the input's own \(\delta(t)\) passes straight
+through as a direct-feedthrough term (coefficient \(1\)) on top of the
+smooth remainder \(x_{\text{reg}}(t)=6e^{-t}-12e^{-2t}\). Phase vector
+\(\mathbf x_{\text{reg}}=(x_{\text{reg}},\dot x_{\text{reg}})\) changes
+by \(\Delta\mathbf x_{\text{reg}}(0)=(-6,18)\).{]}}
+
+\hypertarget{third-order-equations}{%
+\subsection{2.3 Third-order equations (n =
+3)}\label{third-order-equations}}
+
+\hypertarget{bavafa-toosi-introduction-to-linear-control-systems-p.203}{%
+\subsubsection{Bavafa-Toosi --- Introduction to linear control systems,
+p.203}\label{bavafa-toosi-introduction-to-linear-control-systems-p.203}}
+
+Example 3.1. ``Consider the system'' \[
+L(s) = \frac{3s^2 + 3s + 4}{s^3 + s^2 + 3s + 3} \implies l(t) = 2\cos\sqrt{3}t + \frac{1}{\sqrt{3}}\sin\sqrt{3}t + e^{-t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(3\ s\^{}2\ +\ 3\ s\ +\ 4)/(s\^{}3\ +\ s\^{}2\ +\ 3\ s\ +\ 3),\ s,\ t{]}}
+--- Returns
+\(l(t) = \sqrt{3}\sin(\sqrt{3}t)/3 + 2\cos(\sqrt{3}t) + e^{-t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(L(s)=(3s^2+3s+4)/(s^3+s^2+3s+3)\)
+is strictly proper with relative degree \(1\) (\(\deg N=\deg D-1\)),
+corresponding to the third-order ODE
+\(\dddot y+\ddot y+3\dot y+3y=3\ddot\delta(t)+3\dot\delta(t)+4\delta(t)\).
+Phase vector \(\mathbf y=(y,\dot y,\ddot y)\) changes by
+\(\Delta\mathbf y(0)=(3,0,-5)\).{]}}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform}{%
+\subsubsection{Gangadharaiah \& Sandeep --- Engineering applications of
+the Laplace
+transform}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform}}
+
+p.254 Example 3.12. ``find the impulse response of the system if the
+third-order differential equation describes the system'' \[
+\frac{d^3 y(t)}{dt^3} + 6 \frac{d^2 y(t)}{dt^2} + 11 \frac{dy(t)}{dt} + 6y(t) = x(t) \implies h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}.
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 6\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 11\ y\textquotesingle{}{[}t{]}\ +\ 6\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0,\ y\textquotesingle{}\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(h(t) = \frac{1}{2} e^{-t} - e^{-2t} + \frac{1}{2} e^{-3t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): this third-order equation. Phase
+vector \(\mathbf y=(y,y',y'')\) changes by
+\(\Delta\mathbf y(0)=(0,0,1)\).{]}}
+
+\hypertarget{ghosh-control-systems-p.23}{%
+\subsubsection{Ghosh --- Control systems,
+p.23}\label{ghosh-control-systems-p.23}}
+
+\[
+F(s) = \frac{s}{(s+1)^2(s+3)}
+\] ``Taking inverse Laplace transform, we get'' \[
+f(t) = -\frac{1}{2}te^{-t} + \frac{3}{4}e^{-t} - \frac{3}{4}e^{-3t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/((s\ +\ 1)\^{}2\ (s\ +\ 3)),\ s,\ t{]}}
+--- Returns
+\(f(t) = -\dfrac12\,t\,e^{-t} + \dfrac34\,e^{-t} - \dfrac34\,e^{-3t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=s/((s+1)^2(s+3))\) has
+denominator \((s+1)^2(s+3)=s^3+5s^2+7s+3\) and numerator \(s\) (relative
+degree \(2\)), corresponding to the third-order ODE
+\(y'''+5y''+7y'+3y=\dot\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,1,-5)\).{]}}
+
+\hypertarget{ghosh-control-systems-p.24}{%
+\subsubsection{Ghosh --- Control systems,
+p.24}\label{ghosh-control-systems-p.24}}
+
+Example 2.4. ``Find \(f(t)\) if'' \[
+F(s) = \frac{s+3}{(s+1)(s+2)(s+4)}
+\] ``Taking inverse Laplace transform, we get'' \[
+f(t) = \frac{2}{3}e^{-t} - \frac{1}{2}e^{-2t} - \frac{1}{6}e^{-4t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 3)/((s\ +\ 1)\ (s\ +\ 2)\ (s\ +\ 4)),\ s,\ t{]}}
+--- Returns
+\(f(t) = \dfrac23\,e^{-t} - \dfrac12\,e^{-2t} - \dfrac16\,e^{-4t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s+3)/((s+1)(s+2)(s+4))\) has
+denominator \((s+1)(s+2)(s+4)=s^3+7s^2+14s+8\) and numerator \(s+3\)
+(relative degree \(2\)), corresponding to the third-order ODE
+\(y'''+7y''+14y'+8y=\dot\delta(t)+3\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,1,-4)\).{]}}
+
+\hypertarget{ghosh-control-systems-p.33}{%
+\subsubsection{Ghosh --- Control systems,
+p.33}\label{ghosh-control-systems-p.33}}
+
+Example 2.12. ``Find \(f(t)\) if'' \[
+F(s) = \frac{s+3}{s(s+1)(s+2)}
+\] ``Taking inverse Laplace transform, we get'' \[
+f(t) = \frac{3}{2} - 2e^{-t} + \frac{1}{2}e^{-2t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 3)/(s\ (s\ +\ 1)\ (s\ +\ 2)),\ s,\ t{]}}
+--- Returns \(f(t) = \dfrac32 - 2\,e^{-t} + \dfrac12\,e^{-2t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s+3)/(s(s+1)(s+2))\) has
+denominator \(s(s+1)(s+2)=s^3+3s^2+2s\) and numerator \(s+3\) (relative
+degree \(2\)), corresponding to the third-order ODE
+\(y'''+3y''+2y'=\dot\delta(t)+3\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,1,0)\).{]}}
+
+\hypertarget{hallauer-introduction-to-linear-time-invariant-dynamic-systems-for-students-of-engineering-p.2-17-1}{%
+\subsubsection{Hallauer Introduction to linear, time-invariant, dynamic
+systems for students of engineering,
+p.2-17}\label{hallauer-introduction-to-linear-time-invariant-dynamic-systems-for-students-of-engineering-p.2-17-1}}
+
+Ex.2.9.b
+\(F(s) = \frac{2(s+1)}{s(s+3)(s+4)} \text{[Answer: } f(t) = \frac{1}{6} + \frac{4}{3} e^{-3t} - \frac{3}{2} e^{-4t}, t \geq 0 \text{]}\)
+*{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}2\ (s\ +\ 1)/(s\ (s\ +\ 3)\ (s\ +\ 4)),\ s,\ t{]}}
+--- Returns \(f(t) = \frac16 + \frac43 e^{-3t} - \frac32 e^{-4t}\),
+matching the book*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=2(s+1)/(s(s+3)(s+4))\) has
+denominator \(s(s+3)(s+4)=s^3+7s^2+12s\) and numerator \(2(s+1)=2s+2\)
+(relative degree \(2\)), corresponding to the third-order ODE
+\(y'''+7y''+12y'=2\dot\delta(t)+2\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by
+\(\Delta\mathbf y(0)=(0,2,-12)\).{]}}
+
+\hypertarget{kamaraju-narasimham-linear-systems-analysis-and-applications-p.79}{%
+\subsubsection{Kamaraju \& Narasimham --- Linear systems: Analysis and
+applications,
+p.79}\label{kamaraju-narasimham-linear-systems-analysis-and-applications-p.79}}
+
+Inverse transform of the function \[
+F(s) = \frac{s + 5}{(s + 2)(s^2 + 8)}
+\] \[
+L^{-1}[F(s)] = \frac{1}{3} \left[ e^{-2t} - \cos\sqrt{5}\,t + \sqrt{5}\sin\sqrt{5}\,t \right]
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 5)/((s\ +\ 2)\ (s\^{}2\ +\ 8)),\ s,\ t{]}}
+--- Returns
+\(f(t) = \dfrac14 e^{-2t} - \dfrac14\cos(2\sqrt2\,t) + \dfrac{3\sqrt2}{8}\sin(2\sqrt2\,t)\)*{]}
+
+\emph{{[}Editorial note: as transcribed, the source states
+\(L^{-1}[F(s)] = \frac{1}{3}\left[e^{-2t} - \cos\sqrt5\,t + \sqrt5\sin\sqrt5\,t\right]\),
+but \(F(s)\)'s poles are at \(s=-2\) and \(s=\pm2\sqrt2\,i\) (from the
+factor \(s^2+8\), not \(s^2+5\)), so both the oscillation frequency and
+the leading fraction are mistranscribed. Partial fractions give
+\(F(s)=\dfrac{1/4}{s+2}+\dfrac{-\frac14 s+\frac32}{s^2+8}\), whose
+inverse is
+\(f(t)=\frac14 e^{-2t}-\frac14\cos(2\sqrt2\,t)+\frac{3\sqrt2}{8}\sin(2\sqrt2\,t)\)
+--- confirmed both symbolically and by direct back-substitution into
+\(F(s)\).{]}}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s+5)/((s+2)(s^2+8))\) has
+denominator \((s+2)(s^2+8)=s^3+2s^2+8s+16\) and numerator \(s+5\)
+(relative degree \(2\)), corresponding to the third-order ODE
+\(y'''+2y''+8y'+16y=\dot\delta(t)+5\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,1,3)\).{]}}
+
+\hypertarget{kamaraju-narasimham-linear-systems-analysis-and-applications-p.106}{%
+\subsubsection{Kamaraju \& Narasimham --- Linear systems: Analysis and
+applications,
+p.106}\label{kamaraju-narasimham-linear-systems-analysis-and-applications-p.106}}
+
+\textbf{Example 4.25.} Find the inverse transform of \[
+\frac{s + 1}{s(s^2 + 4)}
+\implies \frac{1}{2} \sin 2t + \frac{1}{4} [1 - \cos 2t]
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 1)/(s\ (s\^{}2\ +\ 4)),\ s,\ t{]}}
+--- Returns
+\(f(t) = \dfrac12\sin(2t) + \dfrac14\left(1-\cos(2t)\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=(s+1)/(s(s^2+4))\) has
+denominator \(s(s^2+4)=s^3+4s\) and numerator \(s+1\) (relative degree
+\(2\)), corresponding to the third-order ODE
+\(y'''+4y'=\dot\delta(t)+\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,1,1)\).{]}}
+
+\hypertarget{kavaja-piazzi-inputoutput-jumps-of-scalar-linear-systems-p.17}{%
+\subsubsection{Kavaja \& Piazzi --- Input--output jumps of scalar linear
+systems,
+p.17}\label{kavaja-piazzi-inputoutput-jumps-of-scalar-linear-systems-p.17}}
+
+Example 5 (untitled in the source).
+\[H(s) = -4 \frac{(s-1)(s+1)}{(s+2)(s^2+s+2)}\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}-4\ (s\ -\ 1)\ (s\ +\ 1)/((s\ +\ 2)\ (s\^{}2\ +\ s\ +\ 2)),\ s,\ t{]}}
+--- Returns
+\(h(t) = -3e^{-2t} - e^{-t/2}\cos\!\left(\frac{\sqrt7}{2}t\right) + \frac{11}{\sqrt7}e^{-t/2}\sin\!\left(\frac{\sqrt7}{2}t\right)\)*{]}
+
+\emph{{[}Editorial note: the source paper's Section 5 example is
+presented without a title and without a worked closed-form solution for
+the inverse Laplace transform; the closed form above was derived and
+independently verified for this compilation.{]}}
+
+\emph{{[}Jump condition at \(t=0\):
+\(H(s)=-4(s-1)(s+1)/[(s+2)(s^2+s+2)]\) has denominator
+\(D(s)=s^3+3s^2+4s+4\) and numerator \(N(s)=-4s^2+4\) (relative degree
+\(1\)), corresponding to the third-order ODE
+\(y'''+3y''+4y'+4y=-4\delta''(t)+4\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by
+\(\Delta\mathbf y(0)=(-4,12,-16)\).{]}}
+
+\hypertarget{khalil-control-systems-an-introduction-p.68}{%
+\subsubsection{Khalil --- Control systems: An introduction,
+p.68}\label{khalil-control-systems-an-introduction-p.68}}
+
+Impulse response for \[
+G(s) = \frac{s+1}{s(s^2+\omega^2)} = \frac{1}{\omega^2 s} + \frac{1}{s^2+\omega^2} - \frac{s}{\omega^2 (s^2+\omega^2)}
+\] \[
+g(t) = \left( \frac{1}{\omega^2} + \frac{1}{\omega} \sin \omega t - \frac{1}{\omega^2} \cos \omega t \right) 1(t)
+\] *{[}WolframAlpha:
+\texttt{Assuming{[}omega\ \textgreater{}\ 0,\ InverseLaplaceTransform{[}(s\ +\ 1)/(s\ (s\^{}2\ +\ omega\^{}2)),\ s,\ t{]}{]}}
+--- Returns
+\(g(t) = \dfrac{1}{\omega^2} + \dfrac{1}{\omega}\sin(\omega t) - \dfrac{1}{\omega^2}\cos(\omega t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(G(s)=(s+1)/(s(s^2+\omega^2))\) has
+denominator \(s(s^2+\omega^2)=s^3+\omega^2 s\) and numerator \(s+1\)
+(relative degree \(2\)), corresponding to the third-order ODE
+\(g'''+\omega^2 g'=\dot\delta(t)+\delta(t)\). Phase vector
+\(\mathbf g=(g,g',g'')\) changes by \(\Delta\mathbf g(0)=(0,1,1)\).{]}}
+
+\hypertarget{khalil-control-systems-an-introduction-p.84}{%
+\subsubsection{Khalil --- Control systems: An introduction,
+p.84}\label{khalil-control-systems-an-introduction-p.84}}
+
+Find inverse Laplace transform \[
+Y(s) = \frac{KA}{s(s+a)(s+b)} \implies y(t) = (K_1 + K_2 e^{-at} + K_3 e^{-bt})\,1(t)
+\] \[
+K_1 = \frac{KA}{ab},\qquad K_2 = \frac{-KA}{a(b-a)},\qquad K_3 = \frac{KA}{b(b-a)}
+\] *{[}WolframAlpha:
+\texttt{Assuming{[}K\ \textgreater{}\ 0\ \&\&\ A\ \textgreater{}\ 0\ \&\&\ a\ \textgreater{}\ 0\ \&\&\ b\ \textgreater{}\ 0\ \&\&\ a\ !=\ b,\ InverseLaplaceTransform{[}K\ A/(s\ (s\ +\ a)\ (s\ +\ b)),\ s,\ t{]}{]}}
+--- Returns
+\(y(t) = \dfrac{KA}{ab} - \dfrac{KA}{a(b-a)}e^{-at} + \dfrac{KA}{b(b-a)}e^{-bt}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(Y(s)=KA/(s(s+a)(s+b))\) has
+denominator \(s(s+a)(s+b)=s^3+(a+b)s^2+ab\,s\) and numerator \(KA\)
+(relative degree \(3\)), corresponding to the third-order ODE
+\(y'''+(a+b)y''+ab\,y'=KA\,\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,0,KA)\).{]}}
+
+\hypertarget{khalil-control-systems-an-introduction-p.439}{%
+\subsubsection{Khalil --- Control systems: An introduction,
+p.439}\label{khalil-control-systems-an-introduction-p.439}}
+
+Example A-1. Find the inverse Laplace transform of \[
+F(s) = \frac{1}{s^3 + 12s^2 + 44s + 48} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8}\left(e^{-2t} - 2e^{-4t} + e^{-6t}\right), \quad t \geq 0.
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 12\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 44\ y\textquotesingle{}{[}t{]}\ +\ 48\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0,\ y\textquotesingle{}\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(f(t) = \frac{1}{8}e^{-2t} - \frac{1}{4}e^{-4t} + \frac{1}{8}e^{-6t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\):
+\(F(s)=1/(s^3+12s^2+44s+48)=1/((s+2)(s+4)(s+6))\) is the impulse
+response of the zero-state third-order equation
+\(y'''+12y''+44y'+48y=\delta(t)\) (leading coefficient \(1\)). Phase
+vector \(\mathbf y=(y,y',y'')\) changes by
+\(\Delta\mathbf y(0)=(0,0,1)\).{]}}
+
+\hypertarget{khalil-control-systems-an-introduction-p.440}{%
+\subsubsection{Khalil --- Control systems: An introduction,
+p.440}\label{khalil-control-systems-an-introduction-p.440}}
+
+Example A-2. Find the inverse Laplace transform of \[
+F(s) = \frac{1}{s^3 + 2s^2 + 2s + 1}
+\] \[
+f(t) = \mathcal{L}^{-1}\{F(s)\} = e^{-t} - e^{-t/2}\cos\left(\frac{\sqrt3}{2}t\right) + \frac{1}{\sqrt3}e^{-t/2}\sin\left(\frac{\sqrt3}{2}t\right), \quad t \geq 0.
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 2\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 2\ y\textquotesingle{}{[}t{]}\ +\ y{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 0,\ y\textquotesingle{}{[}0{]}\ ==\ 0,\ y\textquotesingle{}\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(f(t) = e^{-t} - e^{-t/2}\cos\left(\frac{\sqrt3}{2}t\right) + \frac{1}{\sqrt3}e^{-t/2}\sin\left(\frac{\sqrt3}{2}t\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\):
+\(F(s)=1/(s^3+2s^2+2s+1)=1/((s+1)(s^2+s+1))\) is the impulse response of
+the zero-state third-order equation \(y'''+2y''+2y'+y=\delta(t)\)
+(leading coefficient \(1\)). Phase vector \(\mathbf y=(y,y',y'')\)
+changes by \(\Delta\mathbf y(0)=(0,0,1)\).{]}}
+
+\hypertarget{kulakowski-gardner-shearer-dynamic-modeling-and-control-of-engineering-systems-p.434}{%
+\subsubsection{Kulakowski, Gardner \& Shearer --- Dynamic modeling and
+control of engineering systems,
+p.434}\label{kulakowski-gardner-shearer-dynamic-modeling-and-control-of-engineering-systems-p.434}}
+
+EXAMPLE A2.1. Find an inverse Laplace transform \[
+F(s) = \frac{2s + 4}{s^3 + 7s^2 + 15s + 9} \implies f(t) = 0.5e^{-t} - 0.5e^{-3t} + te^{-3t}.
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(2\ s\ +\ 4)/(s\^{}3\ +\ 7\ s\^{}2\ +\ 15\ s\ +\ 9),\ s,\ t{]}}
+--- Returns \(f(t) = 0.5e^{-t} - 0.5e^{-3t} + te^{-3t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\):
+\(F(s)=(2s+4)/(s^3+7s^2+15s+9)=(2s+4)/((s+1)(s+3)^2)\) has
+\(\deg N=1<\deg D=3\) (relative degree \(2\)), so reading it as the
+impulse response of a zero-state third-order ODE, the forcing is
+\(2\delta'(t)+4\delta(t)\) (the linear numerator contributes a
+first-derivative-of-delta component alongside plain \(\delta(t)\)).
+\(f(t)\) itself stays continuous (\(f(0^+)=0\)), and the jump appears
+one derivative later: \(f'(0^+)=2\), the leading-coefficient ratio
+\(2/1\) (with \(f''(0^+)=-10\)).{]}}
+
+\hypertarget{kulakowski-gardner-shearer-dynamic-modeling-and-control-of-engineering-systems-p.435}{%
+\subsubsection{Kulakowski, Gardner \& Shearer --- Dynamic modeling and
+control of engineering systems,
+p.435}\label{kulakowski-gardner-shearer-dynamic-modeling-and-control-of-engineering-systems-p.435}}
+
+EXAMPLE A2.2. Find the inverse Laplace transform of \[
+F(s) = \frac{4}{s(s^2 + 2.4s + 4)} \implies f(t) = 1 - 1.25e^{-1.2t}\sin(1.6t + 0.9273)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}4/(s\ (s\^{}2\ +\ 2.4\ s\ +\ 4)),\ s,\ t{]}}
+--- Returns \(f(t) = 1 - 1.25e^{-1.2t}\sin(1.6t + 0.9273)\)*{]}
+
+\emph{{[}Editorial note: as pasted, the stated answer was
+\(f(t) = 1 + 1.25e^{-1.2t}\sin(0.9273 + 1.6t)\), with a plus sign in
+front of the oscillatory term. Partial fractions give
+\(F(s)=\frac{1}{s}-\frac{s+2.4}{(s+1.2)^2+1.6^2}=\frac{1}{s}-\frac{s+1.2}{(s+1.2)^2+1.6^2}-\frac{1.2}{(s+1.2)^2+1.6^2}\),
+whose inverse is \(f(t)=1-e^{-1.2t}\cos(1.6t)-0.75e^{-1.2t}\sin(1.6t)\);
+combining the two oscillatory terms into a single sinusoid
+(\(\sqrt{1^2+0.75^2}=1.25\), \(\arctan(1/0.75)=0.9273\,\text{rad}\),
+matching the book's own amplitude and phase constants exactly) gives
+\(f(t)=1-1.25e^{-1.2t}\sin(1.6t+0.9273)\) --- confirmed both
+symbolically and by numeric evaluation of \(F(s)\) against both
+candidate signs, which agrees only with the minus version.{]}}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=4/(s(s^2+2.4s+4))\) has
+\(\deg N=0<\deg D=3\) (relative degree \(3\)), so reading it as the
+impulse response of a zero-state third-order ODE, \(f(t)\) and \(f'(t)\)
+are both continuous at \(t=0\) (\(f(0^+)=f'(0^+)=0\)), and the jump
+appears in the second derivative: \(f''(0^+)=4\), the
+leading-coefficient ratio \(4/1\).{]}}
+
+\hypertarget{narasimham-analysis-of-linear-control-systems-p.36}{%
+\subsubsection{Narasimham --- Analysis of linear control systems,
+p.36}\label{narasimham-analysis-of-linear-control-systems-p.36}}
+
+Example 2.3. Find the inverse Laplace transform \[
+F(s) = \frac{1}{(s+2)(s+5)(s+11)} \implies f(t) = \frac{1}{54}\left(2e^{-2t} - 3e^{-5t} + e^{-11t}\right)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}1/((s\ +\ 2)\ (s\ +\ 5)\ (s\ +\ 11)),\ s,\ t{]}}
+--- Returns
+\(f(t) = \frac{1}{54}\left(2e^{-2t} - 3e^{-5t} + e^{-11t}\right)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): \(F(s)=1/((s+2)(s+5)(s+11))\) has
+\(\deg N=0<\deg D=3\) (relative degree \(3\)), so reading it as the
+impulse response of a zero-state third-order ODE, \(f(t)\) and \(f'(t)\)
+are both continuous at \(t=0\) (\(f(0^+)=f'(0^+)=0\)), and the jump
+appears in the second derivative: \(f''(0^+)=1\), the
+leading-coefficient ratio \(1/1\).{]}}
+
 \hypertarget{xie-differential-equations-for-engineers}{%
-\subsection{Xie --- Differential equations for
+\subsubsection{Xie --- Differential equations for
 engineers}\label{xie-differential-equations-for-engineers}}
 
-p.258 Example 6.11 \[
+Example 6.14 \[
+\mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}8/((s\ -\ 1)(s\^{}2\ +\ 2\ s\ +\ 5)),\ s,\ t{]}}
+--- Returns \(f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): reading \(F(s)\) as the impulse
+response of the zero-state 3rd-order ODE with denominator
+\((s-1)(s^2+2s+5)\) (relative degree \(3\)). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,0,8)\).{]}}
+
+\hypertarget{yang-signals-and-systems-with-matlab-p.392-1}{%
+\subsubsection{Yang Signals and systems with MATLAB©,
+p.392}\label{yang-signals-and-systems-with-matlab-p.392-1}}
+
+Example A.2.a Inverse Laplace Transform
+\[X(s) = \frac{3s^2 + 11s + 11}{s^3 + 4s^2 + 5s + 2}
+\implies (e^{-2t} + 2e^{-t} + 3te^{-t})u_s(t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(3\ s\^{}2\ +\ 11\ s\ +\ 11)/(s\^{}3\ +\ 4\ s\^{}2\ +\ 5\ s\ +\ 2),\ s,\ t{]}}
+--- Returns \(x(t) = e^{-2t} + 2e^{-t} + 3t\,e^{-t}\), matching the
+book*{]}
+
+\emph{{[}Jump condition at \(t=0\):
+\(X(s)=(3s^2+11s+11)/(s^3+4s^2+5s+2)\) has denominator \(s^3+4s^2+5s+2\)
+and numerator \(3s^2+11s+11\) (relative degree \(1\)), corresponding to
+the third-order ODE
+\(y'''+4y''+5y'+2y=3\delta''(t)+11\delta'(t)+11\delta(t)\). Phase vector
+\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(3,-1,0)\).{]}}
+
+\hypertarget{higher-order-equations}{%
+\subsection{2.4 Higher-order equations (order 4 and
+higher)}\label{higher-order-equations}}
+
+\hypertarget{bavafa-toosi-introduction-to-linear-control-systems-p.204}{%
+\subsubsection{Bavafa-Toosi --- Introduction to linear control systems,
+p.204}\label{bavafa-toosi-introduction-to-linear-control-systems-p.204}}
+
+Example 3.2. ``Consider the system'' \[
+L(s) = \frac{s^4 + 2s^3 + 11s^2 + 4s + 10}{s^6 + 2s^5 + 7s^4 + 12s^3 + 15s^2 + 18s + 9}
+\] \[
+\implies\; l(t) = \frac{1}{\sqrt{3}}\,t\sin\sqrt{3}t + \frac{1}{6\sqrt{3}}\left(\sin\sqrt{3}t - \sqrt{3}\,t\cos\sqrt{3}t\right) + t e^{-t}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\^{}4\ +\ 2\ s\^{}3\ +\ 11\ s\^{}2\ +\ 4\ s\ +\ 10)/(s\^{}6\ +\ 2\ s\^{}5\ +\ 7\ s\^{}4\ +\ 12\ s\^{}3\ +\ 15\ s\^{}2\ +\ 18\ s\ +\ 9),\ s,\ t{]}}
+--- Returns
+\(l(t) = \frac{\sqrt3}{3}\,t\sin(\sqrt3\,t) - \frac16\,t\cos(\sqrt3\,t) + t e^{-t} + \frac{\sqrt3}{18}\sin(\sqrt3\,t)\)*{]}
+
+\emph{{[}Jump condition at \(t=0\):
+\(L(s)=(s^4+2s^3+11s^2+4s+10)/(s^6+2s^5+7s^4+12s^3+15s^2+18s+9)\) is
+strictly proper with relative degree \(2\) (\(\deg N=\deg D-2\); the
+denominator factors as \((s+1)^2(s^2+3)^2\)), corresponding to the
+sixth-order ODE
+\(y^{(6)}+2y^{(5)}+7y^{(4)}+12y'''+15y''+18y'+9y=\delta^{(4)}(t)+2\delta'''(t)+11\delta''(t)+4\delta'(t)+10\delta(t)\).
+Phase vector \(\mathbf y=(y,y',y'',y''',y'''',y''''')\) changes by
+\(\Delta\mathbf y(0)=(0,1,0,4,-16,-1)\).{]}}
+
+\hypertarget{bavafa-toosi-introduction-to-linear-control-systems-p.204-1}{%
+\subsubsection{Bavafa-Toosi --- Introduction to linear control systems,
+p.204}\label{bavafa-toosi-introduction-to-linear-control-systems-p.204-1}}
+
+Example 3.3. ``Consider the system'' \[
+L(s) = \frac{2s^3 - 1.2s^2 + 1.4s - 1}{s^4 - 0.6s^3 - 2.6s^2 + 4.2s - 2}
+\] \[
+\implies\; l(t) = e^{t} + e^{-2t} + \frac{5}{3}e^{0.8t}\sin(0.6t)
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(2\ s\^{}3\ -\ 1.2\ s\^{}2\ +\ 1.4\ s\ -\ 1)/(s\^{}4\ -\ 0.6\ s\^{}3\ -\ 2.6\ s\^{}2\ +\ 4.2\ s\ -\ 2),\ s,\ t{]}}
+--- Returns
+\(l(t) = e^{t} + e^{-2t} + \frac{5}{3}e^{0.8t}\sin(0.6t)\)*{]}
+
+\emph{{[}Editorial note: as transcribed, the source states
+\(l(t) = \left[1 - \frac{1}{0.6}e^{0.8t}\sin\left(0.6t + \tan^{-1}(0.75)\right)\right] + e^{t} + e^{-2t}\);
+this does not satisfy its own stated \(L(s)\) (the two disagree for
+\(t>0\), though they coincide at \(t=0\)). The denominator factors
+exactly as \((s-1)(s+2)(s^2-1.6s+1)\), and partial-fraction
+decomposition gives
+\(L(s)=\dfrac{1}{s-1}+\dfrac{1}{s+2}+\dfrac{1}{s^2-1.6s+1}\) --- a
+constant, not linear, numerator over the quadratic factor
+\((s-0.8)^2+0.36\), so the oscillatory term is a pure sine of amplitude
+\(\frac{1}{0.6}=\frac53\) with no phase shift and no accompanying
+constant term. The closed form above is the unique function consistent
+with the stated \(L(s)\); it was independently confirmed by symbolic
+Laplace inversion and by direct substitution back into the corresponding
+fourth-order ODE.{]}}
+
+\emph{{[}Jump condition at \(t=0\):
+\(L(s)=(2s^3-1.2s^2+1.4s-1)/(s^4-0.6s^3-2.6s^2+4.2s-2)\) is strictly
+proper with relative degree \(1\) (\(\deg N=\deg D-1\)), corresponding
+to the fourth-order ODE
+\(y''''-0.6y'''-2.6y''+4.2y'-2y=2\delta'''(t)-1.2\delta''(t)+1.4\delta'(t)-\delta(t)\).
+Phase vector \(\mathbf y=(y,y',y'',y''')\) changes by
+\(\Delta\mathbf y(0)=(2,0,6.6,-5.44)\).{]}}
+
+\hypertarget{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.340}{%
+\subsubsection{Gangadharaiah \& Sandeep --- Engineering applications of
+the Laplace transform,
+p.340}\label{gangadharaiah-sandeep-engineering-applications-of-the-laplace-transform-p.340}}
+
+Example 4.25. ``Obtain the solution of the fourth-order differential
+equation'' \[
+\frac{d^4 y(t)}{dt^4} + 2 \frac{d^3 y(t)}{dt^3} - \frac{d^2 y(t)}{dt^2} - 2 \frac{dy(t)}{dt} = \delta(t)
+\]
+
+along with the initial condition \[
+y(0) = 1 \quad \text{and} \quad y'(0) = y''(0) = y'''(0) = 0.
+\]
+
+\[
+y(t) = \frac{1}{2} + \frac{1}{2}e^{-t} + \frac{1}{6}e^{t} - \frac{1}{6}e^{-2t}.
+\] *{[}WolframAlpha:
+\texttt{y\textquotesingle{}\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}t{]}\ +\ 2\ y\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}t{]}\ -\ y\textquotesingle{}\textquotesingle{}{[}t{]}\ -\ 2\ y\textquotesingle{}{[}t{]}\ ==\ Delta{[}t{]},\ y{[}0{]}\ ==\ 1,\ y\textquotesingle{}{[}0{]}\ ==\ 0,\ y\textquotesingle{}\textquotesingle{}{[}0{]}\ ==\ 0,\ y\textquotesingle{}\textquotesingle{}\textquotesingle{}{[}0{]}\ ==\ 0}
+--- Returns
+\(y(t) = \frac{1}{2} + \frac{1}{2} e^{-t} + \frac{1}{6} e^{t} - \frac{1}{6} e^{-2t}\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): this fourth-order equation. Phase
+vector \(\mathbf y=(y,y',y'',y''')\) changes by
+\(\Delta\mathbf y(0)=(0,0,0,1)\).{]}} \emph{{[}Editorial note: as
+transcribed, this example's stated answer
+(\(y = \frac{1}{2} - e^t + \frac{3}{2}e^{2t}\)) does not satisfy its own
+stated differential equation and initial conditions --- it fails the
+homogeneous-equation check for \(t>0\) and the required continuity of
+\(y'\) and \(y''\) at \(t=0\). The closed-form solution above is the
+unique function consistent with the stated fourth-order equation,
+\(y(0)=1\), \(y'(0)=y''(0)=y'''(0)=0\), and \(\delta(t)\) forcing; it
+was re-derived via the Laplace transform and independently confirmed by
+direct substitution back into the differential equation. It replaces the
+original transcription here as a high-confidence, mathematically
+necessary correction rather than a silent guess.{]}}
+
+\hypertarget{kamaraju-narasimham-linear-systems-analysis-and-applications-p.99}{%
+\subsubsection{Kamaraju \& Narasimham --- Linear systems: Analysis and
+applications,
+p.99}\label{kamaraju-narasimham-linear-systems-analysis-and-applications-p.99}}
+
+\textbf{Example 4.17.} Find the inverse Laplace transform of \[
+\frac{a^2}{(s^2 + a^2)^2}
+\implies
+\frac{1}{2a} \left[ \sin at - a \cos at \right]
+\] *{[}WolframAlpha:
+\texttt{Assuming{[}a\ \textgreater{}\ 0,\ InverseLaplaceTransform{[}a\^{}2/(s\^{}2\ +\ a\^{}2)\^{}2,\ s,\ t{]}{]}}
+--- Returns
+\(f(t) = \dfrac{1}{2a}\left[\sin(at) - at\cos(at)\right]\)*{]}
+
+\emph{{[}Jump condition at \(t=0\): reading \(F(s)=a^2/(s^2+a^2)^2\) as
+the impulse response of the zero-state 4th-order ODE with denominator
+\((s^2+a^2)^2=s^4+2a^2s^2+a^4\) (relative degree \(4\)). Phase vector
+\(\mathbf y=(y,y',y'',y''')\) changes by
+\(\Delta\mathbf y(0)=(0,0,0,a^2)\).{]}}
+
+\hypertarget{xie-differential-equations-for-engineers-p.258}{%
+\subsubsection{Xie --- Differential equations for engineers,
+p.258}\label{xie-differential-equations-for-engineers-p.258}}
+
+Example 6.11 \[
 \mathcal{L}^{-1} \left\{ \frac{s}{(s-2)^5} \right\} \implies f(t) = \frac{1}{12} e^{2t} t^3 (2 + t)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[s/(s - 2)^5, s, t]
-\end{lstlisting}
-
-\emph{Returns \(f(t) = \frac{1}{12} e^{2t} t^3 (2+t)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/(s\ -\ 2)\^{}5,\ s,\ t{]}} ---
+Returns \(f(t) = \frac{1}{12} e^{2t} t^3 (2+t)\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): reading \(F(s)\) as the impulse
 response of the zero-state 5th-order ODE with denominator \((s-2)^5\)
@@ -820,16 +1786,16 @@ response of the zero-state 5th-order ODE with denominator \((s-2)^5\)
 \(\mathbf y=(y,y',y'',y''',y^{(4)})\) changes by
 \(\Delta\mathbf y(0)=(0,0,0,1,10)\).{]}}
 
+\hypertarget{xie-differential-equations-for-engineers-p.258-1}{%
+\subsubsection{Xie --- Differential equations for engineers,
+p.258}\label{xie-differential-equations-for-engineers-p.258-1}}
+
 Example 6.12 \[
 \mathcal{L}^{-1} \left\{ \frac{1 + e^{-3s}}{s^4} \right\} \implies \frac{1}{6} \left[ t^3 + (t-3)^3 u(t-3) \right]
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(1 + Exp[-3 s])/s^4, s, t]
-\end{lstlisting}
-
-\emph{Returns
-\(f(t) = \frac{1}{6}\left[t^3 + (t-3)^3 \, u(t-3)\right]\)}{]}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(1\ +\ Exp{[}-3\ s{]})/s\^{}4,\ s,\ t{]}}
+--- Returns
+\(f(t) = \frac{1}{6}\left[t^3 + (t-3)^3 \, u(t-3)\right]\)*{]}
 
 \emph{{[}Jump conditions: the numerator
 \(1+e^{-3s}=\mathcal L\{\delta(t)+\delta(t-3)\}\), so this is the
@@ -838,46 +1804,31 @@ to two unit impulses. Phase vector \(\mathbf y=(y,y',y'',y''')\) changes
 by \(\Delta\mathbf y(0)=(0,0,0,1)\) at \(t=0\), and by
 \(\Delta\mathbf y(3)=(0,0,0,1)\) at \(t=3\).{]}}
 
+\hypertarget{xie-differential-equations-for-engineers-p.258-2}{%
+\subsubsection{Xie --- Differential equations for engineers,
+p.258}\label{xie-differential-equations-for-engineers-p.258-2}}
+
 Example 6.13 \[
 \mathcal{L}^{-1} \left\{ \frac{s}{(s^2 + 4)^2} \right\} \implies \frac{1}{4} t \sin 2t
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[s/(s^2 + 4)^2, s, t]
-\end{lstlisting}
-
-\emph{Returns \(f(t) = \frac{1}{4} t \sin(2t)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}s/(s\^{}2\ +\ 4)\^{}2,\ s,\ t{]}} ---
+Returns \(f(t) = \frac{1}{4} t \sin(2t)\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): reading \(F(s)\) as the impulse
 response of the zero-state 4th-order ODE with denominator \((s^2+4)^2\)
 (relative degree \(3\)). Phase vector \(\mathbf y=(y,y',y'',y''')\)
 changes by \(\Delta\mathbf y(0)=(0,0,1,0)\).{]}}
 
-Example 6.14 \[
-\mathcal{L}^{-1} \left\{ \frac{8}{(s-1)(s^2+2s+5)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = e^t - e^{-t} \cos 2t - e^{-t} \sin 2t
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[8/((s - 1)(s^2 + 2 s + 5)), s, t]
-\end{lstlisting}
-
-\emph{Returns \(f(t) = e^{t} - e^{-t}\cos(2t) - e^{-t}\sin(2t)\)}{]}
-
-\emph{{[}Jump condition at \(t=0\): reading \(F(s)\) as the impulse
-response of the zero-state 3rd-order ODE with denominator
-\((s-1)(s^2+2s+5)\) (relative degree \(3\)). Phase vector
-\(\mathbf y=(y,y',y'')\) changes by \(\Delta\mathbf y(0)=(0,0,8)\).{]}}
+\hypertarget{xie-differential-equations-for-engineers-p.258-3}{%
+\subsubsection{Xie --- Differential equations for engineers,
+p.258}\label{xie-differential-equations-for-engineers-p.258-3}}
 
 Example 6.15 \[
 \mathcal{L}^{-1} \left\{ \frac{s+1}{(s^2+1)(s^2+9)} \right\} \implies f(t) = \mathcal{L}^{-1}\{F(s)\} = \frac{1}{8} \left( \cos t + \sin t - \cos 3t - \frac{1}{3} \sin 3t \right)
-\] \emph{{[}WolframAlpha:}
-
-\begin{lstlisting}
-InverseLaplaceTransform[(s + 1)/((s^2 + 1)(s^2 + 9)), s, t]
-\end{lstlisting}
-
-\emph{Returns
-\(f(t) = \frac{1}{8}\left(\cos t + \sin t - \cos 3t - \frac{1}{3}\sin 3t\right)\)}{]}
+\] *{[}WolframAlpha:
+\texttt{InverseLaplaceTransform{[}(s\ +\ 1)/((s\^{}2\ +\ 1)(s\^{}2\ +\ 9)),\ s,\ t{]}}
+--- Returns
+\(f(t) = \frac{1}{8}\left(\cos t + \sin t - \cos 3t - \frac{1}{3}\sin 3t\right)\)*{]}
 
 \emph{{[}Jump condition at \(t=0\): reading \(F(s)\) as the impulse
 response of the zero-state 4th-order ODE with denominator
@@ -894,16 +1845,12 @@ Supplementary problems and variations, given as page/problem references
 only --- no solution is reproduced here. Sorted alphabetically by
 author; intended to guide further practice.
 
-\hypertarget{bottega}{%
-\subsection*{Bottega}\label{bottega}}
-
-p.238: Example 4.2 ``A tethered 1 pound ball hangs in the vertical plane
-when it is tapped with a racket. Following the tap the ball is observed
-to exhibit oscillatory motion of amplitude 0.2 radians with a period of
-2 seconds. Determine the impulse imparted by the racket.'' (Problem
-statement only --- no closed-form solution given in the source, hence
-listed here rather than under Solved Exercises.)
-
+\textbf{Bottega} p.238: Example 4.2 ``A tethered 1 pound ball hangs in
+the vertical plane when it is tapped with a racket. Following the tap
+the ball is observed to exhibit oscillatory motion of amplitude 0.2
+radians with a period of 2 seconds. Determine the impulse imparted by
+the racket.'' (Problem statement only --- no closed-form solution given
+in the source, hence listed here rather than under Solved Exercises.);
 p.236-238 couple 2nd order system with impulse load; p.269: Ex.4.4-4.6;
 p.429: MDOF system under impulse load; p.470: double pendulum under
 impulse load; p.488: Ex 8.17 elastically supported frame under struck;
@@ -911,142 +1858,124 @@ p.501 Ex 8.7; p.507: Ex 8.26; p.715: Ex 11.3 PDE ``Determine the
 response of the rod it is struck on its right end by an impulse of
 magnitude''; p.718: Ex 11.17 ``The beam is impacted at its left end''
 
-\hypertarget{boyce-diprima}{%
-\subsection*{Boyce \& DiPrima}\label{boyce-diprima}}
+\textbf{Boyce \& DiPrima} p.273-274 has many exercises
 
-p.273-274 has many exercises
+\textbf{Campbell \& Haberman} p.264 Exercises 1--8
 
-\hypertarget{campbell-haberman}{%
-\subsection*{Campbell \& Haberman}\label{campbell-haberman}}
+\textbf{De Oliveira} p.82 Ex. 3.40,3.41; p.82 Problem 3.41 ``Compute the
+inverse Laplace transform of the following complex-valued functions'';
+p.83 Problem 3.44 ``Compute the inverse Laplace transform''; p.214
+Formula 7.2
 
-p.264 Exercises 1--8
+\textbf{Dorf \& Bishop} p.174 P2.36 ``Determine the impulse response of
+the system''; p.178 ``Consider the unity feedback system described in
+the block diagram \ldots{} Compute analytically the response of the
+system to an impulse disturbance''; p.392 CP5.1 ``Obtain the impulse
+response analytically''
 
-\hypertarget{de-oliveira}{%
-\subsection*{De Oliveira}\label{de-oliveira}}
+\textbf{Edwards \& Penney} 9.326 4.6 Problems 1-8, 15-16 (equality of
+solution by changing IC)
 
-p.82 Problem 3.41 ``Compute the inverse Laplace transform of the
-following complex-valued functions''; p.83 Problem 3.44 ``Compute the
-inverse Laplace transform''
+\textbf{Esfandiari \& Lu} p.59 Problems 19 through 24; p.62 Problem 10
+``Solve the IVP''; p.352 ``8.3.2 Impulse Response of Second-Order
+Systems''; p.353 ``Example 8.5: Impulse Response''; p.359 ``Example 8.8:
+Impulse Response''; p.363 ``PROBLEM SET 8.2''/7-11, 20
 
-\hypertarget{dorf-bishop}{%
-\subsection*{Dorf \& Bishop}\label{dorf-bishop}}
+\textbf{Franklin, Powell \& Emami-Naeini} p.230 EXAMPLE 4.9; p.589
+Problem 7.20
 
-p.174 P2.36 ``Determine the impulse response of the system''; p.178
-``Consider the unity feedback system described in the block diagram
-\ldots{} Compute analytically the response of the system to an impulse
-disturbance''; p.392 CP5.1 ``Obtain the impulse response analytically''
+\textbf{Ghosh} p.34 Problem 3: find \(f(t)\) for (i)
+\(F(s)=\dfrac{s}{(s+1)(s+2)}\); p.58 Problem 15: impulse response of
+\(G(s)=\dfrac{2}{(s+1)(s+3)}\)
 
-\hypertarget{edwards-penney}{%
-\subsection*{Edwards \& Penney}\label{edwards-penney}}
+\textbf{Gupta} p.116 P1. Find the step response and impulse response of
+the transfer function \(G(s) = \frac{20}{s^2 + 4s + 25}\)
 
-9.326 4.6 Problems 1-8, 15-16 (equality of solution by changing IC)
+\textbf{Inman} p.221 Example 3.1.1; p.222 Example 3.1.3; p.224 Example
+3.1.4; p.232 Example 3.2.3; p.245 Example 3.4.4, Example 3.4.5; p.287
+Problems 3.1-3.6, 3.10-3.13; p.377 Example 4.8.1 MDOF system with
+impulse; p.382 Example 4.8.2 MDOF system with impulse; p.386 Example
+4.8.3 MDOF system with impulse; p.428 Problem 4.76; p.429 Problem 4.78;
+p.440 Example 5.1.2; p.557 Example 6.8.1 ``Calculate the forced response
+of the string fixed at both ends \ldots{} subject to unit impulse'';
+p.571 Problem 6.67
 
-\hypertarget{esfandiari-lu}{%
-\subsection*{Esfandiari \& Lu}\label{esfandiari-lu}}
+\textbf{Jagan} p.410 Find Inverse Laplace Transform: A.
+\(\frac{1}{s(s+1)}\) B. \(\frac{1}{(s+1)^2}\) C.
+\(\frac{1}{s(s+1) + 1}\) D. \(\frac{1}{s^2 + 1}\); p.465 for the system
+\(\dot{X} = \begin{bmatrix} 2 & 0 \\ 0 & 4 \end{bmatrix} X + \begin{bmatrix} 1 \\ 1 \end{bmatrix} u, \qquad y = \begin{bmatrix} 4 & 0 \end{bmatrix} X\)
+with u as unit impulse and with zero initial state, find the output y
 
-p.59 Problems 19 through 24; p.62 Problem 10 ``Solve the IVP''; p.352
-``8.3.2 Impulse Response of Second-Order Systems''; p.353 ``Example 8.5:
-Impulse Response''; p.359 ``Example 8.8: Impulse Response''; p.363
-``PROBLEM SET 8.2''/7-11, 20
+\textbf{Karris} p.6-2 ``Example 6.1''; p.6-3 ``Example 6.2''
 
-\hypertarget{franklin-powell-emami-naeini}{%
-\subsection*{Franklin, Powell \&
-Emami-Naeini}\label{franklin-powell-emami-naeini}}
+\textbf{Kelly} p.317 EXAMPLE 5.1; p.374 Problem 5.21-5.23
 
-p.230 EXAMPLE 4.9; p.589 Problem 7.20
+\textbf{Lathi \& Green} p.471 Problem 4.3-6
 
-\hypertarget{inman}{%
-\subsection*{Inman}\label{inman}}
+\textbf{Lundberg} p.2 (6) 1st order equation with delta as load
 
-p.221 Example 3.1.1; p.222 Example 3.1.3; p.224 Example 3.1.4; p.232
-Example 3.2.3; p.245 Example 3.4.4, Example 3.4.5; p.287 Problems
-3.1-3.6, 3.10-3.13; p.377 Example 4.8.1 MDOF system with impulse; p.382
-Example 4.8.2 MDOF system with impulse; p.386 Example 4.8.3 MDOF system
-with impulse; p.428 Problem 4.76; p.429 Problem 4.78; p.440 Example
-5.1.2; p.557 Example 6.8.1 ``Calculate the forced response of the string
-fixed at both ends \ldots{} subject to unit impulse''; p.571 Problem
-6.67
+\textbf{Meirovitch} p.371 Problem 7.49; p.463 Problem 8.38, 8.42, 8.44
 
-\hypertarget{karris}{%
-\subsection*{Karris}\label{karris}}
+\textbf{Nagle, Saff \& Snider} p.404 ``7.8 EXERCISES'' 5-12, 23-28;
+p.410 ``7.9 Exercises'' 13-29, 35; p.416 ``REVIEW PROBLEMS FOR CHAPTER
+7'' Problem 29-30
 
-p.6-2 ``Example 6.1''; p.6-3 ``Example 6.2''
+\textbf{Narasimham} p.36 Example 2.4, 2.5; p.148 Third-Order System;
+p.182 Example 3.24
 
-\hypertarget{kelly}{%
-\subsection*{Kelly}\label{kelly}}
+\textbf{Nise} p.36 Example 2.2; p.37 Formula 2.4; p.38 Formula 2.7;
+p.223 Ex.61
 
-p.317 EXAMPLE 5.1; p.374 Problem 5.21-5.23
+\textbf{Ogata} p.196 MATLAB Program 5--8 ``Unit-Impulse Response of G(s)
+= 1/(s\^{}2 + 0.2s + 1)''; p.264 B--5--4 ``Consider the system shown in
+Figure 5--72. The system is initially at rest. Suppose that the cart is
+set into motion by an impulsive force whose strength is unity. Can it be
+stopped by another such impulsive force?''; p.264 B-5-5, B-5-6; p.265
+B-5-10/11; p.267 B-5-16
 
-\hypertarget{lathi-green}{%
-\subsection*{Lathi \& Green}\label{lathi-green}}
+\textbf{Paraskevopoulos} p.61 Ex.5; p.152 Example 4.2.2; p.~395 inverse
+Laplace transform for \(\frac{12(s^2 + 4.75s + 25)}{s}\)
 
-p.471 Problem 4.3-6
+\textbf{Qiu} p.181 Compute Inverse Laplace Transform: 1.
+\(G(s) = \frac{s^3 + 2s^2 + 3s + 4}{s^4 + s^3 + 10s^2 + 6s + 8}\) 2.
+\(G(s) = \frac{s^4 + s^3 + 13s^2 + 9s + 21}{s^5 + 2s^4 + 16s^3 + 24s^2 + 48s + 32}\)
+3.
+\(G(s) = \frac{2s^3 + 4s^2 + 24s + 32}{s^4 + 2s^3 + 12s^2 + 16s + 16}\)
+4. \(G(s) = \frac{s^3 - s^2 + 18s - 9}{s^4 + 3s^3 + 27s^2 + 54s + 81}\)
 
-\hypertarget{meirovitch}{%
-\subsection*{Meirovitch}\label{meirovitch}}
+\textbf{Rabie} p.20 Example 2.8, 2.9; p.64 Example 6.1
 
-p.371 Problem 7.49; p.463 Problem 8.38, 8.42, 8.44
+\textbf{Rao} p.382 ``4.5.1 Response to an Impulse''; p.384 EXAMPLE 4.7
+``Response of a Structure Under Impact''; p.385 EXAMPLE 4.8 ``Response
+of a Structure Under Double Impact''; p.407 EXAMPLE 4.9 ``Unit Impulse
+Response of a First-Order System''; p.409 EXAMPLE 4.21 ``Unit Impulse
+Response of a Second-Order System''; p.437 EXAMPLE 4.33 ``Impulse
+Response of a Structure''; p.511 EXAMPLE 5.12 ``Response Under Impulse
+Using Laplace Transform Method''
 
-\hypertarget{nagle-saff-snider}{%
-\subsection*{Nagle, Saff \& Snider}\label{nagle-saff-snider}}
+\textbf{Schiff} p.87 Exercises 2.5 1-7
 
-p.404 ``7.8 EXERCISES'' 5-12, 23-28; p.410 ``7.9 Exercises'' 13-29, 35;
-p.416 ``REVIEW PROBLEMS FOR CHAPTER 7'' Problem 29-30
+\textbf{Shabana} p.45 Problems 1.3, 1.9
 
-\hypertarget{ogata}{%
-\subsection*{Ogata}\label{ogata}}
+\textbf{Thorby} p.51 Example 3.2
 
-p.196 MATLAB Program 5--8 ``Unit-Impulse Response of G(s) = 1/(s\^{}2 +
-0.2s + 1)''; p.264 B--5--4 ``Consider the system shown in Figure 5--72.
-The system is initially at rest. Suppose that the cart is set into
-motion by an impulsive force whose strength is unity. Can it be stopped
-by another such impulsive force?''; p.264 B-5-5, B-5-6; p.265 B-5-10/11;
-p.267 B-5-16
+\textbf{Truxal} p.36 formula 1.140; p.73 formula 1.237
 
-\hypertarget{rao}{%
-\subsection*{Rao}\label{rao}}
+\textbf{Xue, Chen \& Atherton} p.76 Example 3.20. ``Consider again the
+system model studied in Example 3.17. The impulse response of the system
+can be obtained as shown in Figure 3.11:''
+\texttt{\textgreater{}\textgreater{}\ G=tf({[}10\ 20{]},{[}10\ 23\ 26\ 23\ 10{]},\textquotesingle{}ioDelay\textquotesingle{},1);\ impulse(G,\ 30);};
+p.106 Problem 9 ``Find impulse response for the system:''
+\(\frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}\)
 
-p.382 ``4.5.1 Response to an Impulse''; p.384 EXAMPLE 4.7 ``Response of
-a Structure Under Impact''; p.385 EXAMPLE 4.8 ``Response of a Structure
-Under Double Impact''; p.407 EXAMPLE 4.9 ``Unit Impulse Response of a
-First-Order System''; p.409 EXAMPLE 4.21 ``Unit Impulse Response of a
-Second-Order System''; p.437 EXAMPLE 4.33 ``Impulse Response of a
-Structure''; p.511 EXAMPLE 5.12 ``Response Under Impulse Using Laplace
-Transform Method''
-
-\hypertarget{schiff}{%
-\subsection*{Schiff}\label{schiff}}
-
-p.87 Exercises 2.5 1-7
-
-\hypertarget{shabana}{%
-\subsection*{Shabana}\label{shabana}}
-
-p.45 Problems 1.3, 1.9
-
-\hypertarget{thorby}{%
-\subsection*{Thorby}\label{thorby}}
-
-p.51 Example 3.2
-
-\hypertarget{xue-chen-atherton}{%
-\subsection*{Xue, Chen \& Atherton}\label{xue-chen-atherton}}
-
-p.76 Example 3.20. ``Consider again the system model studied in Example
-3.17. The impulse response of the system can be obtained as shown in
-Figure 3.11:''
-\passthrough{\lstinline!>> G=tf([10 20],[10 23 26 23 10],'ioDelay',1); impulse(G, 30);!}
-
-p.106 Problem 9 ``Find impulse response for the system:'' \[
-\frac{18s^7 + 514s^6 + 5982s^5 + 36380s^4 + 122664s^3 + 222088s^2 + 185760s + 40320}{s^8 + 36s^7 + 546s^6 + 4536s^5 + 22449s^4 + 67284s^3 + 118124s^2 + 109584s + 40320}
-\]
+\textbf{Yang} p.47 Formula P1.4.1a, P1.4.1b
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{verification-methodology}{%
 \section{Verification Methodology}\label{verification-methodology}}
 
-Unlike a plain literature survey, every one of the thirty-seven solved
+Unlike a plain literature survey, every one of the seventy-four solved
 exercises in this compilation has been independently checked against its
 own stated differential equation (or transfer function) and initial
 conditions, rather than simply quoted. Three complementary methods were
@@ -1072,8 +2001,7 @@ used, chosen per entry according to what its stated form allowed:
   jump of \(y^{(n-1)}\) by (impulse amplitude)/(leading coefficient) at
   that point. This avoids a limitation of general-purpose symbolic
   Laplace-transform routines, which do not reliably transform
-  expressions built from
-  \passthrough{\lstinline!Heaviside(t-c)*f(t-c)!}.
+  expressions built from \texttt{Heaviside(t-c)*f(t-c)}.
 \item
   \textbf{Numeric self-consistency.} For the one entry specified purely
   by numeric physical parameters (Shabana, Example 1.10), the stated
@@ -1082,123 +2010,140 @@ used, chosen per entry according to what its stated form allowed:
   every numeric value the source itself reports.
 \end{itemize}
 
-This process confirmed all thirty-seven solved exercises exactly as
-transcribed. It also surfaced four transcription issues beyond the
-duplicate example discussed in the Conclusion below, each corrected
-inline with an explicit derivation rather than silently: an incomplete
-equation (Nagle, p.403, Example 4), a garbled unit label (Shabana, p.41,
-Example 1.10), a single-character transcription error (Xie, p.258,
-Example 6.13), and one example whose printed answer did not actually
-satisfy its own stated equation and initial conditions (Gangadharaiah \&
-Sandeep, p.340, Example 4.25).
+This process confirmed all thirty-seven originally transcribed solved
+exercises exactly as transcribed; thirty-one additional examples
+(Angeles, p.132; Finan, p.57; Anderson, p.206; Anderson, p.22;
+Bavafa-Toosi, p.203; Bavafa-Toosi, p.204, Example 3.2; Bavafa-Toosi,
+p.204, Example 3.3; Bavafa-Toosi, p.822; Engelberg, p.31; Frank, p.29;
+Ghosh, p.23; Ghosh, p.24; Ghosh, p.33; Kamaraju \& Narasimham, p.105;
+Kamaraju \& Narasimham, p.79; Kamaraju \& Narasimham, p.106; Kamaraju \&
+Narasimham, p.99; Khalil, p.68; Khalil, p.84; Khalil, p.439; Khalil,
+p.440; Krishnaveni \& Rajeswari, p.471; Krishnaveni \& Rajeswari, p.472,
+Example 8.22; Krishnaveni \& Rajeswari, p.472, Example 8.23; Krishnaveni
+\& Rajeswari, p.473; Krishnaveni \& Rajeswari, p.476; Krishnaveni \&
+Rajeswari, p.482; Krishnaveni \& Rajeswari, p.483; Kulakowski, Gardner
+\& Shearer, p.434; Kulakowski, Gardner \& Shearer, p.435; Narasimham,
+p.36) were subsequently added, each independently verified the same way.
+It also surfaced nine transcription issues beyond the duplicate example
+discussed in the Conclusion below, each corrected inline with an
+explicit derivation rather than silently: an incomplete equation (Nagle,
+p.403, Example 4), a garbled unit label (Shabana, p.41, Example 1.10), a
+single-character transcription error (Xie, p.258, Example 6.13), a
+mistranscribed governing equation with a duplicated derivative term
+(Ahuja \& Arya, Eq. 16), and five examples whose printed answers did not
+actually satisfy their own stated equations (Gangadharaiah \& Sandeep,
+p.340, Example 4.25; Bavafa-Toosi, p.204, Example 3.3; Kamaraju \&
+Narasimham, p.79; Krishnaveni \& Rajeswari, p.476, Example 8.27;
+Kulakowski, Gardner \& Shearer, p.435, Example A2.2).
 
 A machine-readable export of the full, verified example set --- problem
 source, coefficients or transfer function, forcing, initial conditions,
 closed-form solution, and verification method for each of the
-thirty-seven entries --- is provided alongside this article as
-\passthrough{\lstinline!solved\_examples.json!} and
-\passthrough{\lstinline!solved\_examples.csv!}, so the collection can be
-consumed directly by an automated test harness rather than
-re-transcribed by hand.
+seventy-nine entries --- is provided alongside this article as
+\texttt{solved\_examples.json} and \texttt{solved\_examples.csv}, so the
+collection can be consumed directly by an automated test harness rather
+than re-transcribed by hand.
 
-Concretely, each entry in
-\passthrough{\lstinline!solved\_examples.json!} carries a
-\passthrough{\lstinline!type!} field that determines how it is best
-exercised as a test case:
+Concretely, each entry in \texttt{solved\_examples.json} carries a
+\texttt{type} field that determines how it is best exercised as a test
+case:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\passthrough{\lstinline!ivp!} entries} (12 of the 37) give
-  fully numeric ODE coefficients, a list of forcing impulses (amplitude,
-  derivative order, and shift location), and numeric initial conditions
-  --- a direct, ready-to-parse input for an ODE solver under test. A
-  test harness can feed
-  \passthrough{\lstinline!(ode\_coeffs\_highest\_to\_lowest, forcing, initial\_conditions)!}
+  \textbf{\texttt{ivp} entries} (17 of the 79) give fully numeric ODE
+  coefficients, a list of forcing impulses (amplitude, derivative order,
+  and shift location), and numeric initial conditions --- a direct,
+  ready-to-parse input for an ODE solver under test. A test harness can
+  feed
+  \texttt{(ode\_coeffs\_highest\_to\_lowest,\ forcing,\ initial\_conditions)}
   straight into the solver, evaluate both the solver's output and the
-  quoted \passthrough{\lstinline!solution\_latex!} (parsed via a CAS
-  such as SymPy) at a grid of sample times away from the impulse
-  locations, and assert numerical agreement to within a chosen
-  tolerance.
+  quoted \texttt{solution\_latex} (parsed via a CAS such as SymPy) at a
+  grid of sample times away from the impulse locations, and assert
+  numerical agreement to within a chosen tolerance.
 \item
-  \textbf{\passthrough{\lstinline!transfer\_function!} entries} (14 of
-  the 37) pair a transfer function \passthrough{\lstinline!H\_s!} with
-  its known impulse response \passthrough{\lstinline!h\_t!} --- suited
-  to testing a Laplace-domain toolbox: run the transform under test on
-  \passthrough{\lstinline!H\_s!} and diff the result against
-  \passthrough{\lstinline!h\_t!}.
+  \textbf{\texttt{transfer\_function} entries} (49 of the 79) pair a
+  transfer function \texttt{H\_s} with its known impulse response
+  \texttt{h\_t} --- suited to testing a Laplace-domain toolbox: run the
+  transform under test on \texttt{H\_s} and diff the result against
+  \texttt{h\_t}.
 \item
-  \textbf{\passthrough{\lstinline!ivp\_symbolic!} entries} (10 of the
-  37) carry general, symbolic parameters (e.g.~\(\tau\), \(k\),
-  \(\omega_0\), \(\zeta\)) rather than fixed numbers, which makes them
-  well suited to property-based or randomized testing: substitute random
-  concrete values for the symbolic parameters before each comparison,
-  exercising the solver across a swept parameter range instead of one
-  fixed case.
+  \textbf{\texttt{ivp\_symbolic} entries} (12 of the 79) carry general,
+  symbolic parameters (e.g.~\(\tau\), \(k\), \(\omega_0\), \(\zeta\))
+  rather than fixed numbers, which makes them well suited to
+  property-based or randomized testing: substitute random concrete
+  values for the symbolic parameters before each comparison, exercising
+  the solver across a swept parameter range instead of one fixed case.
 \item
-  \textbf{The one \passthrough{\lstinline!ivp\_numeric!} entry}
-  (Shabana, Example 1.10) is a fully numeric physical-parameter case,
-  suited to a straightforward fixed-input regression test.
+  \textbf{The one \texttt{ivp\_numeric} entry} (Shabana, Example 1.10)
+  is a fully numeric physical-parameter case, suited to a
+  straightforward fixed-input regression test.
 \end{itemize}
 
-Across all four types, the \passthrough{\lstinline!verified!} and
-\passthrough{\lstinline!verification\_method!} fields let a harness
-filter to only independently-checked entries before trusting them as an
-oracle (all 37 here are \passthrough{\lstinline!verified: true!}), and
-the stable \passthrough{\lstinline!id!} field gives each entry a natural
-key for parametrized test naming
-(e.g.~\passthrough{\lstinline!pytest.mark.parametrize!} keyed by
-\passthrough{\lstinline!id!}, or a JUnit/xUnit test-case name). The flat
-\passthrough{\lstinline!solved\_examples.csv!} carries the same
-bibliographic and verification columns (\passthrough{\lstinline!id!},
-\passthrough{\lstinline!author!}, \passthrough{\lstinline!book\_title!},
-\passthrough{\lstinline!page!}, \passthrough{\lstinline!example!},
-\passthrough{\lstinline!type!}, \passthrough{\lstinline!verified!},
-\passthrough{\lstinline!verification\_method!},
-\passthrough{\lstinline!notes!}) for quick spreadsheet review or for a
-lightweight runner that would rather avoid a JSON parser; the fuller
-mathematical content --- coefficients, forcing, initial conditions, and
-closed-form solution --- is only in the JSON, since it does not flatten
-cleanly into CSV columns.
+Across all four types, the \texttt{verified} and
+\texttt{verification\_method} fields let a harness filter to only
+independently-checked entries before trusting them as an oracle (all 79
+here are \texttt{verified:\ true}), and the stable \texttt{id} field
+gives each entry a natural key for parametrized test naming
+(e.g.~\texttt{pytest.mark.parametrize} keyed by \texttt{id}, or a
+JUnit/xUnit test-case name). The flat \texttt{solved\_examples.csv}
+carries the same bibliographic and verification columns (\texttt{id},
+\texttt{author}, \texttt{book\_title}, \texttt{page}, \texttt{example},
+\texttt{type}, \texttt{verified}, \texttt{verification\_method},
+\texttt{notes}) for quick spreadsheet review or for a lightweight runner
+that would rather avoid a JSON parser; the fuller mathematical content
+--- coefficients, forcing, initial conditions, and closed-form solution
+--- is only in the JSON, since it does not flatten cleanly into CSV
+columns.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
 
-This article gathered thirty-seven fully worked examples --- each an LTI
+This article gathered seventy-four fully worked examples --- each an LTI
 ODE (or, equivalently, a transfer function) forced by a Dirac delta
 impulse or its derivative, paired with a published closed-form solution
---- from twelve textbooks spanning ordinary differential equations,
-vibrations, signals and systems, and control engineering. These are
-supplemented by dozens of further exercise references, without
-solutions, indexed across twenty texts (several of which overlap with
-the solved set) to point the reader toward additional practice material.
-All content in both categories was extracted, not derived: no new
-analytical results are claimed, and every solved example was
-independently verified against its stated equation rather than merely
-transcribed (see Verification Methodology above).
+--- from twenty-nine textbooks and articles spanning ordinary
+differential equations, vibrations, signals and systems, and control
+engineering. These are supplemented by dozens of further exercise
+references, without solutions, indexed across thirty-one texts (several
+of which overlap with the solved set) to point the reader toward
+additional practice material. All content in both categories was
+extracted, not derived: no new analytical results are claimed, and every
+solved example was independently verified against its stated equation
+rather than merely transcribed (see Verification Methodology above).
 
 Three intended uses motivated the compilation. As a pedagogical
-resource, the alphabetized, dual-category structure lets a reader move
-directly from a specific author or problem type to the relevant worked
-solution, without first locating and cross-referencing dozens of
-separate books. As a software-engineering resource, the thirty-seven
-solved exercises --- together with their machine-readable export and
-per-example WolframAlpha check --- constitute a ready-made benchmark
-suite: each pairs a well-posed initial value problem with an
-independently verified analytical answer, suitable for regression or
-unit testing of symbolic or numerical ODE solvers. As a small act of
-literature quality control, the verification pass itself demonstrates
-that even a well-regarded, widely used textbook can carry an internally
-inconsistent worked answer (Gangadharaiah \& Sandeep, Example 4.25) or a
+resource, the dual-category structure --- Solved Exercises grouped by
+ODE order and then alphabetized by author, Additional Exercises
+alphabetized by author --- lets a reader move directly from a specific
+equation order, author, or problem type to the relevant worked solution,
+without first locating and cross-referencing dozens of separate books.
+As a software-engineering resource, the seventy-four solved exercises
+--- together with their machine-readable export and per-example
+WolframAlpha check --- constitute a ready-made benchmark suite: each
+pairs a well-posed initial value problem with an independently verified
+analytical answer, suitable for regression or unit testing of symbolic
+or numerical ODE solvers. As a small act of literature quality control,
+the verification pass itself demonstrates that even a well-regarded,
+widely used textbook can carry an internally inconsistent worked answer
+(Gangadharaiah \& Sandeep, Example 4.25; Bavafa-Toosi, p.204, Example
+3.3; Kamaraju \& Narasimham, p.79; Krishnaveni \& Rajeswari, p.476,
+Example 8.27; Kulakowski, Gardner \& Shearer, p.435, Example A2.2), an
+apparent error in a stated initial-condition jump (Angeles, p.136), or a
 duplicated problem (Example 3.9, byte-identical to Example 3.12) that a
 reader is unlikely to catch without redoing the algebra --- underscoring
 the value of checking, not just collecting, textbook exercises before
 relying on them for testing purposes.
 
-Two limitations should be noted. First, the survey is not exhaustive: it
-reflects the books available to the present compiler and is best
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{limitations}{%
+\section{Limitations}\label{limitations}}
+
+Three limitations should be noted. First, the survey is not exhaustive:
+it reflects the books available to the present compiler and is best
 understood as a personal, growing reading list rather than a systematic
 literature search. Second, while every solved example's closed-form
 solution was checked against its own stated equation and initial
@@ -1209,25 +2154,64 @@ own --- equally mistaken --- answer key); nor does it substitute for
 tracing each problem back to first principles. One originally duplicated
 example (Gangadharaiah \& Sandeep, Example 3.9) was removed rather than
 repaired, since its true content could not be recovered independently of
-Example 3.12. Extending the collection to further textbooks, and
+Example 3.12. Third, the scope is restricted to linear time-invariant
+systems forced by the Dirac delta function or a single derivative
+thereof; nonlinear equations, time-varying coefficients, and forcing by
+a sum of impulses of several derivative orders at once fall outside this
+compilation. Extending the collection to further textbooks, and
 extending the automated verification to the Additional Exercises once
 solutions are added for them, are natural directions for future work.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{data-and-code-availability}{%
+\section{Data and Code Availability}\label{data-and-code-availability}}
+
+The full set of verified solved exercises accompanies this article as a
+machine-readable export: \texttt{solved\_examples.json} (seventy-nine
+entries, carrying the problem statement, coefficients or transfer
+function, forcing, initial conditions, closed-form solution, and
+verification metadata for each) and \texttt{solved\_examples.csv} (the
+same bibliographic and verification columns, for spreadsheet review or
+lightweight consumption without a JSON parser). Both files index each
+entry by a stable \texttt{id} field suitable for parametrized test
+naming. No separate code repository accompanies this article; the
+Wolfram Language snippet given inline with each solved exercise is
+sufficient to reproduce that example's closed-form solution
+independently, and the verification methods used to check every entry
+are described in full in the Verification Methodology section above.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{references}{%
 \section{References}\label{references}}
 
+Ahuja, S., \& Arya, R. K. (2019). Consistent initialization of the
+Laplace transform (arXiv:1909.07813). arXiv.
+https://arxiv.org/abs/1909.07813
+
+Anderson, B., \& Rufer, S. (2018, August 13). Control theory: A brief
+introduction. Bruin Racing, Baja SAE, University of California, Los
+Angeles.
+
+Angeles, J. (2011). Dynamic response of linear mechanical systems:
+Modeling, analysis and simulation. Springer.
+https://doi.org/10.1007/978-1-4419-1027-1 (ISBN 978-1-4419-1026-4;
+e-ISBN 978-1-4419-1027-1; ISSN 0941-5122; e-ISSN 2192-063X)
+
+Bavafa-Toosi, Y. (2017). Introduction to linear control systems.
+Academic Press. (ISBN: 978-0-12-812748-3; e-ISBN: 978-0-12-812749-0)
+
 Bottega, W. J. (2006). \emph{Engineering vibrations}. CRC Press. (ISBN:
 9780849334207, 0849334209)
 
-Boyce, W. E., \& DiPrima, R. C. (2017). Elementary differential
-equations and boundary value problems (11th ed.). John Wiley \& Sons,
-Inc.~(ISBN: 978-1-119-38164-8)
+Boyce, W. E., DiPrima, R. C., \& Meade, D. B. (2017). Elementary
+differential equations and boundary value problems (11th ed.). John
+Wiley \& Sons, Inc.~(ISBN: 978-1-119-16978-9)
 
 Campbell, S. L., \& Haberman, R. (2008). Introduction to differential
-equations with dynamical systems. Princeton University Press. (ISBN:
-978-0-691-12474-6)
+equations with dynamical systems. Princeton University Press.
+https://doi.org/10.1515/9781400841325 (ISBN: 978-0-691-12474-2)
 
 De Oliveira, M. C. (2017). Fundamentals of linear control: A concise
 approach. Cambridge University Press.
@@ -1240,9 +2224,22 @@ Edwards, C. H., \& Penney, D. E. (2008). Elementary differential
 equations with boundary value problems (6th ed.). Pearson Education.
 ISBN 0-13-600613-2
 
+Engelberg, S. (2024). A mathematical introduction to control theory (3rd
+ed.). World Scientific Publishing Company. https://doi.org/10.1142/q0459
+(ISBN: 978-1-80061-554-0)
+
 Esfandiari, R. S., \& Lu, B. (2014). Modeling and analysis of dynamic
 systems (2nd ed.). CRC Press, Taylor \& Francis Group. (ISBN:
 978-1-4665-7495-3) https://doi.org/10.1201/b16907
+
+Finan, M. B. (2014). Laplace transforms: Theory, problems, and
+solutions. Arkansas Tech University.
+http://faculty.atu.edu/mfinan/4243/Laplace.pdf
+
+Frank, S. A. (2018). Control theory tutorial: Basic concepts illustrated
+by software examples. Springer.
+https://doi.org/10.1007/978-3-319-91707-8 (ISBN 978-3-319-91706-1;
+e-ISBN 978-3-319-91707-8)
 
 Franklin, G. F., Powell, J. D., \& Emami-Naeini, A. (2015). Feedback
 control of dynamic systems (7th ed., Global ed.). Pearson Education
@@ -1252,17 +2249,55 @@ Gangadharaiah, Y. H., \& Sandeep, N. (2021). Engineering applications of
 the Laplace transform. Cambridge Scholars Publishing. ISBN (13):
 978-1-5275-7373-4
 
+Ghosh, S. (2012). Control systems: Theory and applications (2nd ed.).
+Pearson Education. (ISBN: 978-81-317-5837-3)
+
+Gupta, A., \& Verma, Y. P. (2015). Automatic control engineering (1st
+ed.). I.K. International Pvt. Ltd.~(ISBN-13: 978-93-84588-23-6)
+
+Hallauer, W. L., Jr.~(2016). Introduction to linear, time-invariant,
+dynamic systems for students of engineering. Virginia Tech.
+http://hdl.handle.net/10919/78864
+
 Inman, D. J. (2014). Engineering vibration (4th ed.). Pearson Education,
 Inc.~(ISBN: 978-0-13-287169-3)
+
+Jagan, N. C. (2008). Control systems (2nd ed.). BS Publications.
+(ISBN-13: 978-81-7800-139-5)
+
+Kamaraju, V., \& Narasimham, R. L. (2009). Linear systems: Analysis and
+applications (2nd ed.). I.K. International Publishing House. (ISBN-13:
+978-93-8002-671-8)
 
 Karris, S. T. (2003). Signals and systems with MATLAB® applications (2nd
 ed.). Orchard Publications. (ISBN: 9780970951168, 0970951167)
 
+Kavaja, J., \& Piazzi, A. (2019). Input--output jumps of scalar linear
+systems. IFAC-PapersOnLine, 52(17), 13--18.
+https://doi.org/10.1016/j.ifacol.2019.11.019
+
 Kelly, S. G. (2012). Mechanical vibrations: Theory and applications, SI.
 Cengage Learning. (ISBN: 9781439062142)
 
+Khalil, H. K. (2023). Control systems: An introduction. Michigan
+Publishing Services. https://doi.org/10.3998/mpub.12834514 (ISBN:
+978-1-60785-826-3; open-access e-book ISBN: 978-1-60785-827-0)
+
+Krishnaveni, V., \& Rajeswari, A. (2012). Signals and systems (1st ed.).
+Wiley India Pvt. Ltd.~(ISBN-13: 978-81-265-2289-7)
+
+Kulakowski, B. T., Gardner, J. F., \& Shearer, J. L. (2007). Dynamic
+modeling and control of engineering systems (3rd ed.). Cambridge
+University Press. https://doi.org/10.1017/CBO9780511805417 (ISBN:
+978-0-521-86435-0)
+
 Lathi, B. P., \& Green, R. A. (2018). Linear systems and signals (3rd
 ed.). Oxford University Press. (ISBN: 978-0-19-020017-6)
+
+Lundberg, K. H., Miller, H. R., \& Trumper, D. L. (2007). Initial
+conditions, generalized functions, and the Laplace transform: Troubles
+at the origin. IEEE Control Systems, 27(1), 22--35.
+https://doi.org/10.1109/MCS.2007.284506
 
 Meirovitch, L. (2001). Fundamentals of vibrations (International ed.).
 McGraw-Hill. (ISBN: 0-07-118174-1)
@@ -1271,11 +2306,34 @@ Nagle, R. K., Saff, E. B., \& Snider, A. D. (2018). Fundamentals of
 differential equations (9th ed.). Pearson Education, Inc.~(ISBN:
 978-0-321-97706-9)
 
-Nagy, G. (n.d.). Ordinary differential equations. Mathematics
-Department, Michigan State University
+Nagy, G. (2021). Ordinary differential equations. Mathematics
+Department, Michigan State University.
+https://users.math.msu.edu/users/gnagy/teaching/ode.pdf
+
+Narasimham, R. L. (2008). Analysis of linear control systems. I.K.
+International Publishing House. (ISBN: 978-81-89866-27-3)
+
+Nise, N. S. (2010). Control systems engineering (6th ed.). John Wiley \&
+Sons. ISBN: 978-0-470-54756-4 (hbk); 978-0-470-91769-5
+(binder-ready/loose-leaf ed.).
 
 Ogata, K. (2010). Modern control engineering (5th ed.). Pearson
 Education, Inc.~(ISBN- 13: 978-0-13-615673-4)
+
+Paraskevopoulos, P. N. (2002). Modern control engineering. Marcel
+Dekker. (ISBN: 0-8247-8981-4)
+
+Popov, E. P. (1962). The dynamics of automatic control systems (A. D.
+Booth, Trans.). Pergamon Press. (Note: the translator/editor credit
+could not be independently confirmed from the title page; A. D. Booth is
+the name associated with this edition in available library and
+commercial listings, but his exact role is not fully verified.)
+
+Qiu, L., \& Zhou, K. (2009). Introduction to feedback control. Prentice
+Hall. (ISBN: 978-0-13-235396-0)
+
+Rabie, M. G. (2010). Automatic control for mechanical engineers.
+Self-published (Cairo, Egypt). ISBN: 977-17-9869-3.
 
 Rao, S. S. (2011). Mechanical vibrations (5th ed.). Pearson Education.
 ISBN 978-0-13-212819-3
@@ -1284,7 +2342,7 @@ Schiff, Joel L. (1999). The Laplace transform: Theory and applications.
 Springer-Verlag New York, Inc.~(ISBN: 0-387-98698-7)
 https://doi.org/10.1007/978-0-387-22757-3
 
-Shabana, A. A. (1997). Vibration of discrete and continuous systems (2nd
+Shabana, A. A. (1996). Vibration of discrete and continuous systems (2nd
 ed.). Springer-Verlag. https://doi.org/10.1007/978-1-4612-4036-5 Print
 ISBN-13: 978-1-4612-8474-1
 
@@ -1292,11 +2350,25 @@ Thorby, D. (2008). Structural dynamics and vibration in practice: An
 engineering handbook. Butterworth-Heinemann, an imprint of Elsevier.
 (ISBN: 978-0-7506-8002-8)
 
+Truxal, J. G. (1955). Automatic feedback control system synthesis.
+McGraw-Hill Book Company.
+
+Williams, R. L., II, \& Lawrence, D. A. (2007). Linear state-space
+control systems. John Wiley \& Sons.
+https://doi.org/10.1002/9780470117873 (ISBN: 978-0-471-73555-7)
+
 Xie, W.-C. (2010). Differential equations for engineers. Cambridge
-University Press. ISBN-13 978-0-521-19424-2
+University Press. https://doi.org/10.1017/CBO9780511761683 ISBN-13
+978-0-521-19424-2
 
 Xue, D., Chen, Y., \& Atherton, D. P. (2007). Linear feedback control:
 Analysis and design with MATLAB. Society for Industrial and Applied
-Mathematics. ISBN 978-0-898716-38-2
+Mathematics. https://doi.org/10.1137/1.9780898718621 ISBN
+978-0-898716-38-2
+
+Yang, W. Y., Chang, T. G., Song, I. H., Cho, Y. S., Heo, J., Jeon, W.
+G., Lee, J. W., \& Kim, J. K. (2009). Signals and systems with MATLAB©.
+Springer-Verlag. https://doi.org/10.1007/978-3-540-92954-3
+
 
 \end{document}
