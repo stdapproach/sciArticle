@@ -2,7 +2,7 @@
 
 **Denis Pleshkov**
 <std.approach@gmail.com>
-August 2026
+September 2026
 
 ### Abstract
 
@@ -46,24 +46,8 @@ y(0) = F
 \end{cases}
 $
 
-Weber (p. 733: "Impulsive Force") notes the analogous result
-
-$
-\begin{cases}
-m x'' = P \delta(t), \\
-x(0) = 0, \\
-x'(0) = 0
-\end{cases}
-\;\equiv\;
-\begin{cases}
-m x'' = 0, \\
-x(0) = 0, \\
-x'(0) = P/m
-\end{cases}
-$
-
 Balachandran (p. 301: "Similarity to Response to Initial Velocity"), Bottega (pp. 235–236: "problem of interest becomes equivalent to the problem of free vibrations with the initial conditions"), Genta (p. 179-180: "The position x0 after the impulse is equal to that before the impulse,
-while the velocity v0 is equal to the one before the impulse plus an increment"), Meirovitch (pp. 160–161: "we conclude that the effect of a unit impulse at t = 0 is to produce an equivalent initial velocity"), Schiff (p. 83: "indicating the instantaneous jump in velocity at t=0, from a rest state to the value v0"), all remarked that
+while the velocity v0 is equal to the one before the impulse plus an increment"), Meirovitch (pp. 160–161: "we conclude that the effect of a unit impulse at t = 0 is to produce an equivalent initial velocity"), Schiff (p. 83: "indicating the instantaneous jump in velocity at t=0, from a rest state to the value v0"), Weber (p. 733: "Impulsive Force") notes the analogous result; all remarked that
 
 $
 \begin{cases}
@@ -252,6 +236,8 @@ Palm, W. J., III. (2010). *System dynamics* (2nd ed.). McGraw-Hill. (ISBN: 978-0
 Peterson, G. L., & Sochacki, J. S. (2014). *Linear algebra & differential equations* (Pearson New International ed.). Pearson Education Limited. (ISBN: 978-1-269-37450-7)
 
 Polking, J., Boggess, A., & Arnold, D. (2006). *Differential equations with boundary value problems* (2nd ed.). Pearson Prentice Hall. (ISBN: 0-13-186236-7)
+
+Popov, E. P. (1962). The dynamics of automatic control systems (A. D. Booth, Trans.). Pergamon Press. (Note: the translator/editor credit could not be independently confirmed from the title page; A. D. Booth is the name associated with this edition in available library and commercial listings, but his exact role is not fully verified.)
 
 Ram, B. (2009). *Engineering mathematics*. Pearson Education. (ISBN: 978-81-317-2691-4)
 
